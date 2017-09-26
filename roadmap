@@ -1,0 +1,28 @@
+Roadmap
+-------
+- Ajout d'un onglet de gestion des demandes et incidents associés à la version
+	Permettra de regrouper au sein d'un même tableau la liste des INC et DS AGIS:
+	-- ID
+	-- Type (INC/DS)
+	-- Numero --> à terme avec un lien vers AGIS
+	-- Objet
+	-- Description
+
+- Tri sur les colonnes du tableau d'affichage des versions
+
+- Indicateurs en première page
+	Exemple: Nombre de versions référencées et ouvertes, Nombre de version ouvertes par domaine
+
+- Filtre sur les colonnes du tableau d'affichage des versions
+
+- Export de la version sous PDF en une seule page
+
+- Intégration des autres champs de la Roadmap
+
+- Planning global --> V2? 
+
+- Ergonomie générale à améliorer sur les vues
+
+Questions
+---------
+- Quel est l'intérêt d'avoir une date en lien avec la DQMP ALFA? 

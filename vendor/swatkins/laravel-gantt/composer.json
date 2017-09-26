@@ -1,0 +1,19 @@
+{
+    "name": "swatkins/laravel-gantt",
+    "description": "Laravel package to display items within a Gantt Chart.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Scott Watkins",
+            "email": "scott@swatkins.me"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Swatkins\\LaravelGantt\\": "src/"
+        }
+    }
+}

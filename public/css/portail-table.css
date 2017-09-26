@@ -1,0 +1,36 @@
+/**
+* portail-table.css
+* Feuille de style pour les tableaux
+**/
+
+.portail-table{
+	background-color: #FFF;
+  margin: 10px;
+}
+
+.portail-table-header{
+	background-color: #D3D3D3;
+}
+
+.portail-table tr.odd  { background-color:#FFF; }
+.portail-table tr.even { background-color:#CCC; }
+
+.portail-table-header th {
+	color: #000;
+  	font-family: 'Droid Sans', sans-serif;
+  	font-size: 16px;
+}
+
+.portail-table td {
+	color: #7b7b7b;
+  	font-family: 'Droid Sans', sans-serif;
+  	font-size: 16px;
+}
+
+.portail-table td a {
+  color: #737373;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+}
