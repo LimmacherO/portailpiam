@@ -30,8 +30,8 @@ class CreateVersionsTable extends Migration
             $table->foreign('application_id')
                   ->references('id')
                   ->on('application')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
 
             //Champs référence ALFA --> taille 6 max
             $table->integer('referencealfa');
@@ -46,8 +46,8 @@ class CreateVersionsTable extends Migration
             $table->foreign('referentqi_id')
                   ->references('id')
                   ->on('referentqi')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
 
             $table->longText('alerteqi')->default('')->nullable();
 
@@ -59,8 +59,8 @@ class CreateVersionsTable extends Migration
             $table->foreign('referentprd_id')
                   ->references('id')
                   ->on('referentprd')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
 
             // Date de mise en production
             $table->date('date_mep');

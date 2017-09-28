@@ -88,7 +88,7 @@ class VersionController extends Controller
     {
         $this->versionRepository->destroy($version);
 
-        return redirect()->route('version.index')->withOk("La version " . $version->application->libelle . "&nbsp;" . $request->version . " a été supprimée avec succès");
+        return redirect()->route('version.index')->withOk("La version " . $version->application->libelle . "&nbsp;" . $version->version . " a été supprimée avec succès");
     }
 
 }

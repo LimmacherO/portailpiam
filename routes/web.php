@@ -21,7 +21,9 @@ Route::put('version/update/{version}', 'VersionController@update')->name('versio
 Route::get('version/destroy/{version}', 'VersionController@destroy')->name('version.destroy');
 
 //Routes associées aux exports de données (Excel, etc.)
-Route::get('export/index', 'ExportController@index')->name('export.index');
+Route::get('export/index', 'ExportController@index')->name('export.index'); //plus utlisé pour le moment
+Route::get('export/excel', 'ExportController@exporttoexcel')->name('export.excel');
+
 
 //Routes associées aux opérations sur les tâches/jalons (CRUD)
 Route::get('taches/{version}', 'TacheController@index')->name('tache.index');

@@ -21,8 +21,8 @@ class CreateApplicationTable extends Migration
             $table->foreign('domaine_id')
                   ->references('id')
                   ->on('domaine')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
 
         });
     }

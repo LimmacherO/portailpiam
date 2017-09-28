@@ -24,15 +24,15 @@ class CreateTacheTable extends Migration
             $table->foreign('tachetype_id')
                   ->references('id')
                   ->on('tachetype')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
 
             $table->integer('version_id')->unsigned();
             $table->foreign('version_id')
                   ->references('id')
                   ->on('versions')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 

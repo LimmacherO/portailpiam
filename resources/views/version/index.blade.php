@@ -36,8 +36,9 @@
                         <div class="tabs">
                             <ul>
                                 <li id="selected"><a href="{!! url('version'); !!}" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Liste chantiers</a></li>
-
+                                <!--
                                 <li><a href="{!! url('export/index'); !!}" data-toggle="tab"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;&nbsp;Exports</a></li>
+                                -->
                             </ul>
                         </div>
 
@@ -53,16 +54,22 @@
         <div class="container tab-content clearfix">
 
             <div class="row tab-pane active">
+
+                {!! Form::open(['url' => 'version', 'method' => 'get']) !!}
                 <div class="col-lg-12">
                     <div class="row section-default-page">
+                        
                         <div class="btn-action-right"><a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a></div>
+                        
+                        <div class="btn-action-right"><a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;Exporter</a></div>
+                        
                         <h2 class="section-default-page-titre">Liste des chantiers</h2>
                         <div class="section-default-page-border"></div>
                         <div class="section-default-page-space">&nbsp;</div>
+
                     </div>
                 </div>
                 
-                {!! Form::open(['url' => 'version', 'method' => 'get']) !!}
                 <div class="col-lg-12">
                     <div class="row section-default-page">      
                         <div class="col-lg-6">

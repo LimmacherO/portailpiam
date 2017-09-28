@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     {
     	$this->call(DomaineTableSeeder::class);
         $this->call(ReferentqiTableSeeder::class);
-        $this->call(ApplicationTableSeeder::class);
         $this->call(ReferentPrdTableSeeder::class);
+        $this->call(ApplicationTableSeeder::class);
         $this->call(VersionTableSeeder::class);
         $this->call(TacheTypeTableSeeder::class);
         $this->call(TacheTableSeeder::class);
