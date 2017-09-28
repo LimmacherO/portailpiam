@@ -5,5 +5,5 @@
 @endsection
 
 @section('page-header-title')
-    Ajouter une nouvelle version
+    Exports
 @endsection

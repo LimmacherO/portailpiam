@@ -2,12 +2,13 @@
 
 namespace App;
 
+//import des classes externes
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Support\Facades\Input;
 
 /*
- * Classe "version": gestion des versions des produits
+ * Classe "version": Modèle permettant la gestion des "versions"
  * @Author: Romain Jedynak
  */
 class Version extends Model
@@ -16,9 +17,10 @@ class Version extends Model
 	//Nom de la table associée au modèle
    	protected $table = 'versions';
 
-	// Désactivation du timestamp dans la table "versions"
+	//Désactivation du timestamp dans la table "versions"
 	public $timestamps = true;
 
+    //Liste des champs utilisables
     protected $fillable = [
         'version', 'libelle', 'application_id', 
         'referentqi_id', 'alerteqi',
@@ -27,8 +29,7 @@ class Version extends Model
         'commentaire',
     ];
 
-	
-    // Liste des champs qui peuvent être triés dans un tableau
+    // Liste des champs qui peuvent être triés (dans un tableau par exemple)
     use Sortable;
     public $sortable = ['version', 'libelle', 'inc_nblivtma', 'date_mep'];
 
@@ -57,11 +58,18 @@ class Version extends Model
                   ->orwhereHas('referentqi', function ($query) use ($params) {
                                 $query->where('referentqi.prenom', 'like', '%'. trim($params['search'] . '%'));
                         })
+                  ->orwhere('inc_nblivtma', 'LIKE', '%'. trim($params['search'] . '%'))
+                  //Ajout du tri
             	  ->sortable()
+                  //Filtre du nombre de données en sortie
             	  ->paginate($nbrPerPage);
         }
         else {
+            //Si c'est vide, la fonction renvoi toute la lioste des versions
+
+                    //Ajout du tri
         	$query->sortable()
+                    //GFiltre du nombre de données en sortie
             	  ->paginate($nbrPerPage);
         }
 
