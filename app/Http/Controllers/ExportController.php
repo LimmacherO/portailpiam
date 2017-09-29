@@ -44,21 +44,42 @@ class ExportController extends Controller
             $excel->setCompany('RSI DQI PIAM');
 
             //Récupération de toutes les versions déclarées
-        	//$versions = Version::all();
-            //$versions = DB::table('')->select('name', 'email as user_email')->get();
-            $versions = Version::select('id', 'version', 'libelle')
-                                ->get();
+        	$versions = Version::all();
 
 			//initialisation du tableau contenant les versions
 			$versionsArray = []; 
 			//initialisation des en-têtes
-			$versionsArray[] = ['id', 'version', 'libellé'];
-
-
+			$versionsArray[] = [
+                'id', 
+                'Domaine', 
+                'Application', 
+                'version', 
+                'libellé',
+                'Référence ALFA', 
+                'Référent QI',
+                'Nb Liv TMA',
+                'Alerte QI', 
+                'Référent PRD',
+                'Alerte PRD',
+                'Commentaire'
+                ];
 
 			//Bascule sous forme de type array()
     		foreach ($versions as $version) {
-        		$versionsArray[] = $version->toArray();
+                $versionsArray[] = array(
+                    $version->id,
+                    $version->application->domaine->libelle,
+                    $version->application->libelle,
+                    $version->version, 
+                    $version->libelle, 
+                    $version->referencealfa,
+                    $version->referentqi->nom . ' ' . $version->referentqi->prenom,
+                    $version->inc_nblivtma,
+                    $version->alerteqi,
+                    $version->referentprd->nom . ' ' . $version->referentprd->prenom,
+                    $version->alerteprd,
+                    $version->commentaire
+                );
     		}
 
     		//Construction de la feuille "Export portail PIAM" avec la liste des versions
