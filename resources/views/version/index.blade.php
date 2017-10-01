@@ -8,6 +8,17 @@
     Roadmap DSI
 @endsection
 
+@section('tabs')
+
+    <div class="tabs">
+        <ul>
+            <li id="selected"><a href="{!! url('version'); !!}" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Liste chantiers</a></li>
+        </ul>
+
+    </div>
+
+@endsection
+
 @section('content')
 
     @if(session()->has('ok'))
@@ -22,36 +33,11 @@
     </div>
     @endif
 
-    <!-- Onglets pour faciliter et catégoriser la présentation -->
-    <div class="tab_line">
-
-        <!-- Onglets -->
-        <!-- Container fluid pour le fond -->
-        <div class="container-fluid tab-line-background">
-            <div class="row">
-                <!-- Container standar pour les onglets -->
-                <div class="container">
-                    <div class="row">
-
-                        <div class="tabs">
-                            <ul>
-                                <li id="selected"><a href="{!! url('version'); !!}" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Liste chantiers</a></li>
-                                <!--
-                                <li><a href="{!! url('export/index'); !!}" data-toggle="tab"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;&nbsp;Exports</a></li>
-                                -->
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Contenu de la page -->
     <div class="tabbable-panel">
 
-        <div class="container tab-content clearfix">
+        <div class="container-fluid tab-content clearfix">
 
             <div class="row tab-pane active">
 

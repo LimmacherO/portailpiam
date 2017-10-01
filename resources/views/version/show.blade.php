@@ -8,10 +8,19 @@
     {{ $version->application->libelle }}&nbsp;{{ $version->version }}
 @endsection
 
-@section('page-header-controls')
+@section('tabs')
 
+	<div class="tabs">
+	    <ul>
+	        <li id="selected"><a href="{!! url('version',$version->id); !!}"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
+	        <li><a href="{!! url('taches', $version->id); !!}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
+	    </ul>
+
+	</div>
 
 @endsection
+
+
 
 
 @section('content')
@@ -28,31 +37,7 @@
 	</div>
     @endif
 
-    <!-- Onglets pour faciliter et catégoriser la présentation -->
-	<div id="version_show_tab" class="tab_line">
 
-		<!-- Onglets -->
-		<!-- Container fluid pour le fond -->
-		<div class="container-fluid tab-line-background">
-			<div class="row">
-				<!-- Container standar pour les onglets -->
-				<div class="container">
-					<div class="row">
-
-						<div class="tabs">
-						    <ul>
-						        <li id="selected"><a href="{!! url('version',$version->id); !!}"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
-						        <li><a href="{!! url('taches', $version->id); !!}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
-						    </ul>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-		<!-- Container standars pour le contenu -->
 
 		<!-- Détail des onglets -->
 		<div class="container tab-content clearfix">

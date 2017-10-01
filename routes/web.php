@@ -7,7 +7,7 @@
 
 // Routes vers la page d'accueil
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/version');
 });
 Route::get('home', function () { return view('home'); })->name('home');
 
