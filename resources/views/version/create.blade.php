@@ -8,36 +8,32 @@
     Ajouter une nouvelle version
 @endsection
 
-@section('content')
+@section('alerte')
 
-    <!-- Onglets pour faciliter et catégoriser la présentation -->
-    <div id="version_show_tab" class="tab_line">
-
-        <!-- Onglets -->
-        <!-- Container fluid pour le fond -->
-        <div class="container-fluid tab-line-background">
-            <div class="row">
-                <!-- Container standar pour les onglets -->
-                <div class="container">
-                    <div class="row">
-
-                        <div class="tabs">
-                            <ul>
-                                <li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Ajout d'une version</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+    @if(session()->has('ok'))
+        <div class="alert alert-success alert-dismissible">
+            {!! session('ok') !!}
         </div>
+    @endif
+
+@endsection
+
+@section('tabs')
+
+    <div class="tabs">
+        <ul>
+            <li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Ajout d'une version</a></li>
+        </ul>
+
     </div>
 
+@endsection
+
+@section('content')
+
     <!-- Contenu de la page -->
-    <div class="container tab-content clearfix">
-
+    <div class="container-fluid tab-content clearfix">
         {!! Form::open(['url' => 'version/store', 'method' => 'post']) !!}
-
         <!-- Section "Jalons/planning -->
         <div class="row tab-pane active">
             <div class="col-lg-12">
@@ -175,9 +171,7 @@
             </div>
 
         </div>
-
     {!! Form::close() !!}  
-
     </div>      
 
 @endsection

@@ -8,41 +8,26 @@
     Modification de la version {{ $version->version }}
 @endsection
 
-@section('content')
+@section('tabs')
 
-    <!-- Onglets pour faciliter et catégoriser la présentation -->
-    <div id="version_show_tab" class="tab_line">
-
-        <!-- Onglets -->
-        <!-- Container fluid pour le fond -->
-        <div class="container-fluid tab-line-background">
-            <div class="row">
-                <!-- Container standar pour les onglets -->
-                <div class="container">
-                    <div class="row">
-
-                        <div class="tabs">
-                            <ul>
-                                <li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Modification d'une version</a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="tabs">
+        <ul>
+            <li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Modification d'une version</a></li>
+        </ul>
     </div>
 
+@endsection
+
+@section('content')
+
     <!-- Contenu de la page -->
-    <div class="container tab-content clearfix">
+    <div class="container-fluid tab-content clearfix">
         {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put']) !!}
         <!-- Section "Jalons/planning -->
         <div class="row tab-pane active">
             <div class="col-lg-12">
                 <div class="row section-default-page">
                     
-
-
                     <div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
 
                     <div class="btn-action-right"><a href="{!! url('version', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>

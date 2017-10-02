@@ -8,6 +8,16 @@
     {{ $version->application->libelle }}&nbsp;{{ $version->version }}
 @endsection
 
+@section('alerte')
+
+	@if(session()->has('ok'))
+		<div class="alert alert-success alert-dismissible">
+		   	{!! session('ok') !!}
+		</div>
+    @endif
+
+@endsection
+
 @section('tabs')
 
 	<div class="tabs">
@@ -20,30 +30,13 @@
 
 @endsection
 
-
-
-
 @section('content')
 
-	@if(session()->has('ok'))
-	<div class="container-fluid tab-line-background">
-		<div class="row">
-			<div class="container">
-				<div class="row">
-		    		<div class="alert alert-success alert-dismissible">{!! session('ok') !!}</div>
-		    	</div>
-		    </div>
-		</div>
-	</div>
-    @endif
-
-
-
 		<!-- Détail des onglets -->
-		<div class="container tab-content clearfix">
+		<div class="container-fluid tab-content clearfix">
 
 			<!-- Onglet "Identication" -->
-			<div class="row tab-pane active" id="identification">
+			<div class="row tab-pane active">
 		        <div class="col-lg-12">
 					<div class="row section-default-page">
 								

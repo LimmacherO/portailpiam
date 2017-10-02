@@ -1,12 +1,9 @@
 
 /* Tabs panel */
 .tabbable-panel {
-  /*border:3px solid #eee;*/
   padding: 0px;
   margin: 0px;
 }
-
-
 
 .tab_line{
   border-bottom-width: 1px;
@@ -16,8 +13,9 @@
 
 .tabs {
   margin-top: 30px;
-  margin-left: 14px;
   margin-bottom: 11px;
+  padding-left: 30px;
+
 }
 
 .tabs  ul {

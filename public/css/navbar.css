@@ -2,31 +2,6 @@
 * Navbar - CSS 
 **/
 
-
-
-/**
-.navbar-default{
-    background-color: #6494bc;
-    border-color: #6494bc;
-    height: 50px;
-    color: #FFF;
-    margin: 0px;
-}
-
-.navbar-default .navbar-brand,
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #FFF;
-}
-
-.navbar-default .navbar-nav > li > a,
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #FFF;
-    outline: 0;
-}
-**/
-
 .navbar-default {
   padding-left: 40px;
   padding-right: 40px;

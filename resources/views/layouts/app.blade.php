@@ -42,9 +42,10 @@
 
             <!-- Menu -->
             <ul class="list-unstyled components">
+                <!--
                 <li>
                     <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;Tableau de bord</a>
-                </li>
+                </li>-->
                 <li class="active">
                     <a href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;Roadmap DSI</a>
                 </li>
@@ -61,23 +62,30 @@
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid section-header">
                     <div class="row">
+                        
+                        <!-- Affichage du titre de la page -->
                         <div class="col-sm-12 col-lg-12">
-
-                            <!-- titre de la page - en-tête -->
                             <h1>@yield('page-header-title')</h1>
+                        </div>
 
-                            <!-- Tabulations -->
+                        <!-- Affichage des alertes -->
+                        <div class="col-sm-12 col-lg-12">
+                            @yield('alerte')
+                        </div>
+
+                        <!-- Affichage des tabulations -->
+                        <div class="col-sm-12 col-lg-12">
                             <div class="container-fluid tab_line tab-line-background clearfix">
                                 <div class="row">@yield('tabs')</div>
                             </div>
-
                         </div>
+
                     </div>
                 </div>
             </nav>
 
             <!-- Afichage du contenu de la page -->
-            <div class="container-fluid section-content ">
+            <div class="container-fluid section-content">
                 <div class="row">
                     <div class="col-sm-12 col-lg-12">
                         @yield('content')
