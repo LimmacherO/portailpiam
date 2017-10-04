@@ -1,11 +1,6 @@
-
-/* Tabs panel */
-.tabbable-panel {
+.tab_line{
   padding: 0px;
   margin: 0px;
-}
-
-.tab_line{
   border-bottom-width: 1px;
   border-bottom-style:solid;
   border-bottom-color: rgb(225,228,232);

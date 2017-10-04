@@ -75,7 +75,7 @@
 
                         <!-- Affichage des tabulations -->
                         <div class="col-sm-12 col-lg-12">
-                            <div class="container-fluid tab_line tab-line-background clearfix">
+                            <div class="container-fluid tab_line clearfix">
                                 <div class="row">@yield('tabs')</div>
                             </div>
                         </div>
@@ -103,14 +103,17 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
-    <!-- Menu Toggle Script -->
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
+    <script>
+        var onResize = function() {
+          $(".section-content").css("margin-top", $(".navbar-fixed-top").height());
+        };
+
+        $(window).resize(onResize);
+
+        $(function() {
+          onResize();
+        });
+    </script>
 
 </body>
 

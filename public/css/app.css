@@ -1,4 +1,8 @@
 
+/**
+* App.css : Feuille de stype principale du portail PIAM
+* @Author: Romain Jedynak 
+**/
 
 /* Import des feuilles de style */
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
@@ -29,16 +33,14 @@ a, a:hover, a:focus {
 * Section-header: en-tête d'affichage de la page
 **/
 .section-header {
-    padding-top: 0px;
-	padding-bottom: 10px;
-    padding-left: 0px;
+    padding: 0px;
     background-color: rgb(250,251,252);
 
     /* A VOIR SI C'EST A GARDER COMME CELA */
-    max-height: 135px;
+    /*max-height: 135px;
     border-bottom-width: 1px;
     border-bottom-style:solid;
-    border-bottom-color: rgb(225,228,232);
+    border-bottom-color: rgb(225,228,232);*/
 }
 
 /* Titre de la page */
@@ -361,8 +363,8 @@ a.article, a.article:hover {
   margin-left: 250px;
 }
 
-div .section-content{
-  margin-top: 130px;
+.section-content{
+  /*margin-top: 130px;*/
   padding-left: 20px;
   padding-right: 20px;
 }
