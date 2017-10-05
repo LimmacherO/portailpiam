@@ -36,11 +36,11 @@ class TacheTypeTableSeeder extends Seeder
       ));
 
       TacheType::create(array(
-          'libelle' => 'Préproduction',
+          'libelle' => 'Pré production',
       ));
 
       TacheType::create(array(
-          'libelle' => 'Mise en production',
+          'libelle' => 'Production',
       ));
 
       TacheType::create(array(

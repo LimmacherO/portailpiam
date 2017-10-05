@@ -27,4 +27,8 @@ class Tache extends Model
 	{
 		return $this->belongsTo(\App\TacheType::class);
 	}
+
+	protected $casts = [
+        'deletable' => 'boolean',
+    ];
 }

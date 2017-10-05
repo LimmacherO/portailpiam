@@ -33,6 +33,9 @@ class CreateTacheTable extends Migration
                   ->on('versions')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
+
+            $table->boolean('deletable')->default(true);
+
         });
     }
 

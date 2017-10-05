@@ -114,9 +114,6 @@
                                         <!-- Affichage du nombre de livraisons TMA -->
                                         <td><div class="center"><span class="badge">{!! $version->inc_nblivtma !!}</span></div></td>
 
-                                        <!-- Affichage du nom et prénom du référent PRD -->
-                                        <!--<td>{!! $version->referentprd->nom !!}&nbsp;{!! $version->referentprd->prenom !!}</td>-->
-
                                         <!-- Affichage de la date de mise en service -->
                                         <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>
                                         

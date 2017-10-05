@@ -22,11 +22,12 @@ class TacheController extends Controller
     public function index(Version $version)
     {
 
-        $select = 'id as id, label as label, DATE_FORMAT(start, \'%Y-%m-%d\') as start, DATE_FORMAT(end, \'%Y-%m-%d\') as end, tachetype_id as tachetype_id, version_id as version_id';
+        $select = 'id as id, label as label, DATE_FORMAT(start, \'%Y-%m-%d\') as start, DATE_FORMAT(end, \'%Y-%m-%d\') as end, tachetype_id as tachetype_id, version_id as version_id, deletable as deletable';
 
     	$taches = \App\Tache::select(\Illuminate\Support\Facades\DB::raw($select))
                 ->orderBy('start', 'asc')
                 ->orderBy('end', 'asc')
+                ->orderBy('tachetype_id', 'asc')
                 ->where('version_id', '=', $version->id)
                 ->get();
 

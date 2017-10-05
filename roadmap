@@ -23,6 +23,8 @@ Roadmap
 - Ergonomie générale à améliorer sur les vues
 
 - Forcer la date de MEP dans les tâches: type de tâche permannente --> ajout d'un champ "permanent" en base de données pour éviter la redondance avec le champ "date MEP" de la version
+	- Lors de la création d'une version ajouter une tâche "Mise en production"
+	- Ajouter un champ en base "isEditable" --> 0 alors oui, sinon, 1
 
 Questions
 ---------

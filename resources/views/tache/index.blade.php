@@ -53,7 +53,6 @@
 		            <table class="table">
 		                <thead>
 		                    <tr class="portail-table-header">
-		                        <th>&nbsp;</th>
 		                        <th>Type</th>
 		                        <th>Tâche</th>
 		                        <th>Début</th>
@@ -65,16 +64,7 @@
 		                <tbody>
 		                    @foreach ($taches as $tache)
 		                        <tr>
-		                            <td>
-										@if ($tache->tachetype->id === 1)
-										    <!-- C'est un jalon -->
-										    <a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-										@else
-										    <!-- C'est une tâche -->
-										    <a href="#"><i class="fa fa-tasks" aria-hidden="true"></i></a>
-										    
-										@endif
-		                            </td>
+		                        	
 		                            <td>{!! $tache->tachetype->libelle !!}</td>
 
 		                            <td>{!! $tache->label !!}</td>
@@ -88,7 +78,11 @@
 		                            </td>
 
 		                            <td>
-										<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+		                            	@if( $tache->deletable === true )
+											<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+										@else
+											<p>&nbsp;</p>							
+										@endif
 		                            </td>
 		                            
 		                        </tr>
