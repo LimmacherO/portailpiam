@@ -13,7 +13,7 @@ class TacheTableSeeder extends Seeder
       DB::table('tache')->delete();
     	
 
-      Tache::create(array(
+      /*Tache::create(array(
           'label' => 'Livraison TMA',
           'start' => Carbon::create('2017', '09', '04'),
           'end' => Carbon::create('2017', '09', '04'),
@@ -44,7 +44,7 @@ class TacheTableSeeder extends Seeder
       	  'end' => Carbon::create('2017', '10', '15'),
           'tachetype_id' => '2',
           'version_id' => '1',
-    	));
+    	));*/
 
     }
 }

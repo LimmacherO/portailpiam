@@ -35,12 +35,6 @@ a, a:hover, a:focus {
 .section-header {
     padding: 0px;
     background-color: rgb(250,251,252);
-
-    /* A VOIR SI C'EST A GARDER COMME CELA */
-    /*max-height: 135px;
-    border-bottom-width: 1px;
-    border-bottom-style:solid;
-    border-bottom-color: rgb(225,228,232);*/
 }
 
 /* Titre de la page */
@@ -65,7 +59,7 @@ a, a:hover, a:focus {
 .section-default-page h2 {
     color: #7b7b7b;
     text-align: left;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     font-family: 'Lato', sans-serif;
     padding-left: 10px;   
@@ -163,7 +157,7 @@ a, a:hover, a:focus {
 .alert{
     color: #7b7b7b;
     text-align: left;
-    font-size: 17px;
+    font-size: 14px;
     font-family: 'Lato', sans-serif;
     padding-left: 10px;
 }
@@ -245,7 +239,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar .sidebar-header h1 {
-    font-family: 'Lato;
+    font-family: 'Lato';
     font-size: 30px;
 }
 

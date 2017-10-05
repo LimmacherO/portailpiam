@@ -8,7 +8,6 @@ Roadmap
 	-- Objet
 	-- Description
 
-- Tri sur les colonnes du tableau d'affichage des versions
 
 - Indicateurs en première page
 	Exemple: Nombre de versions référencées et ouvertes, Nombre de version ouvertes par domaine
@@ -22,6 +21,8 @@ Roadmap
 - Planning global --> V2? 
 
 - Ergonomie générale à améliorer sur les vues
+
+- Forcer la date de MEP dans les tâches: type de tâche permannente --> ajout d'un champ "permanent" en base de données pour éviter la redondance avec le champ "date MEP" de la version
 
 Questions
 ---------

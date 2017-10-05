@@ -15,7 +15,7 @@ class VersionTableSeeder extends Seeder
     {
         DB::table('versions')->delete();
     	
-    	Version::create(array(
+    	/*Version::create(array(
       		'version' => 'Version 4.0.40',
       		'libelle' => 'RCU - 4.0.40 Correctifs DAI',
           'referentqi_id' => '1',
@@ -35,7 +35,7 @@ class VersionTableSeeder extends Seeder
           'referentprd_id' => '2',
           'date_mep' =>  Carbon::create('2017', '10', '01'),
           'inc_nblivtma' => '0',
-    	));
+    	));*/
 
     }
 }

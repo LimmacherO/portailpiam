@@ -13,24 +13,39 @@ class TacheTypeTableSeeder extends Seeder
     public function run()
     {
 
-      
       DB::table('tachetype')->delete();
     	
     	TacheType::create(array(
-          'libelle' => 'Jalon',
+          'libelle' => 'Livraison TMA',
     	));
 
     	TacheType::create(array(
-          'libelle' => 'Tache QI',
+          'libelle' => 'QI/QT',
     	));
 
     	TacheType::create(array(
-          'libelle' => 'Tache PRP',
+          'libelle' => 'Qualification fonctionnelle',
     	));
 
     	TacheType::create(array(
-          'libelle' => 'Tache PRD',
+          'libelle' => 'Recette métier',
     	));
+
+      TacheType::create(array(
+          'libelle' => 'Acheminement vers DPE',
+      ));
+
+      TacheType::create(array(
+          'libelle' => 'Préproduction',
+      ));
+
+      TacheType::create(array(
+          'libelle' => 'Mise en production',
+      ));
+
+      TacheType::create(array(
+          'libelle' => 'Autre',
+      ));
 
     }
 }
