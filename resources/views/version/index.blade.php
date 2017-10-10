@@ -18,6 +18,17 @@
 
 @endsection
 
+@section('page-header-links')
+    <div class="pull-right">
+        <div>
+            <i class="fa fa-list" aria-hidden="true"></i>
+        </div>
+        <div>
+           <a href="{!! url('version'); !!}" data-toggle="tab">Liste chantiers</a>
+        </div>
+    </div>
+@endsection
+
 @section('tabs')
 
     <div class="tabs">

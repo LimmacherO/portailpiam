@@ -21,8 +21,6 @@
     <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tabs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
-
-
     <link href="{{ asset('css/gantt/gantt.css') }}" rel="stylesheet" type="text/css">
 
 </head>

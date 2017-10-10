@@ -26,7 +26,6 @@
 	        
 	        <li id="selected"><a href="{!! url('taches', $version->id); !!}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
 	    </ul>
-
     </div>
 
 @endsection

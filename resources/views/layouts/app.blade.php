@@ -23,8 +23,10 @@
 
     <!-- Imports styles CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/tabs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
+
 
 </head>
 
@@ -36,9 +38,9 @@
         <nav id="sidebar">
 
             <!-- Entête du portail PIAM -->
-            <div class="sidebar-header">
+            <!--<div class="sidebar-header">
                 <h1>Portail DQI/PIAM</h1>
-            </div>
+            </div>-->
 
             <!-- Menu -->
             <ul class="list-unstyled components">
@@ -54,31 +56,44 @@
         </nav>
 
 
+        <!-- Barre de menu en haut de page -->
+        <nav class="navbar navbar-default navbar-fixed-top navbar-menutop">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <div class="col-sm-12 col-lg-12">
+                        <h1>Portail DQI/PIAM</h1>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
 
         <!-- Contenu de la page Web -->
         <div id="content">
 
             <!-- En-tête - sous forme de Navbar fixe en haut de la page -->
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container-fluid section-header">
+            <nav class="navbar navbar-default navbar-fixed-top section-header">
+                <div class="container-fluid">
                     <div class="row">
                         
-                        <!-- Affichage du titre de la page -->
-                        <div class="col-sm-12 col-lg-12">
+                        <div class="col-lg-6">
                             <h1>@yield('page-header-title')</h1>
                         </div>
+                        <div class="col-lg-6 page-header-links">
+                            @yield('page-header-links')
+                        </div>
 
-                        <!-- Affichage des alertes -->
                         <div class="col-sm-12 col-lg-12">
                             @yield('alerte')
                         </div>
-
-                        <!-- Affichage des tabulations -->
+                        <!--
                         <div class="col-sm-12 col-lg-12">
                             <div class="container-fluid tab_line clearfix">
                                 <div class="row">@yield('tabs')</div>
                             </div>
                         </div>
+                        -->
 
                     </div>
                 </div>
@@ -103,7 +118,7 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
-    <script>
+    <!--<script>
         var onResize = function() {
           $(".section-content").css("margin-top", $(".navbar-fixed-top").height());
         };
@@ -113,7 +128,7 @@
         $(function() {
           onResize();
         });
-    </script>
+    </script>-->
 
 </body>
 

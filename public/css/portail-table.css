@@ -16,15 +16,15 @@
 .portail-table tr.even { background-color:#CCC; }
 
 .portail-table-header th {
-	color: #000;
+	 color: #000;
   	font-family: 'Droid Sans', sans-serif;
-  	font-size: 16px;
+  	font-size: 14px;
 }
 
 .portail-table td {
-	color: #7b7b7b;
+	  color: #7b7b7b;
   	font-family: 'Droid Sans', sans-serif;
-  	font-size: 16px;
+  	font-size: 14px;
 }
 
 .portail-table td a {

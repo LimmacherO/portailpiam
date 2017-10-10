@@ -18,6 +18,29 @@
 
 @endsection
 
+@section('page-header-links')
+    
+
+    <div class="pull-right">
+        <div>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+        </div>
+        <div>
+           <a href="{!! url('taches', $version->id); !!}">Planning</a>
+        </div>
+    </div>
+
+    <div class="pull-right">
+        <div>
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+        </div>
+        <div>
+           <a href="{!! url('version',$version->id); !!}">Synthèse Version</a>
+        </div>
+    </div>
+    
+@endsection
+
 @section('tabs')
 
 	<div class="tabs">
