@@ -8,6 +8,14 @@
     {{ $version->application->libelle }}&nbsp;{{ $version->version }}
 @endsection
 
+@section('page-header-controls')
+
+	<div class="btn-action-right"><a href="{!! url('version/edit', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier</a></div>
+
+	<div class="btn-action-right"><a href="{!! url('version/destroy', $version->id); !!}" type="button" class="btn btn-default btn-danger pull-right"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer</a></div>
+
+@endsection
+
 @section('alerte')
 
 	@if(session()->has('ok'))
@@ -18,38 +26,19 @@
 
 @endsection
 
-@section('page-header-links')
-    
-
-    <div class="pull-right">
-        <div>
-            <i class="fa fa-calendar" aria-hidden="true"></i>
-        </div>
-        <div>
-           <a href="{!! url('taches', $version->id); !!}">Planning</a>
-        </div>
-    </div>
-
-    <div class="pull-right">
-        <div>
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-        </div>
-        <div>
-           <a href="{!! url('version',$version->id); !!}">Synthèse Version</a>
-        </div>
-    </div>
-    
-@endsection
-
 @section('tabs')
 
-	<div class="tabs">
-	    <ul>
-	        <li id="selected"><a href="{!! url('version',$version->id); !!}"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
-	        <li><a href="{!! url('taches', $version->id); !!}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
-	    </ul>
+	<div>
+        <ul class="nav nav-tabs" role="tablist">
 
-	</div>
+        	<!-- Lien vers la synthèse de la version -->
+            <li class="active"><a href="{!! url('version',$version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
+
+            <!-- Lien vers le planning -->
+            <li><a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
+
+        </ul>
+    </div>
 
 @endsection
 
@@ -63,10 +52,6 @@
 		        <div class="col-lg-12">
 					<div class="row section-default-page">
 								
-						<div class="btn-action-right"><a href="{!! url('version/edit', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier</a></div>
-
-						<div class="btn-action-right"><a href="{!! url('version/destroy', $version->id); !!}" type="button" class="btn btn-default btn-danger pull-right"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer</a></div>
-
 						<h2 class="section-default-page-titre">Identification de la version</h2>
 						<div class="section-default-page-border"></div>
 						<div class="section-default-page-space">&nbsp;</div>

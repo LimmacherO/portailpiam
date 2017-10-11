@@ -24,9 +24,8 @@
     <!-- Imports styles CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">-->
-    <link href="{{ asset('css/tabs.css') }}" rel="stylesheet">
+    <!--<link href="{{ asset('css/tabs.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
-
 
 </head>
 
@@ -75,25 +74,23 @@
             <!-- En-tête - sous forme de Navbar fixe en haut de la page -->
             <nav class="navbar navbar-default navbar-fixed-top section-header">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row container-noborder">
                         
-                        <div class="col-lg-6">
+                        <div class="col-lg-12">
                             <h1>@yield('page-header-title')</h1>
                         </div>
-                        <div class="col-lg-6 page-header-links">
-                            @yield('page-header-links')
-                        </div>
 
-                        <div class="col-sm-12 col-lg-12">
-                            @yield('alerte')
-                        </div>
-                        <!--
-                        <div class="col-sm-12 col-lg-12">
-                            <div class="container-fluid tab_line clearfix">
-                                <div class="row">@yield('tabs')</div>
+                        <div class="col-lg-6 container-noborder">
+                            <div class="row container-fluid tab_line">
+                                @yield('tabs')
                             </div>
                         </div>
-                        -->
+
+                        <div class="col-lg-6 container-noborder">
+                            <div class="row container-fluid tab_line tab_line-btn">
+                                @yield('page-header-controls')
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -102,6 +99,11 @@
             <!-- Afichage du contenu de la page -->
             <div class="container-fluid section-content">
                 <div class="row">
+
+                    <div class="col-lg-12">
+                        @yield('alerte')
+                    </div>
+
                     <div class="col-sm-12 col-lg-12">
                         @yield('content')
                     </div>
@@ -117,18 +119,6 @@
 
     <!-- Bootstrap JS -->
     <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
-
-    <!--<script>
-        var onResize = function() {
-          $(".section-content").css("margin-top", $(".navbar-fixed-top").height());
-        };
-
-        $(window).resize(onResize);
-
-        $(function() {
-          onResize();
-        });
-    </script>-->
 
 </body>
 

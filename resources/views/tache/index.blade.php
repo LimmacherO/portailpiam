@@ -20,12 +20,16 @@
 
 @section('tabs')
 
-    <div class="tabs">
-	    <ul>
-	        <li><a href="{!! url('version', $version->id); !!}"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
-	        
-	        <li id="selected"><a href="{!! url('taches', $version->id); !!}"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
-	    </ul>
+	<div>
+        <ul class="nav nav-tabs" role="tablist">
+
+        	<!-- Lien vers la synthèse de la version -->
+            <li><a href="{!! url('version',$version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a></li>
+
+            <!-- Lien vers le planning -->
+            <li class="active"><a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a></li>
+
+        </ul>
     </div>
 
 @endsection

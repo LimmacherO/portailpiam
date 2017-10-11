@@ -8,6 +8,14 @@
     Roadmap DSI
 @endsection
 
+@section('page-header-controls')
+
+    <div class="btn-action-right"><a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a></div>
+                    
+    <div class="btn-action-right"><a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;Exporter</a></div>
+
+@endsection
+
 @section('alerte')
 
     @if(session()->has('ok'))
@@ -18,24 +26,13 @@
 
 @endsection
 
-@section('page-header-links')
-    <div class="pull-right">
-        <div>
-            <i class="fa fa-list" aria-hidden="true"></i>
-        </div>
-        <div>
-           <a href="{!! url('version'); !!}" data-toggle="tab">Liste chantiers</a>
-        </div>
-    </div>
-@endsection
 
 @section('tabs')
 
-    <div class="tabs">
-        <ul>
-            <li id="selected"><a href="{!! url('version'); !!}" data-toggle="tab"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Liste chantiers</a></li>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="{!! url('version'); !!}" aria-controls="home" role="tab"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Liste des chantiers</a></li>
         </ul>
-
     </div>
 
 @endsection
@@ -48,19 +45,6 @@
         <div class="row tab-pane active">
 
             {!! Form::open(['url' => 'version', 'method' => 'get']) !!}
-            <div class="col-lg-12">
-                <div class="row section-default-page">
-                    
-                    <div class="btn-action-right"><a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a></div>
-                    
-                    <div class="btn-action-right"><a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;Exporter</a></div>
-                    
-                    <h2 class="section-default-page-titre">Liste des chantiers</h2>
-                    <div class="section-default-page-border"></div>
-                    <div class="section-default-page-space">&nbsp;</div>
-
-                </div>
-            </div>
             
             <div class="col-lg-12">
                 <div class="row section-default-page">      

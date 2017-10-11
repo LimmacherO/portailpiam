@@ -8,6 +8,12 @@
     Modification de la tâche {{ $tache->label }}
 @endsection
 
+@section('page-header-controls')
+
+
+
+@endsection
+
 @section('alerte')
 
 	@if(session()->has('ok'))
@@ -20,12 +26,11 @@
 
 @section('tabs')
 
-    <div class="tabs">
-	    <ul>
-			<li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Modification d'une tâche</a></li>
-	    </ul>
-
-    </div>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#" aria-controls="home" role="tab"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Modification d'une tâche</a></li>
+        </ul>
+	</div>
 
 @endsection
 
@@ -38,13 +43,11 @@
         <div class="row tab-pane active">
         	<div class="col-lg-12">
                 <div class="row section-default-page">
-                	
+                	          
+					<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
 
-
-                	<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
-
-                	<div class="btn-action-right"><a href="{!! url('taches', $tache->version_id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
-                    
+					<div class="btn-action-right"><a href="{!! url('taches', $tache->version_id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
+                	                    
                     <h2 class="section-default-page-titre">Description</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>

@@ -20,11 +20,10 @@
 
 @section('tabs')
 
-    <div class="tabs">
-        <ul>
-            <li id="selected"><a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Ajout d'une version</a></li>
+    <div>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#" aria-controls="home" role="tab"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Ajout d'une version</a></li>
         </ul>
-
     </div>
 
 @endsection

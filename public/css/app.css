@@ -36,11 +36,11 @@ a, a:hover, a:focus {
     padding: 0px;
     background-color: rgb(250,251,252);
     margin-top: 60px;
-}
+}    
 
 /* Titre de la page */
 .section-header h1 {
-	padding-left: 20px;
+	padding-left: 10px;
     color: rgb(106,115,125);
     font-family: 'Lato', sans-serif;
     font-size: 34px;
@@ -57,14 +57,6 @@ a, a:hover, a:focus {
     padding-top: 0px;
 }
 
-.section-default-page h2 {
-    color: #7b7b7b;
-    text-align: left;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Lato', sans-serif;
-    padding-left: 10px;   
-}
 
 .section-default-page p {
     color: #7b7b7b;
@@ -108,9 +100,6 @@ a, a:hover, a:focus {
 }
 
 
-.tab-line-background {
-    background-color: rgb(250,251,252);
-}
 
 .label-content {
     color: #7b7b7b;
@@ -120,9 +109,7 @@ a, a:hover, a:focus {
     padding: 0px;
 }
 
-.btn-action-right {
-  margin: 10px;
-}
+
 
 .btn{
   color: #FFF;
@@ -194,13 +181,12 @@ a, a:hover, a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
-    background: rgb(250,251,252);
+    padding: 15px 0px;
+    background-color: rgb(245,245,245);
     border: none;
     border-radius: 0;
     margin-bottom: 0px;
     padding-bottom: 0px;
-    /*box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);*/
 }
 
 .navbar-btn {
@@ -227,7 +213,10 @@ a, a:hover, a:focus {
     height: 100vh;
     z-index: 999;
     /*background: rgb(68,125,168);*/
-    background: rgb(40,51,57);
+    /*background: rgb(40,51,57);*/
+    /*background-color: rgb(245,245,245);*/
+    background-color: rgb(88,145,188);
+    border-right: 1px solid rgb(220,226,234);
     color: #fff;
     margin-top: 60px;
     padding-top: 20px;
@@ -272,7 +261,7 @@ a, a:hover, a:focus {
 
 #sidebar ul li.active > a {
     color: #FFF;
-    background: rgb(48,105,148);
+    background: rgb(68,125,168);
     height: 50px;
 
 }
@@ -336,7 +325,7 @@ ul ul a {
 }
 
 .navbar-menutop{
-    background-color: rgb(56,70,79);
+    background-color: rgb(68,125,168);
     margin-left: 0px;
     padding: 0px;
     margin: 0px;
@@ -354,7 +343,7 @@ ul ul a {
 
 .section-header{
     height: 100px;
-    border-bottom: 1px solid rgb(220,226,234);  
+    /*border-bottom: 1px solid rgb(220,226,234);*/ 
 }
 
 .section-content{
@@ -376,4 +365,47 @@ ul ul a {
     font-family: 'Lato', sans-serif;
     font-size: 16px;
     font-weight: bold;
+}
+
+/*
+ * Mise en forme des tabulations
+ */
+.tab_line{
+    background-color: rgb(245,245,245);
+
+}
+
+.nav-tabs {
+    height: 46px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 20px;
+}
+
+.nav-tabs li a {
+    color: #737373;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.nav-tabs .active {
+    border-top: 4px solid rgb(68,125,168);
+}
+
+.nav-tabs > li > a {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.container-noborder{
+    margin: 0px;
+    padding: 0px;
+}
+
+.tab_line-btn {
+    height: 46px;
+    padding-right: 10px;
+    border-bottom: 1px solid rgb(220,226,234); 
 }
