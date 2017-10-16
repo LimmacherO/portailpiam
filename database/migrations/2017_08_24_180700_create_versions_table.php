@@ -49,7 +49,7 @@ class CreateVersionsTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            $table->longText('alerteqi')->default('')->nullable();
+            $table->longText('alerteqi')->nullable();
 
             /**
             * Section "Production"
@@ -65,12 +65,11 @@ class CreateVersionsTable extends Migration
             // Date de mise en production
             $table->date('date_mep');
 
-            $table->longText('alerteprd')->default('')->nullable();
-
+            $table->longText('alerteprd')->def
             /**
             * Section "Commentaire"
             **/
-            $table->longText('commentaire')->default('')->nullable();
+            $table->longText('commentaire')->nullable();
 
         });
     }

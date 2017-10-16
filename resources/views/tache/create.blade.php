@@ -38,10 +38,6 @@
         	<div class="col-lg-12">
                 <div class="row section-default-page">
                 	
-                	<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
-
-                	<div class="btn-action-right"><a href="{!! url('taches', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
-                    
                     <h2 class="section-default-page-titre">Description</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>
@@ -94,8 +90,14 @@
 	                	{!! Form::hidden('version_id', $version->id, ['class' => 'form-control', 'placeholder' => 'ID de la version']) !!}
 	                	{!! $errors->first('version_id', '<small class="help-block">:message</small>') !!}
 	            	</div>
+	            	
+	            	<div class="col-lg-12 form-group">
+	            		
+	            		<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
 
-	            	<div class="section-default-page-space">&nbsp;</div>
+                		<div class="btn-action-right"><a href="{!! url('taches', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
+
+                	</div>
 
 			    </div>
 			</div>

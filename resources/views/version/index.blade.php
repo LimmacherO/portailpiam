@@ -72,7 +72,7 @@
                 <div class="row section-default-page">
 
                     <div class="portail-table panel panel-primary">
-                        <table class="table">
+                        <table class="table table-striped table-hover">
                              <thead>
                                 <tr class="portail-table-header">
                                     <!--<th>Id</th>-->
