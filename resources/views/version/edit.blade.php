@@ -57,11 +57,22 @@
                         {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
                     </div>
 
+                    <!-- "Product Dimensions -->
+                    <div class="col-lg-4 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
+                        <div class="label-title"><p>Product Dimensions :</p></div>
+                        {!! Form::text('product_dimensions', null, ['class' => 'form-control', 'placeholder' => 'Product Dimensions']) !!}
+                        {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
+                    </div>
+
                     <!-- "Référence ALFA" du chantier -->
                     <div class="col-lg-4 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
                         <div class="label-title"><p>Référence ALFA :</p></div>
                         {!! Form::text('referencealfa', null, ['class' => 'form-control', 'placeholder' => 'Référence ALFA']) !!}
                         {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
+                    </div>
+
+                    <div class="col-lg-8 form-group">
+                        <p>&nbsp;</p>
                     </div>
 
                     <div class="section-default-page-space">&nbsp;</div>
@@ -101,8 +112,15 @@
                         ['class' => 'form-control', 'id' => 'referentqis']) !!}
                     </div>
 
+                    <!-- "Indicateur Avancement QI" -->
+                    <div class="col-lg-4 form-group {!! $errors->has('avancementqi') ? 'has-error' : '' !!}">
+                        <div class="label-title"><p>Avancement QI :</p></div>
+                        {!! Form::text('avancementqi', null, ['class' => 'form-control', 'placeholder' => 'Avancement QI en %']) !!}
+                        {!! $errors->first('avancementqi', '<small class="help-block">:message</small>') !!}
+                    </div>
+
                     <!-- "Alertes et vigilances QI" du chantier -->
-                    <div class="col-lg-8 form-group {!! $errors->has('alerteqi') ? 'has-error' : '' !!}">
+                    <div class="col-lg-12 form-group {!! $errors->has('alerteqi') ? 'has-error' : '' !!}">
                         <div class="label-title"><p>Alertes et vigilances :</p></div>
                         {!! Form::textarea('alerteqi', null, ['class' => 'form-control', 'placeholder' => 'Alertes et vigilances']) !!}
                         {!! $errors->first('alerteqi', '<small class="help-block">:message</small>') !!}

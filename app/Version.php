@@ -22,9 +22,10 @@ class Version extends Model
 
     //Liste des champs utilisables
     protected $fillable = [
-        'version', 'libelle', 'application_id', 
+        'version', 'libelle', 'product_dimensions', 
+        'application_id', 
         'referentqi_id', 'alerteqi',
-        'referencealfa', 'inc_nblivtma', 
+        'referencealfa', 'inc_nblivtma', 'avancementqi', 
         'referentprd_id', 'date_mep', 'alerteprd',
         'commentaire',
     ];
@@ -65,11 +66,11 @@ class Version extends Model
             	  ->paginate($nbrPerPage);
         }
         else {
-            //Si c'est vide, la fonction renvoi toute la lioste des versions
+          //Si c'est vide, la fonction renvoi toute la lioste des versions
 
-                    //Ajout du tri
+          //Ajout du tri
         	$query->sortable()
-                    //GFiltre du nombre de données en sortie
+                 //Filtre du nombre de données en sortie
             	  ->paginate($nbrPerPage);
         }
 

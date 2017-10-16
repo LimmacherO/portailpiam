@@ -56,35 +56,35 @@
 						<div class="section-default-page-border"></div>
 						<div class="section-default-page-space">&nbsp;</div>
 								
-
 								<!-- Libellé du chantier -->
 								<div class="col-lg-12">
 									<div class="label-title"><p>Libellé :</p></div>
-									<span class="label-content">{{ $version->libelle }}</span></p>
+									<span class="label-content">{{ $version->libelle }}</span>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="label-title"><p>Domaine :</p></div>
-									<span class="label-content">{{ $version->application->domaine->libelle }}</span></p>
+									<span class="label-content">{{ $version->application->domaine->libelle }}</span>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="label-title"><p>Application :</p></div>
-									<span class="label-content">{{ $version->application->libelle }}</span></p>
+									<span class="label-content">{{ $version->application->libelle }}</span>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="label-title"><p>Version :</p></div>
-									<span class="label-content">{{ $version->version }}</span></p>
+									<span class="label-content">{{ $version->version }}</span>
+								</div>
+
+								<div class="col-lg-4">
+									<div class="label-title"><p>Product Dimensions :</p></div>
+									<span class="label-content">{{ $version->product_dimensions }}</span>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="label-title"><p>Référence ALFA :</p></div>
-									<span class="label-content">{{ $version->referencealfa }}</span></p>
-								</div>
-
-								<div class="col-lg-4">
-									<p>&nbsp;</p>
+									<span class="label-content">{{ $version->referencealfa }}</span>
 								</div>
 
 								<div class="col-lg-4">
@@ -126,7 +126,17 @@
 									<span class="label-content">{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</span></p>
 								</div>
 
-								<div class="col-lg-8">
+								<!-- "Indicateur Avancement QI" -->
+			                    <div class="col-lg-4">
+			                        <div class="label-title"><p>Avancement QI :</p></div>
+									<span class="label-content">{!! $version->avancementqi !!}&nbsp;%</span>
+			                    </div>
+
+			                    <div class="col-lg-4">
+			                    	<p>&nbsp;</p>
+			                    </div>
+
+								<div class="col-lg-12">
 									<div class="label-title"><p>Alertes et vigilances :</p></div>
 									<span class="label-content">
 									@if (!empty($version->alerteqi)) 

@@ -23,9 +23,9 @@ class CreateVersionsTable extends Migration
 
             $table->string('version');
             $table->string('libelle');
+
+            $table->string('product_dimensions')->nullable();
             
-
-
             $table->integer('application_id')->unsigned();
             $table->foreign('application_id')
                   ->references('id')
@@ -37,7 +37,7 @@ class CreateVersionsTable extends Migration
             $table->integer('referencealfa');
 
             //Indicateur: nombre de livraison TMA. Actuellement manuel!
-            $table->integer('inc_nblivtma');
+            $table->integer('inc_nblivtma')->default(0);
 
             /**
             * Section "Qualification"
@@ -50,6 +50,8 @@ class CreateVersionsTable extends Migration
                   ->onUpdate('cascade');
 
             $table->longText('alerteqi')->nullable();
+
+            $table->integer('avancementqi')->default(0)->nullable();
 
             /**
             * Section "Production"
@@ -65,7 +67,7 @@ class CreateVersionsTable extends Migration
             // Date de mise en production
             $table->date('date_mep');
 
-            $table->longText('alerteprd')->def
+            $table->longText('alerteprd')->nullable();
             /**
             * Section "Commentaire"
             **/

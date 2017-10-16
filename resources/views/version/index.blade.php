@@ -79,10 +79,11 @@
                                     <th>Domaine</th>
                                     <th>@sortablelink('application.libelle','Application')</th>
                                     <th>@sortablelink('version')</th>
+                                    <th>Product Dimensions</th>
                                     <th>@sortablelink('libelle','Libellé')</th>
                                     <th>@sortablelink('referentqi.nom','Référent QI')</th>
                                     <th>@sortablelink('inc_nblivtma','# liv. TMA')</th>
-                                    <!--<th>Référent PRD</th>-->
+                                    <th>Avanc. QI</th>
                                     <th>@sortablelink('date_mep','Date MEP')</th>
                                     <th></th>
                                 </tr>
@@ -100,6 +101,9 @@
                                         <!-- Affichage du champ version -->
                                         <td>{!! $version->version !!}</td>
 
+                                        <!-- Affichage du product Dimensions -->
+                                        <td>{!! $version->product_dimensions !!}</td>
+
                                         <!-- Affichage du libellé de la version -->
                                         <td>{!! $version->libelle !!}</td>
 
@@ -108,6 +112,8 @@
 
                                         <!-- Affichage du nombre de livraisons TMA -->
                                         <td><div class="center"><span class="badge">{!! $version->inc_nblivtma !!}</span></div></td>
+
+                                        <td>{!! $version->avancementqi !!}&nbsp;%</td>
 
                                         <!-- Affichage de la date de mise en service -->
                                         <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>
