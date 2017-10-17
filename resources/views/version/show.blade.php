@@ -12,7 +12,7 @@
 
 	<div class="btn-action-right"><a href="{!! url('version/edit', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier</a></div>
 
-	<div class="btn-action-right"><a href="{!! url('version/destroy', $version->id); !!}" type="button" class="btn btn-default btn-danger pull-right"><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer</a></div>
+	<div class="btn-action-right"><a href="{!! url('version/destroy', $version->id); !!}" type="button" class="btn btn-default btn-danger pull-right" onclick="return confirm('Confirmez-vous la suppression de cette version ?')" /><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer</a></div>
 
 @endsection
 

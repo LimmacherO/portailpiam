@@ -125,11 +125,12 @@ class VersionController extends Controller
         $this->versionRepository->update($version, $request->all());
 
         //Mise à jour du QoS
-        //$version->qos = App\Version::calculQos(1,1);
+        $query_qos_enjeuxmetiers = Input::get ('qos_enjeuxmetiers');
+        $query_qos_enjeuxsi = Input::get ('qos_enjeuxsi');
+        $version->qos = (int) Version::calculQos($query_qos_enjeuxmetiers,$query_qos_enjeuxsi);
         $version->save();
 
         return redirect()->route('version.show', compact('version'))->withOk("La version " . $version->application->libelle . "&nbsp;" . $request->version . " a été modifiée avec succès");
-
     }
 
     /*

@@ -78,12 +78,28 @@ class Version extends Model
         return $query;
     }
     
-  public fonction calculQos($enjeuxmetier, $enjeuxsi)
+  public static function calculQos($enjeuxmetier, $enjeuxsi)
   {
-    return 3;
+
+    $qos = 0;
+
+    if ($enjeuxmetier == 3 && $enjeuxsi == 3)
+    {
+      $qos = 9;
+    }
+    elseif ($enjeuxmetier == 1 && $enjeuxsi == 1)
+    {
+      $qos = 1;
+    }
+    else
+    {
+      $qos = 5;
+    }
+
+    return $qos;
   }
 
-    // Lien avec la classe Référent QI qui contient la liste des référents QI PIAM
+  // Lien avec la classe Référent QI qui contient la liste des référents QI PIAM
 	public function referentqi() 
 	{
 		return $this->belongsTo(\App\Referentqi::class);
