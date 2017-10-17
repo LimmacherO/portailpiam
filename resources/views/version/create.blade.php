@@ -96,11 +96,35 @@
                         {!! $errors->first('inc_nblivtma', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 form-group">
                         <p>&nbsp;</p>
                     </div>
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 form-group">
+                        <p>&nbsp;</p>
+                    </div>
+
+                    <!-- QoS - Choix des enjeux métiers -->
+                    <div class="col-lg-4 form-group">
+                        <div class="label-title"><p>Eujeux métiers :</p></div>
+                        <select class="form-control" name="qos_enjeuxmetiers">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                    </div>
+
+                    <!-- QoS - Choix des enjeux SI -->
+                    <div class="col-lg-4 form-group">
+                        <div class="label-title"><p>Eujeux métiers :</p></div>
+                        <select class="form-control" name="qos_enjeuxsi">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4 form-group">
                         <p>&nbsp;</p>
                     </div>
 

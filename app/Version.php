@@ -24,8 +24,9 @@ class Version extends Model
     protected $fillable = [
         'version', 'libelle', 'product_dimensions', 
         'application_id', 
-        'referentqi_id', 'alerteqi',
-        'referencealfa', 'inc_nblivtma', 'avancementqi', 
+        'referentqi_id', 'alerteqi', 'avancementqi', 
+        'referencealfa', 
+        'inc_nblivtma', 'qos',
         'referentprd_id', 'date_mep', 'alerteprd',
         'commentaire',
     ];
@@ -77,6 +78,10 @@ class Version extends Model
         return $query;
     }
     
+  public fonction calculQos($enjeuxmetier, $enjeuxsi)
+  {
+    return 3;
+  }
 
     // Lien avec la classe Référent QI qui contient la liste des référents QI PIAM
 	public function referentqi() 

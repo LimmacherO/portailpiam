@@ -84,6 +84,10 @@ class VersionController extends Controller
         //Sauvegarde de la tâche
         $tachemep->save();
 
+        //Mise à jour du QoS
+        $version->qos = 3;
+        $version->save();
+
         return redirect()->route('version.show',  compact('version'))->withOk("La version " . $version->application->libelle . "&nbsp;" . $request->version . " a été créé avec succès");
     }
 
@@ -93,13 +97,6 @@ class VersionController extends Controller
      */
     public function show(Version $version)
     {
-
-        /*$select = 'label as label, DATE_FORMAT(start, \'%Y-%m-%d\') as start, DATE_FORMAT(end, \'%Y-%m-%d\') as end';
-
-        $taches = \App\Tache::select(\Illuminate\Support\Facades\DB::raw($select))
-                ->orderBy('start', 'asc')
-                ->orderBy('end', 'asc')
-                ->get();*/
 
         return view ('version.show', compact('version'));
     }
@@ -126,6 +123,10 @@ class VersionController extends Controller
     public function update(VersionUpdateRequest $request, Version $version)
     {
         $this->versionRepository->update($version, $request->all());
+
+        //Mise à jour du QoS
+        //$version->qos = App\Version::calculQos(1,1);
+        $version->save();
 
         return redirect()->route('version.show', compact('version'))->withOk("La version " . $version->application->libelle . "&nbsp;" . $request->version . " a été modifiée avec succès");
 

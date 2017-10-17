@@ -84,6 +84,7 @@
                                     <th>@sortablelink('referentqi.nom','Référent QI')</th>
                                     <th>@sortablelink('inc_nblivtma','# liv. TMA')</th>
                                     <th>Avanc. QI</th>
+                                    <th>QoS</th>
                                     <th>@sortablelink('date_mep','Date MEP')</th>
                                     <th></th>
                                 </tr>
@@ -114,6 +115,17 @@
                                         <td><div class="center"><span class="badge">{!! $version->inc_nblivtma !!}</span></div></td>
 
                                         <td>{!! $version->avancementqi !!}&nbsp;%</td>
+
+                                        <!-- Indicateur QoS -->
+                                        <td><div class="center"> 
+                                            @if( $version->qos == 1 )
+                                                <span class="label label-success">
+                                            @elseif( $version->qos == 9 )
+                                                <span class="label label-danger">
+                                            @else
+                                                <span class="label label-warning">
+                                            @endif
+                                         {!! $version->qos !!}</span></div></td>
 
                                         <!-- Affichage de la date de mise en service -->
                                         <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>

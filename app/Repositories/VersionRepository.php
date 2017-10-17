@@ -21,7 +21,6 @@ class VersionRepository
 
 	public function store(Array $inputs)
 	{
-
 		return $this->version->create($inputs);
 	}
 
