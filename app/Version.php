@@ -26,7 +26,8 @@ class Version extends Model
         'application_id', 
         'referentqi_id', 'alerteqi', 'avancementqi', 
         'referencealfa', 
-        'inc_nblivtma', 'qos',
+        'inc_nblivtma', 
+        'qos', 'enjeuxmetier', 'enjeuxsi',
         'referentprd_id', 'date_mep', 'alerteprd',
         'commentaire',
     ];
@@ -87,13 +88,17 @@ class Version extends Model
     {
       $qos = 9;
     }
-    elseif ($enjeuxmetier == 1 && $enjeuxsi == 1)
+    elseif ($enjeuxmetier == 3 && $enjeuxsi < 3)
     {
-      $qos = 1;
+      $qos = 5;
+    }
+    elseif ($enjeuxmetier < 3 && $enjeuxsi == 3)
+    {
+      $qos = 5;
     }
     else
     {
-      $qos = 5;
+      $qos = 1;
     }
 
     return $qos;

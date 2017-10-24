@@ -28,11 +28,12 @@
             <div class="col-lg-12">
                 <div class="row section-default-page">
                     
-
                     <h2 class="section-default-page-titre">Identification de la version</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>
 
+                </div>
+                <div class="row section-default-page">
 
                     <!-- Libellé du chantier -->
                     <div class="col-lg-12 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
@@ -41,7 +42,9 @@
                         {!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                                        <!-- Choix de l'application associée -->
+                </div>
+                <div class="row section-default-page">
+                    <!-- Choix de l'application associée -->
                     <div class="col-lg-4 form-group">
                         <div class="label-title"><p>Application :</p></div>
                         {!! Form::select('application_id', 
@@ -63,6 +66,9 @@
                         {!! Form::text('product_dimensions', null, ['class' => 'form-control', 'placeholder' => 'Product Dimensions']) !!}
                         {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
                     </div>
+                
+                </div>
+                <div class="row section-default-page">
 
                     <!-- "Référence ALFA" du chantier -->
                     <div class="col-lg-4 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
@@ -71,12 +77,10 @@
                         {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                    <div class="col-lg-8 form-group">
-                        <p>&nbsp;</p>
-                    </div>
+                </div>
+                <div class="row section-default-page">
 
                     <div class="section-default-page-space">&nbsp;</div>
-
                     <h2 class="section-default-page-titre">Indicateurs</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>
@@ -88,41 +92,38 @@
                         {!! $errors->first('inc_nblivtma', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                    <div class="col-lg-4 form-group">
-                        <p>&nbsp;</p>
-                    </div>
+                </div>
+                <div class="row section-default-page">
 
-                    <div class="col-lg-4 form-group">
-                        <p>&nbsp;</p>
-                    </div>
+                    <div class="section-default-page-space">&nbsp;</div>
+                    <h2 class="section-default-page-titre">Scoring QOS</h2>
+                    <div class="section-default-page-border"></div>
+                    <div class="section-default-page-space">&nbsp;</div>
+
 
                     <!-- QoS - Choix des enjeux métiers -->
                     <div class="col-lg-4 form-group">
-                        <div class="label-title"><p>Eujeux métiers :</p></div>
-                        <select class="form-control" name="qos_enjeuxmetiers">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select>
+                        <div class="label-title"><p>Enjeux métiers :</p></div>
+                        {!! Form::select('enjeuxmetier', 
+                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'), 
+                        null, 
+                        ['class' => 'form-control', 'id' => 'enjeuxmetier']) !!}
                     </div>
 
                     <!-- QoS - Choix des enjeux SI -->
                     <div class="col-lg-4 form-group">
-                        <div class="label-title"><p>Eujeux métiers :</p></div>
-                        <select class="form-control" name="qos_enjeuxsi">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
+                        <div class="label-title"><p>Enjeux SI :</p></div>
+                        {!! Form::select('enjeuxsi', 
+                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'), 
+                        null, 
+                        ['class' => 'form-control', 'id' => 'enjeuxsi']) !!}
                         </select>
                     </div>
 
-                    <div class="col-lg-4 form-group">
-                        <p>&nbsp;</p>
-                    </div>
+                </div>
+                <div class="row section-default-page">
 
                     <div class="section-default-page-space">&nbsp;</div>
-                    <div class="section-default-page-space">&nbsp;</div>
-
                     <h2 class="section-default-page-titre">Suivi de la qualification/intégration</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>
@@ -150,9 +151,10 @@
                         {!! $errors->first('alerteqi', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                    <div class="section-default-page-space">&nbsp;</div>
-                    <div class="section-default-page-space">&nbsp;</div>
+                </div>
+                <div class="row section-default-page">
 
+                    <div class="section-default-page-space">&nbsp;</div>
                     <h2 class="section-default-page-titre">Suivi de la production</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>
@@ -179,13 +181,10 @@
                         {!! $errors->first('date_mep', '<small class="help-block">:message</small>') !!}
                     </div>
 
-                    <div class="col-lg-8">
-                        <p>&nbsp;</p>
-                    </div>
+                </div>
+                <div class="row section-default-page">
 
                     <div class="section-default-page-space">&nbsp;</div>
-                    <div class="section-default-page-space">&nbsp;</div>
-
                     <h2 class="section-default-page-titre">Commentaires</h2>
                     <div class="section-default-page-border"></div>
                     <div class="section-default-page-space">&nbsp;</div>

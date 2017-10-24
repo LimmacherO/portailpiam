@@ -56,166 +56,190 @@
 						<div class="section-default-page-border"></div>
 						<div class="section-default-page-space">&nbsp;</div>
 								
-								<!-- Libellé du chantier -->
-								<div class="col-lg-12">
-									<div class="label-title"><p>Libellé :</p></div>
-									<span class="label-content">{{ $version->libelle }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Domaine :</p></div>
-									<span class="label-content">{{ $version->application->domaine->libelle }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Application :</p></div>
-									<span class="label-content">{{ $version->application->libelle }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Version :</p></div>
-									<span class="label-content">{{ $version->version }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Product Dimensions :</p></div>
-									<span class="label-content">{{ $version->product_dimensions }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Référence ALFA :</p></div>
-									<span class="label-content">{{ $version->referencealfa }}</span>
-								</div>
-
-								<div class="col-lg-4">
-									<p>&nbsp;</p>
-								</div>
-
-
-
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<h2 class="section-default-page-titre">Indicateurs</h2>
-								<div class="section-default-page-border"></div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-									<div class="col-lg-4">
-										<div class="label-title"><p>Nombre livraison TMA/DID :</p></div>
-										<span class="label-content">{{ $version->inc_nblivtma }}</span></p>
-									</div>
-
-									<div class="col-lg-4">
-										<p>&nbsp;</p>
-									</div>
-
-									<div class="col-lg-4">
-										<p>&nbsp;</p>
-									</div>
-
-
-								<div class="section-default-page-space">&nbsp;</div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-
-								<h2 class="section-default-page-titre">Suivi de la qualification/intégration</h2>
-								<div class="section-default-page-border"></div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Référent qualification :</p></div>
-									<span class="label-content">{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</span></p>
-								</div>
-
-								<!-- "Indicateur Avancement QI" -->
-			                    <div class="col-lg-4">
-			                        <div class="label-title"><p>Avancement QI :</p></div>
-									<span class="label-content">{!! $version->avancementqi !!}&nbsp;%</span>
-			                    </div>
-
-			                    <div class="col-lg-4">
-			                    	<p>&nbsp;</p>
-			                    </div>
-
-								<div class="col-lg-12">
-									<div class="label-title"><p>Alertes et vigilances :</p></div>
-									<span class="label-content">
-									@if (!empty($version->alerteqi)) 
-										{!! $version->alerteqi !!}
-									@else
-										Pas d'alertes et vigilances QI
-									@endif
-									</span>
-								</div>
-
-								<div class="section-default-page-space">&nbsp;</div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<h2 class="section-default-page-titre">Suivi de la production</h2>
-								<div class="section-default-page-border"></div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<div class="col-lg-4">
-									<div class="label-title"><p>Référent production :</p></div>
-									<span class="label-content">{!! $version->referentprd->nom !!}&nbsp;{!! $version->referentprd->prenom !!}</p></span>
-								</div>
-
-								<div class="col-lg-8">
-									<div class="label-title"><p>Alertes et vigilances :</p></div>
-										<span class="label-content">
-										@if (!empty($version->alerteprd)) 
-											{!! $version->alerteprd !!}
-										@else
-											Pas d'alertes et vigilances production
-										@endif
-										</span>
-									</p>
-								</div>
-
-								<div class="section-default-page-space">&nbsp;</div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-
-								<h2 class="section-default-page-titre">Commentaires</h2>
-								<div class="section-default-page-border"></div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<div class="col-lg-12">
-									<div class="label-title"><p>Commentaires :</p></div>
-										<span class="label-content">
-										@if (!empty($version->commentaire)) 
-											{!! $version->commentaire !!}
-										@else
-											Pas de commentaire(s)
-										@endif
-										</span>
-									</p>
-								</div>
-
-
-
-								<div class="section-default-page-space">&nbsp;</div>
-								<div class="section-default-page-space">&nbsp;</div>
-
-								<h2 class="section-default-page-titre">Suivi des modifications</h2>
-								<div class="section-default-page-border"></div>
-								<div class="section-default-page-space">&nbsp;</div>
-								
-								<div class="col-lg-6">
-									<div class="label-title"><p>Date de création :</p></div>
-									<span class="label-content">{{ date('d/m/Y - H:i:s', strtotime($version->created_at)) }}</p></span>
-								</div>
-
-								<div class="col-lg-6">
-									<div class="label-title"><p>Date de dernière modification :</p></div>
-									<span class="label-content">{{ date('d/m/Y - H:i:s', strtotime($version->updated_at)) }}</p></span>
-								</div>
-
-								<div class="section-default-page-space">&nbsp;</div>
-
-							</div>
-
+						<!-- Libellé du chantier -->
+						<div class="col-lg-12">
+							<div class="label-title"><p>Libellé :</p></div>
+							<span class="label-content">{{ $version->libelle }}</span>
 						</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Domaine :</p></div>
+							<span class="label-content">{{ $version->application->domaine->libelle }}</span>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Application :</p></div>
+							<span class="label-content">{{ $version->application->libelle }}</span>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Version :</p></div>
+							<span class="label-content">{{ $version->version }}</span>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Product Dimensions :</p></div>
+							<span class="label-content">{{ $version->product_dimensions }}</span>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Référence ALFA :</p></div>
+							<span class="label-content">{{ $version->referencealfa }}</span>
+						</div>
+
+                	</div>
+                	<div class="row section-default-page">
+
+						<div class="section-default-page-space">&nbsp;</div>
+						<h2 class="section-default-page-titre">Indicateurs</h2>
+						<div class="section-default-page-border"></div>
+						<div class="section-default-page-space">&nbsp;</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Nombre livraison TMA/DID :</p></div>
+							<span class="label-content">{{ $version->inc_nblivtma }}</span></p>
+						</div>
+
+	                </div>
+	                <div class="row section-default-page">
+
+	                    <div class="section-default-page-space">&nbsp;</div>
+	                    <h2 class="section-default-page-titre">Scoring QOS</h2>
+	                    <div class="section-default-page-border"></div>
+	                    <div class="section-default-page-space">&nbsp;</div>
+
+	                    <div class="col-lg-4 ">
+	                        <div class="label-title"><p>Enjeux métiers :</p></div>
+	                        @if( $version->enjeuxmetier == 1 )
+                                <span class="label-content">Faible</span></p>
+                            @elseif( $version->enjeuxmetier == 2 )
+                                <span class="label-content">Moyen</span></p>
+                            @else
+                                <span class="label-content">Fort</span></p>
+                            @endif
+	                    </div>
+
+	                    <div class="col-lg-4 ">
+	                        <div class="label-title"><p>Enjeux SI :</p></div>
+	                        @if( $version->enjeuxsi == 1 )
+                                <span class="label-content">Faible</span></p>
+                            @elseif( $version->enjeuxsi == 2 )
+                                <span class="label-contentr">Moyen</span></p>
+                            @else
+                                <span class="label-content">Fort</span></p>
+                            @endif
+	                    </div>
+
+	                    <div class="col-lg-4 ">
+	                        <div class="label-title"><p>QOS :</p></div>
+                           	@if( $version->qos == 1 )
+                                <span class="label label-success">{{ $version->qos }}</span></p>
+                            @elseif( $version->qos == 9 )
+                                <span class="label label-danger">{{ $version->qos }}</span></p>
+                            @else
+                                <span class="label label-warning">{{ $version->qos }}</span></p>
+                            @endif
+	                    </div>
+
+	                </div>
+	                <div class="row section-default-page">
+
+						<div class="section-default-page-space">&nbsp;</div>
+						<h2 class="section-default-page-titre">Suivi de la qualification/intégration</h2>
+						<div class="section-default-page-border"></div>
+						<div class="section-default-page-space">&nbsp;</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Référent qualification :</p></div>
+							<span class="label-content">{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</span></p>
+						</div>
+
+						<!-- "Indicateur Avancement QI" -->
+	                    <div class="col-lg-4">
+	                        <div class="label-title"><p>Avancement QI :</p></div>
+							<span class="label-content">{!! $version->avancementqi !!}&nbsp;%</span>
+	                    </div>
+
+						<div class="col-lg-12">
+							<div class="label-title"><p>Alertes et vigilances :</p></div>
+							<span class="label-content">
+							@if (!empty($version->alerteqi)) 
+								{!! $version->alerteqi !!}
+							@else
+								Pas d'alertes et vigilances QI
+							@endif
+							</span>
+						</div>
+
 					</div>
+	                <div class="row section-default-page">
+
+						<div class="section-default-page-space">&nbsp;</div>
+						<h2 class="section-default-page-titre">Suivi de la production</h2>
+						<div class="section-default-page-border"></div>
+						<div class="section-default-page-space">&nbsp;</div>
+
+						<div class="col-lg-4">
+							<div class="label-title"><p>Référent production :</p></div>
+							<span class="label-content">{!! $version->referentprd->nom !!}&nbsp;{!! $version->referentprd->prenom !!}</p></span>
+						</div>
+
+						<div class="col-lg-8">
+							<div class="label-title"><p>Alertes et vigilances :</p></div>
+								<span class="label-content">
+								@if (!empty($version->alerteprd)) 
+									{!! $version->alerteprd !!}
+								@else
+									Pas d'alertes et vigilances production
+								@endif
+								</span>
+							</p>
+						</div>
+
+					</div>
+	                <div class="row section-default-page">
+
+						<div class="section-default-page-space">&nbsp;</div>
+						<h2 class="section-default-page-titre">Commentaires</h2>
+						<div class="section-default-page-border"></div>
+						<div class="section-default-page-space">&nbsp;</div>
+
+						<div class="col-lg-12">
+							<div class="label-title"><p>Commentaires :</p></div>
+								<span class="label-content">
+								@if (!empty($version->commentaire)) 
+									{!! $version->commentaire !!}
+								@else
+									Pas de commentaire(s)
+								@endif
+								</span>
+							</p>
+						</div>
+
+					</div>
+	                <div class="row section-default-page">
+
+						<div class="section-default-page-space">&nbsp;</div>
+						<h2 class="section-default-page-titre">Suivi des modifications</h2>
+						<div class="section-default-page-border"></div>
+						<div class="section-default-page-space">&nbsp;</div>
+						
+						<div class="col-lg-6">
+							<div class="label-title"><p>Date de création :</p></div>
+							<span class="label-content">{{ date('d/m/Y - H:i:s', strtotime($version->created_at)) }}</p></span>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="label-title"><p>Date de dernière modification :</p></div>
+							<span class="label-content">{{ date('d/m/Y - H:i:s', strtotime($version->updated_at)) }}</p></span>
+						</div>
+
+						<div class="section-default-page-space">&nbsp;</div>
+
+					</div>
+
+				</div>
+			</div>
 		</div>
 </div>
 

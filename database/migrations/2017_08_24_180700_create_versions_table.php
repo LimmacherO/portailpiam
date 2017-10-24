@@ -39,7 +39,10 @@ class CreateVersionsTable extends Migration
             //Indicateur: nombre de livraison TMA. Actuellement manuel!
             $table->integer('inc_nblivtma')->default(0);
 
+            //enjeux metiers et si ainsi que le QoS calculé lors de la création ou mise à jour
             $table->integer('qos')->default(0);
+            $table->integer('enjeuxmetier')->default(0);
+            $table->integer('enjeuxsi')->default(0);
 
             /**
             * Section "Qualification"
