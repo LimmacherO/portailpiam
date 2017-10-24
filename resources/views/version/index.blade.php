@@ -134,9 +134,16 @@
                                         
                                     </tr>
                                 @endforeach
+
+
                             </tbody>
                         </table>
+
                     </div>
+
+                    <!-- Pagination des données -->
+                    {{ $versions->links() }}
+
                 </div>
             </div>
 

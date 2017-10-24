@@ -45,7 +45,7 @@ class VersionController extends Controller
     {
         //Récupération de l'input et filtrage de la recherche
         $query_search = Input::get ('search');
-        $versions = Version::filter(Input::all(), $this->nbrPerPage)->get();
+        $versions = Version::filter(Input::all(), $this->nbrPerPage)->paginate($this->nbrPerPage);
 
         return view('version.index', compact('versions', 'query_search'));
     }
