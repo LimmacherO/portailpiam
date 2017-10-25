@@ -34,7 +34,7 @@ class Version extends Model
 
     // Liste des champs qui peuvent être triés (dans un tableau par exemple)
     use Sortable;
-    public $sortable = ['version', 'libelle', 'inc_nblivtma', 'date_mep'];
+    public $sortable = ['version', 'libelle', 'inc_nblivtma'];
 
     /*
      * Fonction scopeFilter($query, $params)
@@ -64,6 +64,7 @@ class Version extends Model
                   ->orwhere('inc_nblivtma', 'LIKE', '%'. trim($params['search'] . '%'))
                   //Ajout du tri
             	  ->sortable()
+                ->orderBy('application_id', 'asc')
                   //Filtre du nombre de données en sortie
             	  ->paginate($nbrPerPage);
         }
@@ -72,6 +73,7 @@ class Version extends Model
 
           //Ajout du tri
         	$query->sortable()
+                ->orderBy('application_id', 'asc')
                  //Filtre du nombre de données en sortie
             	  ->paginate($nbrPerPage);
         }

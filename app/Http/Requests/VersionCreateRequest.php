@@ -19,7 +19,7 @@ class VersionCreateRequest extends FormRequest
             'libelle' => 'bail|required|max:255',
             'application_id' => 'required',
             'referentqi_id' => 'required',
-            'referencealfa' => 'required|max:6',
+            'referencealfa' => 'max:6',
             'inc_nblivtma' => 'required',
         ];
     }

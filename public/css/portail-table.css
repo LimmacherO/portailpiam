@@ -5,15 +5,16 @@
 
 .portail-table{
 	background-color: #FFF;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .portail-table-header{
-	background-color: #D3D3D3;
+	background-color: rgb(241,241,241);
 }
 
-.portail-table tr.odd  { background-color:#FFF; }
-.portail-table tr.even { background-color:#CCC; }
+.portail-table tr.odd  { background-color: #FFF; }
+.portail-table tr.even { background-color: rgb(260,260,260) }
 
 .portail-table-header th {
 	 color: #000;

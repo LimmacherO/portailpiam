@@ -36,11 +36,6 @@
         <!-- SideBar left: menu principal du portail PIAM-->
         <nav id="sidebar">
 
-            <!-- Entête du portail PIAM -->
-            <!--<div class="sidebar-header">
-                <h1>Portail DQI/PIAM</h1>
-            </div>-->
-
             <!-- Menu -->
             <ul class="list-unstyled components">
                 <!--
@@ -70,6 +65,8 @@
 
         <!-- Contenu de la page Web -->
         <div id="content">
+
+            @yield('page-top-form')
 
             <!-- En-tête - sous forme de Navbar fixe en haut de la page -->
             <nav class="navbar navbar-default navbar-fixed-top section-header">
@@ -109,6 +106,8 @@
                     </div>
                 </div>
             </div>
+
+            @yield('page-bottom-form')
 
         </div>
     </div>

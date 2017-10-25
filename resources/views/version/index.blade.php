@@ -75,7 +75,6 @@
                         <table class="table table-striped table-hover">
                              <thead>
                                 <tr class="portail-table-header">
-                                    <!--<th>Id</th>-->
                                     <th>Domaine</th>
                                     <th>@sortablelink('application.libelle','Application')</th>
                                     <th>@sortablelink('version')</th>
@@ -85,8 +84,8 @@
                                     <th>@sortablelink('inc_nblivtma','# liv. TMA')</th>
                                     <th>Avanc. QI</th>
                                     <th>QoS</th>
-                                    <th>@sortablelink('date_mep','Date MEP')</th>
-                                    <th></th>
+                                    <th>Date MEP</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -134,7 +133,6 @@
                                         
                                     </tr>
                                 @endforeach
-
 
                             </tbody>
                         </table>

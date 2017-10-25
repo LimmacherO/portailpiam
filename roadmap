@@ -1,12 +1,14 @@
-Roadmap
--------
+Roadmap V1
+----------
+
+- Amélioration de la présentation IHM
 
 - Intégration des autres champs de la Roadmap
 
 - Reprise des données
 
-- Pagination du tableau des index
-
+RoadMap V2
+----------
 - Ajout d'un onglet de gestion des demandes et incidents associés à la version
 	Permettra de regrouper au sein d'un même tableau la liste des INC et DS AGIS:
 	-- ID
@@ -22,10 +24,6 @@ Roadmap
 - Export de la version sous PDF en une seule page
 
 - Planning global --> V2? 
-
-- Forcer la date de MEP dans les tâches: type de tâche permannente --> ajout d'un champ "permanent" en base de données pour éviter la redondance avec le champ "date MEP" de la version
-	- Lors de la création d'une version ajouter une tâche "Mise en production"
-	- Ajouter un champ en base "isEditable" --> 0 alors oui, sinon, 1
 
 
 Questions

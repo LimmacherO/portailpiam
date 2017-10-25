@@ -8,6 +8,12 @@
     {{ $version->application->libelle }}&nbsp;{{ $version->version }}
 @endsection
 
+@section('page-header-controls')
+
+    <div class="btn-action-right"><a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a></div>
+
+@endsection
+
 @section('alerte')
 
 	@if(session()->has('ok'))
@@ -41,14 +47,7 @@
 
     	<!-- Section "Jalons/planning -->
         <div class="row tab-pane active">
-        	<div class="col-lg-12">
-                <div class="row section-default-page">
-                	<div class="btn-action-right"><a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a></div>
-                    <h2 class="section-default-page-titre">Jalons/planning</h2>
-                    <div class="section-default-page-border"></div>
-                    <div class="section-default-page-space">&nbsp;</div>
-				</div>
-			</div>		
+
 	    	<div class="col-lg-12">
 
 		        <div class="row section-default-page">

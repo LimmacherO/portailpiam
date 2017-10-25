@@ -26,7 +26,7 @@ class VersionController extends Controller
     
     protected $versionRepository;
     //Filtre pour pagination --> a voir si celà sert!
-    protected $nbrPerPage = 10;
+    protected $nbrPerPage = 2;
 
     /*
      * Fonction __construct()
@@ -46,6 +46,15 @@ class VersionController extends Controller
         //Récupération de l'input et filtrage de la recherche
         $query_search = Input::get ('search');
         $versions = Version::filter(Input::all(), $this->nbrPerPage)->paginate($this->nbrPerPage);
+
+        //Mise à jour de la date de MEP en fonction du planning
+        //Rappel: la date de MEP dans la table version est "fictive"
+        foreach ($versions as $version){
+            $tache = Tache::where('tachetype_id', 'LIKE', '7')
+                           ->where('version_id', 'LIKE', $version->id)
+                           ->first();
+            $version->date_mep = $tache->start;
+        }
 
         return view('version.index', compact('versions', 'query_search'));
     }

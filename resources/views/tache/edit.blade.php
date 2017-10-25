@@ -5,7 +5,7 @@
 @endsection
 
 @section('page-header-title')
-    Modification de la tâche {{ $tache->label }}
+    Modification de la tâche "{{ $tache->label }}"
 @endsection
 
 @section('page-header-controls')

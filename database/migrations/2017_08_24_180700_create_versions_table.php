@@ -34,7 +34,7 @@ class CreateVersionsTable extends Migration
                   ->onUpdate('cascade');
 
             //Champs référence ALFA --> taille 6 max
-            $table->integer('referencealfa');
+            $table->integer('referencealfa')->nullable();
 
             //Indicateur: nombre de livraison TMA. Actuellement manuel!
             $table->integer('inc_nblivtma')->default(0);
