@@ -25,8 +25,9 @@ class VersionController extends Controller
 {
     
     protected $versionRepository;
-    //Filtre pour pagination --> a voir si celà sert!
-    protected $nbrPerPage = 2;
+    
+    //Nombre de chantiers affichés sur la page d'index --> pagination
+    protected $nbrPerPage = 10;
 
     /*
      * Fonction __construct()

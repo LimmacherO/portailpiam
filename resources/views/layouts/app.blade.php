@@ -66,52 +66,11 @@
         <!-- Contenu de la page Web -->
         <div id="content">
 
-            @yield('page-top-form')
-
-            <!-- En-tête - sous forme de Navbar fixe en haut de la page -->
-            <nav class="navbar navbar-default navbar-fixed-top section-header">
-                <div class="container-fluid">
-                    <div class="row container-noborder">
-                        
-                        <div class="col-lg-12">
-                            <h1>@yield('page-header-title')</h1>
-                        </div>
-
-                        <div class="col-lg-6 container-noborder">
-                            <div class="row container-fluid tab_line">
-                                @yield('tabs')
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 container-noborder">
-                            <div class="row container-fluid tab_line tab_line-btn">
-                                @yield('page-header-controls')
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </nav>
-
-            <!-- Afichage du contenu de la page -->
-            <div class="container-fluid section-content">
-                <div class="row">
-
-                    <div class="col-lg-12">
-                        @yield('alerte')
-                    </div>
-
-                    <div class="col-sm-12 col-lg-12">
-                        @yield('content')
-                    </div>
-                </div>
-            </div>
-
-            @yield('page-bottom-form')
+            @yield('content')
 
         </div>
-    </div>
 
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
