@@ -8,22 +8,6 @@
     Modification de "{{ $version->application->libelle }} {{ $version->version }}"
 @endsection
 
-@section('page-header-controls')
-
-    <div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
-
-    <div class="btn-action-right"><a href="{!! url('version', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
-
-@endsection
-
-@section('page-top-form')
-    {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put']) !!}
-@endsection
-
-@section('page-bottom-form')
-    {!! Form::close() !!}
-@endsection
-
 @section('tabs')
 
     <div>
@@ -38,6 +22,9 @@
 
     <!-- Contenu de la page -->
     <div class="container-fluid tab-content clearfix">
+
+        {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put']) !!}
+
         <!-- Section "Jalons/planning -->
         <div class="row tab-pane active">
             <div class="col-lg-12">
@@ -53,7 +40,7 @@
                     <!-- Libellé du chantier -->
                     <div class="col-lg-6 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
                         <div class="label-title"><p>Libellé :</p></div>
-                        {!! Form::text('libelle', $version->libelle, ['class' => 'form-control']) !!}
+                        {!! Form::text('libelle', null, ['class' => 'form-control']) !!}
                         {!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
                     </div>
 
@@ -71,14 +58,14 @@
                     <!-- "Version" du chantier -->
                     <div class="col-lg-3 form-group {!! $errors->has('version') ? 'has-error' : '' !!}">
                         <div class="label-title"><p>Version :</p></div>
-                        {!! Form::text('version', $version->version, ['class' => 'form-control']) !!}
+                        {!! Form::text('version', null, ['class' => 'form-control']) !!}
                         {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
                     </div>
 
                     <!-- "Product Dimensions -->
                     <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
                         <div class="label-title"><p>Product Dimensions :</p></div>
-                        {!! Form::text('product_dimensions', $version->product_dimensions, ['class' => 'form-control']) !!}
+                        {!! Form::text('product_dimensions', null, ['class' => 'form-control']) !!}
                         {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
                     </div>
 
@@ -222,10 +209,19 @@
                     </div>
 
                 </div>
+
+                <div class="row section-default-page"> 
+
+                    <div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
+
+                    <div class="btn-action-right"><a href="{!! url('version', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
+                    
+                </div>
+
             </div>
 
         </div>
-
+        {!! Form::close() !!}
     </div>      
 
 @endsection

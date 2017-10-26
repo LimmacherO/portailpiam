@@ -46,7 +46,7 @@
 			</div>
 			<div class="col-lg-12">
 				<div class="row section-default-page">	
-	            	<div class="col-lg-4 form-group {!! $errors->has('tachetype_id') ? 'has-error' : '' !!}">
+	            	<div class="col-lg-3 form-group {!! $errors->has('tachetype_id') ? 'has-error' : '' !!}">
 		                <div class="label-title"><p>Type :</p></div>
 		                {!! Form::select('tachetype_id', 
 		                $tachetypes, 
@@ -55,7 +55,7 @@
 		                {!! $errors->first('tachetype_id', '<small class="help-block">:message</small>') !!}
 		            </div>
 
-					<div class="col-lg-8 form-group {!! $errors->has('label') ? 'has-error' : '' !!}">
+					<div class="col-lg-3 form-group {!! $errors->has('label') ? 'has-error' : '' !!}">
 						<div class="label-title"><p>Libellé :</p></div>
 	                	{!! Form::text('label', null, ['class' => 'form-control', 'placeholder' => 'Libellé']) !!}
 	                	{!! $errors->first('label', '<small class="help-block">:message</small>') !!}
@@ -73,20 +73,20 @@
 			<div class="col-lg-12">
 				<div class="row section-default-page">
 
-	                <div class="col-lg-4 form-group {!! $errors->has('start') ? 'has-error' : '' !!}">
+	                <div class="col-lg-3 form-group {!! $errors->has('start') ? 'has-error' : '' !!}">
 	                	<div class="label-title"><p>Date de début :</p></div>
 	                	{!! Form::date('start', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'start'] ); !!}
 	                	{!! $errors->first('start', '<small class="help-block">:message</small>') !!}
 	            	</div>
 
-	            	<div class="col-lg-4 form-group {!! $errors->has('end') ? 'has-error' : '' !!}">
+	            	<div class="col-lg-3 form-group {!! $errors->has('end') ? 'has-error' : '' !!}">
 	                	<div class="label-title"><p>Date de fin :</p></div>
 	                	{!! Form::date('end', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'end'] ); !!}
 	                	{!! $errors->first('end', '<small class="help-block">:message</small>') !!}
 	            	</div>
 
 
-					<div class="col-lg-4 form-group {!! $errors->has('version_id') ? 'has-error' : '' !!}">
+					<div class="col-lg-3 form-group {!! $errors->has('version_id') ? 'has-error' : '' !!}">
 	                	{!! Form::hidden('version_id', $version->id, ['class' => 'form-control', 'placeholder' => 'ID de la version']) !!}
 	                	{!! $errors->first('version_id', '<small class="help-block">:message</small>') !!}
 	            	</div>

@@ -19,7 +19,7 @@ class VersionUpdateRequest extends FormRequest
             'libelle' => 'bail|required|max:255',
             'application_id' => 'required',
             'referentqi_id' => 'required',
-            'referencealfa' => 'required|max:6',
+            'referencealfa' => 'max:6',
             'date_mep' => 'required',
             'inc_nblivtma' => 'required',
         ];
@@ -29,6 +29,7 @@ class VersionUpdateRequest extends FormRequest
     {
         return [
             'required' => 'Le champ est obligatoire',
+            'referencealfa.max' => 'Le champ ne doit pas dépasser 6 caractères',
         ];
     }
 
