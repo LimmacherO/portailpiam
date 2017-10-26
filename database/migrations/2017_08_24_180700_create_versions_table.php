@@ -21,7 +21,9 @@ class CreateVersionsTable extends Migration
             //Timestamps de la version --> utile pour du suivi
             $table->timestamps();
 
-            $table->string('version');
+            $table->string('version'); // "Version MOE"
+            $table->string('version_dimensions')->nullable();
+
             $table->string('libelle');
 
             $table->string('product_dimensions')->nullable();

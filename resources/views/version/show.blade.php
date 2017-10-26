@@ -77,9 +77,17 @@
 							<span class="label-content">{{ $version->application->libelle }}</span>
 						</div>
 
+					</div>
+					<div class="row section-default-page">
+
 						<div class="col-lg-3 label-div">
-							<div class="label-title"><p>Version :</p></div>
+							<div class="label-title"><p>Version MOE :</p></div>
 							<span class="label-content">{{ $version->version }}</span>
+						</div>
+
+						<div class="col-lg-3 label-div">
+							<div class="label-title"><p>Version Dimensions :</p></div>
+							<span class="label-content">{{ $version->version_dimensions }}</span>
 						</div>
 
 					</div>

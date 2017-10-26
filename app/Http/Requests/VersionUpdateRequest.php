@@ -20,7 +20,6 @@ class VersionUpdateRequest extends FormRequest
             'application_id' => 'required',
             'referentqi_id' => 'required',
             'referencealfa' => 'max:6',
-            'date_mep' => 'required',
             'inc_nblivtma' => 'required',
         ];
     }

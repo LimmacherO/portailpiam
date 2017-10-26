@@ -22,7 +22,8 @@ class Version extends Model
 
     //Liste des champs utilisables
     protected $fillable = [
-        'version', 'libelle', 'product_dimensions', 
+        'version', 'version_dimensions',
+        'libelle', 'product_dimensions', 
         'application_id', 
         'referentqi_id', 'alerteqi', 'avancementqi', 
         'referencealfa', 

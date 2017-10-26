@@ -113,12 +113,13 @@
                                         <!-- Affichage du nombre de livraisons TMA -->
                                         <td><div class="center"><span class="badge">{!! $version->inc_nblivtma !!}</span></div></td>
 
-                                        <td>
-                                            @if( $version->avancementqi > 0)
-                                                {!! $version->avancementqi !!}&nbsp;%
-                                            @else
-                                                0 %
-                                            @endif
+                                        <td><div class="center">
+                                                @if( $version->avancementqi > 0)
+                                                    {!! $version->avancementqi !!}&nbsp;%
+                                                @else
+                                                    0 %
+                                                @endif
+                                            </div>
                                         </td>
 
                                         <!-- Indicateur QoS -->

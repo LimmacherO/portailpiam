@@ -46,6 +46,7 @@
 
                 </div>
                 <div class="row section-default-page">
+
                     <!-- Choix de l'application associée -->
                     <div class="col-lg-3 form-group">
                         <div class="label-title"><p>Application :</p></div>
@@ -55,12 +56,24 @@
                         ['class' => 'form-control', 'id' => 'application_id']) !!}
                     </div>
 
-                    <!-- "Version" du chantier -->
+                    <!-- "Version MOE" du chantier -->
                     <div class="col-lg-3 form-group {!! $errors->has('version') ? 'has-error' : '' !!}">
-                        <div class="label-title"><p>Version :</p></div>
+                        <div class="label-title"><p>Version MOE :</p></div>
                         {!! Form::text('version', null, ['class' => 'form-control']) !!}
                         {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
                     </div>
+
+                    <!-- "Version Dimensions" du chantier -->
+                    <div class="col-lg-3 form-group {!! $errors->has('version_dimensions') ? 'has-error' : '' !!}">
+                        <div class="label-title"><p>Version Dimensions :</p></div>
+                        {!! Form::text('version_dimensions', null, ['class' => 'form-control']) !!}
+                        {!! $errors->first('version_dimensions', '<small class="help-block">:message</small>') !!}
+                    </div>
+
+
+
+                </div>
+                <div class="row section-default-page">
 
                     <!-- "Product Dimensions -->
                     <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">

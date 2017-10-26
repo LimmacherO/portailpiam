@@ -8,14 +8,20 @@
     Ajouter une nouvelle tâche/jalon
 @endsection
 
-@section('alerte')
+@section('page-header-controls')
 
-	@if(session()->has('ok'))
-		<div class="alert alert-success alert-dismissible">
-		   	{!! session('ok') !!}
-		</div>
-    @endif
+	<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
 
+	<div class="btn-action-right"><a href="{!! url('taches', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
+
+@endsection
+
+@section('page-top-form')
+    {!! Form::open(['url' => 'tache/store', 'method' => 'post']) !!}
+@endsection
+
+@section('page-bottom-form')
+    {!! Form::close() !!}  
 @endsection
 
 @section('tabs')
@@ -32,7 +38,7 @@
 
 	<!-- Contenu de la page -->
     <div class="container-fluid tab-content clearfix">
-		{!! Form::open(['url' => 'tache/store', 'method' => 'post']) !!}
+		
         <!-- Section "Jalons/planning -->
         <div class="row tab-pane active">
         	<div class="col-lg-12">
@@ -57,7 +63,7 @@
 
 					<div class="col-lg-3 form-group {!! $errors->has('label') ? 'has-error' : '' !!}">
 						<div class="label-title"><p>Libellé :</p></div>
-	                	{!! Form::text('label', null, ['class' => 'form-control', 'placeholder' => 'Libellé']) !!}
+	                	{!! Form::text('label', null, ['class' => 'form-control']) !!}
 	                	{!! $errors->first('label', '<small class="help-block">:message</small>') !!}
 	            	</div>
 	            </div>
@@ -91,18 +97,10 @@
 	                	{!! $errors->first('version_id', '<small class="help-block">:message</small>') !!}
 	            	</div>
 	            	
-	            	<div class="col-lg-12 form-group">
-	            		
-	            		<div class="btn-action-right">{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}</div>
-
-                		<div class="btn-action-right"><a href="{!! url('taches', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a></div>
-
-                	</div>
-
 			    </div>
 			</div>
 		</div>
-	{!! Form::close() !!}
+
 	</div>		
 
 @endsection
