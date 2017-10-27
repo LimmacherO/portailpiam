@@ -37,6 +37,7 @@ class CreateVersionsTable extends Migration
 
             //Champs référence ALFA --> taille 6 max
             $table->integer('referencealfa')->nullable();
+            $table->date('referencealfa_date')->nullable();
 
             //Indicateur: nombre de livraison TMA. Actuellement manuel!
             $table->integer('inc_nblivtma')->default(0);
@@ -77,7 +78,9 @@ class CreateVersionsTable extends Migration
             $table->longText('alerteprd')->nullable();
 
             $table->text('prp_estimationcharge')->nullable(); //estimation charge pré-production
-            $table->text('prd_estimationcharge')->nullable(); //estimation charge production
+            $table->text('prd_estimationcharge')->nullable(); //estimation charge 
+
+            $table->integer('prd_nbreports')->default(0)->nullable();
 
             /**
             * Section "Commentaire"

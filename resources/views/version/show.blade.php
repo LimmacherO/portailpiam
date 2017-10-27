@@ -106,13 +106,14 @@
 										<span class="label-content">{{ $version->version_dimensions }}</span>
 									</div>
 
-								</div>
-								<div class="row section-default-page">
-
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Product Dimensions :</p></div>
 										<span class="label-content">{{ $version->product_dimensions }}</span>
 									</div>
+
+								</div>
+								<div class="row section-default-page">
+
 
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Référence ALFA :</p></div>
@@ -121,6 +122,17 @@
 												Non renseignée
 											@else
 												{{ $version->referencealfa }}
+											@endif
+										</span>
+									</div>
+
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Date création ALFA :</p></div>
+										<span class="label-content">
+											@if($version->referencealfa_date == '')
+												Non renseignée
+											@else
+												{{ \Carbon\Carbon::parse($version->referencealfa_date)->format('d/m/Y')}}
 											@endif
 										</span>
 									</div>
@@ -247,16 +259,42 @@
 										<span class="label-content">{!! $version->referentprd->nom !!}&nbsp;{!! $version->referentprd->prenom !!}</p></span>
 									</div>
 
+									<!-- Nombre de reports de production -->
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Nombre report(s) production :</p></div>
+										<span class="label-content">
+											@if($version->prd_nbreports == 0)
+												Aucun report
+											@elseif($version->prd_nbreports == 1)
+												{!! $version->prd_nbreports !!} report	
+											@else
+												{!! $version->prd_nbreports !!} reports					
+											@endif
+										</span>
+									</div>
+
 									<!-- Estimation de la charge de pré-production -->
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Estimation charge de pré-production :</p></div>
-										<span class="label-content">{!! $version->prp_estimationcharge !!}&nbsp;j/h</p></span>
+										<span class="label-content">
+											@if($version->prp_estimationcharge == '')
+												Non renseignée
+											@else
+												{!! $version->prp_estimationcharge !!}&nbsp;j/h
+											@endif
+										</span>
 									</div>
 
 									<!-- Estimation de la charge de production -->
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Estimation charge de production :</p></div>
-										<span class="label-content">{!! $version->prd_estimationcharge !!}&nbsp;j/h</p></span>
+										<span class="label-content">
+											@if($version->prd_estimationcharge == '')
+												Non renseignée
+											@else
+												{!! $version->prd_estimationcharge !!}&nbsp;j/h
+											@endif
+										</span>
 									</div>
 
 								</div>

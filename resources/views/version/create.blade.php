@@ -93,10 +93,6 @@
                                     {!! $errors->first('version_dimensions', '<small class="help-block">:message</small>') !!}
                                 </div>
 
-
-                            </div>
-                            <div class="row section-default-page">
-
                                 <!-- "Product Dimensions -->
                                 <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
                                     <div class="label-title"><p>Product Dimensions :</p></div>
@@ -104,11 +100,21 @@
                                     {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
                                 </div>
 
+
+                            </div>
+                            <div class="row section-default-page">
+
                                 <!-- "Référence ALFA" du chantier -->
                                 <div class="col-lg-3 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
                                     <div class="label-title"><p>Référence ALFA :</p></div>
                                     {!! Form::text('referencealfa', null, ['class' => 'form-control']) !!}
                                     {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
+                                </div>
+
+                                <div class="col-lg-3 form-group {!! $errors->has('referencealfa_date') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Date création ALFA :</p></div>
+                                    {!! Form::date('referencealfa_date', null,  ['class' => 'form-control', 'id' => 'referencealfa_date'] ); !!}
+                                    {!! $errors->first('referencealfa_date', '<small class="help-block">:message</small>') !!}
                                 </div>
 
                             </div>
@@ -214,6 +220,13 @@
                                     $referentprds, 
                                     null, 
                                     ['class' => 'form-control', 'id' => 'referentprds']) !!}
+                                </div>
+
+                                <!-- Nombre reports production -->
+                                <div class="col-lg-3 form-group {!! $errors->has('prd_nbreports') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Nombre report(s) production :</p></div>
+                                    {!! Form::text('prd_nbreports', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('prd_nbreports', '<small class="help-block">:message</small>') !!}
                                 </div>
 
                                 <!-- Estimation de la charge de pré-production -->

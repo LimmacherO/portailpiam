@@ -26,10 +26,10 @@ class Version extends Model
         'libelle', 'product_dimensions', 
         'application_id', 
         'referentqi_id', 'alerteqi', 'avancementqi', 
-        'referencealfa', 
+        'referencealfa', 'referencealfa_date',
         'inc_nblivtma', 
         'qos', 'enjeuxmetier', 'enjeuxsi',
-        'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge',
+        'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports',
         'commentaire',
     ];
 
