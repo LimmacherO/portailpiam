@@ -29,7 +29,7 @@ class Version extends Model
         'referencealfa', 
         'inc_nblivtma', 
         'qos', 'enjeuxmetier', 'enjeuxsi',
-        'referentprd_id', 'date_mep', 'alerteprd',
+        'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge',
         'commentaire',
     ];
 

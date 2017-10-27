@@ -241,9 +241,22 @@
 								</div>
 								<div class="row section-default-page">
 
+									<!-- Référent de production -->
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Référent production :</p></div>
 										<span class="label-content">{!! $version->referentprd->nom !!}&nbsp;{!! $version->referentprd->prenom !!}</p></span>
+									</div>
+
+									<!-- Estimation de la charge de pré-production -->
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Estimation charge de pré-production :</p></div>
+										<span class="label-content">{!! $version->prp_estimationcharge !!}&nbsp;j/h</p></span>
+									</div>
+
+									<!-- Estimation de la charge de production -->
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Estimation charge de production :</p></div>
+										<span class="label-content">{!! $version->prd_estimationcharge !!}&nbsp;j/h</p></span>
 									</div>
 
 								</div>

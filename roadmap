@@ -1,9 +1,14 @@
 Roadmap V1
 ----------
 
-- Amélioration de la présentation IHM
+- Intégration des autres champs de la Roadmap. Champs manquants:
+	--> périmètre DQI
+	--> Date demande ALFA --> à voir avec Frédéric si on conserve
+	--> date prévisionnelle et réelle de démarrage QI --> voir avec Frédéric si information présente dans le planning suffisant
+	--> Statut activité QI (voir si général plutôt)
+	--> nb reports production
 
-- Intégration des autres champs de la Roadmap
+- Export des données via Excel --> ajout des champs manquants et mise en forme
 
 - Reprise des données
 

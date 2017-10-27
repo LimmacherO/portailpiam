@@ -75,6 +75,10 @@ class CreateVersionsTable extends Migration
             $table->date('date_mep');
 
             $table->longText('alerteprd')->nullable();
+
+            $table->text('prp_estimationcharge')->nullable(); //estimation charge pré-production
+            $table->text('prd_estimationcharge')->nullable(); //estimation charge production
+
             /**
             * Section "Commentaire"
             **/

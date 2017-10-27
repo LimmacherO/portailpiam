@@ -21,6 +21,7 @@ class VersionUpdateRequest extends FormRequest
             'referentqi_id' => 'required',
             'referencealfa' => 'max:6',
             'inc_nblivtma' => 'required',
+            'avancementqi' => 'numeric',
         ];
     }
 
@@ -29,6 +30,7 @@ class VersionUpdateRequest extends FormRequest
         return [
             'required' => 'Le champ est obligatoire',
             'referencealfa.max' => 'Le champ ne doit pas dépasser 6 caractères',
+            'numeric' => 'Le champ doit être un nombre entier',
         ];
     }
 

@@ -182,7 +182,7 @@
                                 <!-- "Indicateur Avancement QI" -->
                                 <div class="col-lg-3 form-group {!! $errors->has('avancementqi') ? 'has-error' : '' !!}">
                                     <div class="label-title"><p>Avancement QI :</p></div>
-                                    {!! Form::text('avancementqi', null, ['class' => 'form-control']) !!}
+                                    {!! Form::text('avancementqi', 0, ['class' => 'form-control']) !!}
                                     {!! $errors->first('avancementqi', '<small class="help-block">:message</small>') !!}
                                 </div>
 
@@ -214,6 +214,20 @@
                                     $referentprds, 
                                     null, 
                                     ['class' => 'form-control', 'id' => 'referentprds']) !!}
+                                </div>
+
+                                <!-- Estimation de la charge de pré-production -->
+                                <div class="col-lg-3 form-group {!! $errors->has('prp_estimationcharge') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Estimation charge pré-production :</p></div>
+                                    {!! Form::text('prp_estimationcharge', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('prp_estimationcharge', '<small class="help-block">:message</small>') !!}
+                                </div>
+
+                                <!-- Estimation de la charge de production -->
+                                <div class="col-lg-3 form-group {!! $errors->has('prd_estimationcharge') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Estimation charge production :</p></div>
+                                    {!! Form::text('prd_estimationcharge', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('prd_estimationcharge', '<small class="help-block">:message</small>') !!}
                                 </div>
 
                             </div>

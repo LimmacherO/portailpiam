@@ -224,6 +224,20 @@
                                     ['class' => 'form-control', 'id' => 'referentprds']) !!}
                                 </div>
 
+                                <!-- Estimation de la charge de pré-production -->
+                                <div class="col-lg-3 form-group {!! $errors->has('prp_estimationcharge') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Estimation charge pré-production :</p></div>
+                                    {!! Form::text('prp_estimationcharge', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('prp_estimationcharge', '<small class="help-block">:message</small>') !!}
+                                </div>
+
+                                <!-- Estimation de la charge de production -->
+                                <div class="col-lg-3 form-group {!! $errors->has('prd_estimationcharge') ? 'has-error' : '' !!}">
+                                    <div class="label-title"><p>Estimation charge production :</p></div>
+                                    {!! Form::text('prd_estimationcharge', null, ['class' => 'form-control']) !!}
+                                    {!! $errors->first('prd_estimationcharge', '<small class="help-block">:message</small>') !!}
+                                </div>
+
                             </div>
                             <div class="row section-default-page">
 
