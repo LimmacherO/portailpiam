@@ -8,12 +8,6 @@
 	Chantier "{{ $version->libelle }}"
 @endsection
 
-@section('header-message')
-
-    
-
-@endsection
-
 @section('header-controls')
 	
 	<!-- Message d'information -->
