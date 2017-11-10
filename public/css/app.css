@@ -8,46 +8,81 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-/* Corps de la page Web */
-body{
-    background-color: #FFF;
-    text-align: left;
+/* 
+ * Corps de la page Web
+*/
+html, body{
+    background-color: rgb(248, 248, 248);
     margin: 0px;
     padding: 0px;
+    height:100%;
 }
 
 a, a:hover, a:focus {
     color: inherit;
     text-decoration: none;
-    transition: all 0.3s;
 }
 
+p {
+    color: #999;
+}
 .container-fluid {
     margin: 0px;
     padding: 0px;
 }
+
+div{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+/*
+ * Menu principal du portail PIAM
+ */
+#navbar {
+    background-color: rgb(68,125,168);
+    padding: 0px;
+    margin: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px; 
+}
+
+#navbar .navbar-header .navbar-brand {
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+    text-align: left;
+    color: #FFF;
+}
+
+#navbar .navbar-nav a {
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 
 /**
 * Section-header: en-tête d'affichage de la page
 **/
 .section-header {
     padding: 0px;
-    background-color: rgb(241,241,241);
-    margin-top: 60px;
+    margin-top: 60px; /*marge liée à la navbar */
+    border-bottom: 1px solid rgb(220,226,234);
+    background-color: rgb(255,255,255);
 }    
 
 /* Titre de la page */
 .section-header h1 {
-	padding-left: 10px;
     padding-top: 10px;
-    margin-top: 0px;
-    margin-bottom: 10px;
     padding-bottom: 10px;
     color: rgb(106,115,125);
     font-family: 'Lato', sans-serif;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: bold;
 }
 
@@ -56,17 +91,7 @@ a, a:hover, a:focus {
 **/
 .section-default-page{
     margin: 0px;
-    background-color: #FFF;
-    padding-left: 0px;
-    padding-top: 0px;
-}
-
-
-.section-default-page p {
-    color: #7b7b7b;
-    text-align: left;
-    font-size: 12px;
-    font-family: 'Lato', sans-serif;
+    padding: 0px
 }
 
 
@@ -77,6 +102,7 @@ a, a:hover, a:focus {
 .section-default-page-space{
   padding-bottom: 5px;
 }
+
 
 
 .portail-main-content{
@@ -96,7 +122,7 @@ a, a:hover, a:focus {
 }
 
 .label-title p{
-    color: rgb(68,125,168);
+    color: rgb(102,102,102); 
     text-align: left;
     font-size: 14px;
     font-weight: bold;
@@ -109,171 +135,15 @@ a, a:hover, a:focus {
 
 
 .label-content {
-    color: #7b7b7b;
+    color: rgb(102,102,102); 
     text-align: left;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
 }
 
 
-.btn{
-  color: #FFF;
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 14px;
-}
-
-.btn-cancel{
-  margin-right: 10px;
-  color: #7b7b7b;
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 14px;
-}
-
-.btn-cancel:hover{
-  color: #7b7b7b;
-}
-
-.btn-danger{
-  margin-right: 10px;
-  color: #FFF;
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 14px;
-}
-
-.btn-danger:hover{
-  color: #FFF;
-}
-
-/* 
- * Mise en forme des panneaux d'info "alert" Bootstrap
-*/
-.alert{
-    color: #7b7b7b;
-    text-align: left;
-    font-size: 14px;
-    font-family: 'Lato', sans-serif;
-    padding-left: 10px;
-}
 
 
-.form-control {
-    color: #7b7b7b;
-    font-family: 'Droid Sans', sans-serif;
-    font-size: 14px;
-}
-
-.help-block{
-  font-family: 'Droid Sans', sans-serif;
-  font-size: 14px;
-}
-
-.center{
-  text-align: center;
-}
-
-
-p {
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1.7em;
-    color: #999;
-}
-
-a, a:hover, a:focus {
-    color: inherit;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.navbar {
-    padding: 15px 0px;
-    background-color: rgb(241,241,241);
-    border: none;
-    border-radius: 0;
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-
-.navbar-btn {
-    box-shadow: none;
-    outline: none !important;
-    border: none;
-}
-
-.line {
-    width: 100%;
-    height: 1px;
-    border-bottom: 1px dashed #ddd;
-    margin: 40px 0;
-}
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-#sidebar {
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 999;
-    background-color: rgb(88,145,188);
-    border-right: 1px solid rgb(220,226,234);
-    color: #fff;
-    margin-top: 60px;
-    padding-top: 20px;
-}
-
-#sidebar.active {
-    margin-left: -200px;
-}
-
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: rgb(68,125,168);
-    margin-top: 60px;
-}
-
-#sidebar .sidebar-header h1 {
-    font-family: 'Lato';
-    font-size: 30px;
-}
-
-#sidebar ul.components {
-    padding: 20px 0;
-}
-
-#sidebar ul p {
-    color: #fff;
-    padding: 10px;
-}
-
-#sidebar ul li a {
-    padding: 10px;
-    padding-left: 30px;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    font-size: 1.1em;
-    display: block;
-    font-family: 'Droid Sans', sans-serif;
-    font-size: 16px;
-    vertical-align : middle;
-
-}
-
-#sidebar ul li.active > a {
-    color: #FFF;
-    background: rgb(68,125,168);
-    height: 50px;
-
-}
-
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #6d7fcc;
-}
 
 
 
@@ -281,75 +151,19 @@ ul ul a {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-    width: calc(100% - 200px);
     padding: 0px;
-    padding-top: 40px;
-    min-height: 100vh;
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin: 0px;
+    padding-top: 20px;
 }
 #content.active {
     width: 100%;
 }
 
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -200px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #content {
-        width: 100%;
-    }
-    #content.active {
-        width: calc(100% - 250px);
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
-}
-
-
-.navbar-default{
-  margin-left: 200px;
-}
-
 .section-content{
-  /*margin-top: 130px;*/
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.navbar-menutop{
-    background-color: rgb(68,125,168);
-    margin-left: 0px;
-    padding: 0px;
-    margin: 0px;
-    height: 60px;
-}
-.navbar-menutop h1{
-    color: #FFF;    
-    padding-left: 20px;
-    padding-top: 0px;
-    font-family: 'Lato', sans-serif;
-    font-size: 30px;
-    font-weight: bold;
-    padding-left: 20px;
-}
-
-.section-header{
-    height: 100px; 
-}
-
-.section-content{
-    margin-top: 160px;
-    padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
 .page-header-links{
@@ -371,28 +185,23 @@ ul ul a {
 /*
  * Mise en forme des tabulations
  */
-.tab_line{
-    background-color: rgb(241,241,241);
-
-}
 
 .nav-tabs {
-    height: 46px;
     margin: 0px;
     padding: 0px;
-    padding-left: 20px;
+    border-bottom: none;
 }
 
 .nav-tabs li a {
-    color: #737373;
-    font-family: 'Droid Sans', sans-serif;
+    color: rgb(106,115,125);;
+    font-family: 'Lato', sans-serif;
     font-size: 14px;
     text-decoration: none;
     font-weight: bold;
 }
 
 .nav-tabs .active {
-    border-top: 4px solid rgb(68,125,168);
+    border-bottom: 4px solid rgb(68,125,168);
 }
 
 .nav-tabs > li > a {
@@ -401,15 +210,9 @@ ul ul a {
     border-radius: 0;
 }
 
-.container-noborder{
-    margin: 0px;
-    padding: 0px;
-}
-
-.tab_line-btn {
-    height: 46px;
-    padding-right: 10px;
-    border-bottom: 1px solid rgb(220,226,234); 
+/* Suppression des bordures */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+border: 0;
 }
 
 
@@ -445,4 +248,82 @@ ul ul a {
     font-size: 16px;
     font-weight: bold;
     font-family: 'Lato', sans-serif;
+}
+
+/** 
+ * Mise en forme des panels Bootrap
+ */
+.panel {
+    /*border-top: 4px solid rgb(68,125,168);*/
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #FFF;
+    border-radius: 0;
+}
+.panel .panel-heading {
+    background-color: #FFF;
+}
+
+.panel-title {
+    color: rgb(102,102,102); 
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+}
+
+/** 
+ * Mise en forme des input
+ */
+input[type=text], textarea {
+  border: 1px solid rgb(214,214,214);
+  color: #000;
+  font-family: 'Droid Sans', sans-serif;
+  font-size: 14px;
+}
+
+/** 
+ * Mise en forme des boutons Bootstrap
+ */
+.btn{
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    border: 1px solid rgb(214,214,214);
+}
+
+.btn-cancel{
+  margin-right: 10px;
+  color: #7b7b7b;
+    font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.btn-cancel:hover{
+  color: #7b7b7b;
+}
+
+.btn-danger{
+  margin-right: 10px;
+  color: #FFF;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.btn-danger:hover{
+  color: #FFF;
+}
+
+
+/* 
+ * Mise en forme des panneaux d'info "alert" Bootstrap
+*/
+.alert{
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+}
+
+.center{
+  text-align: center;
 }

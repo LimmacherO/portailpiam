@@ -23,53 +23,55 @@
 
     <!-- Imports styles CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">-->
-    <!--<link href="{{ asset('css/tabs.css') }}" rel="stylesheet">-->
     <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div class="wrapper">
-        
-        <!-- SideBar left: menu principal du portail PIAM-->
-        <nav id="sidebar">
+    <!-- Barre de menu en haut de page -->
+    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
 
-            <!-- Menu -->
-            <ul class="list-unstyled components">
-                <!--
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Portail DQI/PIAM</a>
+            </div>
+
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp;&nbsp;Tableau de bord</a>
-                </li>-->
-                <li class="active">
+                    <!-- Lien vers la RoadMap DSI -->
                     <a href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;Roadmap DSI</a>
                 </li>
-            </ul>
-
-        </nav>
-
-
-        <!-- Barre de menu en haut de page -->
-        <nav class="navbar navbar-default navbar-fixed-top navbar-menutop">
-            <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col-sm-12 col-lg-12">
-                        <h1>Portail DQI/PIAM</h1>
-                    </div>
-
-                </div>
+              </ul>
             </div>
-        </nav>
-
-        <!-- Contenu de la page Web -->
-        <div id="content">
-
-            @yield('content')
-
         </div>
+    </nav>
 
+    <!-- En-tête page Web -->
+    <div id="header" class="section-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>@yield('header-title')</h1>
+                </div>
+                @yield('header-controls')
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenu de la page Web -->
+    <div id="content">
+        <!-- Afichage du contenu de la page -->
+        <div class="container section-content">
+            @yield('content')
+        </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
