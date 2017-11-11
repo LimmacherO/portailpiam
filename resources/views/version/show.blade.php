@@ -103,6 +103,16 @@
 									</div>
 
 								</div>
+
+								<div class="row section-default-page">
+
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Etat :</p></div>
+										<span class="label-content">{{ $version->versionetat->libelle }}</span>
+									</div>
+
+								</div>
+
 								<div class="row section-default-page">
 
 

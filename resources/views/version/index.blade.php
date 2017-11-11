@@ -92,6 +92,7 @@
                                                     <th>Avanc. QI</th>
                                                     <th>QoS</th>
                                                     <th>Date MEP</th>
+                                                    <th>Etat</th>
                                                     <th>&nbsp;</th>
                                                 </tr>
                                             </thead>
@@ -143,8 +144,13 @@
                                                         <!-- Affichage de la date de mise en service -->
                                                         <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>
                                                         
+                                                        <!-- Etat de la version -->
+                                                        <td>{!! $version->versionetat->libelle !!}</td>
+
                                                         <td>{!! Html::decode(link_to_route('version.show', '<i class="fa fa-search-plus"></i>', [$version->id], ['class' => 'small button'])) !!}</td>
                                                         
+                                                        
+
                                                     </tr>
                                                 @endforeach
 

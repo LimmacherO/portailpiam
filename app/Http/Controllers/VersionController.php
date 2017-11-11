@@ -12,6 +12,7 @@ use App\Application;
 use App\Referentqi;
 use App\Referentprd;
 use App\Tache;
+use App\VersionEtat;
 
 use Illuminate\Support\Facades\Input;
 
@@ -71,8 +72,9 @@ class VersionController extends Controller
         $applications = Application::orderBy('libelle')->pluck('libelle', 'id');
         $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'id');
         $referentprds = Referentprd::orderBy('nom')->pluck('nom', 'id');
+        $versionetats = VersionEtat::orderBy('id')->pluck('libelle', 'id');
 
-        return view('version.create', compact('applications', 'referentqis', 'referentprds'));
+        return view('version.create', compact('applications', 'referentqis', 'referentprds', 'versionetats'));
     }
 
     /*
@@ -124,8 +126,9 @@ class VersionController extends Controller
         $applications = Application::orderBy('libelle')->pluck('libelle', 'id');
         $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'id');
         $referentprds = Referentprd::orderBy('nom')->pluck('nom', 'id');
+        $versionetats = VersionEtat::orderBy('id')->pluck('libelle', 'id');
 
-        return view('version.edit', compact('version','applications', 'referentqis', 'referentprds'));
+        return view('version.edit', compact('version','applications', 'referentqis', 'referentprds', 'versionetats'));
     }
 
     /*

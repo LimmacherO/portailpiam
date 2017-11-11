@@ -17,7 +17,7 @@ class Version extends Model
 	//Nom de la table associée au modèle
    	protected $table = 'versions';
 
-	//Désactivation du timestamp dans la table "versions"
+	//Activation du timestamp dans la table "versions"
 	public $timestamps = true;
 
     //Liste des champs utilisables
@@ -31,6 +31,7 @@ class Version extends Model
         'qos', 'enjeuxmetier', 'enjeuxsi',
         'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports',
         'commentaire',
+        'versionetat_id',
     ];
 
     // Liste des champs qui peuvent être triés (dans un tableau par exemple)
@@ -119,10 +120,17 @@ class Version extends Model
 		return $this->belongsTo(\App\Application::class);
 	}
 
-    // Lien avec la classe Référent PRD qui contient la liste des référents PRD DPE
+  // Lien avec la classe Référent PRD qui contient la liste des référents PRD DPE
 	public function referentprd() 
 	{
 		return $this->belongsTo(\App\Referentprd::class);
 	}
+
+  // Lien avec la classe VersionEtat qui contient la liste des états possibles d'une version
+  public function versionetat() 
+  {
+    return $this->belongsTo(\App\VersionEtat::class);
+  }
+
 
 }

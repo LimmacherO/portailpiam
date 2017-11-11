@@ -36,6 +36,8 @@ class CreateTacheTable extends Migration
 
             $table->boolean('deletable')->default(true);
 
+
+
         });
     }
 

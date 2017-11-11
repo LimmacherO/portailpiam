@@ -7,7 +7,7 @@ use App\Referentprd;
  * ReferentprdTableSeeder: Seeder pour table des réferents PRD - pour test en developpement uniquement
  * @Author: Romain Jedynak
  */
-class ReferentprdTableSeeder extends Seeder
+class ReferentProdTableSeeder extends Seeder
 {
 
     //function run(): méthode principale pour l'alimentation de la table des référents PRD

@@ -98,6 +98,20 @@
                                     </div>
 
                                 </div>
+
+                                <div class="row section-default-page">
+
+                                    <!-- Etat de la version -->
+                                    <div class="col-lg-3 form-group">
+                                        <div class="label-title"><p>Etat :</p></div>
+                                        {!! Form::select('versionetat_id', 
+                                        $versionetats, 
+                                        null, 
+                                        ['class' => 'form-control', 'id' => 'versionetat_id']) !!}
+                                    </div>
+
+                                </div>
+
                                 <div class="row section-default-page">
 
                                     <!-- "Référence ALFA" du chantier -->

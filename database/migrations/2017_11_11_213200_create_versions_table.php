@@ -87,6 +87,13 @@ class CreateVersionsTable extends Migration
             **/
             $table->longText('commentaire')->nullable();
 
+            $table->integer('versionetat_id')->unsigned();
+            $table->foreign('versionetat_id')
+                  ->references('id')
+                  ->on('versionetat')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+
         });
     }
 
