@@ -219,28 +219,29 @@ input[type=text], textarea {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     border: 1px solid rgb(214,214,214);
+    margin-bottom: 10px;
 }
 
 .btn-cancel{
-  margin-right: 10px;
-  color: #7b7b7b;
+    margin-right: 10px;
+    color: #7b7b7b;
     font-family: 'Lato', sans-serif;
-  font-size: 14px;
+    font-size: 14px;
 }
 
 .btn-cancel:hover{
-  color: #7b7b7b;
+    color: #7b7b7b;
 }
 
 .btn-danger{
-  margin-right: 10px;
-  color: #FFF;
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
+    margin-right: 10px;
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
 }
 
 .btn-danger:hover{
-  color: #FFF;
+    color: #FFF;
 }
 
 

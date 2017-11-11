@@ -73,7 +73,7 @@ class CreateVersionsTable extends Migration
                   ->onUpdate('cascade');
 
             // Date de mise en production
-            $table->date('date_mep');
+            $table->date('date_mep')->nullable();
 
             $table->longText('alerteprd')->nullable();
 
