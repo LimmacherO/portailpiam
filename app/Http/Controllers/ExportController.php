@@ -50,34 +50,104 @@ class ExportController extends Controller
 			$versionsArray = []; 
 			//initialisation des en-têtes
 			$versionsArray[] = [
-                'id', 
                 'Domaine', 
                 'Application', 
-                'version', 
-                'libellé',
-                'Référence ALFA', 
-                'Référent QI',
-                'Nb Liv TMA',
-                'Alerte QI', 
-                'Référent PRD',
-                'Alerte PRD',
+                'Date de dernière modification',
+                'Périmètre QI',
+
+                'Sujet',
+
+                'Version Dimensions',
+                'Version MOE', 
+                'Itération',
+
+                'Référence', 
+                'Date',
+
+                'Enjeux Métier',
+                'Enjeux SI',
+                'QoS',
+
+                'Suivi par',
+                'Date prévisionnelle',
+                'Date réelle',
+
+                'Activité QI',
+                'Avancement QI',
+
+                'Date prévisionnelle',
+                'Version Dimensions livrée',
+                'Date réelle',
+
+
+                'Début',
+                'Fin',
+                'Estimation charge j/h',
+
+                'Date prévisionnelle de MES',
+                'Date réelle de MES',
+                'Estimation charge j/h',
+                'Nb report MEP',
+                'Suivi par',
+
+                'Vue DQI', 
+                'Vue DPE',
+
+                'Entrée QI',
+                'Entrée DPE',
+
                 'Commentaire'
                 ];
 
 			//Bascule sous forme de type array()
     		foreach ($versions as $version) {
                 $versionsArray[] = array(
-                    $version->id,
                     $version->application->domaine->libelle,
                     $version->application->libelle,
-                    $version->version, 
+                    'A implémenter',
+                    'A implémenter',
+
                     $version->libelle, 
+
+                    $version->version_dimensions,
+                    $version->version,
+                    $version->inc_nblivtma, 
+
                     $version->referencealfa,
+                    $version->referencealfa_date,
+
+                    $version->enjeuxmetier,
+                    $version->enjeuxsi,
+                    $version->qos,
+
                     $version->referentqi->nom . ' ' . $version->referentqi->prenom,
-                    $version->inc_nblivtma,
-                    $version->alerteqi,
+                    'A implémenter',
+                    'A implémenter',
+
+                    $version->versionetat->libelle,
+                    $version->avancementqi,
+
+                    'A implémenter',
+                    'A implémenter',
+                    'A implémenter',
+
+                    'A implémenter',
+                    'A implémenter',
+                    $version->prp_estimationcharge,
+
+                    'A implémenter',
+                    'A implémenter',
+                    $version->prd_estimationcharge,
+                    $version->prd_nbreports,
+
                     $version->referentprd->nom . ' ' . $version->referentprd->prenom,
+
+                    $version->alerteqi,
                     $version->alerteprd,
+
+                    'A implémenter',
+                    'A implémenter',
+
                     $version->commentaire
                 );
     		}
@@ -92,10 +162,14 @@ class ExportController extends Controller
                     $row->setBackground('#CCCCCC');
                     //Police de caractère, gras et taille
                     $row->setFontWeight('bold');
-                    $row->setFontSize(12);
+                    $row->setFontSize(11);
                     $row->setFontFamily('Calibri');
+                    $row->setValignment('center');
 
                 });
+
+                //Hauteur de la ligne d'en-tête
+                $sheet->setHeight(1, 40);
 
         	});
 
