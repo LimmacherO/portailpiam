@@ -227,6 +227,13 @@
                                 
                                 <div class="row section-default-page">
 
+                                    <div class="col-lg-3 form-group">
+                                        <div class="label-title"><p>Périmètre DQI :</p></div>
+                                        {!! Form::select('perimetreqi', array('0' => 'Non', '1' => 'Oui'), null, 
+                                        ['class' => 'form-control', 'id' => 'perimetreqi']);
+                                         !!}
+                                    </div>
+
                                     <!-- Choix du référent qualification associé -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Référent qualification :</p></div>

@@ -61,6 +61,8 @@ class CreateVersionsTable extends Migration
 
             $table->integer('avancementqi')->default(0)->nullable();
 
+            $table->boolean('perimetreqi');
+
             /**
             * Section "Production"
             **/

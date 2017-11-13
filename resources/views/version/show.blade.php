@@ -227,6 +227,15 @@
 								<div class="row section-default-page">
 
 									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Périmètre DQI :</p></div>
+											@if ($version->perimetreqi)
+												<span class="label-content">Oui</span>
+											@else
+												<span class="label-content">Non</span>
+											@endif
+									</div>
+
+									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Référent qualification :</p></div>
 										<span class="label-content">{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</span></p>
 									</div>

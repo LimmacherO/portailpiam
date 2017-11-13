@@ -15,7 +15,7 @@ class Version extends Model
 {
 
 	//Nom de la table associée au modèle
-   	protected $table = 'versions';
+  protected $table = 'versions';
 
 	//Activation du timestamp dans la table "versions"
 	public $timestamps = true;
@@ -25,7 +25,7 @@ class Version extends Model
         'version', 'version_dimensions',
         'libelle', 'product_dimensions', 
         'application_id', 
-        'referentqi_id', 'alerteqi', 'avancementqi', 
+        'referentqi_id', 'alerteqi', 'avancementqi', 'perimetreqi',
         'referencealfa', 'referencealfa_date',
         'inc_nblivtma', 
         'qos', 'enjeuxmetier', 'enjeuxsi',
@@ -132,5 +132,17 @@ class Version extends Model
     return $this->belongsTo(\App\VersionEtat::class);
   }
 
+  public static function perimetreqitostring($perimetreqi){
+    $returnvalue;
+    
+    if($perimetreqi){
+       $returnvalue = 'Oui';
+    }
+    else{
+      $returnvalue = 'Non';
+    }
+
+    return $returnvalue;
+  }
 
 }

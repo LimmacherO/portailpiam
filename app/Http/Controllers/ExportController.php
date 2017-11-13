@@ -99,13 +99,16 @@ class ExportController extends Controller
                 'Commentaire'
                 ];
 
+
+
 			//Bascule sous forme de type array()
     		foreach ($versions as $version) {
                 $versionsArray[] = array(
                     $version->application->domaine->libelle,
                     $version->application->libelle,
                     'A implémenter',
-                    'A implémenter',
+
+                    Version::perimetreqitostring($version->perimetreqi),
 
                     $version->libelle, 
 
