@@ -48,6 +48,12 @@ class ExportController extends Controller
 
 			//initialisation du tableau contenant les versions
 			$versionsArray = []; 
+
+            $versionsArray[] = [
+                ''
+            ];
+
+
 			//initialisation des en-têtes
 			$versionsArray[] = [
                 'Domaine', 
@@ -57,8 +63,9 @@ class ExportController extends Controller
 
                 'Sujet',
 
-                'Version Dimensions',
                 'Version MOE', 
+                'Version Dimensions',
+                'Product Dimensions',
                 'Itération',
 
                 'Référence', 
@@ -112,8 +119,9 @@ class ExportController extends Controller
 
                     $version->libelle, 
 
-                    $version->version_dimensions,
                     $version->version,
+                    $version->version_dimensions,
+                    $version->product_dimensions,
                     $version->inc_nblivtma, 
 
                     $version->referencealfa,
@@ -159,8 +167,8 @@ class ExportController extends Controller
         	$excel->sheet('Export portail PIAM', function($sheet) use ($versionsArray) {
             	$sheet->fromArray($versionsArray, null, 'A1', false, false);
 
-                //Mise en forme de l'entête des colonnes
-                $sheet->row(1, function($row) {
+                //Mise en forme de l'entête des colonnes --> deuxième ligne
+                $sheet->row(2, function($row) {
                     //Fond en gris
                     $row->setBackground('#CCCCCC');
                     //Police de caractère, gras et taille
@@ -171,8 +179,127 @@ class ExportController extends Controller
 
                 });
 
+                //AJout libelle "Chantier"
+                $sheet->cell('E1', function($cell) {
+                    $cell->setValue('Chantier');
+                });
+
+                //Ajout libelle "Version"
+                $sheet->cell('F1', function($cell) {
+                    $cell->setValue('Version');
+                    
+                });
+                $sheet->mergeCells('F1:I1');
+                $sheet->cells('F1:I1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "ALFA/Demande"
+                $sheet->cell('J1', function($cell) {
+                    $cell->setValue('ALFA/Demande');
+                    
+                });
+                $sheet->mergeCells('J1:K1');
+                $sheet->cells('J1:K1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Scoring QoS"
+                $sheet->cell('L1', function($cell) {
+                    $cell->setValue('Scoring QoS');
+                    
+                });
+                $sheet->mergeCells('L1:N1');
+                $sheet->cells('L1:N1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Pilotage QI"
+                $sheet->cell('O1', function($cell) {
+                    $cell->setValue('Pilotage QI');
+                });
+
+                //Ajout libelle "Démarrage travaux QI"
+                $sheet->cell('P1', function($cell) {
+                    $cell->setValue('Démarrage travaux QI');
+                    
+                });
+                $sheet->mergeCells('P1:Q1');
+                $sheet->cells('P1:Q1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Statut"
+                $sheet->cell('R1', function($cell) {
+                    $cell->setValue('Statut');
+                    
+                });
+                $sheet->mergeCells('R1:S1');
+                $sheet->cells('R1:S1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Acheminement PROD"
+                $sheet->cell('T1', function($cell) {
+                    $cell->setValue('Acheminement PROD');
+                    
+                });
+                $sheet->mergeCells('T1:V1');
+                $sheet->cells('T1:V1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Préproduction"
+                $sheet->cell('W1', function($cell) {
+                    $cell->setValue('Préproduction');
+                    
+                });
+                $sheet->mergeCells('W1:Y1');
+                $sheet->cells('W1:Y1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Production"
+                $sheet->cell('Z1', function($cell) {
+                    $cell->setValue('Production');
+                    
+                });
+                $sheet->mergeCells('Z1:AC1');
+                $sheet->cells('Z1:AC1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Pilotage DPE"
+                $sheet->cell('AD1', function($cell) {
+                    $cell->setValue('Pilotage DPE');
+                });
+
+                //Ajout libelle "Alerte/Vigilance"
+                $sheet->cell('AE1', function($cell) {
+                    $cell->setValue('Alerte/Vigilance');
+                });
+                $sheet->mergeCells('AE1:AF1');
+                $sheet->cells('AE1:AF1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Livrables"
+                $sheet->cell('AG1', function($cell) {
+                    $cell->setValue('Livrables');
+                });
+                $sheet->mergeCells('AG1:AH1');
+                $sheet->cells('AG1:AH1', function($cells) {
+                    $cells->setAlignment('center');
+                });
+
+                //Ajout libelle "Divers"
+                $sheet->cell('AI1', function($cell) {
+                    $cell->setValue('Divers');
+                });
+
+
                 //Hauteur de la ligne d'en-tête
-                $sheet->setHeight(1, 40);
+                $sheet->setHeight(2, 40);
 
         	});
 
