@@ -15,7 +15,7 @@ class TacheCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'bail|required|max:255',
+            'libelle' => 'bail|required|max:255',
         ];
     }
 
@@ -26,4 +26,3 @@ class TacheCreateRequest extends FormRequest
         ];
     }
 }
-

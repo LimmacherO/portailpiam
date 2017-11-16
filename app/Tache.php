@@ -19,11 +19,11 @@ class Tache extends Model
 
 	//Liste des champs utilisés pour les opérations CRUD
     protected $fillable = [
-        'id', 'label', 'start', 'end', 'tachetype_id', 'version_id',
+        'id', 'libelle', 'debut', 'fin', 'tachetype_id', 'version_id',
     ];
 
     // Lien avec la classe TacheType QI qui contient la liste des référents QI PIAM
-	public function tachetype() 
+	public function tachetype()
 	{
 		return $this->belongsTo(\App\TacheType::class);
 	}

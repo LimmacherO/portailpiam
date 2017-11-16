@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-	
+
 	<!-- En-tête page Web -->
     <div id="header" class="section-header">
         <div class="container">
@@ -14,7 +14,7 @@
                     <!-- Titre de la page Web -->
                     <h1>Planning chantier "{{ $version->libelle }}"</h1>
                 </div>
-                
+
                 <!-- Message d'information -->
                 <div class="col-lg-12">
                     @if(session()->has('ok'))
@@ -35,7 +35,7 @@
 			  				<li role="presentation" class="active">
 			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
 			  				</li>
-						</ul>	
+						</ul>
 				    </div>
 
 					<div class="pull-right">
@@ -53,7 +53,7 @@
     <div id="content">
         <!-- Afichage du contenu de la page -->
         <div class="container section-content">
-        
+
 	        <!-- Panel "Planning" -->
 	        <div class="row">
 
@@ -79,14 +79,14 @@
 						                <tbody>
 						                    @foreach ($taches as $tache)
 						                        <tr>
-						                        	
+
 						                            <td>{!! $tache->tachetype->libelle !!}</td>
 
-						                            <td>{!! $tache->label !!}</td>
+						                            <td>{!! $tache->libelle !!}</td>
 
-						                            <td>{{ \Carbon\Carbon::parse($tache->start)->format('d/m/Y')}}</td>
+						                            <td>{{ \Carbon\Carbon::parse($tache->debut)->format('d/m/Y')}}</td>
 
-						                            <td>{{ \Carbon\Carbon::parse($tache->end)->format('d/m/Y')}}</td>
+						                            <td>{{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
 
 						                            <td>
 						                            	<a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
@@ -96,11 +96,11 @@
 						                            	@if( $tache->deletable === true )
 															<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true" onclick="return confirm('Confirmez-vous la suppression de jalon/tâche ?')"></i></a>
 														@else
-															<p>&nbsp;</p>							
+															<p>&nbsp;</p>
 														@endif
 
 						                            </td>
-						                            
+
 						                        </tr>
 						                    @endforeach
 						                </tbody>

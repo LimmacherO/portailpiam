@@ -47,7 +47,7 @@ class ExportController extends Controller
         	$versions = Version::all();
 
 			//initialisation du tableau contenant les versions
-			$versionsArray = []; 
+			$versionsArray = [];
 
             $versionsArray[] = [
                 ''
@@ -56,19 +56,19 @@ class ExportController extends Controller
 
 			//initialisation des en-têtes
 			$versionsArray[] = [
-                'Domaine', 
-                'Application', 
+                'Domaine',
+                'Application',
                 'Date de dernière modification',
                 'Périmètre QI',
 
                 'Sujet',
 
-                'Version MOE', 
+                'Version MOE',
                 'Version Dimensions',
                 'Product Dimensions',
                 'Itération',
 
-                'Référence', 
+                'Référence',
                 'Date',
 
                 'Enjeux Métier',
@@ -97,7 +97,7 @@ class ExportController extends Controller
                 'Nb report MEP',
                 'Suivi par',
 
-                'Vue DQI', 
+                'Vue DQI',
                 'Vue DPE',
 
                 'Entrée QI',
@@ -117,12 +117,12 @@ class ExportController extends Controller
 
                     Version::perimetreqitostring($version->perimetreqi),
 
-                    $version->libelle, 
+                    $version->libelle,
 
                     $version->version,
                     $version->version_dimensions,
                     $version->product_dimensions,
-                    $version->inc_nblivtma, 
+                    $version->inc_nblivtma,
 
                     $version->referencealfa,
                     $version->referencealfa_date,
@@ -187,7 +187,7 @@ class ExportController extends Controller
                 //Ajout libelle "Version"
                 $sheet->cell('F1', function($cell) {
                     $cell->setValue('Version');
-                    
+
                 });
                 $sheet->mergeCells('F1:I1');
                 $sheet->cells('F1:I1', function($cells) {
@@ -197,7 +197,7 @@ class ExportController extends Controller
                 //Ajout libelle "ALFA/Demande"
                 $sheet->cell('J1', function($cell) {
                     $cell->setValue('ALFA/Demande');
-                    
+
                 });
                 $sheet->mergeCells('J1:K1');
                 $sheet->cells('J1:K1', function($cells) {
@@ -207,7 +207,7 @@ class ExportController extends Controller
                 //Ajout libelle "Scoring QoS"
                 $sheet->cell('L1', function($cell) {
                     $cell->setValue('Scoring QoS');
-                    
+
                 });
                 $sheet->mergeCells('L1:N1');
                 $sheet->cells('L1:N1', function($cells) {
@@ -222,7 +222,7 @@ class ExportController extends Controller
                 //Ajout libelle "Démarrage travaux QI"
                 $sheet->cell('P1', function($cell) {
                     $cell->setValue('Démarrage travaux QI');
-                    
+
                 });
                 $sheet->mergeCells('P1:Q1');
                 $sheet->cells('P1:Q1', function($cells) {
@@ -232,7 +232,7 @@ class ExportController extends Controller
                 //Ajout libelle "Statut"
                 $sheet->cell('R1', function($cell) {
                     $cell->setValue('Statut');
-                    
+
                 });
                 $sheet->mergeCells('R1:S1');
                 $sheet->cells('R1:S1', function($cells) {
@@ -242,7 +242,7 @@ class ExportController extends Controller
                 //Ajout libelle "Acheminement PROD"
                 $sheet->cell('T1', function($cell) {
                     $cell->setValue('Acheminement PROD');
-                    
+
                 });
                 $sheet->mergeCells('T1:V1');
                 $sheet->cells('T1:V1', function($cells) {
@@ -252,7 +252,7 @@ class ExportController extends Controller
                 //Ajout libelle "Préproduction"
                 $sheet->cell('W1', function($cell) {
                     $cell->setValue('Préproduction');
-                    
+
                 });
                 $sheet->mergeCells('W1:Y1');
                 $sheet->cells('W1:Y1', function($cells) {
@@ -262,7 +262,7 @@ class ExportController extends Controller
                 //Ajout libelle "Production"
                 $sheet->cell('Z1', function($cell) {
                     $cell->setValue('Production');
-                    
+
                 });
                 $sheet->mergeCells('Z1:AC1');
                 $sheet->cells('Z1:AC1', function($cells) {

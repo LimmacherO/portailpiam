@@ -16,7 +16,7 @@
                     <!-- Titre de la page Web -->
                     <h1>Modification de la tâche "{{ $tache->label }}"</h1>
                 </div>
-                
+
                 <!-- Contrôles -->
                 <div class="col-lg-12">
 
@@ -60,28 +60,28 @@
 					            	<div class="col-lg-3 form-group {!! $errors->has('tachetype_id') ? 'has-error' : '' !!}">
 						                <div class="label-title"><p>Type :</p></div>
 						                @if( $tache->deletable === true )
-							                {!! Form::select('tachetype_id', 
-							                $tachetypes, 
-							                null, 
+							                {!! Form::select('tachetype_id',
+							                $tachetypes,
+							                null,
 							                ['class' => 'form-control', 'id' => 'tachetype_id']) !!}
 							                {!! $errors->first('tachetype_id', '<small class="help-block">:message</small>') !!}
 						                @else
-							                {!! Form::select('tachetype_id', 
-							                $tachetypes, 
-							                null, 
+							                {!! Form::select('tachetype_id',
+							                $tachetypes,
+							                null,
 							                ['class' => 'form-control', 'id' => 'tachetype_id', 'disabled' => true]) !!}
 						                @endif
 
 						            </div>
 
 
-									<div class="col-lg-3 form-group {!! $errors->has('label') ? 'has-error' : '' !!}">
+									<div class="col-lg-3 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
 										<div class="label-title"><p>Libellé :</p></div>
 										@if( $tache->deletable === true )
-					                		{!! Form::text('label', null, ['class' => 'form-control', 'placeholder' => 'Libellé']) !!}
-					                		{!! $errors->first('label', '<small class="help-block">:message</small>') !!}
+					                		{!! Form::text('libelle', null, ['class' => 'form-control', 'placeholder' => 'Libellé']) !!}
+					                		{!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
 					                	@else
-					                		{!! Form::text('label', null, ['class' => 'form-control', 'placeholder' => 'Libellé', 'readonly' => 'true']) !!}
+					                		{!! Form::text('libelle', null, ['class' => 'form-control', 'placeholder' => 'Libellé', 'readonly' => 'true']) !!}
 					                	@endif
 					            	</div>
 					            </div>
@@ -108,16 +108,16 @@
 
 								<div class="row section-default-page">
 
-					                <div class="col-lg-3 form-group {!! $errors->has('start') ? 'has-error' : '' !!}">
+					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de début :</p></div>
-					                	{!! Form::date('start', null,  ['class' => 'form-control', 'id' => 'start'] ); !!}
-					                	{!! $errors->first('start', '<small class="help-block">:message</small>') !!}
+					                	{!! Form::date('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
+					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
 					            	</div>
 
-					            	<div class="col-lg-3 form-group {!! $errors->has('end') ? 'has-error' : '' !!}">
+					            	<div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}">
 					            		<div class="label-title"><p>Date de fin :</p></div>
-					                	{!! Form::date('end', null,  ['class' => 'form-control', 'id' => 'end'] ); !!}
-					                	{!! $errors->first('end', '<small class="help-block">:message</small>') !!}
+					                	{!! Form::date('fin', null,  ['class' => 'form-control', 'id' => 'fin'] ); !!}
+					                	{!! $errors->first('fin', '<small class="help-block">:message</small>') !!}
 					            	</div>
 
 

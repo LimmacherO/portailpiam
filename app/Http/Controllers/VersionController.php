@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\Input;
  */
 class VersionController extends Controller
 {
-    
+
     protected $versionRepository;
-    
+
     //Nombre de chantiers affichés sur la page d'index --> pagination
     protected $nbrPerPage = 10;
 
@@ -52,10 +52,10 @@ class VersionController extends Controller
         //Mise à jour de la date de MEP en fonction du planning
         //Rappel: la date de MEP dans la table version est "fictive"
         foreach ($versions as $version){
-            $tache = Tache::where('tachetype_id', 'LIKE', '7')
-                           ->where('version_id', 'LIKE', $version->id)
+            $tache = Tache::where('tachetype_id', '7')
+                           ->where('version_id', $version->id)
                            ->first();
-            $version->date_mep = $tache->start;
+            $version->date_mep = $tache->debut;
         }
 
         return view('version.index', compact('versions', 'query_search'));
@@ -67,7 +67,7 @@ class VersionController extends Controller
      */
     public function create()
     {
-        
+
         //Alimentation des listes déroulantes
         $applications = Application::orderBy('libelle')->pluck('libelle', 'id');
         $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'id');
@@ -87,9 +87,9 @@ class VersionController extends Controller
 
         //Lors de la création d'une version, on ajoute une date de MEP non supprimable avec date du jour par défaut
         $tachemep = new Tache;
-        $tachemep->label = 'Mise en production';
-        $tachemep->start = \Carbon\Carbon::now();
-        $tachemep->end = \Carbon\Carbon::now();
+        $tachemep->libelle = 'Mise en production';
+        $tachemep->debut = \Carbon\Carbon::now();
+        $tachemep->fin = \Carbon\Carbon::now();
         $tachemep->tachetype_id = 7;
         $tachemep->version_id = $version->id;
         $tachemep->deletable = false;

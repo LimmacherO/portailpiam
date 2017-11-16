@@ -17,7 +17,7 @@
                     <!-- Titre de la page Web -->
                     <h1>Roadmap DSI</h1>
                 </div>
-                
+
                 <!-- Message d'information -->
                 <div class="col-lg-12">
                     @if(session()->has('ok'))
@@ -33,7 +33,7 @@
                     <div class="pull-right">
 
                         <a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a>
-                                
+
                         <a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;Exporter</a>
                     </div>
 
@@ -55,7 +55,7 @@
                     <div class="panel-body">
 
                         <div class="col-lg-12">
-                            <div class="row section-default-page">      
+                            <div class="row section-default-page">
                                 <div class="col-lg-6">
                                     <div class="row">
                                         <p>&nbsp</p>
@@ -123,7 +123,11 @@
 
                                                         <td><div class="center">
                                                                 @if( $version->avancementqi > 0)
-                                                                    {!! $version->avancementqi !!}&nbsp;%
+                                                                    <div class="progress">
+                                                                      <div class="progress-bar" role="progressbar" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! $version->avancementqi !!}%;">
+                                                                          <span>{!! $version->avancementqi !!}&nbsp;%</span>
+                                                                      </div>
+                                                                    </div>
                                                                 @else
                                                                     0 %
                                                                 @endif
@@ -131,7 +135,7 @@
                                                         </td>
 
                                                         <!-- Indicateur QoS -->
-                                                        <td><div class="center"> 
+                                                        <td><div class="center">
                                                             @if( $version->qos == 1 )
                                                                 <span class="label label-success">{!! $version->qos !!}</span>
                                                             @elseif( $version->qos == 9 )
@@ -143,13 +147,11 @@
 
                                                         <!-- Affichage de la date de mise en service -->
                                                         <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>
-                                                        
+
                                                         <!-- Etat de la version -->
-                                                        <td>{!! $version->versionetat->libelle !!}</td>
+                                                        <td><span class="label label-default">{!! $version->versionetat->libelle !!}</span></td>
 
                                                         <td>{!! Html::decode(link_to_route('version.show', '<i class="fa fa-search-plus"></i>', [$version->id], ['class' => 'small button'])) !!}</td>
-                                                        
-                                                        
 
                                                     </tr>
                                                 @endforeach
@@ -172,6 +174,6 @@
             </div>
         </div>
 
-    {!! Form::close() !!} 
+    {!! Form::close() !!}
 
 @endsection

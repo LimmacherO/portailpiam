@@ -15,10 +15,9 @@ class CreateTacheTable extends Migration
     {
         Schema::create('tache', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('label'); //en anglais pour les besoins du module gantt
-            $table->date('start'); //en anglais pour les besoins du module gantt
-            $table->date('end'); //en anglais pour les besoins du module gantt
-
+            $table->string('libelle');
+            $table->date('debut');
+            $table->date('fin');
 
             $table->integer('tachetype_id')->unsigned();
             $table->foreign('tachetype_id')
@@ -35,8 +34,6 @@ class CreateTacheTable extends Migration
                   ->onUpdate('cascade');
 
             $table->boolean('deletable')->default(true);
-
-
 
         });
     }

@@ -11,40 +11,5 @@ class TacheTableSeeder extends Seeder
     public function run()
     {
       DB::table('tache')->delete();
-    	
-
-      /*Tache::create(array(
-          'label' => 'Livraison TMA',
-          'start' => Carbon::create('2017', '09', '04'),
-          'end' => Carbon::create('2017', '09', '04'),
-          'tachetype_id' => '1',
-          'version_id' => '1',
-      ));
-
-    	Tache::create(array(
-          'label' => 'Qualification technique',
-      	  'start' => Carbon::create('2017', '09', '04'),
-      	  'end' => Carbon::create('2017', '09', '08'),
-          'tachetype_id' => '2',
-          'version_id' => '1',
-    	));
-
-    	Tache::create(array(
-          'label' => 'Qualification fonctionnelle',
-      	  'start' => Carbon::create('2017', '09', '09'),
-      	  'end' => Carbon::create('2017', '09', '15'),
-          'tachetype_id' => '2',
-          'version_id' => '1',
-    	));
-
-
-    	Tache::create(array(
-          'label' => 'Recette métier',
-      	  'start' => Carbon::create('2017', '09', '16'),
-      	  'end' => Carbon::create('2017', '10', '15'),
-          'tachetype_id' => '2',
-          'version_id' => '1',
-    	));*/
-
     }
 }

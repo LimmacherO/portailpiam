@@ -1,15 +1,16 @@
 
 /**
 * App.css : Feuille de stype principale du portail PIAM
-* @Author: Romain Jedynak 
+* @Author: Romain Jedynak
 **/
 
 /* Import des feuilles de style */
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
-/* 
+/*
  * Corps de la page Web
 */
 html, body{
@@ -38,7 +39,7 @@ p {
     margin: 0px;
     padding-left: 20px;
     padding-right: 20px;
-    height: 60px; 
+    height: 60px;
 }
 
 #navbar .navbar-header .navbar-brand {
@@ -51,7 +52,7 @@ p {
 
 #navbar .navbar-nav a {
     color: #FFF;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: bold;
     font-size: 16px;
 }
@@ -65,14 +66,14 @@ p {
     margin-top: 60px; /*marge liée à la navbar */
     border-bottom: 1px solid rgb(220,226,234);
     background-color: rgb(255,255,255);
-}    
+}
 
 /* Titre de la page */
 .section-header h1 {
     padding-top: 10px;
     padding-bottom: 10px;
     color: rgb(106,115,125);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
     font-weight: bold;
 }
@@ -103,11 +104,11 @@ p {
 }
 
 .label-title p{
-    color: rgb(102,102,102); 
+    color: rgb(102,102,102);
     text-align: left;
     font-size: 14px;
     font-weight: bold;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0px;
     padding: 0px;
     padding-bottom: 5px;
@@ -116,10 +117,10 @@ p {
 
 
 .label-content {
-    color: rgb(102,102,102); 
+    color: rgb(102,102,102);
     text-align: left;
     font-size: 16px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 
@@ -153,7 +154,7 @@ p {
 
 .nav-tabs li a {
     color: rgb(106,115,125);;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;;
     font-size: 14px;
     text-decoration: none;
     font-weight: bold;
@@ -174,12 +175,7 @@ p {
 border: 0;
 }
 
-
-
-
-
-
-/** 
+/**
  * Mise en forme des panels Bootrap
  */
 .panel {
@@ -194,29 +190,29 @@ border: 0;
 }
 
 .panel-title {
-    color: rgb(102,102,102); 
+    color: rgb(102,102,102);
     text-align: left;
     font-size: 16px;
     font-weight: bold;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-/** 
+/**
  * Mise en forme des input
  */
 input[type=text], textarea {
   border: 1px solid rgb(214,214,214);
   color: #000;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
 }
 
-/** 
+/**
  * Mise en forme des boutons Bootstrap
  */
 .btn{
     color: #FFF;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     border: 1px solid rgb(214,214,214);
     margin-bottom: 10px;
@@ -225,7 +221,7 @@ input[type=text], textarea {
 .btn-cancel{
     margin-right: 10px;
     color: #7b7b7b;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
 }
 
@@ -236,7 +232,7 @@ input[type=text], textarea {
 .btn-danger{
     margin-right: 10px;
     color: #FFF;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
 }
 
@@ -245,13 +241,13 @@ input[type=text], textarea {
 }
 
 
-/* 
+/*
  * Mise en forme des panneaux d'info "alert" Bootstrap
 */
 .alert{
     text-align: left;
     font-size: 14px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .center{
@@ -260,8 +256,16 @@ input[type=text], textarea {
 
 
 
+.progress {
+    position: relative;
+}
 
-
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+ }
 
 
 
@@ -269,5 +273,5 @@ input[type=text], textarea {
     color: rgb(106,115,125);
     font-size: 14px;
     font-weight: bold;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }

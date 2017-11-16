@@ -16,7 +16,7 @@
                     <!-- Titre de la page Web -->
                     <h1>Ajouter une nouvelle tâche/jalon</h1>
                 </div>
-                
+
                 <!-- Contrôles -->
                 <div class="col-lg-12">
 
@@ -58,20 +58,20 @@
                             <!-- Contenu de la page -->
                             <div class="container-fluid tab-content clearfix">
 
-                            	<div class="row section-default-page">	
+                            	<div class="row section-default-page">
 					            	<div class="col-lg-3 form-group {!! $errors->has('tachetype_id') ? 'has-error' : '' !!}">
 						                <div class="label-title"><p>Type :</p></div>
-						                {!! Form::select('tachetype_id', 
-						                $tachetypes, 
-						                null, 
+						                {!! Form::select('tachetype_id',
+						                $tachetypes,
+						                null,
 						                ['class' => 'form-control', 'id' => 'tachetype_id']) !!}
 						                {!! $errors->first('tachetype_id', '<small class="help-block">:message</small>') !!}
 						            </div>
 
-									<div class="col-lg-3 form-group {!! $errors->has('label') ? 'has-error' : '' !!}">
+									<div class="col-lg-3 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
 										<div class="label-title"><p>Libellé :</p></div>
-					                	{!! Form::text('label', null, ['class' => 'form-control']) !!}
-					                	{!! $errors->first('label', '<small class="help-block">:message</small>') !!}
+					                	{!! Form::text('libelle', null, ['class' => 'form-control']) !!}
+					                	{!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
 					            	</div>
 					            </div>
 
@@ -97,16 +97,16 @@
 
 								<div class="row section-default-page">
 
-					                <div class="col-lg-3 form-group {!! $errors->has('start') ? 'has-error' : '' !!}">
+					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de début :</p></div>
-					                	{!! Form::date('start', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'start'] ); !!}
-					                	{!! $errors->first('start', '<small class="help-block">:message</small>') !!}
+					                	{!! Form::date('debut', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'debut'] ); !!}
+					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
 					            	</div>
 
-					            	<div class="col-lg-3 form-group {!! $errors->has('end') ? 'has-error' : '' !!}">
+					            	<div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de fin :</p></div>
-					                	{!! Form::date('end', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'end'] ); !!}
-					                	{!! $errors->first('end', '<small class="help-block">:message</small>') !!}
+					                	{!! Form::date('fin', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'fin'] ); !!}
+					                	{!! $errors->first('fin', '<small class="help-block">:message</small>') !!}
 					            	</div>
 
 
@@ -114,7 +114,7 @@
 					                	{!! Form::hidden('version_id', $version->id, ['class' => 'form-control', 'placeholder' => 'ID de la version']) !!}
 					                	{!! $errors->first('version_id', '<small class="help-block">:message</small>') !!}
 					            	</div>
-					            	
+
 							    </div>
 
                             </div>
@@ -125,6 +125,6 @@
             </div>
         </div>
     </div>
-	{!! Form::close() !!}  
+	{!! Form::close() !!}
 
 @endsection
