@@ -22,7 +22,7 @@ class TacheController extends Controller
     public function index(Version $version)
     {
 
-        $select = 'id as id, libelle as libelle, DATE_FORMAT(debut, \'%Y-%m-%d\') as debut, DATE_FORMAT(fin, \'%Y-%m-%d\') as fin, tachetype_id as tachetype_id, version_id as version_id, deletable as deletable';
+        $select = 'id as id, libelle as libelle, debut as debut, fin as fin, tachetype_id as tachetype_id, version_id as version_id, deletable as deletable';
 
     	$taches = \App\Tache::select(\Illuminate\Support\Facades\DB::raw($select))
                 ->orderBy('debut', 'asc')
