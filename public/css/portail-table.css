@@ -7,24 +7,29 @@
 	background-color: #FFF;
   margin-top: 10px;
   margin-bottom: 10px;
+	border: 1px solid rgb(239,239,239);
 }
 
 .portail-table-header{
-	background-color: rgb(241,241,241);
+	background-color: rgb(251,251,249);
+	border: 1px solid rgb(239,239,239);
 }
+
+/* Suppression de la bordure inférieure de l'en-tête */
+.table thead > tr > th { border-bottom: none; }
 
 .portail-table tr.odd  { background-color: #FFF; }
 .portail-table tr.even { background-color: rgb(270,270,270) }
 
 .portail-table-header th {
-	 color: #000;
-  	font-family: 'Droid Sans', sans-serif;
+	 	color: rgb(121,121,121);
+  	font-family: 'Source Sans Pro', sans-serif;
   	font-size: 14px;
 }
 
 .portail-table td {
-	  color: #7b7b7b;
-  	font-family: 'Droid Sans', sans-serif;
+	  color: rgb(121,121,121);
+  	font-family: 'Source Sans Pro', sans-serif;
   	font-size: 14px;
 }
 

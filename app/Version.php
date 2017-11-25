@@ -23,11 +23,11 @@ class Version extends Model
     //Liste des champs utilisables
     protected $fillable = [
         'version', 'version_dimensions',
-        'libelle', 'product_dimensions', 
-        'application_id', 
+        'libelle', 'product_dimensions',
+        'application_id',
         'referentqi_id', 'alerteqi', 'avancementqi', 'perimetreqi',
         'referencealfa', 'referencealfa_date',
-        'inc_nblivtma', 
+        'inc_nblivtma',
         'qos', 'enjeuxmetier', 'enjeuxsi',
         'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports',
         'commentaire',
@@ -82,7 +82,7 @@ class Version extends Model
 
         return $query;
     }
-    
+
   public static function calculQos($enjeuxmetier, $enjeuxsi)
   {
 
@@ -109,32 +109,32 @@ class Version extends Model
   }
 
   // Lien avec la classe Référent QI qui contient la liste des référents QI PIAM
-	public function referentqi() 
+	public function referentqi()
 	{
 		return $this->belongsTo(\App\Referentqi::class);
 	}
 
 	// Lien avec la classe Application qui contient la liste des application
-	public function application() 
+	public function application()
 	{
 		return $this->belongsTo(\App\Application::class);
 	}
 
   // Lien avec la classe Référent PRD qui contient la liste des référents PRD DPE
-	public function referentprd() 
+	public function referentprd()
 	{
 		return $this->belongsTo(\App\Referentprd::class);
 	}
 
   // Lien avec la classe VersionEtat qui contient la liste des états possibles d'une version
-  public function versionetat() 
+  public function versionetat()
   {
     return $this->belongsTo(\App\VersionEtat::class);
   }
 
   public static function perimetreqitostring($perimetreqi){
     $returnvalue;
-    
+
     if($perimetreqi){
        $returnvalue = 'Oui';
     }

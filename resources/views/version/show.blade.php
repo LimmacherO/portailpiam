@@ -8,13 +8,13 @@
 
     <!-- En-tête page Web -->
     <div id="header" class="section-header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Titre de la page Web -->
                     <h1>Chantier "{{ $version->libelle }}"</h1>
                 </div>
-                
+
                 <!-- Message d'information -->
 				<div class="col-lg-12">
 					@if(session()->has('ok'))
@@ -35,7 +35,7 @@
 			  				<li role="presentation">
 			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
 			  				</li>
-						</ul>	
+						</ul>
 				    </div>
 
 				    <div class="pull-right">
@@ -48,12 +48,12 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Contenu de la page Web -->
     <div id="content">
         <!-- Afichage du contenu de la page -->
-        <div class="container section-content">
-        
+        <div class="container-fluid section-content">
+
 		        <!-- Panel "Identification de la version" -->
 		        <div class="row">
 
@@ -244,7 +244,7 @@
 				                    <div class="col-lg-3 label-div">
 				                        <div class="label-title"><p>Avancement QI :</p></div>
 										<span class="label-content">
-											@if ($version->avancementqi >0 ) 
+											@if ($version->avancementqi >0 )
 												{!! $version->avancementqi !!}&nbsp;%
 											@else
 												0 %
@@ -258,7 +258,7 @@
 									<div class="col-lg-6 label-div">
 										<div class="label-title"><p>Alertes et vigilances :</p></div>
 										<span class="label-content">
-										@if (!empty($version->alerteqi)) 
+										@if (!empty($version->alerteqi))
 											{!! $version->alerteqi !!}
 										@else
 											Pas d'alertes et vigilances QI
@@ -296,9 +296,9 @@
 											@if($version->prd_nbreports == 0)
 												Aucun report
 											@elseif($version->prd_nbreports == 1)
-												{!! $version->prd_nbreports !!} report	
+												{!! $version->prd_nbreports !!} report
 											@else
-												{!! $version->prd_nbreports !!} reports					
+												{!! $version->prd_nbreports !!} reports
 											@endif
 										</span>
 									</div>
@@ -333,7 +333,7 @@
 									<div class="col-lg-6 label-div">
 										<div class="label-title"><p>Alertes et vigilances :</p></div>
 											<span class="label-content">
-											@if (!empty($version->alerteprd)) 
+											@if (!empty($version->alerteprd))
 												{!! $version->alerteprd !!}
 											@else
 												Pas d'alertes et vigilances production
@@ -362,7 +362,7 @@
 									<div class="col-lg-12 label-div">
 										<div class="label-title"><p>Commentaires :</p></div>
 											<span class="label-content">
-											@if (!empty($version->commentaire)) 
+											@if (!empty($version->commentaire))
 												{!! $version->commentaire !!}
 											@else
 												Pas de commentaire(s)
@@ -374,7 +374,7 @@
 								</div>
 					    	</div>
 					    </div>
-					</div>								
+					</div>
 
 		        </div>
 			</div>

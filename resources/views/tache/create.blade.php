@@ -10,7 +10,7 @@
 
    <!-- En-tête page Web -->
     <div id="header" class="section-header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Titre de la page Web -->
@@ -39,7 +39,7 @@
     <!-- Contenu de la page Web -->
     <div id="content">
         <!-- Afichage du contenu de la page -->
-        <div class="container section-content">
+        <div class="container-fluid section-content">
 
             <div class="row">
 

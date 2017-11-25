@@ -14,6 +14,8 @@ Roadmap V1
 
 - Reprise des données --> manuelle ou automatisée ?
 
+- Jalon vs tâche --> utiliser vueJS pour cacher le champs si besoin
+
 RoadMap V2
 ----------
 - Ajout d'un onglet de gestion des demandes et incidents associés à la version
@@ -30,7 +32,7 @@ RoadMap V2
 
 - Export de la version sous PDF en une seule page
 
-- Planning global --> V2? 
+- Planning global --> V2?
 
 
 Questions

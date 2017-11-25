@@ -31,20 +31,20 @@ class ExportController extends Controller
     public function exporttoexcel()
     {
 
-        //Nom du fichier en sortie
-        //Actuellement en dur mais à mettre en variable dans la future vue
+      //Nom du fichier en sortie
+      //Actuellement en dur mais à mettre en variable dans la future vue
     	$filename = "DQI-PIAM-ROADMAPDSI.xls";
 
-        //Instructions pour préparation et mise en page du document Excel
+      //Instructions pour préparation et mise en page du document Excel
     	Excel::create($filename, function($excel) {
 
-    		//Titre du document et divers
-    		$excel->setTitle('Roadmap DSI - DQI/PIAM');
-            $excel->setCreator('DQI PIAM');
-            $excel->setCompany('RSI DQI PIAM');
+    	//Titre du document et divers
+    	$excel->setTitle('Roadmap DSI - DQI/PIAM');
+      $excel->setCreator('DQI PIAM');
+      $excel->setCompany('RSI DQI PIAM');
 
-            //Récupération de toutes les versions déclarées
-        	$versions = Version::all();
+      //Récupération de toutes les versions déclarées
+      $versions = Version::orderBy('application_id', 'asc')->get();
 
 			//initialisation du tableau contenant les versions
 			$versionsArray = [];
@@ -113,7 +113,7 @@ class ExportController extends Controller
                 $versionsArray[] = array(
                     $version->application->domaine->libelle,
                     $version->application->libelle,
-                    'A implémenter',
+                    \Carbon\Carbon::parse($version->updated_at)->format('d/m/Y'),
 
                     Version::perimetreqitostring($version->perimetreqi),
 
@@ -182,6 +182,12 @@ class ExportController extends Controller
                 //AJout libelle "Chantier"
                 $sheet->cell('E1', function($cell) {
                     $cell->setValue('Chantier');
+                    $cell->setBackground('#1f4e78');
+                    $cell->setFontColor('#FFFFFF');
+                    $cell->setFontWeight('bold');
+                    $cell->setAlignment('center');
+                    $cell->setFontSize(11);
+                    $cell->setValignment('center');
                 });
 
                 //Ajout libelle "Version"
@@ -191,7 +197,12 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('F1:I1');
                 $sheet->cells('F1:I1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setValignment('center');
                 });
 
                 //Ajout libelle "ALFA/Demande"
@@ -201,7 +212,12 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('J1:K1');
                 $sheet->cells('J1:K1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setValignment('center');
                 });
 
                 //Ajout libelle "Scoring QoS"
@@ -211,12 +227,24 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('L1:N1');
                 $sheet->cells('L1:N1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Pilotage QI"
                 $sheet->cell('O1', function($cell) {
                     $cell->setValue('Pilotage QI');
+                    $cell->setBackground('#1f4e78');
+                    $cell->setFontColor('#FFFFFF');
+                    $cell->setFontWeight('bold');
+                    $cell->setAlignment('center');
+                    $cell->setFontSize(11);
+                    $cell->setValignment('center');
                 });
 
                 //Ajout libelle "Démarrage travaux QI"
@@ -226,7 +254,13 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('P1:Q1');
                 $sheet->cells('P1:Q1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Statut"
@@ -236,7 +270,13 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('R1:S1');
                 $sheet->cells('R1:S1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Acheminement PROD"
@@ -246,7 +286,13 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('T1:V1');
                 $sheet->cells('T1:V1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Préproduction"
@@ -256,7 +302,13 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('W1:Y1');
                 $sheet->cells('W1:Y1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Production"
@@ -266,12 +318,24 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('Z1:AC1');
                 $sheet->cells('Z1:AC1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Pilotage DPE"
                 $sheet->cell('AD1', function($cell) {
                     $cell->setValue('Pilotage DPE');
+                    $cell->setBackground('#1f4e78');
+                    $cell->setFontColor('#FFFFFF');
+                    $cell->setFontWeight('bold');
+                    $cell->setAlignment('center');
+                    $cell->setFontSize(11);
+                    $cell->setValignment('center');
                 });
 
                 //Ajout libelle "Alerte/Vigilance"
@@ -280,7 +344,13 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('AE1:AF1');
                 $sheet->cells('AE1:AF1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Livrables"
@@ -289,12 +359,24 @@ class ExportController extends Controller
                 });
                 $sheet->mergeCells('AG1:AH1');
                 $sheet->cells('AG1:AH1', function($cells) {
+                    $cells->setBackground('#1f4e78');
+                    $cells->setFontColor('#FFFFFF');
+                    $cells->setFontWeight('bold');
                     $cells->setAlignment('center');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
                 //Ajout libelle "Divers"
                 $sheet->cell('AI1', function($cell) {
                     $cell->setValue('Divers');
+                    $cell->setBackground('#1f4e78');
+                    $cell->setFontColor('#FFFFFF');
+                    $cell->setFontWeight('bold');
+                    $cell->setAlignment('center');
+                    $cell->setFontSize(11);
+                    $cell->setValignment('center');
                 });
 
 

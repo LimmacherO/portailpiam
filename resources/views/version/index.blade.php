@@ -11,7 +11,7 @@
 
     <!-- En-tête page Web -->
     <div id="header" class="section-header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Titre de la page Web -->
@@ -46,7 +46,7 @@
     <!-- Contenu de la page Web -->
     <div id="content">
         <!-- Afichage du contenu de la page -->
-        <div class="container section-content">
+        <div class="container-fluid section-content">
             <div class="row">
 
                 <div class="panel panel-default">
@@ -58,7 +58,7 @@
                             <div class="row section-default-page">
                                 <div class="col-lg-6">
                                     <div class="row">
-                                        <p>&nbsp</p>
+                                        <p>&nbsp;</p>
                                     </div>
                                 </div>
 
@@ -88,11 +88,11 @@
                                                     <th>Product Dimensions</th>
                                                     <th>@sortablelink('libelle','Libellé')</th>
                                                     <th>@sortablelink('referentqi.nom','Référent QI')</th>
-                                                    <th>@sortablelink('inc_nblivtma','# liv. TMA')</th>
+                                                    <th><div class="center">@sortablelink('inc_nblivtma','# liv. TMA')</div></th>
                                                     <th>Avanc. QI</th>
-                                                    <th>QoS</th>
-                                                    <th>Date MEP</th>
-                                                    <th>Etat</th>
+                                                    <th><div class="center">QoS</div></th>
+                                                    <th><div class="center">Date MEP</div></th>
+                                                    <th><div class="center">Etat</div></th>
                                                     <th>&nbsp;</th>
                                                 </tr>
                                             </thead>
@@ -146,10 +146,10 @@
                                                          </div></td>
 
                                                         <!-- Affichage de la date de mise en service -->
-                                                        <td>{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y')}}</td>
+                                                        <td><div class="center">{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y') }}</div></td>
 
                                                         <!-- Etat de la version -->
-                                                        <td><span class="label label-default">{!! $version->versionetat->libelle !!}</span></td>
+                                                        <td><div class="center"><span class="label label-default">{!! $version->versionetat->libelle !!}</span></div></td>
 
                                                         <td>{!! Html::decode(link_to_route('version.show', '<i class="fa fa-search-plus"></i>', [$version->id], ['class' => 'small button'])) !!}</td>
 
@@ -166,7 +166,6 @@
 
                                 </div>
                             </div>
-
 
                         </div>
                     </div>

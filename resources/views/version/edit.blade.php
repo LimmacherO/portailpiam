@@ -7,16 +7,16 @@
 @section('content')
 
     {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put']) !!}
-    
+
     <!-- En-tête page Web -->
     <div id="header" class="section-header">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Titre de la page Web -->
                     <h1>Modification de "{{ $version->libelle }}"</h1>
                 </div>
-                
+
                 <!-- Contrôles -->
                 <div class="col-lg-12">
 
@@ -38,7 +38,7 @@
     <!-- Contenu de la page Web -->
     <div id="content">
         <!-- Afichage du contenu de la page -->
-        <div class="container section-content">
+        <div class="container-fluid section-content">
 
             <div class="row">
 
@@ -62,9 +62,9 @@
                                     <!-- Choix de l'application associée -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Application :</p></div>
-                                        {!! Form::select('application_id', 
-                                        $applications, 
-                                        null, 
+                                        {!! Form::select('application_id',
+                                        $applications,
+                                        null,
                                         ['class' => 'form-control', 'id' => 'application_id']) !!}
                                     </div>
 
@@ -107,14 +107,14 @@
                                     <!-- Etat de la version -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Etat :</p></div>
-                                        {!! Form::select('versionetat_id', 
-                                        $versionetats, 
-                                        null, 
+                                        {!! Form::select('versionetat_id',
+                                        $versionetats,
+                                        null,
                                         ['class' => 'form-control', 'id' => 'versionetat_id']) !!}
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="row section-default-page">
 
                                     <!-- "Référence ALFA" du chantier -->
@@ -155,18 +155,18 @@
                                     <!-- QoS - Choix des enjeux métiers -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Enjeux métiers :</p></div>
-                                        {!! Form::select('enjeuxmetier', 
-                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'), 
-                                        null, 
+                                        {!! Form::select('enjeuxmetier',
+                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
+                                        null,
                                         ['class' => 'form-control', 'id' => 'enjeuxmetier']) !!}
                                     </div>
 
                                     <!-- QoS - Choix des enjeux SI -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Enjeux SI :</p></div>
-                                        {!! Form::select('enjeuxsi', 
-                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'), 
-                                        null, 
+                                        {!! Form::select('enjeuxsi',
+                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
+                                        null,
                                         ['class' => 'form-control', 'id' => 'enjeuxsi']) !!}
                                     </div>
 
@@ -224,12 +224,12 @@
 
                             <!-- Contenu de la page -->
                             <div class="container-fluid tab-content clearfix">
-                                
+
                                 <div class="row section-default-page">
 
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Périmètre DQI :</p></div>
-                                        {!! Form::select('perimetreqi', array('0' => 'Non', '1' => 'Oui'), null, 
+                                        {!! Form::select('perimetreqi', array('0' => 'Non', '1' => 'Oui'), null,
                                         ['class' => 'form-control', 'id' => 'perimetreqi']);
                                          !!}
                                     </div>
@@ -237,9 +237,9 @@
                                     <!-- Choix du référent qualification associé -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Référent qualification :</p></div>
-                                        {!! Form::select('referentqi_id', 
-                                        $referentqis, 
-                                        null, 
+                                        {!! Form::select('referentqi_id',
+                                        $referentqis,
+                                        null,
                                         ['class' => 'form-control', 'id' => 'referentqis']) !!}
                                     </div>
 
@@ -289,9 +289,9 @@
                                     <!-- Choix du référent production associé -->
                                     <div class="col-lg-3 form-group">
                                         <div class="label-title"><p>Référent production :</p></div>
-                                        {!! Form::select('referentprd_id', 
-                                        $referentprds, 
-                                        null, 
+                                        {!! Form::select('referentprd_id',
+                                        $referentprds,
+                                        null,
                                         ['class' => 'form-control', 'id' => 'referentprds']) !!}
                                     </div>
 
