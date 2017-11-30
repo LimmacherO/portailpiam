@@ -96,6 +96,19 @@ class VersionController extends Controller
         //Sauvegarde de la tâche
         $tachemep->save();
 
+        //Lors de la création d'une version, on ajoute la date de démarrage QI prévisionnelle
+        $tachemep = new Tache;
+        $tachemep->libelle = 'Date de démarrage QI prévisionnelle';
+        $tachemep->debut = \Carbon\Carbon::now();
+        $tachemep->fin = \Carbon\Carbon::now();
+        $tachemep->tachetype_id = 2;
+        $tachemep->version_id = $version->id;
+        $tachemep->deletable = false;
+        //Sauvegarde de la tâche
+        $tachemep->save();
+
+
+
         //Mise à jour du QoS
         $query_qos_enjeuxmetiers = Input::get ('enjeuxmetier');
         $query_qos_enjeuxsi = Input::get ('enjeuxsi');

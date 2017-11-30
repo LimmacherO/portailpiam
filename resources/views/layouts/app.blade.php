@@ -63,6 +63,9 @@
     <!-- Bootstrap JS -->
     <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
 
+    <!-- Vue.js -->
+    <script src="/js/vue.min.js"></script>
+
 </body>
 
 </html>

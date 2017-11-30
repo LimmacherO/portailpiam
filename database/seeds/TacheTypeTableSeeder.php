@@ -14,7 +14,7 @@ class TacheTypeTableSeeder extends Seeder
     {
 
       DB::table('tachetype')->delete();
-    	
+
     	TacheType::create(array(
           'libelle' => 'Livraison TMA',
     	));

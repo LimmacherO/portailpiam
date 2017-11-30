@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Support\Facades\Input;
 
+use App\Tache;
+
 /*
  * Classe "version": Modèle permettant la gestion des "versions"
  * @Author: Romain Jedynak
@@ -63,7 +65,7 @@ class Version extends Model
                   ->orwhereHas('referentqi', function ($query) use ($params) {
                                 $query->where('referentqi.prenom', 'like', '%'. trim($params['search'] . '%'));
                         })
-                  ->orwhere('inc_nblivtma', 'LIKE', '%'. trim($params['search'] . '%'))
+                  //->orwhere('inc_nblivtma', 'LIKE', '%'. trim($params['search'] . '%'))
                   //Ajout du tri
             	  ->sortable()
                 ->orderBy('application_id', 'asc')
@@ -141,6 +143,20 @@ class Version extends Model
     else{
       $returnvalue = 'Non';
     }
+
+    return $returnvalue;
+  }
+
+
+  public static function getDateDemTrvQIPrev(Version $version){
+    $returnvalue;
+
+    $tache = Tache::where('tachetype_id', '2')
+                   //->where('libelle', 'Date de démarrage QI prévisionnelle')
+                   ->where('version_id', $version->id)
+                   ->first();
+
+    $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
 
     return $returnvalue;
   }

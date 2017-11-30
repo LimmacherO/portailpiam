@@ -138,7 +138,7 @@ class ExportController extends Controller
                     $version->versionetat->libelle,
                     $version->avancementqi,
 
-                    'A implémenter',
+                    Version::getDateDemTrvQIPrev($version), //Date de démarrage prévisionnelle QI
                     'A implémenter',
                     'A implémenter',
 
