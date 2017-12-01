@@ -84,10 +84,20 @@
 
 						                            <td>{!! $tache->libelle !!}</td>
 
-						                            <td>{{ \Carbon\Carbon::parse($tache->debut)->format('d/m/Y')}}</td>
+						                            <td>
+                                            @if($tache->debut == '')
+                    												  Non renseignée
+                  											    @else
+                  												    {{ \Carbon\Carbon::parse($tache->debut)->format('d/m/Y') }}
+                  											    @endif
+                                        </td>
 
-						                            <td>{{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
-
+						                            <td>
+                                           @if($tache->fin == '')
+                                             Non renseignée
+                                           @else
+                                             {{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
+                                           @endif
 						                            <td>
 						                            	<a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 						                            </td>

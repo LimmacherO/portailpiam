@@ -16,8 +16,8 @@ class CreateTacheTable extends Migration
         Schema::create('tache', function(Blueprint $table) {
             $table->increments('id');
             $table->string('libelle');
-            $table->date('debut');
-            $table->date('fin');
+            $table->date('debut')->nullable();
+            $table->date('fin')->nullable();
 
             $table->integer('tachetype_id')->unsigned();
             $table->foreign('tachetype_id')

@@ -152,11 +152,38 @@ class Version extends Model
     $returnvalue;
 
     $tache = Tache::where('tachetype_id', '2')
-                   //->where('libelle', 'Date de démarrage QI prévisionnelle')
+                   ->where('libelle', 'Date de démarrage QI prévisionnelle')
+                   ->where('version_id', $version->id)
+                   ->first();
+                   
+    if ($tache->debut == '')
+    {
+      $returnvalue = 'Non renseignée';
+    }
+    else
+    {
+      $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+    }
+
+    return $returnvalue;
+  }
+
+  public static function getDateDemTrvQIReelle(Version $version){
+    $returnvalue;
+
+    $tache = Tache::where('tachetype_id', '2')
+                   ->where('libelle', 'Date de démarrage QI réelle')
                    ->where('version_id', $version->id)
                    ->first();
 
-    $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+   if ($tache->debut == '')
+   {
+     $returnvalue = 'Non renseignée';
+   }
+   else
+   {
+     $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+   }
 
     return $returnvalue;
   }

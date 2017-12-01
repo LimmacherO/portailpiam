@@ -88,8 +88,8 @@ class VersionController extends Controller
         //Lors de la création d'une version, on ajoute une date de MEP non supprimable avec date du jour par défaut
         $tachemep = new Tache;
         $tachemep->libelle = 'Mise en production';
-        $tachemep->debut = \Carbon\Carbon::now();
-        $tachemep->fin = \Carbon\Carbon::now();
+        //$tachemep->debut = \Carbon\Carbon::now();
+        //$tachemep->fin = \Carbon\Carbon::now();
         $tachemep->tachetype_id = 7;
         $tachemep->version_id = $version->id;
         $tachemep->deletable = false;
@@ -99,8 +99,19 @@ class VersionController extends Controller
         //Lors de la création d'une version, on ajoute la date de démarrage QI prévisionnelle
         $tachemep = new Tache;
         $tachemep->libelle = 'Date de démarrage QI prévisionnelle';
-        $tachemep->debut = \Carbon\Carbon::now();
-        $tachemep->fin = \Carbon\Carbon::now();
+        //$tachemep->debut = \Carbon\Carbon::now();
+        //$tachemep->fin = \Carbon\Carbon::now();
+        $tachemep->tachetype_id = 2;
+        $tachemep->version_id = $version->id;
+        $tachemep->deletable = false;
+        //Sauvegarde de la tâche
+        $tachemep->save();
+
+        //Lors de la création d'une version, on ajoute la date de démarrage QI réelle
+        $tachemep = new Tache;
+        $tachemep->libelle = 'Date de démarrage QI réelle';
+        //$tachemep->debut = \Carbon\Carbon::now();
+        //$tachemep->fin = \Carbon\Carbon::now();
         $tachemep->tachetype_id = 2;
         $tachemep->version_id = $version->id;
         $tachemep->deletable = false;

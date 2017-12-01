@@ -100,9 +100,6 @@ class ExportController extends Controller
                 'Vue DQI',
                 'Vue DPE',
 
-                'Entrée QI',
-                'Entrée DPE',
-
                 'Commentaire'
                 ];
 
@@ -132,13 +129,13 @@ class ExportController extends Controller
                     $version->qos,
 
                     $version->referentqi->nom . ' ' . $version->referentqi->prenom,
-                    'A implémenter',
-                    'A implémenter',
+                    Version::getDateDemTrvQIPrev($version), //Date de démarrage prévisionnelle QI
+                    Version::getDateDemTrvQIReelle($version), //Date de démarrage réelle QI
 
                     $version->versionetat->libelle,
                     $version->avancementqi,
 
-                    Version::getDateDemTrvQIPrev($version), //Date de démarrage prévisionnelle QI
+                    'A implémenter',
                     'A implémenter',
                     'A implémenter',
 
@@ -155,9 +152,6 @@ class ExportController extends Controller
 
                     $version->alerteqi,
                     $version->alerteprd,
-
-                    'A implémenter',
-                    'A implémenter',
 
                     $version->commentaire
                 );
@@ -353,23 +347,8 @@ class ExportController extends Controller
                     $cells->setBorder('solid', 'solid', 'solid', 'solid');
                 });
 
-                //Ajout libelle "Livrables"
-                $sheet->cell('AG1', function($cell) {
-                    $cell->setValue('Livrables');
-                });
-                $sheet->mergeCells('AG1:AH1');
-                $sheet->cells('AG1:AH1', function($cells) {
-                    $cells->setBackground('#1f4e78');
-                    $cells->setFontColor('#FFFFFF');
-                    $cells->setFontWeight('bold');
-                    $cells->setAlignment('center');
-                    $cells->setFontSize(11);
-                    $cells->setFontFamily('Calibri');
-                    $cells->setBorder('solid', 'solid', 'solid', 'solid');
-                });
-
                 //Ajout libelle "Divers"
-                $sheet->cell('AI1', function($cell) {
+                $sheet->cell('AG1', function($cell) {
                     $cell->setValue('Divers');
                     $cell->setBackground('#1f4e78');
                     $cell->setFontColor('#FFFFFF');

@@ -28,12 +28,6 @@ class ReferentqiTableSeeder extends Seeder
     	));
 
       Referentqi::create(array(
-          'id' => '1',
-          'nom' => 'Jedynak',
-          'prenom' => 'Romain',
-      ));
-
-      Referentqi::create(array(
           'id' => '3',
           'nom' => 'Herb',
           'prenom' => 'Jean',
