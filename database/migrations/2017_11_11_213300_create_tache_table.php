@@ -35,6 +35,9 @@ class CreateTacheTable extends Migration
 
             $table->boolean('deletable')->default(true);
 
+            //Si la tâche est un jalon alors true, sinon false
+            $table->boolean('jalon')->default(true);
+
         });
     }
 

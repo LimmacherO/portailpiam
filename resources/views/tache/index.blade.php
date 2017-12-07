@@ -68,7 +68,8 @@
 						            <table class="table">
 						                <thead>
 						                    <tr class="portail-table-header">
-						                        <th>Type</th>
+                                    <th>Type</th>
+						                        <th>Catégorie</th>
 						                        <th>Tâche</th>
 						                        <th>Début</th>
 						                        <th>Fin</th>
@@ -80,6 +81,10 @@
 						                    @foreach ($taches as $tache)
 						                        <tr>
 
+                                        <!-- Type de la tâche -->
+                                        <td>{!! App\Tache::jalonTostring($tache) !!}</td>
+
+                                        <!-- Catégorie de la tâche -->
 						                            <td>{!! $tache->tachetype->libelle !!}</td>
 
 						                            <td>{!! $tache->libelle !!}</td>
