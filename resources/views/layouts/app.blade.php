@@ -66,6 +66,8 @@
     <!-- Vue.js -->
     <script src="/js/vue.min.js"></script>
 
+    @yield('scripts')
+
 </body>
 
 </html>

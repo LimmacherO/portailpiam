@@ -79,7 +79,7 @@
                                 <div class="row section-default-page">
 
                                     <div class="portail-table">
-                                        <table class="table">
+                                        <table id="chantiers" class="table">
                                              <thead>
                                                 <tr class="portail-table-header">
                                                     <th>Domaine</th>
@@ -174,5 +174,24 @@
         </div>
 
     {!! Form::close() !!}
+
+@endsection
+
+@section('scripts')
+
+  <!-- Script permettant directement d'ouvrir la synthèse de la version lors d'un clic sur une ligne
+    du tableau contenant la liste des chantiers -->
+  <script>
+    $(document).ready(function() {
+
+      $('#chantiers tbody tr').click(function() {
+          var href = $(this).find("a").attr("href");
+          if(href) {
+              window.location = href;
+          }
+      });
+
+    });
+  </script>
 
 @endsection
