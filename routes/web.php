@@ -13,6 +13,7 @@ Route::get('home', function () { return view('home'); })->name('home');
 
 //Routes associées aux opérations sur les versions (CRUD)
 Route::get('version', 'VersionController@index')->name('version.index');
+Route::get('version/search', 'VersionController@search')->name('version.search');
 Route::get('version/{version}', 'VersionController@show')->name('version.show');
 Route::get('version/create/{version}', 'VersionController@create')->name('version.create');
 Route::post('version/store', 'VersionController@store')->name('version.store');

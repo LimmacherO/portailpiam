@@ -60,7 +60,7 @@
 
                             	<div class="row section-default-page">
 					            	<div class="col-lg-3 form-group {!! $errors->has('tachetype_id') ? 'has-error' : '' !!}">
-						                <div class="label-title"><p>Type :</p></div>
+						                <div class="label-title"><p>Catégorie :</p></div>
 						                {!! Form::select('tachetype_id',
 						                $tachetypes,
 						                null,

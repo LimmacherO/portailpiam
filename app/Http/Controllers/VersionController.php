@@ -37,6 +37,7 @@ class VersionController extends Controller
     public function __construct(VersionRepository $versionRepository)
     {
         $this->versionRepository = $versionRepository;
+        session(['recherche_pagination' => '10']);
     }
 
     /*
@@ -45,9 +46,16 @@ class VersionController extends Controller
     */
     public function index()
     {
-        //Récupération de l'input et filtrage de la recherche
-        $query_search = Input::get ('search');
-        $versions = Version::filter(Input::all(), $this->nbrPerPage)->paginate($this->nbrPerPage);
+        //Récupération de la dernière recherche effectuée
+        $query_search = session('recherche_chantier');
+        //$query_search = session('recherche_pagination');
+
+        //Récuparation de la valeur de pagination
+        $this->nbrPerPage = session('recherche_pagination');
+        $paginationselect = $this->nbrPerPage;
+
+        //Recherche/filtrage de la liste des versions
+        $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
 
         //Mise à jour de la date de MEP en fonction du planning
         //Rappel: la date de MEP dans la table version est "fictive"
@@ -58,7 +66,17 @@ class VersionController extends Controller
             $version->date_mep = $tache->debut;
         }
 
-        return view('version.index', compact('versions', 'query_search'));
+        return view('version.index', compact('versions', 'query_search', 'paginationselect'));
+    }
+
+    public function search(){
+        //Sauvegarde en session de la valeur de recherche
+        session(['recherche_chantier' => Input::get('search')]);
+
+        //Sauvegarde en session de la valeur de pagination
+        session(['recherche_pagination' => Input::get('paginationselect')]);
+
+        return redirect()->route('version.index',  compact('version'));
     }
 
     /*

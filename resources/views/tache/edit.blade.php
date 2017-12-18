@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Titre de la page Web -->
-                    <h1>Modification de la tâche "{{ $tache->label }}"</h1>
+                    <h1>Modification de la tâche "{{ $tache->libelle }}"</h1>
                 </div>
 
                 <!-- Contrôles -->

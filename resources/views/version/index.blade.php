@@ -7,7 +7,7 @@
 
 @section('content')
 
-    {!! Form::open(['url' => 'version', 'method' => 'get']) !!}
+    {!! Form::open(['url' => 'version/search', 'method' => 'get', 'id' => 'search']) !!}
 
     <!-- En-tête page Web -->
     <div id="header" class="section-header">
@@ -56,18 +56,25 @@
 
                         <div class="col-lg-12">
                             <div class="row section-default-page">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <p>&nbsp;</p>
+                                <div class="col-lg-4 col-lg-offset-3">
+                                    <div class="row pull-right">
+                                        <div class="form-group">
+                                          <div class="label-title"><p>Pagination :</p></div>
+                                          {!! Form::select('paginationselect',
+                                            array('5' => '5', '10' => '10', '20' => '20'),
+                                            $paginationselect,
+                                            ['class' => 'form-control', 'id' => 'paginationselect'])
+                                          !!}
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <div class="row">
+                                <div class="col-lg-4 col-lg-offset-1">
+                                    <div class="row pull-right">
                                         <div class="input-group">
                                             {!! Form::text('search', $query_search, ['class' => 'form-control']) !!}
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default btn-cancel" type="rechercher"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Rechercher</button>
+                                                <button class="btn btn-default btn-cancel" type="rechercher" id="search"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Rechercher</button>
                                             </span>
                                         </div>
                                     </div>
@@ -191,7 +198,13 @@
           }
       });
 
+      $('#paginationselect').on('change', function () {
+        $("#search").submit();
+      });
+
     });
+
+
   </script>
 
 @endsection

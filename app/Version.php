@@ -41,49 +41,35 @@ class Version extends Model
     public $sortable = ['version', 'libelle', 'inc_nblivtma'];
 
     /*
-     * Fonction scopeFilter($query, $params)
+     * Fonction scopeFilter($query, $query_search)
      * @Return $query - Liste des versions filtrées
-     * Permet de réaliser un filtre sur les versions
+     * Permet de réaliser un filtre sur les versions lors de la recherche en page d'index
      */
-	public function scopeFilter($query, $params, $nbrPerPage)
-    {
-    	//Contrôle sur les paramètres contiennent bien une variable "search" non vide
-        if ( isset($params['search']) && trim($params['search']) !== '' )
-        {
-        	//Filtrage sur différents champs
-            $query->where('versions.libelle', 'LIKE', '%'. trim($params['search'] . '%'))
-            	  ->orwhere('version', 'LIKE', '%'. trim($params['search'] . '%'))
-            	  ->orwhereHas('application', function ($query) use ($params) {
-					    	$query->where('application.libelle', 'like', '%'. trim($params['search'] . '%'))
-					    		  ->orwhereHas('domaine', function ($query) use ($params) {
-					    		$query->where('domaine.libelle', 'like', '%'. trim($params['search'] . '%'));
-					    		});
-					    })
-                  ->orwhereHas('referentqi', function ($query) use ($params) {
-                                $query->where('referentqi.nom', 'like', '%'. trim($params['search'] . '%'));
-                        })
-                  ->orwhereHas('referentqi', function ($query) use ($params) {
-                                $query->where('referentqi.prenom', 'like', '%'. trim($params['search'] . '%'));
-                        })
-                  //->orwhere('inc_nblivtma', 'LIKE', '%'. trim($params['search'] . '%'))
-                  //Ajout du tri
-            	  ->sortable()
-                ->orderBy('application_id', 'asc')
-                  //Filtre du nombre de données en sortie
-            	  ->paginate($nbrPerPage);
-        }
-        else {
-          //Si c'est vide, la fonction renvoi toute la lioste des versions
+	public function scopeFilter($query, $query_search)
+  {
+      return $query->where('versions.libelle', 'LIKE', $query_search)
+                   ->orwhere('version', 'like', $query_search)
 
-          //Ajout du tri
-        	$query->sortable()
-                ->orderBy('application_id', 'asc')
-                 //Filtre du nombre de données en sortie
-            	  ->paginate($nbrPerPage);
-        }
+                   ->orwhereHas('application', function ($query) use ($query_search) {
+                     $query->where('application.libelle', 'like', $query_search)
+                   		     ->orwhereHas('domaine', function ($query) use ($query_search) {
+                   					  $query->where('domaine.libelle', 'like', $query_search);
+                   					});
+                   })
 
-        return $query;
-    }
+                   //Filtrage par nom de famille du référent QI
+                   ->orwhereHas('referentqi', function ($query) use ($query_search) {
+                     $query->where('referentqi.nom', 'like', $query_search);
+                   })
+
+                   //Filtrage par prénom du référent QI
+                   ->orwhereHas('referentqi', function ($query) use ($query_search) {
+                     $query->where('referentqi.prenom', 'like', $query_search);
+                   })
+
+                   ->sortable()
+                   ->orderBy('application_id', 'asc');
+  }
 
   public static function calculQos($enjeuxmetier, $enjeuxsi)
   {
@@ -155,7 +141,7 @@ class Version extends Model
                    ->where('libelle', 'Date de démarrage QI prévisionnelle')
                    ->where('version_id', $version->id)
                    ->first();
-                   
+
     if ($tache->debut == '')
     {
       $returnvalue = 'Non renseignée';
