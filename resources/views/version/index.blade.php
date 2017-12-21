@@ -55,30 +55,23 @@
                     <div class="panel-body">
 
                         <div class="col-lg-12">
-                            <div class="row section-default-page">
-                                <div class="col-lg-4 col-lg-offset-3">
-                                    <div class="row pull-right">
-                                        <div class="form-group">
-                                          <div class="label-title"><p>Pagination :</p></div>
-                                          {!! Form::select('paginationselect',
-                                            array('5' => '5', '10' => '10', '20' => '20'),
-                                            $paginationselect,
-                                            ['class' => 'form-control', 'id' => 'paginationselect'])
-                                          !!}
-                                        </div>
-                                    </div>
+                            <div class="row section-default-page pull-right">
+
+                                <div class="col-lg-1 col-lg-offset-6 form-group">
+                                        {!! Form::select('paginationselect',
+                                          array('5' => '5', '10' => '10', '20' => '20'),
+                                          $paginationselect,
+                                          ['class' => 'form-control', 'id' => 'paginationselect'])
+                                        !!}
                                 </div>
 
-                                <div class="col-lg-4 col-lg-offset-1">
-                                    <div class="row pull-right">
-                                        <div class="input-group">
-                                            {!! Form::text('search', $query_search, ['class' => 'form-control']) !!}
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default btn-cancel" type="rechercher" id="search"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Rechercher</button>
-                                            </span>
-                                        </div>
-                                    </div>
+                                <div class="col-lg-5  input-group">
+                                      {!! Form::text('search', $query_search, ['class' => 'form-control']) !!}
+                                      <span class="input-group-btn">
+                                          <button class="btn btn-default btn-cancel" type="rechercher" id="search"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Rechercher</button>
+                                      </span>
                                 </div>
+
                             </div>
                         </div>
 

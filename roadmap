@@ -1,20 +1,10 @@
 Roadmap V1
 ----------
-
-- Diminuer la taille d'affichage --> voir sur grand écran...
-- Idée: afficher les indicateurs (avancement, état en haut de la page)
-
-- Intégration des autres champs de la Roadmap. Champs manquants:
-	--> périmètre DQI --> boolean
-	--> date prévisionnelle et réelle de démarrage QI --> voir avec Frédéric si information présente dans le planning suffisant --> calculée date de première action QI?
-	--> Statut activité QI (voir si général plutôt)
-	--> ajouter statut des jalons/tâche via avancement (%)
-
 - Export des données via Excel --> ajout des champs manquants et mise en forme
 
-- Reprise des données --> manuelle ou automatisée ?
-
 - Jalon vs tâche --> utiliser vueJS pour cacher le champs si besoin
+
+- Reprise des données --> manuelle ou automatisée ? --> voir pour automatisation
 
 RoadMap V2
 ----------
@@ -25,6 +15,8 @@ RoadMap V2
 	-- Numero --> à terme avec un lien vers AGIS
 	-- Objet
 	-- Description
+
+- Idée: afficher les indicateurs (avancement, état en haut de la page)
 
 
 - Indicateurs en première page

@@ -119,6 +119,8 @@ class ExportController extends Controller
                     $version->version,
                     $version->version_dimensions,
                     $version->product_dimensions,
+
+                    //Nombre de livraisons TMA
                     $version->inc_nblivtma,
 
                     $version->referencealfa,
@@ -159,7 +161,9 @@ class ExportController extends Controller
 
     		//Construction de la feuille "Export portail PIAM" avec la liste des versions
         	$excel->sheet('Export portail PIAM', function($sheet) use ($versionsArray) {
-            	$sheet->fromArray($versionsArray, null, 'A1', false, false);
+
+            	$sheet->fromArray($versionsArray, null, 'A1', true, false);
+              // *Note: la 4eme argument à true permet d'afficher les valeurs '0' au lieu d'une cellule vide
 
                 //Mise en forme de l'entête des colonnes --> deuxième ligne
                 $sheet->row(2, function($row) {

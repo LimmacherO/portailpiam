@@ -27,7 +27,7 @@ class CreateVersionsTable extends Migration
             $table->string('libelle');
 
             $table->string('product_dimensions')->nullable();
-            
+
             $table->integer('application_id')->unsigned();
             $table->foreign('application_id')
                   ->references('id')
@@ -80,7 +80,7 @@ class CreateVersionsTable extends Migration
             $table->longText('alerteprd')->nullable();
 
             $table->text('prp_estimationcharge')->nullable(); //estimation charge pré-production
-            $table->text('prd_estimationcharge')->nullable(); //estimation charge 
+            $table->text('prd_estimationcharge')->nullable(); //estimation charge
 
             $table->integer('prd_nbreports')->default(0)->nullable();
 

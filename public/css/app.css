@@ -116,6 +116,9 @@ p {
     display: block;
 }
 
+.label-title-right{
+  text-align: right;
+}
 
 .label-content {
     color: rgb(102,102,102);

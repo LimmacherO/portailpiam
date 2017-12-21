@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Support\Facades\Input;
 
+//Import de la classe tâche
 use App\Tache;
 
 /*
@@ -71,25 +72,26 @@ class Version extends Model
                    ->orderBy('application_id', 'asc');
   }
 
+  /*
+   * Fonction calculQos($enjeuxmetier, $enjeuxsi)
+   * @Return QoS
+   * Permet de calculer la valeur QoS d'une version
+   */
   public static function calculQos($enjeuxmetier, $enjeuxsi)
   {
 
     $qos = 0;
 
-    if ($enjeuxmetier == 3 && $enjeuxsi == 3)
-    {
+    if ($enjeuxmetier == 3 && $enjeuxsi == 3){
       $qos = 9;
     }
-    elseif ($enjeuxmetier == 3 && $enjeuxsi < 3)
-    {
+    elseif ($enjeuxmetier == 3 && $enjeuxsi < 3){
       $qos = 5;
     }
-    elseif ($enjeuxmetier < 3 && $enjeuxsi == 3)
-    {
+    elseif ($enjeuxmetier < 3 && $enjeuxsi == 3){
       $qos = 5;
     }
-    else
-    {
+    else{
       $qos = 1;
     }
 
