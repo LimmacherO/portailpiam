@@ -156,7 +156,21 @@
                                                         <td><div class="center">{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y') }}</div></td>
 
                                                         <!-- Etat de la version -->
-                                                        <td><div class="center"><span class="label label-default">{!! $version->versionetat->libelle !!}</span></div></td>
+                                                        <td>
+                                                          <div class="center">
+                                                            @if( $version->versionetat->libelle == "Prévue" )
+                                                              <span class="label label-default label-prevue">{!! $version->versionetat->libelle !!}</span>
+                                                            @elseif( $version->versionetat->libelle == "En cours" )
+                                                              <span class="label label-default label-encours">{!! $version->versionetat->libelle !!}</span>
+                                                            @elseif( $version->versionetat->libelle == "QI terminée" )
+                                                                <span class="label label-default label-qiterminee">{!! $version->versionetat->libelle !!}</span>
+                                                            @elseif( $version->versionetat->libelle == "Clos" )
+                                                                <span class="label label-default label-clos">{!! $version->versionetat->libelle !!}</span>
+                                                            @else
+                                                              <span class="label label-default">{!! $version->versionetat->libelle !!}</span>
+                                                            @endif
+                                                          </div>
+                                                        </td>
 
                                                         <td>{!! Html::decode(link_to_route('version.show', '<i class="fa fa-search-plus"></i>', [$version->id], ['class' => 'small button'])) !!}</td>
 

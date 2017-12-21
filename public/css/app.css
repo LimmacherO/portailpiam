@@ -279,3 +279,20 @@ input[type=text], textarea {
     font-weight: bold;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+
+.label-prevue {
+  color: #FFF;
+}
+
+.label-encours {
+  color: #FFF;
+}
+
+.label-qiterminee {
+  color: #FFF;
+}
+
+.label-clos {
+  color: #FFF;
+}

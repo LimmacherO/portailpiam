@@ -16,8 +16,6 @@ use App\VersionEtat;
 
 use Illuminate\Support\Facades\Input;
 
-//use Yajra\Datatables\Datatables;
-
 /*
  * Classe VersionController
  *  Contient les méthodes/fonctions utilisés pour gérer les versions
@@ -48,10 +46,10 @@ class VersionController extends Controller
     {
         //Récupération de la dernière recherche effectuée
         $query_search = session('recherche_chantier');
-        //$query_search = session('recherche_pagination');
 
         //Récuparation de la valeur de pagination
         $this->nbrPerPage = session('recherche_pagination');
+        //Affectationn pour la liste déroulante sur la vue
         $paginationselect = $this->nbrPerPage;
 
         //Recherche/filtrage de la liste des versions
@@ -66,9 +64,14 @@ class VersionController extends Controller
             $version->date_mep = $tache->debut;
         }
 
+        //Renvoi vers la vue index des chantiers
         return view('version.index', compact('versions', 'query_search', 'paginationselect'));
     }
 
+    /*
+    * Fonction search()
+    * Permet de mettre à jour les valeurs de recherche et de pagination en session
+    */
     public function search(){
         //Sauvegarde en session de la valeur de recherche
         session(['recherche_chantier' => Input::get('search')]);
@@ -76,6 +79,7 @@ class VersionController extends Controller
         //Sauvegarde en session de la valeur de pagination
         session(['recherche_pagination' => Input::get('paginationselect')]);
 
+        //redirection vers la route index() des chantiers
         return redirect()->route('version.index',  compact('version'));
     }
 
