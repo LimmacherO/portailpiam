@@ -27,20 +27,21 @@
                 <!-- Contrôles -->
                 <div class="col-lg-12">
 
-				    <div class="pull-left">
-				    	<ul class="nav nav-tabs list-inline">
-			  				<li role="presentation">
-			  					  <a href="{!! url('version',$version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
-			  				</li>
-			  				<li role="presentation" class="active">
-			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
-			  				</li>
-						</ul>
-				    </div>
+      				    <div class="pull-left">
+      				    	<ul class="nav nav-tabs list-inline">
+      			  				<li role="presentation">
+      			  					  <a href="{!! url('version',$version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+      			  				</li>
+      			  				<li role="presentation" class="active">
+      			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
+      			  				</li>
+      						</ul>
+      				    </div>
 
-					<div class="pull-right">
-				    	<a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a>
-					</div>
+        					<div class="pull-right">
+                      <a href="{!! url('tache/createtache', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tâche</a>
+                      <a href="{!! url('tache/createjalon', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
+        					</div>
 
                 </div>
 
@@ -98,7 +99,9 @@
                                         </td>
 
 						                            <td>
-                                           @if($tache->fin == '')
+                                           @if($tache->jalon == '1')
+                                             &nbsp;
+                                           @elseif($tache->fin == '')
                                              Non renseignée
                                            @else
                                              {{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
@@ -109,10 +112,10 @@
 
 						                            <td>
 						                            	@if( $tache->deletable === true )
-															<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true" onclick="return confirm('Confirmez-vous la suppression de jalon/tâche ?')"></i></a>
-														@else
-															<p>&nbsp;</p>
-														@endif
+              															<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true" onclick="return confirm('Confirmez-vous la suppression de jalon/tâche ?')"></i></a>
+              														@else
+              															<p>&nbsp;</p>
+              														@endif
 
 						                            </td>
 

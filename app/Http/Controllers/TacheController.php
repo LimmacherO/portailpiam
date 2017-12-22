@@ -34,13 +34,24 @@ class TacheController extends Controller
     	return view('tache.index', compact('version', 'taches'));
     }
 
-    public function create(Version $version)
+		/*
+		 * Fonction createTache(version)
+		 * Permet de préparer la vue de création d'une nouvelle tâche pour une version
+		 */
+    public function createTache(Version $version)
     {
-
         $tachetypes = TacheType::pluck('libelle', 'id');
+        return view('tache.createtache', compact('version', 'tachetypes'));
+    }
 
-        return view('tache.create', compact('version', 'tachetypes'));
-
+		/*
+		 * Fonction createJalon(version)
+		 * Permet de préparer la vue de création d'un nouveau jalon pour une version
+		 */
+		public function createJalon(Version $version)
+    {
+        $tachetypes = TacheType::pluck('libelle', 'id');
+        return view('tache.createjalon', compact('version', 'tachetypes'));
     }
 
     public function store(TacheCreateRequest $request)

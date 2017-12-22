@@ -4,7 +4,14 @@ Roadmap V1
 
 - Jalon vs tâche --> utiliser vueJS pour cacher le champs si besoin
 
+- Tri d'affichage des jalons: mettre les jalons non renseignés à la fin
+
 - Reprise des données --> manuelle ou automatisée ? --> voir pour automatisation
+
+- Renseigner le fichier readme.me pour affichage sous GitHub correct (actuellement par défaut Laravel)
+
+- Commentaire et analyse du code HTML notamment
+
 
 RoadMap V2
 ----------
@@ -17,7 +24,6 @@ RoadMap V2
 	-- Description
 
 - Idée: afficher les indicateurs (avancement, état en haut de la page)
-
 
 - Indicateurs en première page
 	Exemple: Nombre de versions référencées et ouvertes, Nombre de version ouvertes par domaine
