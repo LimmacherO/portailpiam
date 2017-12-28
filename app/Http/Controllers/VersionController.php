@@ -108,38 +108,49 @@ class VersionController extends Controller
         $version = $this->versionRepository->store($request->all());
 
         //Lors de la création d'une version, on ajoute une date de MEP non supprimable avec date du jour par défaut
-        $tachemep = new Tache;
-        $tachemep->libelle = 'Mise en production';
-        //$tachemep->debut = \Carbon\Carbon::now();
-        //$tachemep->fin = \Carbon\Carbon::now();
-        $tachemep->tachetype_id = 7;
-        $tachemep->version_id = $version->id;
-        $tachemep->deletable = false;
+        $tache = new Tache;
+        $tache->libelle = 'Mise en production';
+        $tache->tachetype_id = 7;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
         //Sauvegarde de la tâche
-        $tachemep->save();
+        $tache->save();
 
         //Lors de la création d'une version, on ajoute la date de démarrage QI prévisionnelle
-        $tachemep = new Tache;
-        $tachemep->libelle = 'Date de démarrage QI prévisionnelle';
-        //$tachemep->debut = \Carbon\Carbon::now();
-        //$tachemep->fin = \Carbon\Carbon::now();
-        $tachemep->tachetype_id = 2;
-        $tachemep->version_id = $version->id;
-        $tachemep->deletable = false;
+        $tache = new Tache;
+        $tache->libelle = 'Date de démarrage QI prévisionnelle';
+        $tache->tachetype_id = 2;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
         //Sauvegarde de la tâche
-        $tachemep->save();
+        $tache->save();
 
         //Lors de la création d'une version, on ajoute la date de démarrage QI réelle
-        $tachemep = new Tache;
-        $tachemep->libelle = 'Date de démarrage QI réelle';
-        //$tachemep->debut = \Carbon\Carbon::now();
-        //$tachemep->fin = \Carbon\Carbon::now();
-        $tachemep->tachetype_id = 2;
-        $tachemep->version_id = $version->id;
-        $tachemep->deletable = false;
+        $tache = new Tache;
+        $tache->libelle = 'Date de démarrage QI réelle';
+        $tache->tachetype_id = 2;
+        $tachep->version_id = $version->id;
+        $tache->deletable = false;
         //Sauvegarde de la tâche
-        $tachemep->save();
+        $tache->save();
 
+        //Lors de la création d'une version, on ajoute la date d'acheminement PROD prévisionnelle
+        $tache = new Tache;
+        $tache->libelle = 'Date acheminement PROD prévisionnelle';
+        $tache->tachetype_id = 5;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
+        //Sauvegarde de la tâche
+        $tache->save();
+
+        //Lors de la création d'une version, on ajoute la date d'acheminement PROD réelle
+        $tache = new Tache;
+        $tache->libelle = 'Date acheminement PROD réelle';
+        $tache->tachetype_id = 5;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
+        //Sauvegarde de la tâche
+        $tache->save();
 
 
         //Mise à jour du QoS

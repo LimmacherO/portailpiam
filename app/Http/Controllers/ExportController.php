@@ -132,7 +132,7 @@ class ExportController extends Controller
 
                     $version->referentqi->nom . ' ' . $version->referentqi->prenom,
                     Version::getDateDemTrvQIPrev($version), //Date de démarrage prévisionnelle QI
-                    Version::getDateDemTrvQIReelle($version), //Date de démarrage réelle QI
+                    Version::getDateByString($version, '2', 'Date de démarrage QI réelle'), //Date de démarrage réelle QI
 
                     $version->versionetat->libelle,
                     $version->avancementqi,
