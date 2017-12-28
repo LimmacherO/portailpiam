@@ -28,11 +28,13 @@ Route::get('export/excel', 'ExportController@exporttoexcel')->name('export.excel
 
 //Routes associées aux opérations sur les tâches/jalons (CRUD)
 Route::get('taches/{version}', 'TacheController@index')->name('tache.index');
-Route::get('tache/createtache/{version}', 'TacheController@createTache')->name('tache.createtache'); //Vue de création d'une nouvelle tâche
-Route::get('tache/createjalon/{version}', 'TacheController@createJalon')->name('tache.createjalon'); //Vue de création d'un nouveau jalon
 
+Route::get('tache/create/{version}', 'TacheController@createTache')->name('tache.create'); //Vue de création d'une nouvelle tâche
+Route::get('jalon/create/{version}', 'TacheController@createJalon')->name('jalon.create'); //Vue de création d'un nouveau jalon
+
+Route::get('tache/edit/{tache}', 'TacheController@editTache')->name('tache.edit');
+Route::get('jalon/edit/{tache}', 'TacheController@editJalon')->name('jalon.edit');
 
 Route::post('tache/store', 'TacheController@store')->name('tache.store');
-Route::get('tache/edit/{tache}', 'TacheController@edit')->name('tache.edit');
 Route::put('tache/update/{tache}', 'TacheController@update')->name('tache.update');
 Route::get('tache/delete/{tache}', 'TacheController@delete')->name('tache.delete');

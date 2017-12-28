@@ -39,8 +39,8 @@
       				    </div>
 
         					<div class="pull-right">
-                      <a href="{!! url('tache/createtache', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tâche</a>
-                      <a href="{!! url('tache/createjalon', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
+                      <a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tâche</a>
+                      <a href="{!! url('jalon/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
         					</div>
 
                 </div>
@@ -69,7 +69,7 @@
 						            <table class="table">
 						                <thead>
 						                    <tr class="portail-table-header">
-                                    <th>Type</th>
+                                    <th>&nbsp;</th>
 						                        <th>Catégorie</th>
 						                        <th>Tâche</th>
 						                        <th>Début</th>
@@ -83,7 +83,13 @@
 						                        <tr>
 
                                         <!-- Type de la tâche -->
-                                        <td>{!! App\Tache::jalonTostring($tache) !!}</td>
+                                        <td>
+                                          @if($tache->jalon == '1')
+                                            <i class="fa fa-map-marker align-center" aria-hidden="true">
+                                          @else
+                                            <i class="fa fa-tasks align-center" aria-hidden="true">
+                                          @endif
+                                        </td>
 
                                         <!-- Catégorie de la tâche -->
 						                            <td>{!! $tache->tachetype->libelle !!}</td>
@@ -107,7 +113,12 @@
                                              {{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
                                            @endif
 						                            <td>
-						                            	<a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                          @if($tache->jalon == '1')
+                                            <a href="{!! url('jalon/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                          @else
+                                            <a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                          @endif
+
 						                            </td>
 
 						                            <td>

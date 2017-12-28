@@ -299,3 +299,7 @@ input[type=text], textarea {
 .label-clos {
   color: #FFF;
 }
+
+td i .align-center{
+  text-align: center;
+}

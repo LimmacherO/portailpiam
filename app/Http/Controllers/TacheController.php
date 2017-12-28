@@ -54,6 +54,18 @@ class TacheController extends Controller
         return view('tache.createjalon', compact('version', 'tachetypes'));
     }
 
+		public function editTache(Tache $tache)
+    {
+        $tachetypes = TacheType::pluck('libelle', 'id');
+        return view('tache.edittache', compact('tache', 'tachetypes'));
+    }
+
+		public function editJalon(Tache $tache)
+		{
+				$tachetypes = TacheType::pluck('libelle', 'id');
+				return view('tache.editjalon', compact('tache', 'tachetypes'));
+		}
+
     public function store(TacheCreateRequest $request)
     {
         $tache = $this->tacheRepository->store($request->all());
@@ -63,12 +75,7 @@ class TacheController extends Controller
         return redirect()->route('tache.index', compact('version'))->withOk("La tâche a été créé avec succès");
     }
 
-    public function edit(Tache $tache)
-    {
-        $tachetypes = TacheType::pluck('libelle', 'id');
 
-        return view('tache.edit', compact('tache', 'tachetypes'));
-    }
 
     public function update(TacheUpdateRequest $request, Tache $tache){
 
