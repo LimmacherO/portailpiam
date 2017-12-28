@@ -2,10 +2,6 @@ Roadmap V1
 ----------
 - Export des données via Excel --> ajout des champs manquants et mise en forme
 
-- Jalon vs tâche --> utiliser vueJS pour cacher le champs si besoin
-
-- Tri d'affichage des jalons: mettre les jalons non renseignés à la fin
-
 - Reprise des données --> manuelle ou automatisée ? --> voir pour automatisation
 
 - Commentaire et analyse du code HTML notamment

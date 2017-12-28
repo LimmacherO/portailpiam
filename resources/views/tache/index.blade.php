@@ -40,7 +40,7 @@
 
         					<div class="pull-right">
                       <a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tâche</a>
-                      <a href="{!! url('jalon/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
+                      <a href="{!! url('jalon/create', $version->id); !!}" type="button" class="btn btn-default btn-primary btn-margin-right pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
         					</div>
 
                 </div>

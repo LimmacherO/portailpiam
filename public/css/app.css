@@ -247,6 +247,10 @@ input[type=text], textarea {
     color: #FFF;
 }
 
+.btn-margin-right{
+  margin-right: 10px;
+}
+
 
 /*
  * Mise en forme des panneaux d'info "alert" Bootstrap

@@ -99,13 +99,13 @@
 
 					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de début :</p></div>
-					                	{!! Form::date('debut', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'debut'] ); !!}
+					                	{!! Form::date('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
 					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
 					            	</div>
 
 					            	<div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de fin :</p></div>
-					                	{!! Form::date('fin', \Carbon\Carbon::now(),  ['class' => 'form-control', 'id' => 'fin'] ); !!}
+					                	{!! Form::date('fin', null,  ['class' => 'form-control', 'id' => 'fin'] ); !!}
 					                	{!! $errors->first('fin', '<small class="help-block">:message</small>') !!}
 					            	</div>
 

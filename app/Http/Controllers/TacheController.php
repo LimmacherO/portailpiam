@@ -25,8 +25,8 @@ class TacheController extends Controller
       $select = 'id as id, libelle as libelle, debut as debut, fin as fin, tachetype_id as tachetype_id, version_id as version_id, deletable as deletable, jalon as jalon';
 
     	$taches = \App\Tache::select(\Illuminate\Support\Facades\DB::raw($select))
-                ->orderBy('debut', 'asc')
-                ->orderBy('fin', 'asc')
+								->orderBy(\Illuminate\Support\Facades\DB::raw('ISNULL(debut), debut'), 'ASC') // valeurs nulles à la fin
+								->orderBy(\Illuminate\Support\Facades\DB::raw('ISNULL(fin), fin'), 'ASC') // valeurs nulles à la fin
                 ->orderBy('tachetype_id', 'asc')
                 ->where('version_id', $version->id)
                 ->get();
