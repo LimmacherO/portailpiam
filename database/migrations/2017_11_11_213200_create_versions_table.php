@@ -74,9 +74,6 @@ class CreateVersionsTable extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
 
-            // Date de mise en production
-            $table->date('date_mep')->nullable();
-
             $table->longText('alerteprd')->nullable();
 
             $table->text('prp_estimationcharge')->nullable(); //estimation charge pré-production

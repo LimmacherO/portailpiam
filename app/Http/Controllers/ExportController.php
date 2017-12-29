@@ -131,22 +131,22 @@ class ExportController extends Controller
                     $version->qos,
 
                     $version->referentqi->nom . ' ' . $version->referentqi->prenom,
-                    Version::getDateDemTrvQIPrev($version), //Date de démarrage prévisionnelle QI
-                    Version::getDateByString($version, '2', 'Date de démarrage QI réelle'), //Date de démarrage réelle QI
+                    Version::getDateJalonByString($version, '2', 'Date de démarrage QI prévisionnelle'), //Date de démarrage prévisionnelle QI
+                    Version::getDateJalonByString($version, '2', 'Date de démarrage QI réelle'), //Date de démarrage réelle QI
 
                     $version->versionetat->libelle,
                     $version->avancementqi,
 
+                    Version::getDateJalonByString($version, '5', 'Date acheminement PROD prévisionnelle'), //Date d'acheminement PRD prévisionnelle
                     'A implémenter',
-                    'A implémenter',
-                    'A implémenter',
+                    Version::getDateJalonByString($version, '5', 'Date acheminement PROD réelle'), //Date d'acheminement PRD réelle
 
-                    'A implémenter',
-                    'A implémenter',
+                    Version::getDateTacheByString($version, '6', 'Pré-production', 'debut'), //Date de démarrage de la pré-production
+                    Version::getDateTacheByString($version, '6', 'Pré-production', 'fin'), //Date de fin de la pré-production
                     $version->prp_estimationcharge,
 
-                    'A implémenter',
-                    'A implémenter',
+                    Version::getDateJalonByString($version, '7', 'Date prévisionnelle de MES'), //Date prévisionnelle de MES
+                    Version::getDateJalonByString($version, '7', 'Date réelle de MES'), //Date réelle de MES
                     $version->prd_estimationcharge,
                     $version->prd_nbreports,
 

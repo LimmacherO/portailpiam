@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Support\Facades\Input;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 //Import de la classe tâche
 use App\Tache;
 
@@ -32,7 +34,7 @@ class Version extends Model
         'referencealfa', 'referencealfa_date',
         'inc_nblivtma',
         'qos', 'enjeuxmetier', 'enjeuxsi',
-        'referentprd_id', 'date_mep', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports',
+        'referentprd_id', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports',
         'commentaire',
         'versionetat_id',
     ];
@@ -135,43 +137,60 @@ class Version extends Model
     return $returnvalue;
   }
 
-
-  public static function getDateDemTrvQIPrev(Version $version){
+  public static function getDateJalonByString(Version $version, $tachetype_id, $libelle){
     $returnvalue;
 
-    $tache = Tache::where('tachetype_id', '2')
-                   ->where('libelle', 'Date de démarrage QI prévisionnelle')
+    try {
+      $tache = Tache::where('tachetype_id', $tachetype_id)
+                   ->where('libelle', $libelle)
                    ->where('version_id', $version->id)
-                   ->first();
+                   ->firstOrFail();
 
-    if ($tache->debut == '')
+      if ($tache->debut == '') {
+        $returnvalue = 'Non renseignée';
+      }
+      else {
+        $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+      }
+    }
+    catch (ModelNotFoundException $ex) // Exception levée si aucun résultat n'est trouvé "ModelNotFoundException"
     {
       $returnvalue = 'Non renseignée';
-    }
-    else
-    {
-      $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
     }
 
     return $returnvalue;
   }
 
-
-
-  public static function getDateByString(Version $version, $tachetype_id, $libelle){
+  public static function getDateTacheByString(Version $version, $tachetype_id, $libelle, $type){
     $returnvalue;
 
-    $tache = Tache::where('tachetype_id', $tachetype_id)
+    try {
+      $tache = Tache::where('tachetype_id', $tachetype_id)
                    ->where('libelle', $libelle)
                    ->where('version_id', $version->id)
-                   ->first();
+                   ->firstOrFail();
+      if($type == "debut" ){
+        if ($tache->debut == '') {
+          $returnvalue = 'Non renseignée';
+        }
+        else {
+          $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+        }
+      }
+      else {
+        if ($tache->fin == '') {
+          $returnvalue = 'Non renseignée';
+        }
+        else {
+          $returnvalue = \Carbon\Carbon::parse($tache->fin)->format('d/m/Y');
+        }
+      }
 
-       if ($tache->debut == '') {
-         $returnvalue = 'Non renseignée';
-       }
-       else {
-         $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
-       }
+    }
+    catch (ModelNotFoundException $ex) // Exception levée si aucun résultat n'est trouvé "ModelNotFoundException"
+    {
+      $returnvalue = 'Non renseignée';
+    }
 
     return $returnvalue;
   }

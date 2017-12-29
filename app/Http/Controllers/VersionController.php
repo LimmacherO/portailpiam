@@ -55,15 +55,6 @@ class VersionController extends Controller
         //Recherche/filtrage de la liste des versions
         $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
 
-        //Mise à jour de la date de MEP en fonction du planning
-        //Rappel: la date de MEP dans la table version est "fictive"
-        foreach ($versions as $version){
-            $tache = Tache::where('tachetype_id', '7')
-                           ->where('version_id', $version->id)
-                           ->first();
-            $version->date_mep = $tache->debut;
-        }
-
         //Renvoi vers la vue index des chantiers
         return view('version.index', compact('versions', 'query_search', 'paginationselect'));
     }
@@ -107,15 +98,6 @@ class VersionController extends Controller
     {
         $version = $this->versionRepository->store($request->all());
 
-        //Lors de la création d'une version, on ajoute une date de MEP non supprimable avec date du jour par défaut
-        $tache = new Tache;
-        $tache->libelle = 'Mise en production';
-        $tache->tachetype_id = 7;
-        $tache->version_id = $version->id;
-        $tache->deletable = false;
-        //Sauvegarde de la tâche
-        $tache->save();
-
         //Lors de la création d'une version, on ajoute la date de démarrage QI prévisionnelle
         $tache = new Tache;
         $tache->libelle = 'Date de démarrage QI prévisionnelle';
@@ -129,7 +111,7 @@ class VersionController extends Controller
         $tache = new Tache;
         $tache->libelle = 'Date de démarrage QI réelle';
         $tache->tachetype_id = 2;
-        $tachep->version_id = $version->id;
+        $tache->version_id = $version->id;
         $tache->deletable = false;
         //Sauvegarde de la tâche
         $tache->save();
@@ -147,6 +129,34 @@ class VersionController extends Controller
         $tache = new Tache;
         $tache->libelle = 'Date acheminement PROD réelle';
         $tache->tachetype_id = 5;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
+        //Sauvegarde de la tâche
+        $tache->save();
+
+        //Lors de la création d'une version, on ajoute la phase de pré-production
+        $tache = new Tache;
+        $tache->libelle = 'Pré-production';
+        $tache->tachetype_id = 6;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
+        $tache->jalon = false; //c'est une tâche, pas un jalon
+        //Sauvegarde de la tâche
+        $tache->save();
+
+        //Lors de la création d'une version, on ajoute une date de MEP présionnelle non supprimable avec date du jour par défaut
+        $tache = new Tache;
+        $tache->libelle = 'Date prévisionnelle de MES';
+        $tache->tachetype_id = 7;
+        $tache->version_id = $version->id;
+        $tache->deletable = false;
+        //Sauvegarde de la tâche
+        $tache->save();
+
+        //Lors de la création d'une version, on ajoute une date de MEP réelle non supprimable avec date du jour par défaut
+        $tache = new Tache;
+        $tache->libelle = 'Date réelle de MES';
+        $tache->tachetype_id = 7;
         $tache->version_id = $version->id;
         $tache->deletable = false;
         //Sauvegarde de la tâche

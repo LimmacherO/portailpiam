@@ -91,7 +91,7 @@
                                                     <th><div class="center">@sortablelink('inc_nblivtma','# liv. TMA')</div></th>
                                                     <th>Avanc. QI</th>
                                                     <th><div class="center">QoS</div></th>
-                                                    <th><div class="center">Date MEP</div></th>
+                                                    <th><div class="center">Date prév. MES</div></th>
                                                     <th><div class="center">Etat</div></th>
                                                     <th>&nbsp;</th>
                                                 </tr>
@@ -145,8 +145,8 @@
                                                             @endif
                                                          </div></td>
 
-                                                        <!-- Affichage de la date de mise en service -->
-                                                        <td><div class="center">{{ \Carbon\Carbon::parse($version->date_mep)->format('d/m/Y') }}</div></td>
+                                                        <!-- Affichage de la date de mise en service prévisionnelle -->
+                                                        <td><div class="center">{{ App\Version::getDateJalonByString($version, '7', 'Date prévisionnelle de MES') }}</div></td>
 
                                                         <!-- Etat de la version -->
                                                         <td>
