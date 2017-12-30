@@ -303,6 +303,21 @@
 										</span>
 									</div>
 
+                  <!-- Version Dimensions livrée -->
+									<div class="col-lg-3 label-div">
+										<div class="label-title"><p>Version Dimensions livrée :</p></div>
+										<span class="label-content">
+											@if($version->prd_versiondimensions == '')
+												Non renseignée
+											@else
+												{!! $version->prd_versiondimensions !!}
+											@endif
+										</span>
+									</div>
+
+                </div>
+								<div class="row section-default-page">
+
 									<!-- Estimation de la charge de pré-production -->
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Estimation charge de pré-production :</p></div>

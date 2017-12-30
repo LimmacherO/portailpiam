@@ -160,9 +160,9 @@ p {
 }
 
 .nav-tabs li a {
-    color: rgb(106,115,125);;
+    color: rgb(102,102,102);
     font-family: 'Source Sans Pro', sans-serif;;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     font-weight: bold;
 }

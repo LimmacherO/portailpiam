@@ -20,8 +20,8 @@ class VersionCreateRequest extends FormRequest
             'application_id' => 'required',
             'referentqi_id' => 'required',
             'referencealfa' => 'max:6',
-            'inc_nblivtma' => 'required',
-            'avancementqi' => 'numeric',
+            'inc_nblivtma' => 'required|numeric',
+            'avancementqi' => 'required|numeric',
         ];
     }
 
@@ -34,4 +34,3 @@ class VersionCreateRequest extends FormRequest
         ];
     }
 }
-

@@ -138,7 +138,7 @@ class ExportController extends Controller
                     $version->avancementqi,
 
                     Version::getDateJalonByString($version, '5', 'Date acheminement PROD prévisionnelle'), //Date d'acheminement PRD prévisionnelle
-                    'A implémenter',
+                    $version->prd_versiondimensions,
                     Version::getDateJalonByString($version, '5', 'Date acheminement PROD réelle'), //Date d'acheminement PRD réelle
 
                     Version::getDateTacheByString($version, '6', 'Pré-production', 'debut'), //Date de démarrage de la pré-production

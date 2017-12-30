@@ -302,6 +302,16 @@
                                         {!! $errors->first('prd_nbreports', '<small class="help-block">:message</small>') !!}
                                     </div>
 
+                                    <!-- Verison Dimensions livrée -->
+                                    <div class="col-lg-3 form-group {!! $errors->has('prd_versiondimensions') ? 'has-error' : '' !!}">
+                                        <div class="label-title"><p>Version Dimensions livrée :</p></div>
+                                        {!! Form::text('prd_versiondimensions', null, ['class' => 'form-control']) !!}
+                                        {!! $errors->first('prd_versiondimensions', '<small class="help-block">:message</small>') !!}
+                                    </div>
+
+                                  </div>
+                                  <div class="row section-default-page">
+
                                     <!-- Estimation de la charge de pré-production -->
                                     <div class="col-lg-3 form-group {!! $errors->has('prp_estimationcharge') ? 'has-error' : '' !!}">
                                         <div class="label-title"><p>Estimation charge pré-production :</p></div>
