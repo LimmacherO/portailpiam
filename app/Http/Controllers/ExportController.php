@@ -130,7 +130,7 @@ class ExportController extends Controller
                     $version->enjeuxsi,
                     $version->qos,
 
-                    $version->referentqi->nom . ' ' . $version->referentqi->prenom,
+                    $version->referentqi->prenom . ' ' . $version->referentqi->nom,
                     Version::getDateJalonByString($version, '2', 'Date de démarrage QI prévisionnelle'), //Date de démarrage prévisionnelle QI
                     Version::getDateJalonByString($version, '2', 'Date de démarrage QI réelle'), //Date de démarrage réelle QI
 
@@ -150,7 +150,7 @@ class ExportController extends Controller
                     $version->prd_estimationcharge,
                     $version->prd_nbreports,
 
-                    $version->referentprd->nom . ' ' . $version->referentprd->prenom,
+                    $version->referentprd->prenom . ' ' . $version->referentprd->nom,
 
                     $version->alerteqi,
                     $version->alerteprd,
@@ -166,16 +166,18 @@ class ExportController extends Controller
               // *Note: la 4eme argument à true permet d'afficher les valeurs '0' au lieu d'une cellule vide
 
                 //Mise en forme de l'entête des colonnes --> deuxième ligne
-                $sheet->row(2, function($row) {
+                $sheet->cells('A2:AG2', function($cells) {
                     //Fond en gris
-                    $row->setBackground('#CCCCCC');
+                    $cells->setBackground('#B3C6E7');
                     //Police de caractère, gras et taille
-                    $row->setFontWeight('bold');
-                    $row->setFontSize(11);
-                    $row->setFontFamily('Calibri');
-                    $row->setValignment('center');
-
+                    $cells->setFontWeight('bold');
+                    $cells->setFontSize(11);
+                    $cells->setFontFamily('Calibri');
+                    $cells->setValignment('center');
                 });
+
+                //Bordure de l'en-tête du document  --> deuxième ligne
+                $sheet->setBorder('A2:AG2', 'thin');
 
                 //AJout libelle "Chantier"
                 $sheet->cell('E1', function($cell) {
@@ -362,9 +364,32 @@ class ExportController extends Controller
                     $cell->setValignment('center');
                 });
 
-
                 //Hauteur de la ligne d'en-tête
                 $sheet->setHeight(2, 40);
+
+                //Mise en forme - centrage des cellules par défaut (majorité des cellules)
+                $sheet->cells('A2:AG' . sizeof($versionsArray), function($cells) {
+                    $cells->setAlignment('center');
+                });
+                //Exception: les chantiers sont mis en forme à gauche
+                $sheet->cells('E2:E' . sizeof($versionsArray), function($cells) {
+                    $cells->setAlignment('left');
+                });
+                //Exception: les commentaires sont mis en forme à gauche
+                $sheet->cells('AG2:AG' . sizeof($versionsArray), function($cells) {
+                    $cells->setAlignment('left');
+                });
+
+                //Ajout des bordures pour les cellules
+                $sheet->setBorder('A2:AG' . sizeof($versionsArray), 'thin');
+
+                //Ne fonctionne pas en l'état
+                if($versionsArray[0][0] == "Domaine"){
+                  $sheet->cells('A3:AG3', function($cells) {
+                      $cells->setBackground('#CCCCCC');
+                  });
+                }
+
 
         	});
 
