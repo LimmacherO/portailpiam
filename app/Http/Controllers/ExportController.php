@@ -383,12 +383,25 @@ class ExportController extends Controller
                 //Ajout des bordures pour les cellules
                 $sheet->setBorder('A2:AG' . sizeof($versionsArray), 'thin');
 
-                //Ne fonctionne pas en l'état
-                if($versionsArray[0][0] == "Domaine"){
-                  $sheet->cells('A3:AG3', function($cells) {
-                      $cells->setBackground('#CCCCCC');
-                  });
+                //Grisement du chantiers si annulé ou clos
+                $max = sizeof($versionsArray);
+                $cellcount = 2; //démarrage à 2 compte tenu de la taille du tableau
+                for($i = 2; $i < $max;$i++)
+                {
+                  if($versionsArray[$cellcount][17] == "Clos" OR $versionsArray[$cellcount][17] == "Annulée"){
+                    $cellcount++;
+                    $cellcible = 'A' . $cellcount . ':AG' . $cellcount;
+                    $sheet->cells($cellcible, function($cells) {
+                        $cells->setBackground('#757170');
+                    });
+                  }
+                  else{
+                    $cellcount++; //Si pas trouvé alors incrémentation du compteur uniquement
+                  }
+
                 }
+
+
 
 
         	});
