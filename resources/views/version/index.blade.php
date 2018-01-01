@@ -88,7 +88,7 @@
                                                     <th>Product Dimensions</th>
                                                     <th>@sortablelink('libelle','Libellé')</th>
                                                     <th>@sortablelink('referentqi.nom','Référent QI')</th>
-                                                    <th><div class="center">@sortablelink('inc_nblivtma','# liv. TMA')</div></th>
+                                                    <th><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
                                                     <th>Avanc. QI</th>
                                                     <th><div class="center">QoS</div></th>
                                                     <th><div class="center">Date prév. MES</div></th>

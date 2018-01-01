@@ -179,6 +179,17 @@ class ExportController extends Controller
                 //Bordure de l'en-tête du document  --> deuxième ligne
                 $sheet->setBorder('A2:AG2', 'thin');
 
+                //Couleur de fond spécifique pour les informations de production
+                $sheet->cells('W2:Y2', function($cells) {
+                    $cells->setBackground('#ED7D31');
+                });
+                $sheet->cells('AA2:AD2', function($cells) {
+                    $cells->setBackground('#ED7D31');
+                });
+                $sheet->cell('AF2', function($cell) {
+                    $cell->setBackground('#ED7D31');
+                });
+
                 //AJout libelle "Chantier"
                 $sheet->cell('E1', function($cell) {
                     $cell->setValue('Chantier');
@@ -383,16 +394,44 @@ class ExportController extends Controller
                 //Ajout des bordures pour les cellules
                 $sheet->setBorder('A2:AG' . sizeof($versionsArray), 'thin');
 
-                //Grisement du chantiers si annulé ou clos
+                //Grisement du chantiers si annulé ou clos et QoS
                 $max = sizeof($versionsArray);
                 $cellcount = 2; //démarrage à 2 compte tenu de la taille du tableau
                 for($i = 2; $i < $max;$i++)
                 {
+
+                  //QoS
+                  $cellcible = 'N' . ($cellcount + 1);
+                  if($versionsArray[$cellcount][13] == "9"){
+                    $sheet->cell($cellcible, function($cell) {
+                      $cell->setBackground('#C10004');
+                      $cell->setFontColor('#FFFFFF');
+                      $cell->setFontWeight('bold');
+                    });
+
+                  }
+                  elseif ($versionsArray[$cellcount][13] == "5"){
+                    $sheet->cell($cellcible, function($cell) {
+                      $cell->setBackground('#C8580E');
+                      $cell->setFontColor('#FFFFFF');
+                      $cell->setFontWeight('bold');
+                    });
+                  }
+                  else{
+                    $sheet->cell($cellcible, function($cell) {
+                      $cell->setBackground('#548134');
+                      $cell->setFontColor('#FFFFFF');
+                      $cell->setFontWeight('bold');
+                    });
+                  }
+
+                  //Grisement de la ligne si chantier clos ou annulé
                   if($versionsArray[$cellcount][17] == "Clos" OR $versionsArray[$cellcount][17] == "Annulée"){
                     $cellcount++;
                     $cellcible = 'A' . $cellcount . ':AG' . $cellcount;
                     $sheet->cells($cellcible, function($cells) {
                         $cells->setBackground('#757170');
+                        $cells->setFontColor('#000000');
                     });
                   }
                   else{
@@ -400,10 +439,6 @@ class ExportController extends Controller
                   }
 
                 }
-
-
-
-
         	});
 
 
