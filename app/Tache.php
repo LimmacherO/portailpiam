@@ -4,6 +4,7 @@ namespace App;
 
 //Import des classes externes
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /*
  * Class Tache: Modèle de gestion des taches/jalons d'une version
@@ -23,6 +24,45 @@ class Tache extends Model
         'id', 'libelle', 'debut', 'fin', 'tachetype_id', 'version_id',
         'jalon',
     ];
+
+    public function getDebutAttribute($value)
+    {
+      if($value){
+        return Carbon::parse($value)->format('d/m/Y');
+      }
+      else {
+        return $value;
+      }
+    }
+
+    public function setDebutAttribute($value) {
+        if($value){
+          $this->attributes['debut'] = Carbon::createFromFormat('d/m/Y', $value);
+        }
+        else{
+          $this->attributes['debut'] = null;
+        }
+      }
+
+
+      public function getFinAttribute($value)
+      {
+        if($value){
+          return Carbon::parse($value)->format('d/m/Y');
+        }
+        else {
+          return $value;
+        }
+      }
+
+      public function setFinAttribute($value) {
+          if($value){
+            $this->attributes['fin'] = Carbon::createFromFormat('d/m/Y', $value);
+          }
+          else{
+            $this->attributes['fin'] = null;
+          }
+        }
 
   // Lien avec la classe TacheType QI qui contient la liste des référents QI PIAM
 	public function tachetype()

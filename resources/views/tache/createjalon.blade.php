@@ -99,7 +99,7 @@
 
               					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
               					                	<div class="label-title"><p>Date du jalon :</p></div>
-              					                	{!! Form::date('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
+              					                	{!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
               					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
               					            	</div>
 

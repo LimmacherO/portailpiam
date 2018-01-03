@@ -10,6 +10,7 @@ use App\Tache;
 use App\TacheType;
 use App\Version;
 
+
 class TacheController extends Controller
 {
 	protected $tacheRepository;

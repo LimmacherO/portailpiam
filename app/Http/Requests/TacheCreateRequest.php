@@ -16,6 +16,8 @@ class TacheCreateRequest extends FormRequest
     {
         return [
             'libelle' => 'bail|required|max:255',
+            'debut' => 'date_format:"d/m/Y"|nullable',
+            'fin' => 'date_format:"d/m/Y"|nullable|after_or_equal:debut',
         ];
     }
 
@@ -23,6 +25,8 @@ class TacheCreateRequest extends FormRequest
     {
         return [
             'required' => 'Le champ est obligatoire',
+            'date_format' => 'La date doit être au format jj/mm/aaaa',
+            'after_or_equal' => 'La date de fin doit être égale ou supérieure à la date de début',
         ];
     }
 }

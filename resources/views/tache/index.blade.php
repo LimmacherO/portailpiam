@@ -100,7 +100,7 @@
                                             @if($tache->debut == '')
                     												  Non renseignée
                   											    @else
-                  												    {{ \Carbon\Carbon::parse($tache->debut)->format('d/m/Y') }}
+                  												    {{ $tache->debut }}
                   											    @endif
                                         </td>
 
@@ -110,7 +110,7 @@
                                            @elseif($tache->fin == '')
                                              Non renseignée
                                            @else
-                                             {{ \Carbon\Carbon::parse($tache->fin)->format('d/m/Y')}}</td>
+                                             {{ $tache->fin }}</td>
                                            @endif
 						                            <td>
                                           @if($tache->jalon == '1')
