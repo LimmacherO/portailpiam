@@ -35,6 +35,10 @@
                         <a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a>
 
                         <a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-external-link-square" aria-hidden="true"></i>&nbsp;Exporter</a>
+
+                        <a href="{!! url('import/roadmap/index'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-internal-link-square" aria-hidden="true"></i>&nbsp;Importer</a>
+
+
                     </div>
 
                 </div>

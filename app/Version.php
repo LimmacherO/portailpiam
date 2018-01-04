@@ -150,7 +150,7 @@ class Version extends Model
         $returnvalue = 'Non renseignée';
       }
       else {
-        $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+        $returnvalue = $tache->debut;
       }
     }
     catch (ModelNotFoundException $ex) // Exception levée si aucun résultat n'est trouvé "ModelNotFoundException"
@@ -174,7 +174,7 @@ class Version extends Model
           $returnvalue = 'Non renseignée';
         }
         else {
-          $returnvalue = \Carbon\Carbon::parse($tache->debut)->format('d/m/Y');
+          $returnvalue = $tache->debut;
         }
       }
       else {
@@ -182,7 +182,7 @@ class Version extends Model
           $returnvalue = 'Non renseignée';
         }
         else {
-          $returnvalue = \Carbon\Carbon::parse($tache->fin)->format('d/m/Y');
+          $returnvalue = $tache->fin;
         }
       }
 

@@ -25,6 +25,10 @@ Route::get('version/destroy/{version}', 'VersionController@destroy')->name('vers
 Route::get('export/index', 'ExportController@index')->name('export.index'); //plus utlisé pour le moment
 Route::get('export/excel', 'ExportController@exporttoexcel')->name('export.excel');
 
+//Routes associées aux actions d'import de la RoadMap
+Route::get('import/roadmap/index', 'ImportRoadmapController@index');
+Route::post('import/roadmap/importexcel', 'ImportRoadmapController@importExcel');
+
 
 //Routes associées aux opérations sur les tâches/jalons (CRUD)
 Route::get('taches/{version}', 'TacheController@index')->name('tache.index');
