@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Domaine;
 
 class ImportRoadmapController extends Controller
@@ -25,12 +28,18 @@ class ImportRoadmapController extends Controller
 
             //Code à modifier /!\ pour import des données
             foreach ($data as $key => $value) {
-    					$insert[] = ['title' => $value->title, 'description' => $value->description];
+    					$insert[] = ['libelle' => $value->domaine];
     				}
-            
+
     				if(!empty($insert)){
-    					DB::table('items')->insert($insert);
-    					dd('Insert Record successfully.');
+              try{
+    					       DB::table('domaine')->insert($insert);
+    					       dd('Insertion domaine réalisé avec succès');
+               }
+               catch (\Illuminate\Database\QueryException $e)
+               {
+                 //rien à faire pour le moment
+               }
     				}
 
     			}
