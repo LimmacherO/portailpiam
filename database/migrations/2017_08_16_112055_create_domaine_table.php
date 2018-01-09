@@ -15,7 +15,7 @@ class CreateDomaineTable extends Migration
     {
         Schema::create('domaine', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('libelle');
+            $table->string('libelle')->unique();
         });
     }
 

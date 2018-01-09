@@ -12,7 +12,7 @@ use Kyslik\ColumnSortable\Sortable;
  */
 class Application extends Model
 {
-    
+
   	//Désactivation du timestamp dans le modèle de données
    	public $timestamps = false;
 
@@ -21,7 +21,7 @@ class Application extends Model
 
     //Liste des champs utilisés pour les opérations CRUD
 	  protected $fillable = [
-        'id', 'libelle',
+        'id', 'libelle', 'domaine_id',
     ];
 
     // Liste des champs qui peuvent être triés dans un tableau
@@ -36,7 +36,7 @@ class Application extends Model
     }
 
     //Lien avec un domaine
-  	public function domaine() 
+  	public function domaine()
   	{
   		return $this->belongsTo(\App\Domaine::class);
   	}

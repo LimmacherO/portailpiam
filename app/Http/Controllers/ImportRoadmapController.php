@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Domaine;
+use App\Application;
 
 class ImportRoadmapController extends Controller
 {
@@ -26,21 +27,32 @@ class ImportRoadmapController extends Controller
 
     			if(!empty($data) && $data->count()){
 
-            //Code à modifier /!\ pour import des données
             foreach ($data as $key => $value) {
-    					$insert[] = ['libelle' => $value->domaine];
+    					$insert[] = ['domaine' => $value->domaine,
+                            'application' => $value->application];
     				}
 
+            //Alimentation de la base de données seulement s'il y a des données trouvées
     				if(!empty($insert)){
-              try{
-    					       DB::table('domaine')->insert($insert);
-    					       dd('Insertion domaine réalisé avec succès');
-               }
-               catch (\Illuminate\Database\QueryException $e)
-               {
-                 //rien à faire pour le moment
-               }
-    				}
+
+              for($i = 1; $i < sizeof($insert);$i++)
+              {
+                try{
+                  //Enregistrement des domaines --> création si n'existe pas seulement
+                  $domaine = Domaine::firstOrNew(['libelle' => $insert[$i]['domaine']]);
+                  $domaine->save();;
+
+                  //Enregistrement des applications --> création si n'existe pas seulement
+                  $domaineapp = Domaine::where('libelle', $insert[$i]['domaine'])->first(); //Récupération de l'ID du domaine associé
+                  $application = Application::firstOrNew(['libelle' => $insert[$i]['application']],['domaine_id' => $domaineapp->id]);
+                  $application->save();
+
+                 }
+                 catch (\Illuminate\Database\QueryException $e){
+                   //Voir comment gérer l'exception et si besoin réél
+                 }
+              }
+            }
 
     			}
     		}
