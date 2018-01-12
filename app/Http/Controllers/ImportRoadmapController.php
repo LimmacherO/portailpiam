@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Domaine;
 use App\Application;
+use App\Version;
 
 class ImportRoadmapController extends Controller
 {
@@ -29,7 +30,14 @@ class ImportRoadmapController extends Controller
 
             foreach ($data as $key => $value) {
     					$insert[] = ['domaine' => $value->domaine,
-                            'application' => $value->application];
+                            'application' => $value->application,
+                            'sujet'=> $value->sujet,
+                            'versionmoe' => $value->versionmoe,
+                            'enjeuxmetier' => $value->enjeuxmetier,
+                            'enjeuxsi' => $value->enjeuxsi,
+                            'qos' => $value->qos,
+                            'iteration' => $value->iteration,
+                            'productdimensions' => $value->productdimensions];
     				}
 
             //Alimentation de la base de données seulement s'il y a des données trouvées
@@ -41,11 +49,26 @@ class ImportRoadmapController extends Controller
                   //Enregistrement des domaines --> création si n'existe pas seulement
                   $domaine = Domaine::firstOrNew(['libelle' => $insert[$i]['domaine']]);
                   $domaine->save();;
+                  //$domaineapp = Domaine::where('libelle', $insert[$i]['domaine'])->first(); //Pour récupération de l'ID du domaine associé
 
                   //Enregistrement des applications --> création si n'existe pas seulement
-                  $domaineapp = Domaine::where('libelle', $insert[$i]['domaine'])->first(); //Récupération de l'ID du domaine associé
-                  $application = Application::firstOrNew(['libelle' => $insert[$i]['application']],['domaine_id' => $domaineapp->id]);
+                  $application = Application::firstOrNew(['libelle' => $insert[$i]['application']],['domaine_id' => $domaine->id]);
                   $application->save();
+
+                  $version = new Version;
+                  $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
+                  $version->version = $insert[$i]['versionmoe'];
+                  $version->application_id = $application->id;
+                  $version->referentqi_id = '1';
+                  $version->perimetreqi = true;
+                  $version->referentprd_id = '1';
+                  $version->versionetat_id = '1';
+                  $version->enjeuxsi = $insert[$i]['enjeuxsi'];
+                  $version->enjeuxmetier = $insert[$i]['enjeuxmetier'];
+                  $version->qos = $insert[$i]['qos'];
+                  $version->inc_nblivtma = $insert[$i]['iteration'];
+                  $version->product_dimensions = $insert[$i]['productdimensions'];
+                  $version->save();
 
                  }
                  catch (\Illuminate\Database\QueryException $e){

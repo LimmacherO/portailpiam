@@ -82,7 +82,7 @@ class CreateVersionsTable extends Migration
             $table->integer('prd_nbreports')->default(0)->nullable();
 
             $table->string('prd_versiondimensions')->nullable();
-            
+
             /**
             * Section "Commentaire"
             **/
