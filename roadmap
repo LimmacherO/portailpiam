@@ -1,10 +1,12 @@
 Roadmap V1
 ----------
+- Reprise des données en automatique
+
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 
-- Reprise des données --> manuelle ou automatisée ? --> voir pour automatisation ?
-
 - Commentaire et analyse du code HTML notamment
+
+- Renommage des colonnes et des variables dans les models --> application de normes
 
 
 RoadMap V2
