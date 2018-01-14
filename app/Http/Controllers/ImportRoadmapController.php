@@ -37,7 +37,12 @@ class ImportRoadmapController extends Controller
                             'enjeuxsi' => $value->enjeuxsi,
                             'qos' => $value->qos,
                             'iteration' => $value->iteration,
-                            'productdimensions' => $value->productdimensions];
+                            'productdimensions' => $value->productdimensions,
+                            'versiondimensions' => $value->versiondimensions,
+                            'reference' => $value->reference, //Référence DQMP ALFA
+                            'date' => $value->date, //Date de la DQMP ALFA
+                            'avancementqi' => $value->avancementqi //Pré-requis --> Colonne à renommer la Roadmap
+                          ];
     				}
 
             //Alimentation de la base de données seulement s'il y a des données trouvées
@@ -56,18 +61,33 @@ class ImportRoadmapController extends Controller
                   $application->save();
 
                   $version = new Version;
+                  $version->application_id = $application->id; //Import de l'application. Le domaine est lié dans le modèle à l'application
+                  $version->perimetreqi = true; //A implémenter
                   $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
                   $version->version = $insert[$i]['versionmoe'];
-                  $version->application_id = $application->id;
-                  $version->referentqi_id = '1';
-                  $version->perimetreqi = true;
-                  $version->referentprd_id = '1';
-                  $version->versionetat_id = '1';
-                  $version->enjeuxsi = $insert[$i]['enjeuxsi'];
+                  $version->version_dimensions = $insert[$i]['versiondimensions'];
+                  $version->product_dimensions = $insert[$i]['productdimensions'];
+                  $version->inc_nblivtma = $insert[$i]['iteration'];
+                  $version->referencealfa = $insert[$i]['reference']; //Référence DQMP ALFA
+                  $version->referencealfa_date = $insert[$i]['date']; //Référence date ALFA
                   $version->enjeuxmetier = $insert[$i]['enjeuxmetier'];
                   $version->qos = $insert[$i]['qos'];
-                  $version->inc_nblivtma = $insert[$i]['iteration'];
-                  $version->product_dimensions = $insert[$i]['productdimensions'];
+                  $version->enjeuxsi = $insert[$i]['enjeuxsi'];
+                  $version->referentqi_id = '1'; //A implémenter
+
+                  //$version->avancementqi = intval($insert[$i]['avancementqi']) * 100;
+
+                  $version->referentprd_id = '1';
+                  $version->versionetat_id = '1';
+
+
+
+
+
+
+
+
+
                   $version->save();
 
                  }

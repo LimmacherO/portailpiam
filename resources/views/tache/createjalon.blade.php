@@ -97,7 +97,7 @@
 
               								<div class="row section-default-page">
 
-              					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
+              					              <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
               					                	<div class="label-title"><p>Date du jalon :</p></div>
               					                	{!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
               					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
@@ -117,6 +117,7 @@
             </div>
         </div>
     </div>
+
 	{!! Form::close() !!}
 
 @endsection
