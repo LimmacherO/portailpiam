@@ -37,7 +37,8 @@
 
 
     <!-- Contenu de la page Web -->
-    <div id="content">
+    <div id="content" class="bootstrap-iso">
+
         <!-- Afichage du contenu de la page -->
         <div class="container-fluid section-content">
 
@@ -97,11 +98,22 @@
 
               								<div class="row section-default-page">
 
-              					              <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
+              					              <!--<div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
               					                	<div class="label-title"><p>Date du jalon :</p></div>
-              					                	{!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
+              					                	{!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'debut', 'name' => 'debut', 'placeholder' => 'dd/mm/yyyy'] ); !!}
               					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
-              					            	</div>
+              					            	</div>-->
+
+                                      <div class="col-lg-3 {!! $errors->has('debut') ? 'has-error' : '' !!}" >
+                                        <div class="label-title"><p>Date du jalon :</p></div>
+                                        <div id="datepicker-debut" class="input-group date" data-provide="datepicker">
+                                          {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut', 'placeholder' => 'dd/mm/yyyy'] ); !!}
+                                          <div class="input-group-addon">
+                                              <span class="glyphicon glyphicon-calendar"></span>
+                                          </div>
+                                        </div>
+                                      </div>
+
 
               									<div class="col-lg-3 form-group">
               					                	{!! Form::hidden('version_id', $version->id, ['class' => 'form-control', 'placeholder' => 'ID de la version']) !!}
@@ -119,5 +131,19 @@
     </div>
 
 	{!! Form::close() !!}
+
+
+
+ <script type="text/javascript">
+    $(document).ready(function(){
+      $('#datepicker-debut').datepicker({
+      format: 'dd/mm/yyyy',
+      language: 'fr',
+      container: '#datepicker-debut',
+      todayHighlight: true,
+      autoclose: true,
+    });
+  });
+</script>
 
 @endsection
