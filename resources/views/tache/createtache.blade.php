@@ -97,17 +97,39 @@
 
 								<div class="row section-default-page">
 
-					                <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
+					              <!--<div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de début :</p></div>
 					                	{!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'debut'] ); !!}
 					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
-					            	</div>
+					            	</div>-->
 
-					            	<div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}">
+                        <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}" >
+                          <div class="label-title"><p>Date de début :</p></div>
+                          <div id="datepicker-debut" class="input-group date" data-provide="datepicker">
+                            {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut', 'placeholder' => 'jj/mm/aaaa'] ); !!}
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                          </div>
+                          {!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+					            	<!--<div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}">
 					                	<div class="label-title"><p>Date de fin :</p></div>
 					                	{!! Form::text('fin', null,  ['class' => 'form-control', 'id' => 'fin'] ); !!}
 					                	{!! $errors->first('fin', '<small class="help-block">:message</small>') !!}
-					            	</div>
+					            	</div>-->
+
+                        <div class="col-lg-3 form-group {!! $errors->has('fin') ? 'has-error' : '' !!}" >
+                          <div class="label-title"><p>Date de fin :</p></div>
+                          <div id="datepicker-fin" class="input-group date" data-provide="datepicker">
+                            {!! Form::text('fin', null,  ['class' => 'form-control', 'id' => 'datepicker-fin', 'name' => 'fin', 'placeholder' => 'jj/mm/aaaa'] ); !!}
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                          </div>
+                          {!! $errors->first('fin', '<small class="help-block">:message</small>') !!}
+                        </div>
 
 
       									<div class="col-lg-3 form-group">
@@ -126,5 +148,29 @@
         </div>
     </div>
 	{!! Form::close() !!}
+
+  <script type="text/javascript">
+     $(document).ready(function(){
+       $('#datepicker-debut').datepicker({
+       format: 'dd/mm/yyyy',
+       language: 'fr',
+       container: '#datepicker-debut',
+       todayHighlight: true,
+       autoclose: true,
+     });
+   });
+ </script>
+
+ <script type="text/javascript">
+    $(document).ready(function(){
+      $('#datepicker-fin').datepicker({
+      format: 'dd/mm/yyyy',
+      language: 'fr',
+      container: '#datepicker-fin',
+      todayHighlight: true,
+      autoclose: true,
+    });
+  });
+</script>
 
 @endsection

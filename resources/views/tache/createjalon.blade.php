@@ -104,14 +104,15 @@
               					                	{!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
               					            	</div>-->
 
-                                      <div class="col-lg-3 {!! $errors->has('debut') ? 'has-error' : '' !!}" >
+                                      <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}" >
                                         <div class="label-title"><p>Date du jalon :</p></div>
                                         <div id="datepicker-debut" class="input-group date" data-provide="datepicker">
-                                          {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut', 'placeholder' => 'dd/mm/yyyy'] ); !!}
+                                          {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut', 'placeholder' => 'jj/mm/aaaa'] ); !!}
                                           <div class="input-group-addon">
                                               <span class="glyphicon glyphicon-calendar"></span>
                                           </div>
                                         </div>
+                                        {!! $errors->first('debut', '<small class="help-block">:message</small>') !!}
                                       </div>
 
 
@@ -131,8 +132,6 @@
     </div>
 
 	{!! Form::close() !!}
-
-
 
  <script type="text/javascript">
     $(document).ready(function(){
