@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {!! Form::open(['url' => 'version/store', 'method' => 'post']) !!}
+    {!! Form::open(['url' => 'version/store', 'method' => 'post', 'id' => 'createversion']) !!}
 
     <!-- En-tête page Web -->
     <div id="header" class="section-header">
@@ -22,7 +22,7 @@
 
                     <div class="pull-right">
 
-                        {!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}
+                        {!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit', 'id' => 'valider']) !!}
 
                         <a href="{!! url('version'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a>
 
@@ -375,4 +375,17 @@
     </div>
     {!! Form::close() !!}
 
+    <script type="text/javascript">
+
+       $(document).ready(function(){
+
+         //On cache le bouton de validation pour éviter les créations en double
+         $('#valider').click(function () {
+             $('#valider').attr('disabled', true);
+             $('#createversion').submit();
+             return true;
+         });
+
+     });
+    </script>
 @endsection

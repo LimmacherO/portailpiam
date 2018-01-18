@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::open(['url' => 'tache/store', 'method' => 'post']) !!}
+	{!! Form::open(['url' => 'tache/store', 'method' => 'post', 'id' => 'createjalon']) !!}
 
    <!-- En-tête page Web -->
     <div id="header" class="section-header">
@@ -22,7 +22,7 @@
 
                     <div class="pull-right">
 
- 						{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}
+ 						{!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit', 'id' => 'valider']) !!}
 
 						<a href="{!! url('taches', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a>
 
@@ -134,6 +134,7 @@
 	{!! Form::close() !!}
 
  <script type="text/javascript">
+
     $(document).ready(function(){
       $('#datepicker-debut').datepicker({
       format: 'dd/mm/yyyy',
@@ -142,7 +143,16 @@
       todayHighlight: true,
       autoclose: true,
     });
+
+    //On cache le bouton de validation pour éviter les créations en double
+    $('#valider').click(function () {
+        $('#valider').attr('disabled', true);
+        $('#createjalon').submit();
+        return true;
+    });
+    
   });
+
 </script>
 
 @endsection

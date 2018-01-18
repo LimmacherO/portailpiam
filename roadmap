@@ -5,8 +5,6 @@ Roadmap V1
 	--> Statut/état: import des types d'états lors de l'import. Etat "clos" ou "annulé" à créer lors de la création BDD
 	--> Contrôle exhaustivité de l'import
 
-- Prévention double saisie
-
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 
 - Renommage des colonnes et des variables dans les models --> application de normes
