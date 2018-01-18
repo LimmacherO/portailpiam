@@ -11,9 +11,6 @@ Route::get('/', function () {
 });
 Route::get('home', function () { return view('home'); })->name('home');
 
-Route::get('test', function () { return view('test'); })->name('test');
-
-
 //Routes associées aux opérations sur les versions (CRUD)
 Route::get('version', 'VersionController@index')->name('version.index');
 Route::get('version/search', 'VersionController@search')->name('version.search');

@@ -41,7 +41,10 @@ class ImportRoadmapController extends Controller
                             'versiondimensions' => $value->versiondimensions,
                             'reference' => $value->reference, //Référence DQMP ALFA
                             'date' => $value->date, //Date de la DQMP ALFA
-                            'avancementqi' => $value->avancementqi //Pré-requis --> Colonne à renommer la Roadmap
+                            'avancementqi' => $value->avancementqi, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'nbreportmep' => $value->nbreportmep //Pré-requis --> Colonne à renommer dans la Roadmap
                           ];
     				}
 
@@ -64,6 +67,7 @@ class ImportRoadmapController extends Controller
                   $version->application_id = $application->id; //Import de l'application. Le domaine est lié dans le modèle à l'application
                   $version->perimetreqi = true; //A implémenter
                   $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
+                  //$version->libelle = $insert[$i]['avancementqi'] * 100;
                   $version->version = $insert[$i]['versionmoe'];
                   $version->version_dimensions = $insert[$i]['versiondimensions'];
                   $version->product_dimensions = $insert[$i]['productdimensions'];
@@ -75,18 +79,16 @@ class ImportRoadmapController extends Controller
                   $version->enjeuxsi = $insert[$i]['enjeuxsi'];
                   $version->referentqi_id = '1'; //A implémenter
 
-                  //$version->avancementqi = intval($insert[$i]['avancementqi']) * 100;
+                  $version->avancementqi = (int)$insert[$i]['avancementqi'] * 100;
+
+                  $version->prp_estimationcharge = $insert[$i]['estimationchargeprp'];
+                  $version->prd_estimationcharge = $insert[$i]['estimationchargeprd'];
+
+                  $version->prd_nbreports =$insert[$i]['nbreportmep'];
 
                   $version->referentprd_id = '1';
+
                   $version->versionetat_id = '1';
-
-
-
-
-
-
-
-
 
                   $version->save();
 

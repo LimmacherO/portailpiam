@@ -1,16 +1,21 @@
 Roadmap V1
 ----------
-- Reprise des données en automatique
+- Reprise des données en automatique:
+	--> Derniers champs à importer
+	--> Statut/état: import des types d'états lors de l'import. Etat "clos" ou "annulé" à créer lors de la création BDD
+	--> Contrôle exhaustivité de l'import
+
+- Prévention double saisie
 
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 
-- Commentaire et analyse du code HTML notamment
-
 - Renommage des colonnes et des variables dans les models --> application de normes
-
+https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
 
 RoadMap V2
 ----------
+- Commentaire et analyse du code HTML notamment
+
 - Ajout d'un onglet de gestion des demandes et incidents associés à la version
 	Permettra de regrouper au sein d'un même tableau la liste des INC et DS AGIS:
 	-- ID
