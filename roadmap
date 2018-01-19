@@ -1,8 +1,7 @@
 Roadmap V1
 ----------
 - Reprise des données en automatique:
-	--> Derniers champs à importer
-	--> Statut/état: import des types d'états lors de l'import. Etat "clos" ou "annulé" à créer lors de la création BDD
+	--> Derniers champs à importer (pb import des référents notamment)
 	--> Contrôle exhaustivité de l'import
 
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)

@@ -155,7 +155,9 @@ class ExportController extends Controller
                     $version->alerteqi,
                     $version->alerteprd,
 
-                    $version->commentaire
+                    $version->commentaire,
+
+                    //$version->application->domaine->export_color //Champ provisoire
                 );
     		}
 
@@ -425,6 +427,8 @@ class ExportController extends Controller
                     });
                   }
 
+
+
                   //Grisement de la ligne si chantier clos ou annulé
                   if($versionsArray[$cellcount][17] == "Clos" OR $versionsArray[$cellcount][17] == "Annulée"){
                     $cellcount++;
@@ -435,7 +439,13 @@ class ExportController extends Controller
                     });
                   }
                   else{
+                    //$cellbackgroungcolor = $versionsArray[$cellcount][34];
                     $cellcount++; //Si pas trouvé alors incrémentation du compteur uniquement
+                    //$cellcible = 'A' . $cellcount . ':AG' . $cellcount;
+                    //$sheet->cells($cellcible, function($cells) {
+                    //    $cells->setBackground($cellbackgroungcolor);
+                    //    $cells->setFontColor('#000000');
+                    //});
                   }
 
                 }

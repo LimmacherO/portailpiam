@@ -9,6 +9,8 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Domaine;
 use App\Application;
 use App\Version;
+use App\VersionEtat;
+use App\Referentqi;
 
 class ImportRoadmapController extends Controller
 {
@@ -36,11 +38,13 @@ class ImportRoadmapController extends Controller
                             'enjeuxmetier' => $value->enjeuxmetier,
                             'enjeuxsi' => $value->enjeuxsi,
                             'qos' => $value->qos,
+                            'referentqi' => $value->referentqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'iteration' => $value->iteration,
                             'productdimensions' => $value->productdimensions,
                             'versiondimensions' => $value->versiondimensions,
                             'reference' => $value->reference, //Référence DQMP ALFA
                             'date' => $value->date, //Date de la DQMP ALFA
+                            'activiteqi' => $value->activiteqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'avancementqi' => $value->avancementqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
@@ -53,10 +57,10 @@ class ImportRoadmapController extends Controller
 
               for($i = 1; $i < sizeof($insert);$i++)
               {
-                try{
+                //try{
                   //Enregistrement des domaines --> création si n'existe pas seulement
                   $domaine = Domaine::firstOrNew(['libelle' => $insert[$i]['domaine']]);
-                  $domaine->save();;
+                  $domaine->save();
                   //$domaineapp = Domaine::where('libelle', $insert[$i]['domaine'])->first(); //Pour récupération de l'ID du domaine associé
 
                   //Enregistrement des applications --> création si n'existe pas seulement
@@ -68,16 +72,68 @@ class ImportRoadmapController extends Controller
                   $version->perimetreqi = true; //A implémenter
                   $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
                   //$version->libelle = $insert[$i]['avancementqi'] * 100;
-                  $version->version = $insert[$i]['versionmoe'];
+                  if($version->version == ''){
+                    $version->version = 'Non connu';
+                  }
+                  else{
+                    $version->version = $insert[$i]['versionmoe'];
+                  }
                   $version->version_dimensions = $insert[$i]['versiondimensions'];
                   $version->product_dimensions = $insert[$i]['productdimensions'];
-                  $version->inc_nblivtma = $insert[$i]['iteration'];
+
+                  if($insert[$i]['iteration'] == ''){
+                    $version->inc_nblivtma = 0;
+                  }
+                  else{
+                    $version->inc_nblivtma = $insert[$i]['iteration'];
+                  }
+
                   $version->referencealfa = $insert[$i]['reference']; //Référence DQMP ALFA
                   $version->referencealfa_date = $insert[$i]['date']; //Référence date ALFA
-                  $version->enjeuxmetier = $insert[$i]['enjeuxmetier'];
-                  $version->qos = $insert[$i]['qos'];
-                  $version->enjeuxsi = $insert[$i]['enjeuxsi'];
-                  $version->referentqi_id = '1'; //A implémenter
+
+                  //Si l'enjeux métier n'est pas renseigné, on attribut la note la plus basse
+                  if ($insert[$i]['enjeuxmetier'] == ''){
+                    $version->enjeuxmetier = 1;
+                  }
+                  else{
+                    $version->enjeuxmetier = $insert[$i]['enjeuxmetier'];
+                  }
+
+                  //Si l'enjeux SI n'est pas renseigné, on attribut la note la plus basse
+                  if ($insert[$i]['enjeuxsi'] == ''){
+                    $version->enjeuxsi = 1;
+                  }
+                  else{
+                    $version->enjeuxsi = $insert[$i]['enjeuxsi'];
+                  }
+
+                  //Si le QOS n'est pas renseigné, on attribut la note la plus basse
+                  if ($insert[$i]['qos'] == ''){
+                    $version->qos = 1;
+                  }
+                  else{
+                    $version->qos = $insert[$i]['qos'];
+                  }
+
+                  //Création du référent QI sans prénom si inexistant puis référencement dans la version en cours
+                  if ($insert[$i]['referentqi'] == '' ){
+                    $version->referentqi_id = '1';
+                  }
+                  else{
+                    $referentqi = Referentqi::firstOrNew(['nom' => $insert[$i]['referentqi']], ['prenom' => '']);
+                    $referentqi->save();
+                    $version->referentqi_id = $referentqi->id;
+                  }
+
+                  //Création de l'état de version si inexistant puis référencement dans la version en cours
+                  if ($insert[$i]['activiteqi'] == '' ){
+                    $version->versionetat_id = '1';
+                  }
+                  else{
+                    $versionetat = VersionEtat::firstOrNew(['libelle' => $insert[$i]['activiteqi']]);
+                    $versionetat->save();
+                    $version->versionetat_id = $versionetat->id;
+                  }
 
                   $version->avancementqi = (int)$insert[$i]['avancementqi'] * 100;
 
@@ -88,14 +144,15 @@ class ImportRoadmapController extends Controller
 
                   $version->referentprd_id = '1';
 
-                  $version->versionetat_id = '1';
+                  //Enregistrement de la version seulement et seulement si le sujet n'est pas vide
+                  if($insert[$i]['sujet'] != '' ){
+                    $version->save();
+                  }
 
-                  $version->save();
-
-                 }
+                 /*}
                  catch (\Illuminate\Database\QueryException $e){
                    //Voir comment gérer l'exception et si besoin réél
-                 }
+                 }*/
               }
             }
 

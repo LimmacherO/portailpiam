@@ -49,6 +49,7 @@ class VersionController extends Controller
 
         //Récuparation de la valeur de pagination
         $this->nbrPerPage = session('recherche_pagination');
+
         //Affectationn pour la liste déroulante sur la vue
         $paginationselect = $this->nbrPerPage;
 

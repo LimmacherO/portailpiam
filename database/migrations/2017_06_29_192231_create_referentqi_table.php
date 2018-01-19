@@ -16,7 +16,7 @@ class CreateReferentqiTable extends Migration
         Schema::create('referentqi', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->string('prenom');
+            $table->string('prenom')->nulable();
         });
     }
 
