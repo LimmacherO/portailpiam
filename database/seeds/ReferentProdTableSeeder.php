@@ -14,17 +14,11 @@ class ReferentProdTableSeeder extends Seeder
     public function run()
     {
       DB::table('referentprd')->delete();
-    	
-    	Referentprd::create(array(
-          'id' => '1',
-      		'nom' => 'Bague',
-      		'prenom' => 'Danièle',
-    	));
 
     	Referentprd::create(array(
-          'id' => '2',
-      		'nom' => 'Moreau',
-      		'prenom' => 'Patrice',
+          'id' => '1',
+      		'nom' => 'Non renseigné',
+      		'prenom' => '',
     	));
 
     }

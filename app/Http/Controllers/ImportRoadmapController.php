@@ -11,6 +11,7 @@ use App\Application;
 use App\Version;
 use App\VersionEtat;
 use App\Referentqi;
+use App\Referentprd;
 
 class ImportRoadmapController extends Controller
 {
@@ -38,7 +39,7 @@ class ImportRoadmapController extends Controller
                             'enjeuxmetier' => $value->enjeuxmetier,
                             'enjeuxsi' => $value->enjeuxsi,
                             'qos' => $value->qos,
-                            'referentqi' => $value->referentqi, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'referentqi' => $value->referentqi, //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
                             'iteration' => $value->iteration,
                             'productdimensions' => $value->productdimensions,
                             'versiondimensions' => $value->versiondimensions,
@@ -48,14 +49,15 @@ class ImportRoadmapController extends Controller
                             'avancementqi' => $value->avancementqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
-                            'nbreportmep' => $value->nbreportmep //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'nbreportmep' => $value->nbreportmep, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'referentprd' => $value->referentprd //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
                           ];
     				}
 
             //Alimentation de la base de données seulement s'il y a des données trouvées
     				if(!empty($insert)){
 
-              for($i = 1; $i < sizeof($insert);$i++)
+              for($i = 0; $i < sizeof($insert);$i++)
               {
                 //try{
                   //Enregistrement des domaines --> création si n'existe pas seulement
@@ -72,7 +74,7 @@ class ImportRoadmapController extends Controller
                   $version->perimetreqi = true; //A implémenter
                   $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
                   //$version->libelle = $insert[$i]['avancementqi'] * 100;
-                  if($version->version == ''){
+                  if($insert[$i]['versionmoe'] == ''){
                     $version->version = 'Non connu';
                   }
                   else{
@@ -116,8 +118,8 @@ class ImportRoadmapController extends Controller
                   }
 
                   //Création du référent QI sans prénom si inexistant puis référencement dans la version en cours
-                  if ($insert[$i]['referentqi'] == '' ){
-                    $version->referentqi_id = '1';
+                  if ($insert[$i]['referentqi'] == ''){
+                    $version->referentqi_id = '1'; //Non renseigné
                   }
                   else{
                     $referentqi = Referentqi::firstOrNew(['nom' => $insert[$i]['referentqi']], ['prenom' => '']);
@@ -140,10 +142,18 @@ class ImportRoadmapController extends Controller
                   $version->prp_estimationcharge = $insert[$i]['estimationchargeprp'];
                   $version->prd_estimationcharge = $insert[$i]['estimationchargeprd'];
 
-                  $version->prd_nbreports =$insert[$i]['nbreportmep'];
+                  $version->prd_nbreports = $insert[$i]['nbreportmep'];
 
-                  $version->referentprd_id = '1';
-
+                  //Création du référent PRD sans prénom si inexistant puis référencement dans la version en cours
+                  if ($insert[$i]['referentprd'] == ''){
+                    $version->referentprd_id = '1'; //Non renseigné
+                  }
+                  else{
+                    $referentprd = Referentprd::firstOrNew(['nom' => $insert[$i]['referentprd']], ['prenom' => '']);
+                    $referentprd->save();
+                    $version->referentprd_id = $referentprd->id;
+                  }
+                  
                   //Enregistrement de la version seulement et seulement si le sujet n'est pas vide
                   if($insert[$i]['sujet'] != '' ){
                     $version->save();
