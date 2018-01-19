@@ -50,7 +50,10 @@ class ImportRoadmapController extends Controller
                             'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'nbreportmep' => $value->nbreportmep, //Pré-requis --> Colonne à renommer dans la Roadmap
-                            'referentprd' => $value->referentprd //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
+                            'referentprd' => $value->referentprd, //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
+                            'commentairedqi' => $value->commentairedqi, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'commentairedpe' => $value->commentairedpe, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'commentaire' => $value->commentaire
                           ];
     				}
 
@@ -138,6 +141,7 @@ class ImportRoadmapController extends Controller
                   }
 
                   $version->avancementqi = (int)$insert[$i]['avancementqi'] * 100;
+                  $version->alerteqi = $insert[$i]['commentairedqi'];
 
                   $version->prp_estimationcharge = $insert[$i]['estimationchargeprp'];
                   $version->prd_estimationcharge = $insert[$i]['estimationchargeprd'];
@@ -153,7 +157,11 @@ class ImportRoadmapController extends Controller
                     $referentprd->save();
                     $version->referentprd_id = $referentprd->id;
                   }
-                  
+
+                  $version->alerteprd = $insert[$i]['commentairedpe'];
+
+                  $version->commentaire = $insert[$i]['commentaire'];
+
                   //Enregistrement de la version seulement et seulement si le sujet n'est pas vide
                   if($insert[$i]['sujet'] != '' ){
                     $version->save();

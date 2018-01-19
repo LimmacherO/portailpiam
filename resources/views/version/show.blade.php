@@ -378,7 +378,7 @@
 										<div class="label-title"><p>Commentaires :</p></div>
 											<span class="label-content">
 											@if (!empty($version->commentaire))
-												{!! $version->commentaire !!}
+												{!! nl2br($version->commentaire) !!}
 											@else
 												Pas de commentaire(s)
 											@endif
