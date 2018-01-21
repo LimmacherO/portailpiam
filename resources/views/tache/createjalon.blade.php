@@ -150,7 +150,7 @@
         $('#createjalon').submit();
         return true;
     });
-    
+
   });
 
 </script>

@@ -12,6 +12,8 @@ use App\Version;
 use App\VersionEtat;
 use App\Referentqi;
 use App\Referentprd;
+use App\Tache;
+use Carbon\Carbon;
 
 class ImportRoadmapController extends Controller
 {
@@ -40,6 +42,8 @@ class ImportRoadmapController extends Controller
                             'enjeuxsi' => $value->enjeuxsi,
                             'qos' => $value->qos,
                             'referentqi' => $value->referentqi, //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
+                            'dateprevdemqi' => $value->dateprevdemqi, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'datereelledemqi' => $value->datereelledemqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'iteration' => $value->iteration,
                             'productdimensions' => $value->productdimensions,
                             'versiondimensions' => $value->versiondimensions,
@@ -53,7 +57,8 @@ class ImportRoadmapController extends Controller
                             'referentprd' => $value->referentprd, //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
                             'commentairedqi' => $value->commentairedqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'commentairedpe' => $value->commentairedpe, //Pré-requis --> Colonne à renommer dans la Roadmap
-                            'commentaire' => $value->commentaire
+                            'commentaire' => $value->commentaire,
+                            'perimetredqi' => $value->perimetredqi
                           ];
     				}
 
@@ -145,7 +150,6 @@ class ImportRoadmapController extends Controller
 
                   $version->prp_estimationcharge = $insert[$i]['estimationchargeprp'];
                   $version->prd_estimationcharge = $insert[$i]['estimationchargeprd'];
-
                   $version->prd_nbreports = $insert[$i]['nbreportmep'];
 
                   //Création du référent PRD sans prénom si inexistant puis référencement dans la version en cours
@@ -162,10 +166,45 @@ class ImportRoadmapController extends Controller
 
                   $version->commentaire = $insert[$i]['commentaire'];
 
+                  if ($insert[$i]['perimetredqi'] == 'Oui'){
+                    $version->perimetreqi = true;
+                  }
+                  else {
+                    $version->perimetreqi = false;
+                  }
+
                   //Enregistrement de la version seulement et seulement si le sujet n'est pas vide
                   if($insert[$i]['sujet'] != '' ){
+
                     $version->save();
+
+                    //Lors de la création d'une version, on ajoute la date de démarrage QI prévisionnelle
+                    $tache = new Tache;
+                    $tache->libelle = 'Date de démarrage QI prévisionnelle';
+                    $tache->tachetype_id = 2;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['dateprevdemqi'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['dateprevdemqi'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute la date de démarrage QI réelle
+                    $tache = new Tache;
+                    $tache->libelle = 'Date de démarrage QI réelle';
+                    $tache->tachetype_id = 2;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['datereelledemqi'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['datereelledemqi'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
                   }
+
+
 
                  /*}
                  catch (\Illuminate\Database\QueryException $e){
