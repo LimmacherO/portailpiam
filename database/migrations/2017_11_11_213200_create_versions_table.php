@@ -37,7 +37,7 @@ class CreateVersionsTable extends Migration
 
             //Champs référence ALFA --> taille 6 max
             $table->integer('referencealfa')->nullable();
-            $table->date('referencealfa_date')->nullable();
+            $table->date('alfadate')->nullable(); //ex referencealfa_date
 
             //Indicateur: nombre de livraison TMA. Actuellement manuel!
             $table->integer('inc_nblivtma')->default(0);

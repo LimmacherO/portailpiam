@@ -99,7 +99,11 @@ class ImportRoadmapController extends Controller
                   }
 
                   $version->referencealfa = $insert[$i]['reference']; //Référence DQMP ALFA
-                  $version->referencealfa_date = $insert[$i]['date']; //Référence date ALFA
+
+                  //Référence date ALFA
+                  if($insert[$i]['date'] != ''){
+                    $version->alfadate = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['date'])->format('d/m/Y');
+                  }
 
                   //Si l'enjeux métier n'est pas renseigné, on attribut la note la plus basse
                   if ($insert[$i]['enjeuxmetier'] == ''){

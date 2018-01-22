@@ -53,8 +53,14 @@ class VersionController extends Controller
         //Affectationn pour la liste déroulante sur la vue
         $paginationselect = $this->nbrPerPage;
 
-        //Recherche/filtrage de la liste des versions
-        $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
+        if($paginationselect == 'Tous'){
+          //Recherche/filtrage de la liste des versions sans pagination
+          $versions = Version::filter('%' . $query_search . '%')->paginate(500); //Par défaut à 500 mais on est large pour le moment
+        }
+        else{
+          //Recherche/filtrage de la liste des versions avec pagination
+          $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
+        }
 
         //Renvoi vers la vue index des chantiers
         return view('version.index', compact('versions', 'query_search', 'paginationselect'));

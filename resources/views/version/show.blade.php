@@ -130,10 +130,10 @@
 									<div class="col-lg-3 label-div">
 										<div class="label-title"><p>Date création ALFA :</p></div>
 										<span class="label-content">
-											@if($version->referencealfa_date == '')
+											@if($version->alfadate == '')
 												Non renseignée
 											@else
-												{{ \Carbon\Carbon::parse($version->referencealfa_date)->format('d/m/Y')}}
+												{{ $version->alfadate }}
 											@endif
 										</span>
 									</div>

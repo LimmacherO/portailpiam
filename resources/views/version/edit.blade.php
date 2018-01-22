@@ -124,10 +124,21 @@
                                         {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
                                     </div>
 
-                                    <div class="col-lg-3 form-group {!! $errors->has('referencealfa_date') ? 'has-error' : '' !!}">
+                                    <!--<div class="col-lg-3 form-group {!! $errors->has('referencealfa_date') ? 'has-error' : '' !!}">
                                         <div class="label-title"><p>Date création ALFA :</p></div>
                                         {!! Form::date('referencealfa_date', null,  ['class' => 'form-control', 'id' => 'referencealfa_date'] ); !!}
                                         {!! $errors->first('referencealfa_date', '<small class="help-block">:message</small>') !!}
+                                    </div>-->
+
+                                    <div class="col-lg-3 form-group {!! $errors->has('alfadate') ? 'has-error' : '' !!}" >
+                                      <div class="label-title"><p>Date création ALFA :</p></div>
+                                      <div id="datepicker-alfadate" class="input-group date" data-provide="datepicker">
+                                        {!! Form::text('alfadate', null,  ['class' => 'form-control', 'id' => 'datepicker-alfadate', 'name' => 'alfadate'] ); !!}
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </div>
+                                      </div>
+                                      {!! $errors->first('alfadate', '<small class="help-block">:message</small>') !!}
                                     </div>
                                 </div>
 
@@ -377,5 +388,19 @@
         </div>
     </div>
     {!! Form::close() !!}
+
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+          $('#datepicker-alfadate').datepicker({
+          format: 'dd/mm/yyyy',
+          language: 'fr',
+          container: '#datepicker-alfadate',
+          todayHighlight: true,
+          autoclose: true,
+        });
+
+      });
+   </script>
 
 @endsection

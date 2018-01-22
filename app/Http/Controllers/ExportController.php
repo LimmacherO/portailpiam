@@ -124,7 +124,7 @@ class ExportController extends Controller
                     $version->inc_nblivtma,
 
                     $version->referencealfa,
-                    $version->referencealfa_date,
+                    $version->alfadate,
 
                     $version->enjeuxmetier,
                     $version->enjeuxsi,

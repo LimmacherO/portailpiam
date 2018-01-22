@@ -4,8 +4,6 @@ Roadmap V1
 	--> Derniers champs à importer (pb import des référents notamment)
 	--> Contrôle exhaustivité de l'import
 
-- Ajouter Datpicker pour date de ALFA --> attention au nommage du champ (!)
-
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 
 - Renommage des colonnes et des variables dans les models --> application de normes

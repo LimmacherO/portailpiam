@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 //Import de la classe tâche
 use App\Tache;
 
+use Carbon\Carbon;
+
 /*
  * Classe "version": Modèle permettant la gestion des "versions"
  * @Author: Romain Jedynak
@@ -31,7 +33,7 @@ class Version extends Model
         'libelle', 'product_dimensions',
         'application_id',
         'referentqi_id', 'alerteqi', 'avancementqi', 'perimetreqi',
-        'referencealfa', 'referencealfa_date',
+        'referencealfa', 'alfadate',
         'inc_nblivtma',
         'qos', 'enjeuxmetier', 'enjeuxsi',
         'referentprd_id', 'alerteprd', 'prp_estimationcharge', 'prd_estimationcharge', 'prd_nbreports', 'prd_versiondimensions',
@@ -42,6 +44,25 @@ class Version extends Model
     // Liste des champs qui peuvent être triés (dans un tableau par exemple)
     use Sortable;
     public $sortable = ['version', 'libelle', 'inc_nblivtma'];
+
+    public function getAlfadateAttribute($value)
+    {
+      if($value){
+        return Carbon::parse($value)->format('d/m/Y');
+      }
+      else {
+        return $value;
+      }
+    }
+
+    public function setAlfadateAttribute($value) {
+        if($value){
+          $this->attributes['alfadate'] = Carbon::createFromFormat('d/m/Y', $value);
+        }
+        else{
+          $this->attributes['alfadate'] = null;
+        }
+      }
 
     /*
      * Fonction scopeFilter($query, $query_search)

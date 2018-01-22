@@ -63,7 +63,7 @@
 
                                 <div class="col-lg-1 col-lg-offset-6 form-group">
                                         {!! Form::select('paginationselect',
-                                          array('5' => '5', '10' => '10', '20' => '20', '50' => '50', '100' => '100'),
+                                          array('5' => '5', '10' => '10', '20' => '20', '50' => '50', 'Tous' => 'Tous'),
                                           $paginationselect,
                                           ['class' => 'form-control', 'id' => 'paginationselect'])
                                         !!}
