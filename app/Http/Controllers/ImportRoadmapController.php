@@ -57,6 +57,8 @@ class ImportRoadmapController extends Controller
                             'prpdebut' => $value->prpdebut, //Pré-requis: Colonne à renommer
                             'prpfin' => $value->prpfin, //Pré-requis: Colonne à renommer
                             'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'prddateprev' => $value->prddateprev, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'prddatereelle' => $value->prddatereelle, //Pré-requis: Colonne à renommer
                             'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'nbreportmep' => $value->nbreportmep, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'referentprd' => $value->referentprd, //Pré-requis --> Colonne à renommer dans la Roadmap + attention au format de la colonne (standard et non date)
@@ -86,7 +88,7 @@ class ImportRoadmapController extends Controller
                   $version->application_id = $application->id; //Import de l'application. Le domaine est lié dans le modèle à l'application
                   $version->perimetreqi = true; //A implémenter
                   $version->libelle = $insert[$i]['sujet']; //Correspond à la valeur sujet dans le tableau
-                  //$version->libelle = $insert[$i]['avancementqi'] * 100;
+
                   if($insert[$i]['versionmoe'] == ''){
                     $version->version = 'Non connu';
                   }
@@ -154,7 +156,7 @@ class ImportRoadmapController extends Controller
                     $version->versionetat_id = $versionetat->id;
                   }
 
-                  $version->avancementqi = (int)$insert[$i]['avancementqi'] * 100;
+                  $version->avancementqi = ((int)$insert[$i]['avancementqi'] * 100);
                   $version->alerteqi = $insert[$i]['commentairedqi'];
 
                   $version->prd_versiondimensions = $insert[$i]['versiondimensionslivree'];
@@ -250,6 +252,30 @@ class ImportRoadmapController extends Controller
                     }
                     $tache->deletable = false;
                     $tache->jalon = false; //c'est une tâche, pas un jalon
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute une date de MEP présionnelle non supprimable avec date du jour par défaut
+                    $tache = new Tache;
+                    $tache->libelle = 'Date prévisionnelle de MES';
+                    $tache->tachetype_id = 7;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['prddateprev'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prddateprev'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute une date de MEP réelle non supprimable avec date du jour par défaut
+                    $tache = new Tache;
+                    $tache->libelle = 'Date réelle de MES';
+                    $tache->tachetype_id = 7;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['prddatereelle'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prddatereelle'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
                     //Sauvegarde de la tâche
                     $tache->save();
 
