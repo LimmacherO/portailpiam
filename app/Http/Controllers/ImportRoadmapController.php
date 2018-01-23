@@ -51,6 +51,11 @@ class ImportRoadmapController extends Controller
                             'date' => $value->date, //Date de la DQMP ALFA
                             'activiteqi' => $value->activiteqi, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'avancementqi' => $value->avancementqi, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'prpdateprev' => $value->prpdateprev, //Pré-requis --> Colonne à renommer dans la Roadmap
+                            'versiondimensionslivree' => $value->versiondimensionslivree, //Pré-requis --> Colonne à renommer dans la Roadmap + format de la colonne (standard et non date)
+                            'prpdatereelle' => $value->prpdatereelle, //Pré-requis: Colonne à renommer
+                            'prpdebut' => $value->prpdebut, //Pré-requis: Colonne à renommer
+                            'prpfin' => $value->prpfin, //Pré-requis: Colonne à renommer
                             'estimationchargeprp' => $value->estimationchargeprp, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'estimationchargeprd' => $value->estimationchargeprd, //Pré-requis --> Colonne à renommer dans la Roadmap
                             'nbreportmep' => $value->nbreportmep, //Pré-requis --> Colonne à renommer dans la Roadmap
@@ -152,6 +157,8 @@ class ImportRoadmapController extends Controller
                   $version->avancementqi = (int)$insert[$i]['avancementqi'] * 100;
                   $version->alerteqi = $insert[$i]['commentairedqi'];
 
+                  $version->prd_versiondimensions = $insert[$i]['versiondimensionslivree'];
+
                   $version->prp_estimationcharge = $insert[$i]['estimationchargeprp'];
                   $version->prd_estimationcharge = $insert[$i]['estimationchargeprd'];
                   $version->prd_nbreports = $insert[$i]['nbreportmep'];
@@ -203,6 +210,46 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['datereelledemqi'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute la date d'acheminement PROD prévisionnelle
+                    $tache = new Tache;
+                    $tache->libelle = 'Date acheminement PROD prévisionnelle';
+                    $tache->tachetype_id = 5;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['prpdateprev'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpdateprev'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute la date d'acheminement PROD réelle
+                    $tache = new Tache;
+                    $tache->libelle = 'Date acheminement PROD réelle';
+                    $tache->tachetype_id = 5;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['prpdatereelle'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpdatereelle'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    //Sauvegarde de la tâche
+                    $tache->save();
+
+                    //Lors de la création d'une version, on ajoute la phase de pré-production
+                    $tache = new Tache;
+                    $tache->libelle = 'Pré-production';
+                    $tache->tachetype_id = 6;
+                    $tache->version_id = $version->id;
+                    if($insert[$i]['prpdebut'] != ''){
+                      $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpdebut'])->format('d/m/Y');
+                    }
+                    if($insert[$i]['prpfin'] != ''){
+                      $tache->fin = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpfin'])->format('d/m/Y');
+                    }
+                    $tache->deletable = false;
+                    $tache->jalon = false; //c'est une tâche, pas un jalon
                     //Sauvegarde de la tâche
                     $tache->save();
 
