@@ -77,12 +77,20 @@ class ImportRoadmapController extends Controller
                 //try{
                   //Enregistrement des domaines --> création si n'existe pas seulement
                   $domaine = Domaine::firstOrNew(['libelle' => $insert[$i]['domaine']]);
-                  $domaine->save();
+                  try{
+					  $domaine->save();
+					}catch (\Illuminate\Database\QueryException $e){
+					   //Voir comment gérer l'exception et si besoin réél
+					}
                   //$domaineapp = Domaine::where('libelle', $insert[$i]['domaine'])->first(); //Pour récupération de l'ID du domaine associé
 
                   //Enregistrement des applications --> création si n'existe pas seulement
                   $application = Application::firstOrNew(['libelle' => $insert[$i]['application']],['domaine_id' => $domaine->id]);
-                  $application->save();
+                  try{
+					  $application->save();
+				  }catch (\Illuminate\Database\QueryException $e){
+					   //Voir comment gérer l'exception et si besoin réél
+					}
 
                   $version = new Version;
                   $version->application_id = $application->id; //Import de l'application. Le domaine est lié dans le modèle à l'application
@@ -138,21 +146,24 @@ class ImportRoadmapController extends Controller
 
                   //Création du référent QI sans prénom si inexistant puis référencement dans la version en cours
                   if ($insert[$i]['referentqi'] == ''){
-                    $version->referentqi_id = '1'; //Non renseigné
+					$referentqi = Referentqi::firstOrCreate(['nom' => 'Non renseigné'], ['prenom' => '']);
                   }
                   else{
-                    $referentqi = Referentqi::firstOrNew(['nom' => $insert[$i]['referentqi']], ['prenom' => '']);
-                    $referentqi->save();
-                    $version->referentqi_id = $referentqi->id;
+                    $referentqi = Referentqi::firstOrCreate(['nom' => $insert[$i]['referentqi']], ['prenom' => '']);
                   }
+				  $version->referentqi_id = $referentqi->id;
 
                   //Création de l'état de version si inexistant puis référencement dans la version en cours
                   if ($insert[$i]['activiteqi'] == '' ){
                     $version->versionetat_id = '1';
                   }
                   else{
-                    $versionetat = VersionEtat::firstOrNew(['libelle' => $insert[$i]['activiteqi']]);
-                    $versionetat->save();
+					$versionetat = VersionEtat::firstOrNew(['libelle' => $insert[$i]['activiteqi']]);
+					try {
+						$versionetat->save();
+					}catch (\Illuminate\Database\QueryException $e){
+					   //Voir comment gérer l'exception et si besoin réél
+					}
                     $version->versionetat_id = $versionetat->id;
                   }
 
@@ -167,13 +178,12 @@ class ImportRoadmapController extends Controller
 
                   //Création du référent PRD sans prénom si inexistant puis référencement dans la version en cours
                   if ($insert[$i]['referentprd'] == ''){
-                    $version->referentprd_id = '1'; //Non renseigné
+                    $referentprd = Referentprd::firstOrCreate(['nom' => 'Non renseigné'], ['prenom' => '']);
                   }
                   else{
-                    $referentprd = Referentprd::firstOrNew(['nom' => $insert[$i]['referentprd']], ['prenom' => '']);
-                    $referentprd->save();
-                    $version->referentprd_id = $referentprd->id;
+                    $referentprd = Referentprd::firstOrCreate(['nom' => $insert[$i]['referentprd']], ['prenom' => '']);
                   }
+				  $version->referentprd_id = $referentprd->id;
 
                   $version->alerteprd = $insert[$i]['commentairedpe'];
 
@@ -280,13 +290,6 @@ class ImportRoadmapController extends Controller
                     $tache->save();
 
                   }
-
-
-
-                 /*}
-                 catch (\Illuminate\Database\QueryException $e){
-                   //Voir comment gérer l'exception et si besoin réél
-                 }*/
               }
             }
 

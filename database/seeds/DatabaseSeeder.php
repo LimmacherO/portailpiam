@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	  //$this->call(DomaineTableSeeder::class);
-        $this->call(ReferentqiTableSeeder::class);
-        $this->call(ReferentProdTableSeeder::class);
+        //$this->call(ReferentqiTableSeeder::class);
+        //$this->call(ReferentProdTableSeeder::class);
         //$this->call(ApplicationTableSeeder::class);
         $this->call(VersionTableSeeder::class);
         $this->call(TacheTypeTableSeeder::class);
