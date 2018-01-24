@@ -156,7 +156,7 @@ class ImportRoadmapController extends Controller
                     $version->versionetat_id = $versionetat->id;
                   }
 
-                  $version->avancementqi = ((int)$insert[$i]['avancementqi'] * 100);
+                  $version->avancementqi = $insert[$i]['avancementqi'] * 100;
                   $version->alerteqi = $insert[$i]['commentairedqi'];
 
                   $version->prd_versiondimensions = $insert[$i]['versiondimensionslivree'];
