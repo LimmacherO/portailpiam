@@ -71,7 +71,7 @@ class Version extends Model
      */
 	public function scopeFilter($query, $query_search)
   {
-      return $query->where('versions.libelle', 'LIKE', $query_search)
+      return $query->where('versions.libelle', 'like', $query_search)
                    ->orwhere('version', 'like', $query_search)
 
                    ->orwhereHas('application', function ($query) use ($query_search) {

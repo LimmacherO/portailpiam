@@ -35,7 +35,8 @@ class VersionController extends Controller
     public function __construct(VersionRepository $versionRepository)
     {
         $this->versionRepository = $versionRepository;
-        session(['recherche_pagination' => '10']);
+        session(['recherche_pagination' => 'Tous']);//Valeur par défaut
+        session(['recherche_referentqi' => 'Tous les référents']);//Valeur par défaut
     }
 
     /*
@@ -50,7 +51,10 @@ class VersionController extends Controller
         //Récuparation de la valeur de pagination
         $this->nbrPerPage = session('recherche_pagination');
 
-        //Affectationn pour la liste déroulante sur la vue
+        //Récupération de la valeur du référentQI pour filtrage
+        $referentqisselect = session('recherche_referentqi');
+
+        //Affectation pour la liste déroulante sur la vue
         $paginationselect = $this->nbrPerPage;
 
         if($paginationselect == 'Tous'){
@@ -62,8 +66,13 @@ class VersionController extends Controller
           $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
         }
 
+        //Récupération de la liste des référents QI
+        $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'id');
+        $referentqis_array = $referentqis->toArray();
+        array_push($referentqis_array, 'Tous les référents');
+
         //Renvoi vers la vue index des chantiers
-        return view('version.index', compact('versions', 'query_search', 'paginationselect'));
+        return view('version.index', compact('versions', 'query_search', 'paginationselect', 'referentqis_array', 'referentqisselect'));
     }
 
     /*
@@ -76,6 +85,9 @@ class VersionController extends Controller
 
         //Sauvegarde en session de la valeur de pagination
         session(['recherche_pagination' => Input::get('paginationselect')]);
+
+        //Sauvegarde en session de la valeur du référent QI
+        session(['recherche_referentqi' => Input::get('referentqisselect')]);
 
         //redirection vers la route index() des chantiers
         return redirect()->route('version.index',  compact('version'));
