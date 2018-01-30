@@ -49,27 +49,31 @@ class VersionController extends Controller
         $query_search = session('recherche_chantier');
 
         //Récuparation de la valeur de pagination
-        $this->nbrPerPage = session('recherche_pagination');
+        $paginationselect = session('recherche_pagination');
+        //Affectation pour la liste déroulante sur la vue
+        if($paginationselect == 'Tous'){
+            $this->nbrPerPage = '500'; //Valeur assez grande pour démarrer
+            //Idée évolution: voir pour récupérer le nombre max de résultats pour être au plus juste
+        }
+        else{
+          $this->nbrPerPage = $paginationselect;
+        }
 
         //Récupération de la valeur du référentQI pour filtrage
         $referentqisselect = session('recherche_referentqi');
 
-        //Affectation pour la liste déroulante sur la vue
-        $paginationselect = $this->nbrPerPage;
-
-        if($paginationselect == 'Tous'){
-          //Recherche/filtrage de la liste des versions sans pagination
-          $versions = Version::filter('%' . $query_search . '%')->paginate(500); //Par défaut à 500 mais on est large pour le moment
+        if ($referentqisselect == '0'){
+          $versions = Version::filter(0)->paginate($this->nbrPerPage);
         }
         else{
-          //Recherche/filtrage de la liste des versions avec pagination
-          $versions = Version::filter('%' . $query_search . '%')->paginate($this->nbrPerPage);
+          $referentqi_id = Referentqi::where('nom', $referentqisselect)->first();
+          $versions = Version::filter($referentqi_id->id)->paginate($this->nbrPerPage);
         }
 
-        //Récupération de la liste des référents QI
-        $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'id');
+        //Récupération de la liste des référents QI et mise en forme
+        $referentqis = Referentqi::orderBy('nom')->pluck('nom', 'nom');
         $referentqis_array = $referentqis->toArray();
-        array_push($referentqis_array, 'Tous les référents');
+        array_unshift($referentqis_array, 'Tous les référents'); //Ajout de la valeur par  en tête de liste (toute la liste)
 
         //Renvoi vers la vue index des chantiers
         return view('version.index', compact('versions', 'query_search', 'paginationselect', 'referentqis_array', 'referentqisselect'));

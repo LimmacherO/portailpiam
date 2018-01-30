@@ -69,9 +69,23 @@ class Version extends Model
      * @Return $query - Liste des versions filtrées
      * Permet de réaliser un filtre sur les versions lors de la recherche en page d'index
      */
-	public function scopeFilter($query, $query_search)
+	public function scopeFilter($query, $referentqisselect)
   {
-      return $query->where('versions.libelle', 'like', $query_search)
+
+      if ($referentqisselect == 0){
+        return $query->where('libelle', 'like', '%')
+                      ->sortable()
+                      ->orderBy('application_id', 'asc');
+      }
+      else{
+        return $query->where('referentqi_id', $referentqisselect)
+                      ->sortable()
+                      ->orderBy('application_id', 'asc');
+      }
+
+
+        /*return $query->where('referentqi_id', $referentqisselect_id)
+                   ->orwhere('versions.libelle', 'like', $query_search)
                    ->orwhere('version', 'like', $query_search)
 
                    ->orwhereHas('application', function ($query) use ($query_search) {
@@ -80,19 +94,12 @@ class Version extends Model
                    					  $query->where('domaine.libelle', 'like', $query_search);
                    					});
                    })
+                 }
 
-                   //Filtrage par nom de famille du référent QI
-                   ->orwhereHas('referentqi', function ($query) use ($query_search) {
-                     $query->where('referentqi.nom', 'like', $query_search);
-                   })
-
-                   //Filtrage par prénom du référent QI
-                   ->orwhereHas('referentqi', function ($query) use ($query_search) {
-                     $query->where('referentqi.prenom', 'like', $query_search);
-                   })
 
                    ->sortable()
                    ->orderBy('application_id', 'asc');
+              */
   }
 
   /*
