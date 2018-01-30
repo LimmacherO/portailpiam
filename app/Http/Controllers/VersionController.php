@@ -36,7 +36,7 @@ class VersionController extends Controller
     {
         $this->versionRepository = $versionRepository;
         session(['recherche_pagination' => 'Tous']);//Valeur par défaut
-        session(['recherche_referentqi' => 'Tous les référents']);//Valeur par défaut
+        session(['recherche_referentqi' => '0']);//Valeur par défaut 'Tous les référents'
     }
 
     /*

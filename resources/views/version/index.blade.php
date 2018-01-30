@@ -59,36 +59,25 @@
                     <div class="panel-body">
 
                         <div class="col-lg-12">
-                            <div class="row section-default-page pull-right">
+                            <div class="row section-default-page">
 
-                                <div class="col-lg-3 col-lg-offset-3">
-                                  <div class="form-group">
+                                <div class="col-lg-3">
                                     <!-- Liste des référents QI -->
                                     {!! Form::select('referentqisselect',
                                     $referentqis_array,
                                     $referentqisselect,
                                     ['class' => 'form-control', 'id' => 'referentqisselect']) !!}
-                                  </div>
                                 </div>
 
                                 <div class="col-lg-1">
-                                  <div class="form-group">
                                     <!-- Liste déroulante pour sélection du nombre de chantiers à afficher -->
                                     {!! Form::select('paginationselect',
-                                      array('Tous' => 'Tous', '5' => '5', '10' => '10', '20' => '20', '50' => '50'),
+                                      array('Tous' => 'Tous', '10' => '10', '20' => '20'),
                                       $paginationselect,
                                       ['class' => 'form-control', 'id' => 'paginationselect'])
                                     !!}
-                                  </div>
                                 </div>
 
-                                <div class="col-lg-5 input-group">
-                                      <!-- Champs de recherche/filtrage des données -->
-                                      {!! Form::text('search', $query_search, ['class' => 'form-control']) !!}
-                                      <span class="input-group-btn">
-                                          <button class="btn btn-default btn-cancel" type="rechercher" id="search"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Rechercher</button>
-                                      </span>
-                                </div>
 
                             </div>
                         </div>
