@@ -36,8 +36,8 @@
 
                         <a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>&nbsp;Exporter</a>
 
-                        <a href="{!! url('import/roadmap/index'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>&nbsp;Importer</a>
-
+                        <!-- On cache l'URL pour qu'elle ne soit pas accessible -->
+                        <!--<a href="{!! url('import/roadmap/index'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>&nbsp;Importer</a> -->
 
                     </div>
 

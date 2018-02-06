@@ -3,10 +3,20 @@ Roadmap V1
 - Reprise des données en automatique:
 	--> Contrôle exhaustivité de l'import
 
-- Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 
 - Renommage des colonnes et des variables dans les models --> application de normes
 https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
+
+- Bascule avec Bootstrap V4 et remise en forme
+
+- Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
+	--> ajout retour à la ligne
+
+
+Remarques de Frédéric:
+- Est-il possible d'effectuer le tri sur toutes les colonnes ? (product Dimensions, avancement QI, QoS, date prévisionnelle MES)
+- Depuis la dernière mise à jour permettant d'accéder au détail en cliquant sur la ligne, à quoi sert encore la loupe à droite de chaque ligne ? --> bouton consulter
+- Est-il possible que le "Nombre livraison TMA/DID" soit calculé automatiquement via une requête sur la base Dimensions ?
 
 RoadMap V2
 ----------

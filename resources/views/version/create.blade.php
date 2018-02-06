@@ -193,7 +193,7 @@
 
                     <!-- Titre du panel -->
                     <div class="panel-heading">
-                        <h3 class="panel-title">Suivi des développements</h3>
+                        <h3 class="panel-title">Suivi des livraisons</h3>
                     </div>
 
                     <!-- Contenu du panel -->

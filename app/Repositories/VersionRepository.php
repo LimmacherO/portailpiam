@@ -9,10 +9,12 @@ class VersionRepository
 
     protected $version;
 
-    public function __construct(Version $version)
-	{
-		$this->version = $version;
-	}
+    /*
+     * Constructeur de la classe
+     */
+    public function __construct(Version $version){
+		    $this->version = $version;
+	  }
 
     public function getPaginate($n)
     {

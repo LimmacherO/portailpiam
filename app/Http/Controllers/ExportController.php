@@ -33,7 +33,7 @@ class ExportController extends Controller
 
       //Nom du fichier en sortie
       //Actuellement en dur mais à mettre en variable dans la future vue
-    	$filename = "DQI-PIAM-ROADMAPDSI.xls";
+    	$filename = "DQI-PIAM-ROADMAPDSI";
 
       //Instructions pour préparation et mise en page du document Excel
     	Excel::create($filename, function($excel) {
