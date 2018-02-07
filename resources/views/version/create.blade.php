@@ -22,7 +22,7 @@
         				</button>
 
                 <!-- Button pour exporter la roadmap -->
-        				<button id="annuler" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version'); !!}';">
+        				<button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version'); !!}';">
         					<i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
         				</button>
 

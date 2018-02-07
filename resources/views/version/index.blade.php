@@ -17,12 +17,12 @@
         				<h1 class="text-left">Roadmap DSI</h1>
 
         				<!-- Button pour ajouter/créer un nouveau membre -->
-        				<button id="ajouter" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
+        				<button id="ajouter" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
         					<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter
         				</button>
 
                 <!-- Button pour exporter la roadmap -->
-        				<button id="exporter" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('export/excel'); !!}';">
+        				<button id="exporter" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('export/excel'); !!}';">
         					<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>&nbsp;Exporter
         				</button>
 

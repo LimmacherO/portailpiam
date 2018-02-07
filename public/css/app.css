@@ -59,6 +59,20 @@ p {
   margin-right: 10px;
 }
 
+/* Couleur des boutons primaires Bootstrap */
+.btn.btn-outline-primary{
+  color: rgb(68,125,168);
+  border-color: rgb(68,125,168);
+}
+.btn.btn-outline-primary:hover,
+.btn.btn-outline-primary:focus,
+.btn.btn-outline-primary:active,
+.btn.btn-outline-primary.active {
+  color: #ffffff;
+  background-color: rgb(68,125,168);
+  border-color: rgb(68,125,168);
+}
+
 /**
 * Section-default-page: mise en forme générale des pages (contenu)
 **/
