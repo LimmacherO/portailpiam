@@ -1,85 +1,77 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
-<!-- Header -->
-<head>
+  <!-- Header de la page -->
+  <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+      <!-- CSRF Token -->
+      <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- Titre de la page -->
-    <title>{{ config('app.name', 'Laravel') }}</title>
+      <!-- Titre de la page -->
+      <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Import - Bootstrap -->
-    <link href="{{ asset('lib/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+      <!-- Import - Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Import - Font Awesome -->
-    <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+      <!-- Import - Font Awesome -->
+      <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
 
-    <!-- Imports styles CSS -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
+      <!-- Imports styles CSS -->
+      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+      <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
 
+      <!-- Bootstrap Date-Picker Plugin -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
-    <!--  jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  </head>
 
-  <!-- Bootstrap Date-Picker Plugin -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <body>
 
+    <!-- Barre de navigation "top" -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-custom">
 
-</head>
+      <!-- Titre de la barre de navigation -->
+      <a class="navbar-brand" href="">Portail DQI/PIAM</a>
 
-<body>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <!-- Barre de menu en haut de page -->
-    <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Portail DQI/PIAM</a>
-            </div>
+            <!-- Lien vers la roadmap -->
+            <li  class="nav-item @if(Request::is('version')) active @endif">
+              <a class="nav-link" href="{!! url('version'); !!}">Roadmap DSI</span></a>
+            </li>
 
-            <div class="collapse navbar-collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <!-- Lien vers la RoadMap DSI -->
-                    <a href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;&nbsp;Roadmap DSI</a>
-                </li>
-              </ul>
-            </div>
-        </div>
+        </ul>
+
+      </div>
     </nav>
 
-
+    <!-- Affichage du contenu -->
     @yield('content')
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
-
-    <!-- Vue.js -->
-    <script src="/js/vue.min.js"></script>
+    <!-- Import des librairies JS associées à Bootstrap  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Bootstrap "bootstrap-datepicker"-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.fr.min.js') }}"></script>
 
+    <!-- Permet d'ajouter des scripts JS spécifique dans chaque page/vues -->
     @yield('scripts')
 
-</body>
+  </body>
 
 </html>

@@ -8,29 +8,26 @@
 
     {!! Form::open(['url' => 'version/store', 'method' => 'post', 'id' => 'createversion']) !!}
 
-    <!-- En-tête page Web -->
-    <div id="header" class="section-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Titre de la page Web -->
-                    <h1>Ajouter un nouveau chantier</h1>
-                </div>
+    <!-- En-tête page -->
+    <div id="header" class="container-fluid section-header">
+        <div class="row">
+            <div class="col-lg-12">
 
-                <!-- Contrôles -->
-                <div class="col-lg-12">
+                <!-- Titre de la page Web -->
+        				<h1 class="text-left">Ajouter un nouveau chantier</h1>
 
-                    <div class="pull-right">
+        				<!-- Button pour ajouter/créer un nouveau membre -->
+        				<button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
+        					<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+        				</button>
 
-                        {!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit', 'id' => 'valider']) !!}
-
-                        <a href="{!! url('version'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a>
-
-                    </div>
-
-                </div>
+                <!-- Button pour exporter la roadmap -->
+        				<button id="annuler" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version'); !!}';">
+        					<i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+        				</button>
 
             </div>
+
         </div>
     </div>
 

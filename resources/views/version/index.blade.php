@@ -4,53 +4,52 @@
     class="active"
 @endsection
 
-
 @section('content')
 
     {!! Form::open(['url' => 'version/search', 'method' => 'get', 'id' => 'search']) !!}
 
-    <!-- En-tête page Web -->
-    <div id="header" class="section-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Titre de la page Web -->
-                    <h1>Roadmap DSI</h1>
-                </div>
+    <!-- En-tête page -->
+    <div id="header" class="container-fluid section-header">
+        <div class="row">
+            <div class="col-lg-12">
 
-                <!-- Message d'information -->
-                <div class="col-lg-12">
-                    @if(session()->has('ok'))
-                        <div class="alert alert-success">
-                            {!! session('ok') !!}
-                        </div>
-                    @endif
-                </div>
+                <!-- Titre de la page Web -->
+        				<h1 class="text-left">Roadmap DSI</h1>
 
-                <!-- Contrôles -->
-                <div class="col-lg-12">
+        				<!-- Button pour ajouter/créer un nouveau membre -->
+        				<button id="ajouter" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
+        					<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter
+        				</button>
 
-                    <div class="pull-right">
+                <!-- Button pour exporter la roadmap -->
+        				<button id="exporter" type="button" type="submit" class="btn btn-outline-secondary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('export/excel'); !!}';">
+        					<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>&nbsp;Exporter
+        				</button>
 
-                        <a href="{!! url('version/create/1'); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter</a>
-
-                        <a href="{!! url('export/excel'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>&nbsp;Exporter</a>
-
-                        <!-- On cache l'URL pour qu'elle ne soit pas accessible -->
-                        <!--<a href="{!! url('import/roadmap/index'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>&nbsp;Importer</a> -->
-
-                    </div>
-
-                </div>
+                <!-- On cache l'URL pour qu'elle ne soit pas accessible -->
+                <!--<a href="{!! url('import/roadmap/index'); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>&nbsp;Importer</a> -->
 
             </div>
+
         </div>
     </div>
 
-    <!-- Contenu de la page Web -->
-    <div id="content">
-        <!-- Afichage du contenu de la page -->
-        <div class="container-fluid section-content">
+    <!-- Affichage du message d'information (SUCCESS, etc.) -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+            @if(session()->has('ok'))
+              <div class="alert alert-success">
+                  {!! session('ok') !!}
+              </div>
+            @endif
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Afichage du contenu de la page -->
+    <div id="content"class="container-fluid section-content">
             <div class="row">
 
                 <div class="panel panel-default">
@@ -192,7 +191,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
     {!! Form::close() !!}
 

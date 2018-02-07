@@ -1,0 +1,30 @@
+/**
+  * navbar.css - Feuille de style pour la barre de navigation
+  * @author: Romain Jedynak - romain.jedynak@gmail.com
+  */
+
+/* Barre de navigation par défaut */
+.navbar-custom {
+    background-color: rgb(68,125,168);
+    height: 65px;
+}
+
+/* Navbar - logo/nom */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text, .navbar-custom .navbar-brand:hover   {
+    color: rgba(255,255,255,.9);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 30px;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255,255,255,.5);
+    font-size: 18px;
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}

@@ -29,54 +29,34 @@ p {
     color: #999;
 }
 
-
-/*
- * Menu principal du portail PIAM
- */
-#navbar {
-    background-color: rgb(68,125,168);
-    padding: 0px;
-    margin: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 60px;
-}
-
-#navbar .navbar-header .navbar-brand {
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-    font-size: 26px;
-    text-align: left;
-    color: #FFF;
-}
-
-#navbar .navbar-nav a {
-    color: #FFF;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-
 /**
 * Section-header: en-tête d'affichage de la page
 **/
 .section-header {
-    padding: 0px;
-    margin-top: 60px; /*marge liée à la navbar */
+    padding: 10px;
+    padding-top: 65px; /* Marge liée à la barre de navigation **/
     border-bottom: 1px solid rgb(220,226,234);
     background-color: rgb(255,255,255);
 }
 
-/* Titre de la page */
+/* Titre de la page dans l'en-tête */
 .section-header h1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
     padding-left: 20px;
+    padding-top: 10px;
     color: rgb(106,115,125);
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 32px;
     font-weight: bold;
+}
+
+
+/**
+* Affichage des boutons (Bootstrap)
+**/
+
+/* Marge de droite pour les boutons Bootstrap */
+.btn-margin-right{
+  margin-right: 10px;
 }
 
 /**
@@ -214,42 +194,7 @@ input[type=text], textarea {
   font-size: 14px;
 }
 
-/**
- * Mise en forme des boutons Bootstrap
- */
-.btn{
-    color: #FFF;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-    border: 1px solid rgb(214,214,214);
-    margin-bottom: 10px;
-}
 
-.btn-cancel{
-    margin-right: 10px;
-    color: #7b7b7b;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-}
-
-.btn-cancel:hover{
-    color: #7b7b7b;
-}
-
-.btn-danger{
-    margin-right: 10px;
-    color: #FFF;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 14px;
-}
-
-.btn-danger:hover{
-    color: #FFF;
-}
-
-.btn-margin-right{
-  margin-right: 10px;
-}
 
 
 /*
