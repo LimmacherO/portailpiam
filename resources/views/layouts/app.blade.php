@@ -48,7 +48,7 @@
         <ul class="navbar-nav ml-auto">
 
             <!-- Lien vers la roadmap -->
-            <li  class="nav-item @if(Request::is('version')) active @endif">
+            <li  class="nav-item active"> <!-- Par défaut actif en attendant les autres menus -->
               <a class="nav-link" href="{!! url('version'); !!}">Roadmap DSI</span></a>
             </li>
 

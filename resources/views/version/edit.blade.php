@@ -35,117 +35,90 @@
     </div>
 
 
-    <!-- Contenu de la page Web -->
-    <div id="content">
-        <!-- Afichage du contenu de la page -->
-        <div class="container-fluid section-content">
-
+    <!-- Afichage du contenu de la page -->
+    <div class="container-fluid">
             <div class="row">
 
+              <div class="col-lg-12">
+
                 <!-- Panel "Identification de la version" -->
-                <div class="panel panel-default">
+                <div class="card">
 
                     <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Identification de la version</h3>
-                    </div>
+                    <div class="card-header">Identification de la version</div>
 
                     <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
+                    <div class="card-body">
 
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-
-                                <div class="row section-default-page">
-
-                                    <!-- Choix de l'application associée -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Application :</p></div>
-                                        {!! Form::select('application_id',
-                                        $applications,
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'application_id']) !!}
-                                    </div>
-
-                                    <!-- Libellé du chantier -->
-                                    <div class="col-lg-6 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Libellé :</p></div>
-                                        {!! Form::text('libelle', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-                                <div class="row section-default-page">
-
-                                    <!-- "Product Dimensions -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Product Dimensions :</p></div>
-                                        {!! Form::text('product_dimensions', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                    <!-- "Version MOE" du chantier -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('version') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Version MOE :</p></div>
-                                        {!! Form::text('version', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                    <!-- "Version Dimensions" du chantier -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('version_dimensions') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Version Dimensions :</p></div>
-                                        {!! Form::text('version_dimensions', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('version_dimensions', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-
-                                <div class="row section-default-page">
-
-                                    <!-- Etat de la version -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Etat :</p></div>
-                                        {!! Form::select('versionetat_id',
-                                        $versionetats,
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'versionetat_id']) !!}
-                                    </div>
-
-                                </div>
-
-                                <div class="row section-default-page">
-
-                                    <!-- "Référence ALFA" du chantier -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Référence ALFA :</p></div>
-                                        {!! Form::text('referencealfa', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                    <!--<div class="col-lg-3 form-group {!! $errors->has('referencealfa_date') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Date création ALFA :</p></div>
-                                        {!! Form::date('referencealfa_date', null,  ['class' => 'form-control', 'id' => 'referencealfa_date'] ); !!}
-                                        {!! $errors->first('referencealfa_date', '<small class="help-block">:message</small>') !!}
-                                    </div>-->
-
-                                    <div class="col-lg-3 form-group {!! $errors->has('alfadate') ? 'has-error' : '' !!}" >
-                                      <div class="label-title"><p>Date création ALFA :</p></div>
-                                      <div id="datepicker-alfadate" class="input-group date" data-provide="datepicker">
-                                        {!! Form::text('alfadate', null,  ['class' => 'form-control', 'id' => 'datepicker-alfadate', 'name' => 'alfadate'] ); !!}
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </div>
-                                      </div>
-                                      {!! $errors->first('alfadate', '<small class="help-block">:message</small>') !!}
-                                    </div>
-                                </div>
-
-                            </div>
+                        <!-- Choix de l'application associée -->
+                        <div class="col-lg-3 form-group">
+                            <div class="label-title"><p>Application :</p></div>
+                            {!! Form::select('application_id',
+                            $applications,
+                            null,
+                            ['class' => 'form-control', 'id' => 'application_id']) !!}
                         </div>
+
+                        <!-- Libellé du chantier -->
+                        <div class="col-lg-6 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
+                            <div class="label-title"><p>Libellé :</p></div>
+                            {!! Form::text('libelle', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+                        <!-- "Product Dimensions -->
+                        <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
+                            <div class="label-title"><p>Product Dimensions :</p></div>
+                            {!! Form::text('product_dimensions', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+                        <!-- "Version MOE" du chantier -->
+                        <div class="col-lg-3 form-group {!! $errors->has('version') ? 'has-error' : '' !!}">
+                            <div class="label-title"><p>Version MOE :</p></div>
+                            {!! Form::text('version', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+                        <!-- "Version Dimensions" du chantier -->
+                        <div class="col-lg-3 form-group {!! $errors->has('version_dimensions') ? 'has-error' : '' !!}">
+                            <div class="label-title"><p>Version Dimensions :</p></div>
+                            {!! Form::text('version_dimensions', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('version_dimensions', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+                        <!-- Etat de la version -->
+                        <div class="col-lg-3 form-group">
+                            <div class="label-title"><p>Etat :</p></div>
+                            {!! Form::select('versionetat_id',
+                            $versionetats,
+                            null,
+                            ['class' => 'form-control', 'id' => 'versionetat_id']) !!}
+                        </div>
+
+                        <!-- "Référence ALFA" du chantier -->
+                        <div class="col-lg-3 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
+                            <div class="label-title"><p>Référence ALFA :</p></div>
+                            {!! Form::text('referencealfa', null, ['class' => 'form-control']) !!}
+                            {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
+                        </div>
+
+                        <div class="col-lg-3 form-group {!! $errors->has('alfadate') ? 'has-error' : '' !!}" >
+                          <div class="label-title"><p>Date création ALFA :</p></div>
+                          <div id="datepicker-alfadate" class="input-group date" data-provide="datepicker">
+                            {!! Form::text('alfadate', null,  ['class' => 'form-control', 'id' => 'datepicker-alfadate', 'name' => 'alfadate'] ); !!}
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </div>
+                          </div>
+                          {!! $errors->first('alfadate', '<small class="help-block">:message</small>') !!}
+                        </div>
+
                     </div>
                 </div>
+              </div>
+
+              <div class="row">
 
                 <!-- Panel "Scoring QOS" -->
                 <div class="panel panel-default">
@@ -386,7 +359,6 @@
 
             </div>
         </div>
-    </div>
     {!! Form::close() !!}
 
     <script type="text/javascript">

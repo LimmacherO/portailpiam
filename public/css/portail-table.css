@@ -3,50 +3,45 @@
 * Feuille de style pour les tableaux
 **/
 
-.portail-table{
-	background-color: #FFF;
+table{
   margin-top: 10px;
   margin-bottom: 10px;
 	border: 1px solid rgb(239,239,239);
+	border-radius: 0;
 }
 
-.portail-table-header{
+table thead tr{
 	background-color: rgb(251,251,249);
 	border: 1px solid rgb(239,239,239);
 }
 
 /* Suppression de la bordure inférieure de l'en-tête */
-.table thead > tr > th { border-bottom: none; }
+table thead > tr > th { border-bottom: none; }
 
-.portail-table tr.odd  { background-color: #FFF; }
-.portail-table tr.even { background-color: rgb(270,270,270) }
+table thead tr.odd  { background-color: #FFF; }
+table thead tr.even { background-color: rgb(270,270,270) }
 
-.portail-table-header th {
-	 	color: rgb(121,121,121);
-  	font-family: 'Source Sans Pro', sans-serif;
-  	font-size: 14px;
+table thead tr th {
+ 	color: rgb(121,121,121);
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 14px;
 }
 
-.portail-table td {
-	  color: rgb(121,121,121);
-  	font-family: 'Source Sans Pro', sans-serif;
-  	font-size: 14px;
+table tbody td {
+  color: rgb(121,121,121);
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 14px;
+	color: #737373;
 }
 
-.portail-table td a {
+table tbody td a {
   color: #737373;
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 20px;
   text-decoration: none;
   text-align: center;
 }
 
-.portail-table tbody tr:hover{
+table tbody tr:hover{
 	background-color: rgb(240,240,240);
-}
-
-table {
-   border-radius: 0;
-	 margin: 0px;
-	 padding: 0px;
 }

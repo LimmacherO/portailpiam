@@ -125,14 +125,6 @@ p {
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
-#content {
-    padding: 0px;
-    margin: 0px;
-    padding-top: 20px;
-}
-#content.active {
-    width: 100%;
-}
 
 .section-content{
   padding-left: 0px;
@@ -141,7 +133,11 @@ p {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 20px;
-  margin-top: 10px;
+
+}
+
+.card{
+  margin: 10px;
 }
 
 /*

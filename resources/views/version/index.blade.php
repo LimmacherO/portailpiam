@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('link-roadmap-active')
-    class="active"
-@endsection
-
 @section('content')
 
     {!! Form::open(['url' => 'version/search', 'method' => 'get', 'id' => 'search']) !!}
@@ -47,150 +43,159 @@
       </div>
     </div>
 
-
     <!-- Afichage du contenu de la page -->
-    <div id="content"class="container-fluid section-content">
+    <div class="container-fluid">
             <div class="row">
 
-                <div class="panel panel-default">
+                <!-- Contenu du panel -->
+                <div class="card">
+                  <div class="card-body">
 
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
+                    <!-- Critères de filtrage de la liste -->
+                    <div class="col-lg-12">
+                      <div class="row">
 
-                        <div class="col-lg-12">
-                            <div class="row section-default-page">
-
-                                <div class="col-lg-3">
-                                    <!-- Liste des référents QI -->
-                                    {!! Form::select('referentqisselect',
-                                    $referentqis_array,
-                                    $referentqisselect,
-                                    ['class' => 'form-control', 'id' => 'referentqisselect']) !!}
-                                </div>
-
-                                <div class="col-lg-1">
-                                    <!-- Liste déroulante pour sélection du nombre de chantiers à afficher -->
-                                    {!! Form::select('paginationselect',
-                                      array('Tous' => 'Tous', '10' => '10', '20' => '20'),
-                                      $paginationselect,
-                                      ['class' => 'form-control', 'id' => 'paginationselect'])
-                                    !!}
-                                </div>
-
-
-                            </div>
+                        <!-- Liste des référents QI -->
+                        <div>
+                          <label for="referentqisselect">Référent QI:&nbsp;</label>
+                          {!! Form::select('referentqisselect',
+                              $referentqis_array,
+                              $referentqisselect,
+                              ['class' => 'form-control', 'id' => 'referentqisselect']) !!}
                         </div>
 
-                            <div class="col-lg-12">
-                                <div class="row section-default-page">
-
-                                    <div class="portail-table">
-                                        <table id="chantiers" class="table">
-                                             <thead>
-                                                <tr class="portail-table-header">
-                                                    <th>Domaine</th>
-                                                    <th>@sortablelink('application.libelle','Application')</th>
-                                                    <th>@sortablelink('version')</th>
-                                                    <th>Product Dimensions</th>
-                                                    <th>@sortablelink('libelle','Libellé')</th>
-                                                    <th>@sortablelink('referentqi.nom','Référent QI')</th>
-                                                    <th><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
-                                                    <th>Avanc. QI</th>
-                                                    <th><div class="center">QoS</div></th>
-                                                    <th><div class="center">Date prév. MES</div></th>
-                                                    <th><div class="center">Etat</div></th>
-                                                    <th>&nbsp;</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($versions as $version)
-                                                    <tr>
-
-                                                        <!-- Affichage du Domaine -->
-                                                        <td>{!! $version->application->domaine->libelle !!}</td>
-
-                                                        <!-- Affichage du Domaine -->
-                                                        <td>{!! $version->application->libelle !!}</td>
-
-                                                        <!-- Affichage du champ version -->
-                                                        <td>{!! $version->version !!}</td>
-
-                                                        <!-- Affichage du product Dimensions -->
-                                                        <td>{!! $version->product_dimensions !!}</td>
-
-                                                        <!-- Affichage du libellé de la version -->
-                                                        <td>{!! $version->libelle !!}</td>
-
-                                                        <!-- Affichage du nom et prénom du référent QI -->
-                                                        <td>{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</td>
-
-                                                        <!-- Affichage du nombre de livraisons TMA -->
-                                                        <td><div class="center"><span class="badge">{!! $version->inc_nblivtma !!}</span></div></td>
-
-                                                        <td><div class="center">
-                                                                @if( $version->avancementqi > 0)
-                                                                    <div class="progress">
-                                                                      <div class="progress-bar" role="progressbar" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! $version->avancementqi !!}%;">
-                                                                          <span>{!! $version->avancementqi !!}&nbsp;%</span>
-                                                                      </div>
-                                                                    </div>
-                                                                @else
-                                                                    0 %
-                                                                @endif
-                                                            </div>
-                                                        </td>
-
-                                                        <!-- Indicateur QoS -->
-                                                        <td><div class="center">
-                                                            @if( $version->qos == 1 )
-                                                                <span class="label label-success">{!! $version->qos !!}</span>
-                                                            @elseif( $version->qos == 9 )
-                                                                <span class="label label-danger">{!! $version->qos !!}</span>
-                                                            @else
-                                                                <span class="label label-warning">{!! $version->qos !!}</span>
-                                                            @endif
-                                                         </div></td>
-
-                                                        <!-- Affichage de la date de mise en service prévisionnelle -->
-                                                        <td><div class="center">{{ App\Version::getDateJalonByString($version, '7', 'Date prévisionnelle de MES') }}</div></td>
-
-                                                        <!-- Etat de la version -->
-                                                        <td>
-                                                          <div class="center">
-                                                            @if( $version->versionetat->libelle == "Prévue" )
-                                                              <span class="label label-default label-prevue">{!! $version->versionetat->libelle !!}</span>
-                                                            @elseif( $version->versionetat->libelle == "En cours" )
-                                                              <span class="label label-default label-encours">{!! $version->versionetat->libelle !!}</span>
-                                                            @elseif( $version->versionetat->libelle == "QI terminée" )
-                                                                <span class="label label-default label-qiterminee">{!! $version->versionetat->libelle !!}</span>
-                                                            @elseif( $version->versionetat->libelle == "Clos" )
-                                                                <span class="label label-default label-clos">{!! $version->versionetat->libelle !!}</span>
-                                                            @else
-                                                              <span class="label label-default">{!! $version->versionetat->libelle !!}</span>
-                                                            @endif
-                                                          </div>
-                                                        </td>
-
-                                                        <td>{!! Html::decode(link_to_route('version.show', '<i class="fa fa-search-plus"></i>', [$version->id], ['class' => 'small button'])) !!}</td>
-
-                                                    </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-
-                                    <!-- Pagination des données -->
-                                    {{ $versions->links() }}
-
-                                </div>
-                            </div>
-
+                        <!-- Liste déroulante pour sélection du nombre de chantiers à afficher -->
+                        <div class="ml-3">
+                          <label for="paginationselect">Nombre de résultats:&nbsp;</label>
+                          {!! Form::select('paginationselect',
+                                array('Tous' => 'Tous', '10' => '10', '20' => '20'),
+                                $paginationselect,
+                                ['class' => 'form-control', 'id' => 'paginationselect'])
+                              !!}
                         </div>
+
+                      </div>
                     </div>
-                </div>
-            </div>
+
+                    <!-- Affichage du tableau contenant les chantiers de la Roadmap -->
+                    <div class="col-lg-12">
+                        <div class="row">
+
+                                <table id="chantiers" class="table">
+
+                                    <!-- En-tête du tableau -->
+                                     <thead>
+                                        <tr>
+                                            <th class="align-middle">Domaine</th>
+                                            <th class="align-middle">@sortablelink('application.libelle','Application')</th>
+                                            <th class="align-middle">@sortablelink('version')</th>
+                                            <th class="align-middle">Product Dimensions</th>
+                                            <th class="align-middle">@sortablelink('libelle','Libellé')</th>
+                                            <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
+                                            <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
+                                            <th class="align-middle">Avanc. QI</th>
+                                            <th class="align-middle"><div class="center">QoS</div></th>
+                                            <th class="align-middle"><div class="center">Date prév. MES</div></th>
+                                            <th class="align-middle"><div class="center">Etat</div></th>
+                                            <th>&nbsp;</th> <!-- Espace pour bouton "Consulter" -->
+                                        </tr>
+                                    </thead>
+
+                                    <!-- Contenu du tableau -->
+                                    <tbody>
+                                        @foreach ($versions as $version)
+                                            <tr>
+
+                                                <!-- Affichage du Domaine -->
+                                                <td>{!! $version->application->domaine->libelle !!}</td>
+
+                                                <!-- Affichage du Domaine -->
+                                                <td>{!! $version->application->libelle !!}</td>
+
+                                                <!-- Affichage du champ version -->
+                                                <td>{!! $version->version !!}</td>
+
+                                                <!-- Affichage du product Dimensions -->
+                                                <td>{!! $version->product_dimensions !!}</td>
+
+                                                <!-- Affichage du libellé de la version -->
+                                                <td>{!! $version->libelle !!}</td>
+
+                                                <!-- Affichage du nom et prénom du référent QI -->
+                                                <td>{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</td>
+
+                                                <!-- Affichage du nombre de livraisons TMA -->
+                                                <td><div class="center"><span class="badge badge-secondary">{!! $version->inc_nblivtma !!}</span></div></td>
+
+                                                <!-- Affichage de l'avancement QI -->
+                                                <td><div class="center">
+                                                        @if( $version->avancementqi > 0)
+                                                            <div class="progress">
+                                                              <div class="progress-bar" role="progressbar" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! $version->avancementqi !!}%;">
+                                                                  <span>{!! $version->avancementqi !!}&nbsp;%</span>
+                                                              </div>
+                                                            </div>
+                                                        @else
+                                                            0 %
+                                                        @endif
+                                                    </div>
+                                                </td>
+
+                                                <!-- Indicateur QoS -->
+                                                <td><div class="center">
+                                                    @if( $version->qos == 1 )
+                                                        <span class="badge badge-success">{!! $version->qos !!}</span>
+                                                    @elseif( $version->qos == 9 )
+                                                        <span class="badge badge-danger">{!! $version->qos !!}</span>
+                                                    @else
+                                                        <span class="badge badge-warning">{!! $version->qos !!}</span>
+                                                    @endif
+                                                 </div></td>
+
+                                                <!-- Affichage de la date de mise en service prévisionnelle -->
+                                                <td><div class="center">{{ App\Version::getDateJalonByString($version, '7', 'Date prévisionnelle de MES') }}</div></td>
+
+                                                <!-- Etat de la version -->
+                                                <td>
+                                                  <div class="center">
+                                                    @if( $version->versionetat->libelle == "Prévue" )
+                                                      <span class="badge badge-secondary label-prevue">{!! $version->versionetat->libelle !!}</span>
+                                                    @elseif( $version->versionetat->libelle == "En cours" )
+                                                      <span class="badge badge-secondary label-encours">{!! $version->versionetat->libelle !!}</span>
+                                                    @elseif( $version->versionetat->libelle == "QI terminée" )
+                                                        <span class="badge badge-secondary label-qiterminee">{!! $version->versionetat->libelle !!}</span>
+                                                    @elseif( $version->versionetat->libelle == "Clos" )
+                                                        <span class="badge badge-secondary label-clos">{!! $version->versionetat->libelle !!}</span>
+                                                    @else
+                                                      <span class="badge badge-secondary">{!! $version->versionetat->libelle !!}</span>
+                                                    @endif
+                                                  </div>
+                                                </td>
+
+                                                <td>
+                                                  <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('version', $version->id); !!}';">
+                																		<i class="fa fa-search-plus"></i>&nbsp;Consulter
+                																	</button>
+                                                </td>
+
+                                            </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <!-- Pagination des données -->
+                            {{ $versions->links() }}
+
+                        </div>
+
+                  </div>
+              </div>
+
+        </div>
+    </div>
 
     {!! Form::close() !!}
 
