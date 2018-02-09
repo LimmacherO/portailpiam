@@ -33,20 +33,24 @@ p {
 * Section-header: en-tête d'affichage de la page
 **/
 .section-header {
-    padding: 10px;
-    padding-top: 65px; /* Marge liée à la barre de navigation **/
-    border-bottom: 1px solid rgb(220,226,234);
-    background-color: rgb(255,255,255);
+  padding: 10px;
+  padding-top: 65px; /* Marge liée à la barre de navigation **/
+  border-bottom: 1px solid rgb(220,226,234);
+  background-color: rgb(255,255,255);
 }
 
 /* Titre de la page dans l'en-tête */
 .section-header h1 {
-    padding-left: 20px;
-    padding-top: 10px;
-    color: rgb(106,115,125);
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 32px;
-    font-weight: bold;
+  padding-left: 20px;
+  padding-top: 10px;
+  color: rgb(106,115,125);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.section-header-nopadding-bottom{
+  padding-bottom: 0px;
 }
 
 
@@ -261,4 +265,19 @@ input[type=text], textarea {
 
 td i .align-center{
   text-align: center;
+}
+
+/* Mise en forme des labels (texte au dessus des champs/formes) */
+label{
+  color: rgb(106,115,125);
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Mise en forme des champs/formes */
+.form-control{
+  color: rgb(106,115,125);
+  font-size: 14px;
+  font-family: 'Source Sans Pro', sans-serif;
 }

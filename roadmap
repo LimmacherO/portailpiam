@@ -9,6 +9,8 @@ https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-co
 
 - Bascule avec Bootstrap V4 et remise en forme
 
+- Regression: la suppression de la version ne fonctionne plus
+
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 	--> ajout retour à la ligne
 

@@ -1,147 +1,145 @@
 @extends('layouts.app')
 
-@section('link-roadmap-active')
-    class="active"
-@endsection
-
 @section('content')
 
-    <!-- En-tête page Web -->
-    <div id="header" class="section-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Titre de la page Web -->
-                    <h1>Chantier "{{ $version->libelle }}"</h1>
+  <!-- En-tête page -->
+  <div id="header" class="container-fluid section-header section-header-nopadding-bottom">
+      <div class="row">
+          <div class="col-lg-12">
+
+              <!-- Titre de la page Web -->
+              <h1 class="text-left">Chantier "{{ $version->libelle }}"</h1>
+
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a href="{!! url('version',$version->id); !!}" class="nav-link active"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{!! url('taches', $version->id); !!}" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
+                </li>
+                <li class="ml-auto">
+                  <!-- Button pour éditer -->
+                  <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier
+                  </button>
+                </li>
+                <li>
+                  <!-- Button pour Supprimer la version -->
+                  <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="return confirm('Confirmez-vous la suppression de cette version ?');location.href = '{!! url('version/destroy', $version->id); !!}';">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
+                  </button>
+                </li>
+
+              </ul>
+
+          </div>
+
+      </div>
+  </div>
+
+  <!-- Affichage du message d'information (SUCCESS, etc.) -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+          @if(session()->has('ok'))
+            <div class="alert alert-success">
+                {!! session('ok') !!}
+            </div>
+          @endif
+      </div>
+    </div>
+  </div>
+
+  <!-- Afichage du contenu de la page -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Panel "Identification de la version" -->
+      <div class="col-lg-12">
+
+        <div class="card">
+
+          <!-- Titre du panel -->
+          <div class="card-header">Identification de la version</div>
+
+          <!-- Contenu du panel -->
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row">
+
+                <div class="col-lg-3 form-group">
+                  <label>Domaine :</label>
+                  <div class="label-content">{{ $version->application->domaine->libelle }}</div>
                 </div>
 
-                <!-- Message d'information -->
-				<div class="col-lg-12">
-					@if(session()->has('ok'))
-				        <div class="alert alert-success">
-				            {!! session('ok') !!}
-				        </div>
-			    	@endif
-			    </div>
+                <div class="col-lg-3 form-group">
+                  <label>Application :</label>
+                  <div class="label-content">{{ $version->application->libelle }}</div>
+                </div>
 
-			    <!-- Contrôles -->
-			    <div class="col-lg-12">
+                <!-- Libellé du chantier -->
+                <div class="col-lg-6 form-group">
+                  <label>Libellé :</label>
+                  <div class="label-content">{{ $version->libelle }}</div>
+                </div>
 
-				    <div class="pull-left">
-				    	<ul class="nav nav-tabs list-inline">
-			  				<li role="presentation" class="active">
-			  					<a href="{!! url('version',$version->id); !!}" aria-controls="home"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
-			  				</li>
-			  				<li role="presentation">
-			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
-			  				</li>
-						</ul>
-				    </div>
+                <div class="col-lg-3 form-group">
+                  <label>Product Dimensions :</label>
+                  <div class="label-content">{{ $version->product_dimensions }}</div>
+                </div>
 
-				    <div class="pull-right">
-				    	<a href="{!! url('version/edit', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier</a>
-				    	<a href="{!! url('version/destroy', $version->id); !!}" type="button" class="btn btn-default btn-danger pull-right" onclick="return confirm('Confirmez-vous la suppression de cette version ?')" /><i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer</a>
-				    </div>
+                <div class="col-lg-3 form-group">
+                  <label>Version MOE :</label>
+                  <div class="label-content">{{ $version->version }}</div>
+                </div>
 
-				</div>
+                <div class="col-lg-3 form-group">
+                  <label>Version Dimensions :</label>
+                  <div class="label-content">{{ $version->version_dimensions }}</div>
+                </div>
 
+                <div class="col-lg-3 form-group">
+                  <label>Etat :</label>
+                  <div class="label-content">{{ $version->versionetat->libelle }}</div>
+                </div>
+
+                <div class="col-lg-3 form-group">
+                  <label>Référence ALFA :</label>
+                  <div class="label-content">
+                    @if($version->referencealfa == '')
+                      Non renseignée
+                    @else
+                      {{ $version->referencealfa }}
+                    @endif
+                  </div>
+                </div>
+
+                <div class="col-lg-3 form-group">
+                  <label>Date création ALFA :</label>
+                  <div class="label-content">
+                    @if($version->alfadate == '')
+                      Non renseignée
+                    @else
+                      {{ $version->alfadate }}
+                    @endif
+                  </div>
+                </div>
+
+              </div>
             </div>
+
+          </div>
+
         </div>
+
+      </div> <!-- Fin Panel "Identification de la version" -->
+
     </div>
-
-    <!-- Contenu de la page Web -->
-    <div id="content">
-        <!-- Afichage du contenu de la page -->
-        <div class="container-fluid section-content">
-
-		        <!-- Panel "Identification de la version" -->
-		        <div class="row">
-
-					<div class="panel panel-default">
-						<!-- Titre du panel -->
-					  	<div class="panel-heading">
-					    	<h3 class="panel-title">Identification de la version</h3>
-					  	</div>
-
-					  	<!-- Contenu du panel -->
-					  	<div class="panel-body">
-					    	<div class="col-lg-12">
-								<div class="row section-default-page">
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Domaine :</p></div>
-										<span class="label-content">{{ $version->application->domaine->libelle }}</span>
-									</div>
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Application :</p></div>
-										<span class="label-content">{{ $version->application->libelle }}</span>
-									</div>
-
-									<!-- Libellé du chantier -->
-									<div class="col-lg-6 label-div">
-										<div class="label-title"><p>Libellé :</p></div>
-										<span class="label-content">{{ $version->libelle }}</span>
-									</div>
-
-								</div>
-								<div class="row section-default-page">
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Product Dimensions :</p></div>
-										<span class="label-content">{{ $version->product_dimensions }}</span>
-									</div>
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Version MOE :</p></div>
-										<span class="label-content">{{ $version->version }}</span>
-									</div>
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Version Dimensions :</p></div>
-										<span class="label-content">{{ $version->version_dimensions }}</span>
-									</div>
-
-								</div>
-
-								<div class="row section-default-page">
-
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Etat :</p></div>
-										<span class="label-content">{{ $version->versionetat->libelle }}</span>
-									</div>
-
-								</div>
-
-								<div class="row section-default-page">
+  </div> <!-- Fin de l'affichage du contenu de la page -->
 
 
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Référence ALFA :</p></div>
-										<span class="label-content">
-											@if($version->referencealfa == '')
-												Non renseignée
-											@else
-												{{ $version->referencealfa }}
-											@endif
-										</span>
-									</div>
 
-									<div class="col-lg-3 label-div">
-										<div class="label-title"><p>Date création ALFA :</p></div>
-										<span class="label-content">
-											@if($version->alfadate == '')
-												Non renseignée
-											@else
-												{{ $version->alfadate }}
-											@endif
-										</span>
-									</div>
 
-			                	</div>
-					        </div>
-					  	</div>
-					</div>
 
 					<!-- Panel "Scoring QoS" -->
 					<div class="panel panel-default">

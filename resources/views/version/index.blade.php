@@ -12,7 +12,7 @@
                 <!-- Titre de la page Web -->
         				<h1 class="text-left">Roadmap DSI</h1>
 
-        				<!-- Button pour ajouter/créer un nouveau membre -->
+        				<!-- Button pour ajouter/créer une nouvelle version -->
         				<button id="ajouter" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
         					<i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Ajouter
         				</button>
