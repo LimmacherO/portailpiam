@@ -47,6 +47,9 @@
     <div class="container-fluid">
             <div class="row">
 
+              <!-- Panel "Identification de la version" -->
+              <div class="col-lg-12">
+
                 <!-- Contenu du panel -->
                 <div class="card">
                   <div class="card-body">
@@ -193,6 +196,8 @@
 
                   </div>
               </div>
+
+            </div>
 
         </div>
     </div>

@@ -1,54 +1,57 @@
 @extends('layouts.app')
 
-@section('link-roadmap-active')
-    class="active"
-@endsection
-
 @section('content')
 
-	<!-- En-tête page Web -->
-    <div id="header" class="section-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Titre de la page Web -->
-                    <h1>Planning chantier "{{ $version->libelle }}"</h1>
-                </div>
+  <!-- En-tête page -->
+  <div id="header" class="container-fluid section-header section-header-nopadding-bottom">
+    <div class="row">
+        <div class="col-lg-12">
 
-                <!-- Message d'information -->
-                <div class="col-lg-12">
-                    @if(session()->has('ok'))
-                        <div class="alert alert-success">
-                            {!! session('ok') !!}
-                        </div>
-                    @endif
-                </div>
+            <!-- Titre de la page Web -->
+            <h1 class="text-left">Planning chantier "{{ $version->libelle }}"</h1>
 
-                <!-- Contrôles -->
-                <div class="col-lg-12">
+            <!-- Onglets -->
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a href="{!! url('version',$version->id); !!}" class="nav-link"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+              </li>
+              <li class="nav-item">
+                <a href="{!! url('taches', $version->id); !!}" class="nav-link active"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
+              </li>
 
-      				    <div class="pull-left">
-      				    	<ul class="nav nav-tabs list-inline">
-      			  				<li role="presentation">
-      			  					  <a href="{!! url('version',$version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
-      			  				</li>
-      			  				<li role="presentation" class="active">
-      			  					<a href="{!! url('taches', $version->id); !!}" aria-controls="home" role="tab"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
-      			  				</li>
-      						</ul>
-      				    </div>
+              <!-- Bouton de droite -->
+              <li class="ml-auto">
+                <!-- Button pour éditer -->
+                <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('tache/create', $version->id); !!}';">
+                  <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer une tâche
+                </button>
+              </li>
+              <li>
+                <!-- Button pour Supprimer la version -->
+                <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="location.href = '{!! url('jalon/create', $version->id); !!}';">
+                  <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer un jalon
+                </button>
+              </li>
 
-        					<div class="pull-right">
-                      <a href="{!! url('tache/create', $version->id); !!}" type="button" class="btn btn-default btn-primary pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Tâche</a>
-                      <a href="{!! url('jalon/create', $version->id); !!}" type="button" class="btn btn-default btn-primary btn-margin-right pull-right"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Jalon</a>
-        					</div>
+            </ul>
 
-                </div>
-
-            </div>
         </div>
-    </div>
 
+    </div>
+</div>
+
+<!-- Affichage du message d'information (SUCCESS, etc.) -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+        @if(session()->has('ok'))
+          <div class="alert alert-success">
+              {!! session('ok') !!}
+          </div>
+        @endif
+    </div>
+  </div>
+</div>
 
     <!-- Contenu de la page Web -->
     <div id="content">
