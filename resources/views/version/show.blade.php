@@ -83,6 +83,9 @@
                   <div class="label-content">{{ $version->libelle }}</div>
                 </div>
 
+              </div>
+              <div class="row">
+
                 <div class="col-lg-3 form-group">
                   <label>Product Dimensions :</label>
                   <div class="label-content">{{ $version->product_dimensions }}</div>
@@ -98,10 +101,16 @@
                   <div class="label-content">{{ $version->version_dimensions }}</div>
                 </div>
 
+              </div>
+              <div class="row">
+
                 <div class="col-lg-3 form-group">
                   <label>Etat :</label>
                   <div class="label-content">{{ $version->versionetat->libelle }}</div>
                 </div>
+
+              </div>
+              <div class="row">
 
                 <div class="col-lg-3 form-group">
                   <label>Référence ALFA :</label>

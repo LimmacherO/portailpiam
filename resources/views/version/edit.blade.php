@@ -1,58 +1,54 @@
 @extends('layouts.app')
 
-@section('link-roadmap-active')
-    class="active"
-@endsection
-
 @section('content')
 
-    {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put']) !!}
+    {!! Form::model($version, ['route' => ['version.update', $version->id], 'method' => 'put', 'id' => 'formEditVersion']) !!}
 
-    <!-- En-tête page Web -->
-    <div id="header" class="section-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- Titre de la page Web -->
-                    <h1>Modification de "{{ $version->libelle }}"</h1>
-                </div>
+    <!-- En-tête page -->
+    <div id="header" class="container-fluid section-header">
+        <div class="row">
+            <div class="col-lg-12">
 
-                <!-- Contrôles -->
-                <div class="col-lg-12">
+                <!-- Titre de la page Web -->
+                <h1 class="text-left">Modification de "{{ $version->libelle }}"</h1>
 
-                    <div class="pull-right">
+                <!-- Button pour valider la saisie -->
+                <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+                  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+                </button>
 
-                        {!! Form::button('<i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider', ['class' => 'btn btn-default btn-success pull-right', 'type' => 'submit']) !!}
-
-                        <a href="{!! url('version', $version->id); !!}" type="button" class="btn btn-default btn-cancel pull-right"><i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler</a>
-
-                    </div>
-
-                </div>
+                <!-- Button annuler -->
+                <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version', $version->id); !!}';">
+                  <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+                </button>
 
             </div>
+
         </div>
     </div>
 
-
     <!-- Afichage du contenu de la page -->
     <div class="container-fluid">
-            <div class="row">
+      <div class="row">
 
-              <div class="col-lg-12">
+          <!-- Panel "Identification de la version" -->
+          <div class="col-lg-12">
 
-                <!-- Panel "Identification de la version" -->
-                <div class="card">
+            <div class="card">
 
-                    <!-- Titre du panel -->
-                    <div class="card-header">Identification de la version</div>
+                <!-- Titre du panel -->
+                <div class="card-header">Identification de la version</div>
 
-                    <!-- Contenu du panel -->
-                    <div class="card-body">
+                <!-- Contenu du panel -->
+                <div class="card-body">
+
+                  <div class="container-fluid">
+
+                    <div class="row">
 
                         <!-- Choix de l'application associée -->
                         <div class="col-lg-3 form-group">
-                            <div class="label-title"><p>Application :</p></div>
+                            <label>Application :</label>
                             {!! Form::select('application_id',
                             $applications,
                             null,
@@ -61,318 +57,326 @@
 
                         <!-- Libellé du chantier -->
                         <div class="col-lg-6 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
-                            <div class="label-title"><p>Libellé :</p></div>
+                            <label>Libellé :</label>
                             {!! Form::text('libelle', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
                         </div>
 
+                    </div>
+                    <div class="row">
+
                         <!-- "Product Dimensions -->
                         <div class="col-lg-3 form-group {!! $errors->has('product_dimensions') ? 'has-error' : '' !!}">
-                            <div class="label-title"><p>Product Dimensions :</p></div>
+                            <label>Product Dimensions :</label>
                             {!! Form::text('product_dimensions', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('product_dimensions', '<small class="help-block">:message</small>') !!}
                         </div>
 
                         <!-- "Version MOE" du chantier -->
                         <div class="col-lg-3 form-group {!! $errors->has('version') ? 'has-error' : '' !!}">
-                            <div class="label-title"><p>Version MOE :</p></div>
+                            <label>Version MOE :</label>
                             {!! Form::text('version', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('version', '<small class="help-block">:message</small>') !!}
                         </div>
 
                         <!-- "Version Dimensions" du chantier -->
                         <div class="col-lg-3 form-group {!! $errors->has('version_dimensions') ? 'has-error' : '' !!}">
-                            <div class="label-title"><p>Version Dimensions :</p></div>
+                            <label>Version Dimensions :</label>
                             {!! Form::text('version_dimensions', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('version_dimensions', '<small class="help-block">:message</small>') !!}
                         </div>
 
+                      </div>
+                      <div class="row">
+
                         <!-- Etat de la version -->
                         <div class="col-lg-3 form-group">
-                            <div class="label-title"><p>Etat :</p></div>
+                            <label>Etat :</label>
                             {!! Form::select('versionetat_id',
                             $versionetats,
                             null,
                             ['class' => 'form-control', 'id' => 'versionetat_id']) !!}
                         </div>
 
+                      </div>
+                      <div class="row">
+
                         <!-- "Référence ALFA" du chantier -->
                         <div class="col-lg-3 form-group {!! $errors->has('referencealfa') ? 'has-error' : '' !!}">
-                            <div class="label-title"><p>Référence ALFA :</p></div>
+                            <label>Référence ALFA :</label>
                             {!! Form::text('referencealfa', null, ['class' => 'form-control']) !!}
                             {!! $errors->first('referencealfa', '<small class="help-block">:message</small>') !!}
                         </div>
 
                         <div class="col-lg-3 form-group {!! $errors->has('alfadate') ? 'has-error' : '' !!}" >
-                          <div class="label-title"><p>Date création ALFA :</p></div>
-                          <div id="datepicker-alfadate" class="input-group date" data-provide="datepicker">
-                            {!! Form::text('alfadate', null,  ['class' => 'form-control', 'id' => 'datepicker-alfadate', 'name' => 'alfadate'] ); !!}
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
+                          <label>Date création ALFA :</label>
+                          <div id="datepicker-alfadate" class="input-group input-daterange" data-provide="datepicker">
+                            {!! Form::text('alfadate', null,  ['class' => 'form-control', 'name' => 'alfadate'] ); !!}
+                            <div class="input-group-append">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                             </div>
                           </div>
                           {!! $errors->first('alfadate', '<small class="help-block">:message</small>') !!}
                         </div>
 
-                    </div>
-                </div>
-              </div>
-
-              <div class="row">
-
-                <!-- Panel "Scoring QOS" -->
-                <div class="panel panel-default">
-
-                    <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Scoring QOS</h3>
+                      </div>
                     </div>
 
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-                                <div class="row section-default-page">
-
-                                    <!-- QoS - Choix des enjeux métiers -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Enjeux métiers :</p></div>
-                                        {!! Form::select('enjeuxmetier',
-                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'enjeuxmetier']) !!}
-                                    </div>
-
-                                    <!-- QoS - Choix des enjeux SI -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Enjeux SI :</p></div>
-                                        {!! Form::select('enjeuxsi',
-                                        array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'enjeuxsi']) !!}
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Panel "Suivi des développements" -->
-                <div class="panel panel-default">
-
-                    <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Suivi des livraisons</h3>
-                    </div>
-
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-
-                                <div class="row section-default-page">
-
-                                    <!-- "Indicateur Nombre livraison TMA/DID" du chantier -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('inc_nblivtma') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Nombre livraison TMA/DID :</p></div>
-                                        {!! Form::text('inc_nblivtma', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('inc_nblivtma', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Panel "Suivi de la qualification/intégration" -->
-                <div class="panel panel-default">
-
-                    <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Suivi de la qualification/intégration</h3>
-                    </div>
-
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-
-                                <div class="row section-default-page">
-
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Périmètre DQI :</p></div>
-                                        {!! Form::select('perimetreqi', array('0' => 'Non', '1' => 'Oui'), null,
-                                        ['class' => 'form-control', 'id' => 'perimetreqi']);
-                                         !!}
-                                    </div>
-
-                                    <!-- Choix du référent qualification associé -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Référent qualification :</p></div>
-                                        {!! Form::select('referentqi_id',
-                                        $referentqis,
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'referentqis']) !!}
-                                    </div>
-
-                                    <!-- "Indicateur Avancement QI" -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('avancementqi') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Avancement QI :</p></div>
-                                        {!! Form::text('avancementqi', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('avancementqi', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-                                <div class="row section-default-page">
-
-                                    <!-- "Alertes et vigilances QI" du chantier -->
-                                    <div class="col-lg-6 form-group {!! $errors->has('alerteqi') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Alertes et vigilances :</p></div>
-                                        {!! Form::text('alerteqi', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('alerteqi', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Panel "Suivi de la production" -->
-                <div class="panel panel-default">
-
-                    <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Suivi de la production</h3>
-                    </div>
-
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-
-                                <div class="row section-default-page">
-
-                                    <!-- Choix du référent production associé -->
-                                    <div class="col-lg-3 form-group">
-                                        <div class="label-title"><p>Référent production :</p></div>
-                                        {!! Form::select('referentprd_id',
-                                        $referentprds,
-                                        null,
-                                        ['class' => 'form-control', 'id' => 'referentprds']) !!}
-                                    </div>
-
-                                    <!-- Nombre reports production -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('prd_nbreports') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Nombre report(s) production :</p></div>
-                                        {!! Form::text('prd_nbreports', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('prd_nbreports', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                    <!-- Verison Dimensions livrée -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('prd_versiondimensions') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Version Dimensions livrée :</p></div>
-                                        {!! Form::text('prd_versiondimensions', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('prd_versiondimensions', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                  </div>
-                                  <div class="row section-default-page">
-
-                                    <!-- Estimation de la charge de pré-production -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('prp_estimationcharge') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Estimation charge pré-production :</p></div>
-                                        {!! Form::text('prp_estimationcharge', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('prp_estimationcharge', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                    <!-- Estimation de la charge de production -->
-                                    <div class="col-lg-3 form-group {!! $errors->has('prd_estimationcharge') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Estimation charge production :</p></div>
-                                        {!! Form::text('prd_estimationcharge', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('prd_estimationcharge', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-                                <div class="row section-default-page">
-
-                                    <!-- "Alertes et vigilances PRD" du chantier -->
-                                    <div class="col-lg-6 form-group {!! $errors->has('alerteprd') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Alertes et vigilances :</p></div>
-                                        {!! Form::text('alerteprd', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('alerteprd', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Panel "Commentaires" -->
-                <div class="panel panel-default">
-
-                    <!-- Titre du panel -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Commentaires</h3>
-                    </div>
-
-                    <!-- Contenu du panel -->
-                    <div class="panel-body">
-                        <div class="col-lg-12">
-
-                            <!-- Contenu de la page -->
-                            <div class="container-fluid tab-content clearfix">
-
-                                <div class="row section-default-page">
-
-                                    <div class="col-lg-12 form-group {!! $errors->has('commentaire') ? 'has-error' : '' !!}">
-                                        <div class="label-title"><p>Commentaires: </p></div>
-                                        {!! Form::textarea('commentaire', null, ['class' => 'form-control']) !!}
-                                        {!! $errors->first('commentaire', '<small class="help-block">:message</small>') !!}
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
-        </div>
+
+        </div> <!-- Fin Panel "Identification de la version" -->
+
+
+        <!-- Panel "Scoring QOS" -->
+        <div class="col-lg-12">
+
+          <div class="card">
+
+            <!-- Titre du panel -->
+            <div class="card-header">Scoring QOS</div>
+
+            <!-- Contenu du panel -->
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+
+                  <!-- QoS - Choix des enjeux métiers -->
+                  <div class="col-lg-3 form-group">
+                      <label>Enjeux métiers :</label>
+                      {!! Form::select('enjeuxmetier',
+                      array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
+                      null,
+                      ['class' => 'form-control', 'id' => 'enjeuxmetier']) !!}
+                  </div>
+
+                  <!-- QoS - Choix des enjeux SI -->
+                  <div class="col-lg-3 form-group">
+                      <label>Enjeux SI :</label>
+                      {!! Form::select('enjeuxsi',
+                      array('1' => 'Faible', '2' => 'Moyen', '3' => 'Fort'),
+                      null,
+                      ['class' => 'form-control', 'id' => 'enjeuxsi']) !!}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div> <!-- Fin Panel "Scoring QOS" -->
+
+
+        <!-- Panel "Suivi des livraisons" -->
+        <div class="col-lg-12">
+
+          <div class="card">
+
+            <!-- Titre du panel -->
+            <div class="card-header">Suivi des livraisons</div>
+
+            <!-- Contenu du panel -->
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+
+                  <!-- "Indicateur Nombre livraison TMA/DID" du chantier -->
+                  <div class="col-lg-3 form-group {!! $errors->has('inc_nblivtma') ? 'has-error' : '' !!}">
+                      <label>Nombre livraison TMA/DID :</label>
+                      {!! Form::text('inc_nblivtma', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('inc_nblivtma', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- Fin Panel "Suivi des livraisons" -->
+
+
+        <!-- Panel "Suivi de la qualification/intégration" -->
+        <div class="col-lg-12">
+
+          <div class="card">
+
+            <!-- Titre du panel -->
+            <div class="card-header">Suivi de la qualification/intégration</div>
+
+            <!-- Contenu du panel -->
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+
+                  <div class="col-lg-3 form-group">
+                      <label>Périmètre DQI :</label>
+                      {!! Form::select('perimetreqi', array('0' => 'Non', '1' => 'Oui'), null,
+                      ['class' => 'form-control', 'id' => 'perimetreqi']);
+                       !!}
+                  </div>
+
+                  <!-- Choix du référent qualification associé -->
+                  <div class="col-lg-3 form-group">
+                      <label>Référent qualification :</label>
+                      {!! Form::select('referentqi_id',
+                      $referentqis,
+                      null,
+                      ['class' => 'form-control', 'id' => 'referentqis']) !!}
+                  </div>
+
+                  <!-- "Indicateur Avancement QI" -->
+                  <div class="col-lg-3 form-group {!! $errors->has('avancementqi') ? 'has-error' : '' !!}">
+                      <label>Avancement QI (%) :</label>
+                      {!! Form::text('avancementqi', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('avancementqi', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+                <div class="row">
+
+                  <!-- "Alertes et vigilances QI" du chantier -->
+                  <div class="col-lg-6 form-group {!! $errors->has('alerteqi') ? 'has-error' : '' !!}">
+                      <label>Alertes et vigilances :</label>
+                      {!! Form::text('alerteqi', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('alerteqi', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- Fin Panel "Suivi de la qualification/intégration" -->
+
+
+        <!-- Panel "Suivi de la production" -->
+        <div class="col-lg-12">
+
+          <div class="card">
+
+            <!-- Titre du panel -->
+            <div class="card-header">Suivi de la production</div>
+
+            <!-- Contenu du panel -->
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+
+                  <!-- Choix du référent production associé -->
+                  <div class="col-lg-3 form-group">
+                      <label>Référent production :</label>
+                      {!! Form::select('referentprd_id',
+                      $referentprds,
+                      null,
+                      ['class' => 'form-control', 'id' => 'referentprds']) !!}
+                  </div>
+
+                  <!-- Nombre reports production -->
+                  <div class="col-lg-3 form-group {!! $errors->has('prd_nbreports') ? 'has-error' : '' !!}">
+                      <label>Nombre report(s) production :</label>
+                      {!! Form::text('prd_nbreports', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('prd_nbreports', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                  <!-- Verison Dimensions livrée -->
+                  <div class="col-lg-3 form-group {!! $errors->has('prd_versiondimensions') ? 'has-error' : '' !!}">
+                      <label>Version Dimensions livrée :</label>
+                      {!! Form::text('prd_versiondimensions', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('prd_versiondimensions', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+                <div class="row">
+
+                  <!-- Estimation de la charge de pré-production -->
+                  <div class="col-lg-3 form-group {!! $errors->has('prp_estimationcharge') ? 'has-error' : '' !!}">
+                      <label>Estimation charge pré-production :</label>
+                      {!! Form::text('prp_estimationcharge', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('prp_estimationcharge', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                  <!-- Estimation de la charge de production -->
+                  <div class="col-lg-3 form-group {!! $errors->has('prd_estimationcharge') ? 'has-error' : '' !!}">
+                      <label>Estimation charge production :</label>
+                      {!! Form::text('prd_estimationcharge', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('prd_estimationcharge', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+                <div class="row">
+
+                  <!-- "Alertes et vigilances PRD" du chantier -->
+                  <div class="col-lg-6 form-group {!! $errors->has('alerteprd') ? 'has-error' : '' !!}">
+                      <label>Alertes et vigilances :</label>
+                      {!! Form::text('alerteprd', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('alerteprd', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- Fin Panel "Suivi de la production" -->
+
+
+        <!-- Panel "Commentaires" -->
+        <div class="col-lg-12">
+
+          <div class="card">
+
+            <!-- Titre du panel -->
+            <div class="card-header">Commentaires</div>
+
+            <!-- Contenu du panel -->
+            <div class="card-body">
+              <div class="container-fluid">
+                <div class="row">
+
+                  <div class="col-lg-12 form-group {!! $errors->has('commentaire') ? 'has-error' : '' !!}">
+                      <label>Commentaires: </label>
+                      {!! Form::textarea('commentaire', null, ['class' => 'form-control']) !!}
+                      {!! $errors->first('commentaire', '<small class="help-block">:message</small>') !!}
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- Fin Panel "Commentaires" -->
+
+      </div>
+    </div> <!-- Fin de l'affichage du contenu de la page -->
+
     {!! Form::close() !!}
 
-    <script type="text/javascript">
+@endsection
 
-      $(document).ready(function(){
-          $('#datepicker-alfadate').datepicker({
-          format: 'dd/mm/yyyy',
-          language: 'fr',
-          container: '#datepicker-alfadate',
-          todayHighlight: true,
-          autoclose: true,
-        });
+@section('scripts')
 
-      });
-   </script>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+      $('#datepicker-alfadate').datepicker({
+      format: 'dd/mm/yyyy',
+      language: 'fr',
+      container: '#datepicker-alfadate',
+      todayHighlight: true,
+      autoclose: true,
+      allowInputToggle: true,
+    });
+
+    //On cache le bouton de validation pour éviter les créations en double
+    $('#valider').click(function () {
+        $('#valider').attr('disabled', true);
+        $('#formEditVersion').submit();
+        return true;
+    });
+
+  });
+</script>
 
 @endsection
