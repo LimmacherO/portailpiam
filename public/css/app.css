@@ -14,7 +14,8 @@
  * Corps de la page Web
 */
 html, body{
-    background-color: rgb(248, 248, 248);
+    /*background-color: rgb(248, 248, 248);*/
+    background-color: rgb(237,242,246);
     margin: 0px;
     padding: 0px;
     height:100%;
@@ -218,6 +219,7 @@ input[type=text], textarea {
     text-align: left;
     font-size: 14px;
     font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 10px;
 }
 
 .center{
@@ -285,4 +287,10 @@ label{
 /* Affichage des messages d'erreur */
 .help-block{
   color: #FF0000;
+}
+
+/* Mise en forme des panels/cards */
+.card-header {
+  background-color: rgb(111, 126, 147);
+  color: #FFFFFF;
 }

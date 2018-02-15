@@ -9,18 +9,26 @@
         <div class="row">
             <div class="col-lg-12">
 
-                <!-- Titre de la page Web -->
-                <h1 class="text-left">Modification de "{{ $version->libelle }}"</h1>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-12">
 
-                <!-- Button pour valider la saisie -->
-                <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
-                  <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
-                </button>
+                    <!-- Titre de la page Web -->
+                    <h1 class="text-left">Modification de "{{ $version->libelle }}"</h1>
 
-                <!-- Button annuler -->
-                <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version', $version->id); !!}';">
-                  <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
-                </button>
+                    <!-- Button pour valider la saisie -->
+                    <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+                      <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+                    </button>
+
+                    <!-- Button annuler -->
+                    <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version', $version->id); !!}';">
+                      <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+                    </button>
+
+                  </div>
+                </div>
+              </div>
 
             </div>
 
@@ -28,7 +36,7 @@
     </div>
 
     <!-- Afichage du contenu de la page -->
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
 
           <!-- Panel "Identification de la version" -->

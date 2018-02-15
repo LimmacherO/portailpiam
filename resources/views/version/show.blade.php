@@ -7,30 +7,38 @@
       <div class="row">
           <div class="col-lg-12">
 
-              <!-- Titre de la page Web -->
-              <h1 class="text-left">Chantier "{{ $version->libelle }}"</h1>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
 
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a href="{!! url('version',$version->id); !!}" class="nav-link active"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
-                </li>
-                <li class="nav-item">
-                  <a href="{!! url('taches', $version->id); !!}" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
-                </li>
-                <li class="ml-auto">
-                  <!-- Button pour éditer -->
-                  <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
-                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier
-                  </button>
-                </li>
-                <li>
-                  <!-- Button pour Supprimer la version -->
-                  <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="return confirm('Confirmez-vous la suppression de cette version ?');location.href = '{!! url('version/destroy', $version->id); !!}';">
-                    <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
-                  </button>
-                </li>
+                  <!-- Titre de la page Web -->
+                  <h1 class="text-left">Chantier "{{ $version->libelle }}"</h1>
 
-              </ul>
+                  <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a href="{!! url('version',$version->id); !!}" class="nav-link active"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{!! url('taches', $version->id); !!}" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
+                    </li>
+                    <li class="ml-auto">
+                      <!-- Button pour éditer -->
+                      <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier
+                      </button>
+                    </li>
+                    <li>
+                      <!-- Button pour Supprimer la version -->
+                      <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="return confirm('Confirmez-vous la suppression de cette version ?');location.href = '{!! url('version/destroy', $version->id); !!}';">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
+                      </button>
+                    </li>
+
+                  </ul>
+
+                </div>
+              </div>
+            </div>
 
           </div>
 
@@ -38,7 +46,7 @@
   </div>
 
   <!-- Affichage du message d'information (SUCCESS, etc.) -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col-lg-12">
           @if(session()->has('ok'))
@@ -51,7 +59,7 @@
   </div>
 
   <!-- Afichage du contenu de la page -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
 
       <!-- Panel "Identification de la version" -->

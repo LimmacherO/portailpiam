@@ -13,7 +13,7 @@
               <h1 class="text-left">Ajouter un nouveau jalon</h1>
 
               <!-- Button pour validation -->
-              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
+              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
                 <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
               </button>
 
