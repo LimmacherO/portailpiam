@@ -6,13 +6,11 @@
 table{
   margin-top: 10px;
   margin-bottom: 10px;
-	border: 1px solid rgb(239,239,239);
-	border-radius: 0;
+	border: 1px solid rgb(106,115,125);
 }
 
 table thead tr{
 	background-color: rgb(251,251,249);
-	border: 1px solid rgb(239,239,239);
 }
 
 /* Suppression de la bordure inférieure de l'en-tête */
@@ -21,17 +19,14 @@ table thead > tr > th { border-bottom: none; }
 table thead tr.odd  { background-color: #FFF; }
 table thead tr.even { background-color: rgb(270,270,270) }
 
+/* Mise en forme de l'en-tête des tableaux */
 table thead tr th {
- 	color: rgb(121,121,121);
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 14px;
+ 	color: rgb(106,115,125);
 }
 
+/* Mis en forme du contenu des tableaux */
 table tbody td {
-  color: rgb(121,121,121);
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 14px;
-	color: #737373;
+  color: rgb(106,115,125);
 }
 
 table tbody td a {

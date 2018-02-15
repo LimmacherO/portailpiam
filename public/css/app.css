@@ -44,6 +44,7 @@ p {
 .section-header h1 {
   padding-left: 20px;
   padding-top: 10px;
+  padding-bottom: 10px;
   color: rgb(106,115,125);
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 32px;
@@ -99,32 +100,12 @@ p {
   border-color: rgb(220,226,234);
 }
 
-.label-div{
-    padding-bottom: 20px;
-}
-
-.label-title p{
-    color: rgb(102,102,102);
-    text-align: left;
-    font-size: 14px;
-    font-weight: bold;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 0px;
-    padding: 0px;
-    padding-bottom: 5px;
-    display: block;
-}
 
 .label-title-right{
   text-align: right;
 }
 
-.label-content {
-    color: rgb(102,102,102);
-    text-align: left;
-    font-size: 16px;
-    font-family: 'Source Sans Pro', sans-serif;
-}
+
 
 
 /* ---------------------------------------------------
@@ -175,6 +156,7 @@ p {
 /* Suppression des bordures */
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
 border: 0;
+background-color: rgb(237,242,246);
 }
 
 /**
@@ -272,9 +254,13 @@ td i .align-center{
 /* Mise en forme des labels (texte au dessus des champs/formes) */
 label{
   color: rgb(106,115,125);
-  font-size: 14px;
   font-weight: bold;
-  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Mise en forme du contenu des champs lors présentation (show) */
+.label-content {
+    color: rgb(106,115,125);
+    text-align: left;
 }
 
 /* Mise en forme des champs/formes */
@@ -293,4 +279,8 @@ label{
 .card-header {
   background-color: rgb(111, 126, 147);
   color: #FFFFFF;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: rgb(237,242,246);
 }

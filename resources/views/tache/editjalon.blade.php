@@ -9,18 +9,26 @@
       <div class="row">
           <div class="col-lg-12">
 
-              <!-- Titre de la page Web -->
-              <h1 class="text-left">Modification du jalon "{{ $tache->libelle }}"</h1>
+						<div class="container">
+	            <div class="row">
+	              <div class="col-lg-12">
 
-              <!-- Button pour validation -->
-              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
-                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
-              </button>
+		              <!-- Titre de la page Web -->
+		              <h1 class="text-left">Modification du jalon "{{ $tache->libelle }}"</h1>
 
-              <!-- Button annulation -->
-              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $tache->version_id); !!}';">
-                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
-              </button>
+		              <!-- Button pour validation -->
+		              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+		                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+		              </button>
+
+		              <!-- Button annulation -->
+		              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $tache->version_id); !!}';">
+		                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+		              </button>
+
+								</div>
+							</div>
+						</div>
 
           </div>
 
@@ -28,7 +36,7 @@
   </div>
 
   <!-- Afichage du contenu de la page -->
-  <div class="container-fluid">
+  <div class="container">
      <div class="row">
 
        <!-- Panel "Description de la tâche" -->
@@ -66,7 +74,7 @@
                   <div class="col-lg-3 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
     									<label>Libellé :</label>
     									@if( $tache->deletable === true )
-		                		{!! Form::text('libelle', null, ['class' => 'form-control', 'placeholder' => 'Libellé']) !!}
+		                		{!! Form::text('libelle', null, ['class' => 'form-control']) !!}
 		                		{!! $errors->first('libelle', '<small class="help-block">:message</small>') !!}
 		                	@else
 		                		{!! Form::text('libelle', null, ['class' => 'form-control', 'placeholder' => 'Libellé', 'readonly' => 'true']) !!}
@@ -86,7 +94,7 @@
           <div class="card">
 
               <!-- Titre du panel -->
-              <div class="card-header">Dates de début et fin</div>
+              <div class="card-header">Date du jalon</div>
 
               <!-- Contenu du panel -->
               <div class="card-body">

@@ -9,18 +9,26 @@
       <div class="row">
           <div class="col-lg-12">
 
-              <!-- Titre de la page Web -->
-              <h1 class="text-left">Ajouter une nouvelle tâche</h1>
+						<div class="container">
+	            <div class="row">
+	              <div class="col-lg-12">
 
-              <!-- Button pour validation -->
-              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
-                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
-              </button>
+		              <!-- Titre de la page Web -->
+		              <h1 class="text-left">Ajouter une nouvelle tâche</h1>
 
-              <!-- Button annulation -->
-              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $version->id); !!}';">
-                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
-              </button>
+		              <!-- Button pour validation -->
+		              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
+		                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+		              </button>
+
+		              <!-- Button annulation -->
+		              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $version->id); !!}';">
+		                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+		              </button>
+
+								</div>
+							</div>
+						</div>
 
           </div>
 
@@ -28,7 +36,7 @@
   </div>
 
   <!-- Afichage du contenu de la page -->
-  <div class="container-fluid">
+  <div class="container">
      <div class="row">
 
        <!-- Panel "Description de la tâche" -->

@@ -118,10 +118,10 @@
 
                         <div class="col-lg-3 form-group {!! $errors->has('alfadate') ? 'has-error' : '' !!}" >
                           <label>Date création ALFA :</label>
-                          <div id="datepicker-alfadate" class="input-group input-daterange" data-provide="datepicker">
+                          <div id="datepicker-alfadate" class="input-group date" data-provide="datepicker">
                             {!! Form::text('alfadate', null,  ['class' => 'form-control', 'name' => 'alfadate'] ); !!}
-                            <div class="input-group-append">
-                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
                             </div>
                           </div>
                           {!! $errors->first('alfadate', '<small class="help-block">:message</small>') !!}

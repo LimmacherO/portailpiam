@@ -9,18 +9,26 @@
       <div class="row">
           <div class="col-lg-12">
 
-              <!-- Titre de la page Web -->
-              <h1 class="text-left">Ajouter un nouveau jalon</h1>
+						<div class="container">
+	            <div class="row">
+	              <div class="col-lg-12">
 
-              <!-- Button pour validation -->
-              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
-                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
-              </button>
+		              <!-- Titre de la page Web -->
+		              <h1 class="text-left">Ajouter un nouveau jalon</h1>
 
-              <!-- Button annulation -->
-              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $version->id); !!}';">
-                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
-              </button>
+		              <!-- Button pour validation -->
+		              <button id="valider" type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+		                <i class="fa fa-check" aria-hidden="true"></i>&nbsp;Valider
+		              </button>
+
+		              <!-- Button annulation -->
+		              <button id="annuler" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('taches', $version->id); !!}';">
+		                <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Annuler
+		              </button>
+
+								</div>
+							</div>
+						</div>
 
           </div>
 
@@ -28,7 +36,7 @@
   </div>
 
   <!-- Afichage du contenu de la page -->
-  <div class="container-fluid">
+  <div class="container">
      <div class="row">
 
        <!-- Panel "Description de la tâche" -->
@@ -81,7 +89,7 @@
           <div class="card">
 
               <!-- Titre du panel -->
-              <div class="card-header">Dates de début et fin</div>
+              <div class="card-header">Date du jalon</div>
 
               <!-- Contenu du panel -->
               <div class="card-body">
@@ -93,7 +101,7 @@
                    <div class="col-lg-3 form-group {!! $errors->has('debut') ? 'has-error' : '' !!}" >
                      <label>Date du jalon :</label>
                      <div id="datepicker-debut" class="input-group date" data-provide="datepicker">
-                       {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut', 'placeholder' => 'jj/mm/aaaa'] ); !!}
+                       {!! Form::text('debut', null,  ['class' => 'form-control', 'id' => 'datepicker-debut', 'name' => 'debut','placeholder' => 'jj/mm/aaaa'] ); !!}
                        <div class="input-group-addon">
                            <span class="glyphicon glyphicon-calendar"></span>
                        </div>

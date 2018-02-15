@@ -51,6 +51,10 @@
 
                 <!-- Contenu du panel -->
                 <div class="card">
+
+                  <!-- Titre du panel -->
+                  <div class="card-header">Liste des chantiers</div>
+
                   <div class="card-body">
 
                     <!-- Critères de filtrage de la liste -->
@@ -91,7 +95,6 @@
                                             <th class="align-middle">Domaine</th>
                                             <th class="align-middle">@sortablelink('application.libelle','Application')</th>
                                             <th class="align-middle">@sortablelink('version')</th>
-                                            <th class="align-middle">Product Dimensions</th>
                                             <th class="align-middle">@sortablelink('libelle','Libellé')</th>
                                             <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
                                             <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
@@ -116,9 +119,6 @@
 
                                                 <!-- Affichage du champ version -->
                                                 <td>{!! $version->version !!}</td>
-
-                                                <!-- Affichage du product Dimensions -->
-                                                <td>{!! $version->product_dimensions !!}</td>
 
                                                 <!-- Affichage du libellé de la version -->
                                                 <td>{!! $version->libelle !!}</td>
