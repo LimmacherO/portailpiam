@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('link-roadmap-active')
-    class="active"
-@endsection
-
 @section('content')
 
     {!! Form::open(['url' => 'version/store', 'method' => 'post', 'id' => 'createversion']) !!}

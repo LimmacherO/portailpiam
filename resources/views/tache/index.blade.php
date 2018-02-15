@@ -28,7 +28,7 @@
               </li>
               <li>
                 <!-- Button pour Supprimer la version -->
-                <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="location.href = '{!! url('jalon/create', $version->id); !!}';">
+                <button id="supprimer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('jalon/create', $version->id); !!}';">
                   <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer un jalon
                 </button>
               </li>
@@ -53,6 +53,105 @@
   </div>
 </div>
 
+  <!-- Afichage du contenu de la page -->
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <!-- Contenu du panel -->
+        <div class="card">
+          <div class="card-body">
+
+            <!-- Affichage du tableau contenant les tâches/jalons-->
+            <div class="col-lg-12">
+              <div class="row">
+
+                <table class="table">
+
+                    <!-- En-tête du tableau -->
+                    <thead>
+                        <tr class="portail-table-header">
+                            <th>&nbsp;</th>
+                            <th>Catégorie</th>
+                            <th>Tâche</th>
+                            <th>Début</th>
+                            <th>Fin</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Corps du tableau -->
+                    <tbody>
+                        @foreach ($taches as $tache)
+                            <tr>
+
+                                <!-- Type de la tâche -->
+                                <td>
+                                  @if($tache->jalon == '1')
+                                    <i class="fa fa-map-marker align-center" aria-hidden="true">
+                                  @else
+                                    <i class="fa fa-tasks align-center" aria-hidden="true">
+                                  @endif
+                                </td>
+
+                                <!-- Catégorie de la tâche -->
+                                <td>{!! $tache->tachetype->libelle !!}</td>
+
+                                <td>{!! $tache->libelle !!}</td>
+
+                                <td>
+                                    @if($tache->debut == '')
+                                      Non renseignée
+                                    @else
+                                      {{ $tache->debut }}
+                                    @endif
+                                </td>
+
+                                <td>
+                                   @if($tache->jalon == '1')
+                                     &nbsp;
+                                   @elseif($tache->fin == '')
+                                     Non renseignée
+                                   @else
+                                     {{ $tache->fin }}</td>
+                                   @endif
+                                <td>
+                                  @if($tache->jalon == '1')
+                                    <a href="{!! url('jalon/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                  @else
+                                    <a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                  @endif
+
+                                </td>
+
+                                <td>
+                                  @if( $tache->deletable === true )
+                                    <a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true" onclick="return confirm('Confirmez-vous la suppression de jalon/tâche ?')"></i></a>
+                                  @else
+                                    <p>&nbsp;</p>
+                                  @endif
+
+                                </td>
+
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+              </div>
+           </div>
+
+         </div>
+       </div> <!-- Fin panel -->
+
+     </div>
+
+   </div>
+ </div> <!-- Fin affichage du contenu de la page Web -->
+
+
     <!-- Contenu de la page Web -->
     <div id="content">
         <!-- Afichage du contenu de la page -->
@@ -69,74 +168,7 @@
 
 			    			<div class="row section-default-page">
 					        	<div class="portail-table panel panel-primary">
-						            <table class="table">
-						                <thead>
-						                    <tr class="portail-table-header">
-                                    <th>&nbsp;</th>
-						                        <th>Catégorie</th>
-						                        <th>Tâche</th>
-						                        <th>Début</th>
-						                        <th>Fin</th>
-						                        <th>&nbsp;</th>
-						                        <th>&nbsp;</th>
-						                    </tr>
-						                </thead>
-						                <tbody>
-						                    @foreach ($taches as $tache)
-						                        <tr>
 
-                                        <!-- Type de la tâche -->
-                                        <td>
-                                          @if($tache->jalon == '1')
-                                            <i class="fa fa-map-marker align-center" aria-hidden="true">
-                                          @else
-                                            <i class="fa fa-tasks align-center" aria-hidden="true">
-                                          @endif
-                                        </td>
-
-                                        <!-- Catégorie de la tâche -->
-						                            <td>{!! $tache->tachetype->libelle !!}</td>
-
-						                            <td>{!! $tache->libelle !!}</td>
-
-						                            <td>
-                                            @if($tache->debut == '')
-                    												  Non renseignée
-                  											    @else
-                  												    {{ $tache->debut }}
-                  											    @endif
-                                        </td>
-
-						                            <td>
-                                           @if($tache->jalon == '1')
-                                             &nbsp;
-                                           @elseif($tache->fin == '')
-                                             Non renseignée
-                                           @else
-                                             {{ $tache->fin }}</td>
-                                           @endif
-						                            <td>
-                                          @if($tache->jalon == '1')
-                                            <a href="{!! url('jalon/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                          @else
-                                            <a href="{!! url('tache/edit', $tache->id); !!}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                          @endif
-
-						                            </td>
-
-						                            <td>
-						                            	@if( $tache->deletable === true )
-              															<a href="{!! url('tache/delete', $tache->id); !!}"><i class="fa fa-trash-o" aria-hidden="true" onclick="return confirm('Confirmez-vous la suppression de jalon/tâche ?')"></i></a>
-              														@else
-              															<p>&nbsp;</p>
-              														@endif
-
-						                            </td>
-
-						                        </tr>
-						                    @endforeach
-						                </tbody>
-						            </table>
 					        	</div>
 					        </div>
 

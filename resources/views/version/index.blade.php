@@ -47,7 +47,6 @@
     <div class="container-fluid">
             <div class="row">
 
-              <!-- Panel "Identification de la version" -->
               <div class="col-lg-12">
 
                 <!-- Contenu du panel -->
