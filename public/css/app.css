@@ -36,7 +36,7 @@ p {
 .section-header {
   padding: 10px;
   padding-top: 65px; /* Marge liée à la barre de navigation **/
-  border-bottom: 1px solid rgb(220,226,234);
+  border-bottom: 1px solid rgb(106,115,125);
   background-color: rgb(255,255,255);
 }
 
@@ -105,27 +105,6 @@ p {
   text-align: right;
 }
 
-
-
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-.section-content{
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 0px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-
-}
-
-.card{
-  margin: 10px;
-}
-
 /*
  * Mise en forme des tabulations
  */
@@ -135,60 +114,29 @@ p {
     border-bottom: none;
 }
 
+/* Mise en forme du texte */
 .nav-tabs li a {
-    color: rgb(102,102,102);
-    font-family: 'Source Sans Pro', sans-serif;;
-    font-size: 16px;
+    color: rgb(106,115,125);
     text-decoration: none;
-    font-weight: bold;
 }
 
-.nav-tabs .active {
-    border-bottom: 4px solid rgb(68,125,168);
+/* Mise en forme lors survole de l'onget non actif */
+.nav-tabs .nav-item>a:hover{
+  border-bottom: 1px solid rgb(106,115,125);
 }
 
-.nav-tabs > li > a {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
+/* Mise en forme lors survole de l'onget actif */
+.nav-tabs .nav-item .active:hover{
+  border-bottom: 1px solid rgb(237,242,246);
 }
 
-/* Suppression des bordures */
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-border: 0;
-background-color: rgb(237,242,246);
-}
-
-/**
- * Mise en forme des panels Bootrap
- */
-.panel {
-    /*border-top: 4px solid rgb(68,125,168);*/
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: #FFF;
-    border-radius: 0;
-}
-.panel .panel-heading {
-    background-color: #FFF;
-}
-
-.panel-title {
-    color: rgb(102,102,102);
-    text-align: left;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-/**
- * Mise en forme des input
- */
-input[type=text], textarea {
-  border: 1px solid rgb(214,214,214);
-  color: #000;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
+/* Bordures de l'onglet actif */
+.nav-tabs .nav-item .active{
+  border-top: 1px solid rgb(106,115,125);
+  border-left: 1px solid rgb(106,115,125);
+  border-right: 1px solid rgb(106,115,125);
+  border-bottom: 1px solid rgb(237,242,246);
+  background-color: rgb(237,242,246);
 }
 
 
@@ -199,16 +147,13 @@ input[type=text], textarea {
 */
 .alert{
     text-align: left;
-    font-size: 14px;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .center{
   text-align: center;
 }
-
-
 
 .progress {
     position: relative;
@@ -263,8 +208,11 @@ label{
     text-align: left;
 }
 
-/* Mise en forme des champs/formes */
+/**
+ * Mise en forme des input
+ */
 .form-control{
+  border: 1px solid rgb(106,115,125);
   color: rgb(106,115,125);
   font-size: 14px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -276,11 +224,13 @@ label{
 }
 
 /* Mise en forme des panels/cards */
+.card{
+  margin: 0px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
 .card-header {
   background-color: rgb(111, 126, 147);
   color: #FFFFFF;
-}
-
-.nav-tabs .nav-link.active {
-  background-color: rgb(237,242,246);
 }

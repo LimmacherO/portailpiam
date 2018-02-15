@@ -93,8 +93,8 @@
                                      <thead>
                                         <tr>
                                             <th class="align-middle">Domaine</th>
-                                            <th class="align-middle">@sortablelink('application.libelle','Application')</th>
-                                            <th class="align-middle">@sortablelink('version')</th>
+                                            <th class="align-middle">Application</th>
+                                            <th class="align-middle">@sortablelink('version', 'Version')</th>
                                             <th class="align-middle">@sortablelink('libelle','Libellé')</th>
                                             <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
                                             <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
@@ -112,10 +112,10 @@
                                             <tr>
 
                                                 <!-- Affichage du Domaine -->
-                                                <td>{!! $version->application->domaine->libelle !!}</td>
+                                                <td><span class="align-middle">{!! $version->application->domaine->libelle !!}</span></td>
 
                                                 <!-- Affichage du Domaine -->
-                                                <td>{!! $version->application->libelle !!}</td>
+                                                <td><span class="align-middle">{!! $version->application->libelle !!}</span></td>
 
                                                 <!-- Affichage du champ version -->
                                                 <td>{!! $version->version !!}</td>

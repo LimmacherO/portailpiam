@@ -6,15 +6,17 @@
 table{
   margin-top: 10px;
   margin-bottom: 10px;
-	border: 1px solid rgb(106,115,125);
+	border: 1px solid rgb(230,230,230);
 }
 
 table thead tr{
-	background-color: rgb(251,251,249);
+	background-color: rgb(230,230,230);
+  border-bottom: 1px solid rgb(230,230,230);
+
 }
 
 /* Suppression de la bordure inférieure de l'en-tête */
-table thead > tr > th { border-bottom: none; }
+table thead > tr > th { border-bottom: 1px solid rgb(230,230,230); }
 
 table thead tr.odd  { background-color: #FFF; }
 table thead tr.even { background-color: rgb(270,270,270) }
@@ -27,14 +29,6 @@ table thead tr th {
 /* Mis en forme du contenu des tableaux */
 table tbody td {
   color: rgb(106,115,125);
-}
-
-table tbody td a {
-  color: #737373;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 20px;
-  text-decoration: none;
-  text-align: center;
 }
 
 table tbody tr:hover{

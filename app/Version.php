@@ -83,23 +83,6 @@ class Version extends Model
                       ->orderBy('application_id', 'asc');
       }
 
-
-        /*return $query->where('referentqi_id', $referentqisselect_id)
-                   ->orwhere('versions.libelle', 'like', $query_search)
-                   ->orwhere('version', 'like', $query_search)
-
-                   ->orwhereHas('application', function ($query) use ($query_search) {
-                     $query->where('application.libelle', 'like', $query_search)
-                   		     ->orwhereHas('domaine', function ($query) use ($query_search) {
-                   					  $query->where('domaine.libelle', 'like', $query_search);
-                   					});
-                   })
-                 }
-
-
-                   ->sortable()
-                   ->orderBy('application_id', 'asc');
-              */
   }
 
   /*
