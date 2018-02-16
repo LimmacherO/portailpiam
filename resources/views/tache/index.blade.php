@@ -2,6 +2,9 @@
 
 @section('content')
 
+@include('tache.modal')
+
+
   <!-- En-tête page -->
   <div id="header" class="container-fluid section-header section-header-nopadding-bottom">
     <div class="row">
@@ -79,7 +82,7 @@
             <div class="col-lg-12">
               <div class="row">
 
-                <table class="table">
+                <table class="table" data-form="deleteForm">
 
                     <!-- En-tête du tableau -->
                     <thead>
@@ -144,7 +147,7 @@
 
                                 <td>
                                   @if( $tache->deletable === true )
-                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href = '{!! url('tache/delete', $tache->id); !!}';">
+                                    <button type="button" class="btn btn-outline-danger btn-sm form-delete" id="deletetache{!! $tache->id!!}">
                                       <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
                                     </button>
                                   @else
@@ -170,31 +173,27 @@
  </div> <!-- Fin affichage du contenu de la page Web -->
 
 
-    <!-- Contenu de la page Web -->
-    <div id="content">
-        <!-- Afichage du contenu de la page -->
-        <div class="container-fluid section-content">
+@endsection
 
-	        <!-- Panel "Planning" -->
-	        <div class="row">
+@section('scripts')
 
-				<div class="panel panel-default">
+<script>
 
-				  	<!-- Contenu du panel -->
-				  	<div class="panel-body">
-				    	<div class="col-lg-12">
+    //On cache le bouton de validation pour éviter les créations en double
+    $('#valider').click(function () {
+        $('#valider').attr('disabled', true);
+        $('#createjalon').submit();
+        return true;
+    });
 
-			    			<div class="row section-default-page">
-					        	<div class="portail-table panel panel-primary">
+  $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
+      e.preventDefault();
+      var $form=$(this);
+      $('#confirm').modal({ backdrop: 'static', keyboard: false })
+          .on('click', '#delete-btn', function(){
+              $form.submit();
+          });
+  });
 
-					        	</div>
-					        </div>
-
-				    	</div>
-				    </div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+</script>
 @endsection

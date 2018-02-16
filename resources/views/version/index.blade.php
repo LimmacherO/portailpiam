@@ -207,11 +207,13 @@
 
 @section('scripts')
 
-  <!-- Script permettant directement d'ouvrir la synthèse de la version lors d'un clic sur une ligne
-    du tableau contenant la liste des chantiers -->
+
   <script>
+
     $(document).ready(function() {
 
+      <!-- Script permettant directement d'ouvrir la synthèse de la version lors d'un clic sur une ligne
+        du tableau contenant la liste des chantiers -->
       $('#chantiers tbody tr').click(function() {
           var href = $(this).find("a").attr("href");
           if(href) {
