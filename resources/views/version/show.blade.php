@@ -29,7 +29,7 @@
                     </li>
                     <li>
                       <!-- Button pour Supprimer la version -->
-                      <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" onclick="return confirm('Confirmez-vous la suppression de cette version ?');location.href = '{!! url('version/destroy', $version->id); !!}';">
+                      <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" data-id="{{ $version->id }}">
                         <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
                       </button>
                     </li>
@@ -409,5 +409,59 @@
 
     </div>
   </div> <!-- Fin de l'affichage du contenu de la page -->
+
+
+  <!-- Modal - pour confirmation suppression d'une version -->
+  <div id="myModal" class="modal hide" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmation de suppression</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Souhaitez-vous supprimer cette version ?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="btnYes" type="button" class="btn btn-outline-danger">Oui</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+@endsection
+
+@section('scripts')
+
+<script>
+
+    //Code pour gestion de la fenêtre modal
+    $(document).ready(function(){
+      $('#myModal').on('show', function() {
+          var id = $(this).data('id'),
+              removeBtn = $(this).find('.danger');
+      })
+
+      $('#supprimer').on('click', function(e) {
+          e.preventDefault();
+
+          var id = $(this).data('id');
+          $('#myModal').data('id', id).modal('show');
+      });
+
+      $('#btnYes').click(function() {
+          // handle deletion here
+        	var id = $('#myModal').data('id');
+
+          //A améliorer...
+          url = "/portailpiam/public/version/destroy/" + id;
+          window.location = url;
+      });
+    });
+
+</script>
 
 @endsection

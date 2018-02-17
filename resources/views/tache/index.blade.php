@@ -2,9 +2,6 @@
 
 @section('content')
 
-@include('tache.modal')
-
-
   <!-- En-tête page -->
   <div id="header" class="container-fluid section-header section-header-nopadding-bottom">
     <div class="row">
@@ -147,7 +144,7 @@
 
                                 <td>
                                   @if( $tache->deletable === true )
-                                    <button type="button" class="btn btn-outline-danger btn-sm form-delete" id="deletetache{!! $tache->id!!}">
+                                    <button type="button" class="btn btn-outline-danger btn-sm confirm-delete" data-id="{{ $tache->id }}">
                                       <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
                                     </button>
                                   @else
@@ -172,6 +169,26 @@
    </div>
  </div> <!-- Fin affichage du contenu de la page Web -->
 
+ <!-- Modal - pour confirmation suppression d'une tâche -->
+ <div id="myModal" class="modal hide" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title">Confirmation de suppression</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <p>Souhaitez-vous supprimer cette tâche/jalon ?</p>
+       </div>
+       <div class="modal-footer">
+         <button id="btnYes" type="button" class="btn btn-outline-danger">Oui</button>
+         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+       </div>
+     </div>
+   </div>
+ </div>
 
 @endsection
 
@@ -186,14 +203,30 @@
         return true;
     });
 
-  $('table[data-form="deleteForm"]').on('click', '.form-delete', function(e){
-      e.preventDefault();
-      var $form=$(this);
-      $('#confirm').modal({ backdrop: 'static', keyboard: false })
-          .on('click', '#delete-btn', function(){
-              $form.submit();
-          });
-  });
+    //Code pour gestion de la fenêtre modal
+    $(document).ready(function(){
+      $('#myModal').on('show', function() {
+          var id = $(this).data('id'),
+              removeBtn = $(this).find('.danger');
+      })
+
+      $('.confirm-delete').on('click', function(e) {
+          e.preventDefault();
+
+          var id = $(this).data('id');
+          $('#myModal').data('id', id).modal('show');
+      });
+
+      $('#btnYes').click(function() {
+          // handle deletion here
+        	var id = $('#myModal').data('id');
+
+          //A améliorer...
+          url = "/portailpiam/public/tache/delete/" + id;
+          window.location = url;
+      });
+    });
 
 </script>
+
 @endsection

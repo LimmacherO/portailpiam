@@ -234,3 +234,13 @@ label{
   background-color: rgb(111, 126, 147);
   color: #FFFFFF;
 }
+
+
+/* Mise en forme du panel pour pagination */
+.pagination .page-link {
+  color: rgb(106,115,125);
+}
+.pagination .page-item.active .page-link {
+    background-color: rgb(111, 126, 147);
+    border: 1px solid rgb(111, 126, 147);
+}
