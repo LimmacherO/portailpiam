@@ -131,14 +131,10 @@
 
                                                 <!-- Affichage de l'avancement QI -->
                                                 <td><div class="center align-middle">
-                                                        @if( $version->avancementqi > 0)
-                                                            <div class="progress position-relative">
-                                                                <div class="progress-bar" role="progressbar" style="width: {!! $version->avancementqi !!}%" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                <span class="justify-content-center d-flex position-absolute w-100 text-dark">{!! $version->avancementqi !!}&nbsp;%</span>
-                                                            </div>
-                                                        @else
-                                                            0 %
-                                                        @endif
+													<div class="progress ">
+														<div class="progress-bar" role="progressbar" style="width: {!! $version->avancementqi !!}%" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100"></div>
+													</div>
+													<small>{!! $version->avancementqi !!}&nbsp;%</small>
                                                     </div>
                                                 </td>
 
