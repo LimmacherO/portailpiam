@@ -222,7 +222,7 @@
         	var id = $('#myModal').data('id');
 
           //A améliorer...
-          url = "/portailpiam/public/tache/delete/" + id;
+          url = "/portailpiam/public/tache/destroy/" + id;
           window.location = url;
       });
     });

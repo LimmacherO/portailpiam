@@ -140,8 +140,6 @@ p {
 }
 
 
-
-
 /*
  * Mise en forme des panneaux d'info "alert" Bootstrap
 */
@@ -166,15 +164,12 @@ p {
     color: black;
  }
 
-
-
 .control-label{
     color: rgb(106,115,125);
     font-size: 14px;
     font-weight: bold;
     font-family: 'Source Sans Pro', sans-serif;
 }
-
 
 .label-prevue {
   color: #FFF;

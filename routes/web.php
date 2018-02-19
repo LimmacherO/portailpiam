@@ -19,7 +19,7 @@ Route::get('version/create/{version}', 'VersionController@create')->name('versio
 Route::post('version/store', 'VersionController@store')->name('version.store');
 Route::get('version/edit/{version}', 'VersionController@edit')->name('version.edit');
 Route::put('version/update/{version}', 'VersionController@update')->name('version.update');
-Route::get('version/destroy/{version}', 'VersionController@destroy')->name('version.destroy');
+Route::get('version/destroy/{version}', 'VersionController@destroy')->name('version.destroy'); //Suppression d'une version/chantier
 
 //Routes associées aux exports de données (Excel, etc.)
 Route::get('export/index', 'ExportController@index')->name('export.index'); //plus utlisé pour le moment
@@ -41,4 +41,4 @@ Route::get('jalon/edit/{tache}', 'TacheController@editJalon')->name('jalon.edit'
 
 Route::post('tache/store', 'TacheController@store')->name('tache.store');
 Route::put('tache/update/{tache}', 'TacheController@update')->name('tache.update');
-Route::get('tache/delete/{tache}', 'TacheController@delete')->name('tache.delete');
+Route::get('tache/destroy/{tache}', 'TacheController@delete')->name('tache.delete'); //Suppression d'une tâche

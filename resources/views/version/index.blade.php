@@ -178,6 +178,9 @@
                                                   <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('version', $version->id); !!}';">
                 																		<i class="fa fa-search-plus"></i>&nbsp;Consulter
                 																	</button>
+
+                                                  <!-- Lien Web identique au boutton - Utilisé pour le javascript click sur la ligne -->
+                                                  <a href="{!! url('version', $version->id); !!}" style="display: none;">Consulter</a>
                                                 </td>
 
                                             </tr>
@@ -214,8 +217,11 @@
       //Script permettant directement d'ouvrir la synthèse de la version lors d'un clic sur une ligne
       // du tableau contenant la liste des chantiers
       $('#chantiers tbody tr').click(function() {
+          console.log('Click...');
           var href = $(this).find("a").attr("href");
+          console.log(href);
           if(href) {
+
               window.location = href;
           }
       });
