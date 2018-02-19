@@ -8,12 +8,13 @@ https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-co
 
 - Mise en forme du tableau Excel généré: reste les couleurs par domaine (voir avec Frédéric)
 	--> ajout retour à la ligne
+	
 
-RoadMap V2
-----------
+RoadMap/Features
+----------------
 - Commentaire et analyse du code HTML notamment
 
-- Tri sur toutes les colonnes ? (product Dimensions, avancement QI, QoS, date prévisionnelle MES)
+- Tri sur toutes les colonnes ? (product Dimensions, avancement QI, date prévisionnelle MES)
 
 - Est-il possible que le "Nombre livraison TMA/DID" soit calculé automatiquement via une requête sur la base Dimensions ?
 
@@ -33,6 +34,18 @@ RoadMap V2
 - Export de la version sous PDF en une seule page
 
 - Planning global --> V2?
+
+- Mise en place de l'authentification. Présélectionner le référent via son login Windows?
+
+- L’utilisation du mot « chantier » ne porte-t-il pas à confusion ? Un chantier à mon sens peut être multi-(applis-versions).
+Evolution : gestion des chantiers multi-(applications-versions) ?
+
+- Certains champs pourraient être modifiables sans cliquer sur « Modifier » ? Ex :
+	--> Nb de livraisons
+	--> % d’avancement
+	--> bref, les champs que l’on modifiera régulièrement
+
+- Condenser un peu la vue pour tenter le plus possible de ne pas avoir à scroller
 
 
 Questions

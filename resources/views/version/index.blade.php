@@ -19,7 +19,7 @@
 
                 <!-- Button pour exporter la roadmap -->
         				<button id="exporter" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('export/excel'); !!}';">
-        					<i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i>&nbsp;Exporter
+        					<i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Exporter
         				</button>
 
                 <!-- On cache l'URL pour qu'elle ne soit pas accessible -->
@@ -87,7 +87,7 @@
                     <div class="col-lg-12">
                         <div class="row">
 
-                                <table id="chantiers" class="table">
+                                <table id="chantiers" class="table table-striped">
 
                                     <!-- En-tête du tableau -->
                                      <thead>
@@ -99,7 +99,7 @@
                                             <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
                                             <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
                                             <th class="align-middle">Avanc. QI</th>
-                                            <th class="align-middle"><div class="center">QoS</div></th>
+                                            <th class="align-middle"><div class="center">@sortablelink('qos','QoS')</div></th>
                                             <th class="align-middle"><div class="center">Date prév. MES</div></th>
                                             <th class="align-middle"><div class="center">Etat</div></th>
                                             <th>&nbsp;</th> <!-- Espace pour bouton "Consulter" -->
@@ -131,10 +131,10 @@
 
                                                 <!-- Affichage de l'avancement QI -->
                                                 <td><div class="center align-middle">
-													<div class="progress ">
-														<div class="progress-bar" role="progressbar" style="width: {!! $version->avancementqi !!}%" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100"></div>
-													</div>
-													<small>{!! $version->avancementqi !!}&nbsp;%</small>
+                                                      <div class="progress position-relative">
+                                                          <div class="progress-bar" role="progressbar" style="width: {!! $version->avancementqi !!}%" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                          <div class="justify-content-center d-flex position-absolute w-100 progress-text">{!! $version->avancementqi !!}&nbsp;%</div>
+                                                      </div>
                                                     </div>
                                                 </td>
 

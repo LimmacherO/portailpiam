@@ -43,7 +43,7 @@ class Version extends Model
 
     // Liste des champs qui peuvent être triés (dans un tableau par exemple)
     use Sortable;
-    public $sortable = ['version', 'libelle', 'inc_nblivtma'];
+    public $sortable = ['version', 'libelle', 'inc_nblivtma', 'qos'];
 
     public function getAlfadateAttribute($value)
     {

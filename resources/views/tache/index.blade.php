@@ -17,7 +17,7 @@
                 <!-- Onglets -->
                 <ul class="nav nav-tabs">
                   <li class="nav-item">
-                    <a href="{!! url('version',$version->id); !!}" class="nav-link"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+                    <a href="{!! url('version',$version->id); !!}" class="nav-link"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
                   </li>
                   <li class="nav-item">
                     <a href="{!! url('taches', $version->id); !!}" class="nav-link active"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
@@ -79,7 +79,7 @@
             <div class="col-lg-12">
               <div class="row">
 
-                <table class="table" data-form="deleteForm">
+                <table class="table table-striped" data-form="deleteForm">
 
                     <!-- En-tête du tableau -->
                     <thead>

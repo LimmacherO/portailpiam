@@ -16,12 +16,18 @@
 
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
-                      <a href="{!! url('version',$version->id); !!}" class="nav-link active"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
+                      <a href="{!! url('version',$version->id); !!}" class="nav-link active"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;Synthèse Version</a>
                     </li>
                     <li class="nav-item">
                       <a href="{!! url('taches', $version->id); !!}" class="nav-link"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
                     </li>
                     <li class="ml-auto">
+                      <!-- Button pour retour à l'accueil/liste des chantiers -->
+                      <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version'); !!}';">
+                        <i class="fa fa-reorder" aria-hidden="true"></i>&nbsp;Liste chantiers
+                      </button>
+                    </li>
+                    <li>
                       <!-- Button pour éditer -->
                       <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier

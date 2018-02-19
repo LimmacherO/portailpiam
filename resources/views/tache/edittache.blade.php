@@ -45,7 +45,7 @@
          <div class="card">
 
              <!-- Titre du panel -->
-             <div class="card-header">Description de la tâche</div>
+             <div class="card-header">Description</div>
 
              <!-- Contenu du panel -->
              <div class="card-body">
@@ -95,7 +95,7 @@
           <div class="card">
 
               <!-- Titre du panel -->
-              <div class="card-header">Dates de début et fin</div>
+              <div class="card-header">Dates</div>
 
               <!-- Contenu du panel -->
               <div class="card-body">
