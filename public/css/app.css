@@ -149,20 +149,16 @@ p {
     margin-bottom: 0px;
 }
 
+/* Mise en forme de la barre de progression */
+.progress-bar {
+  background-color: rgb(68,125,168);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .center{
   text-align: center;
 }
-
-.progress {
-    position: relative;
-}
-
-.progress span {
-    position: absolute;
-    display: block;
-    width: 100%;
-    color: black;
- }
 
 .control-label{
     color: rgb(106,115,125);

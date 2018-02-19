@@ -127,15 +127,14 @@
                                                 <td>{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</td>
 
                                                 <!-- Affichage du nombre de livraisons TMA -->
-                                                <td><div class="center"><span class="badge badge-secondary">{!! $version->inc_nblivtma !!}</span></div></td>
+                                                <td><div class="center"><span class="badge badge-secondary font-weight-normal">{!! $version->inc_nblivtma !!}</span></div></td>
 
                                                 <!-- Affichage de l'avancement QI -->
-                                                <td><div class="center">
+                                                <td><div class="center align-middle">
                                                         @if( $version->avancementqi > 0)
-                                                            <div class="progress">
-                                                              <div class="progress-bar" role="progressbar" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100" style="width: {!! $version->avancementqi !!}%;">
-                                                                  <span>{!! $version->avancementqi !!}&nbsp;%</span>
-                                                              </div>
+                                                            <div class="progress position-relative">
+                                                                <div class="progress-bar" role="progressbar" style="width: {!! $version->avancementqi !!}%" aria-valuenow="{!! $version->avancementqi !!}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                <span class="justify-content-center d-flex position-absolute w-100 text-dark">{!! $version->avancementqi !!}&nbsp;%</span>
                                                             </div>
                                                         @else
                                                             0 %
@@ -146,11 +145,11 @@
                                                 <!-- Indicateur QoS -->
                                                 <td><div class="center">
                                                     @if( $version->qos == 1 )
-                                                        <span class="badge badge-success">{!! $version->qos !!}</span>
+                                                        <span class="badge badge-success font-weight-normal">{!! $version->qos !!}</span>
                                                     @elseif( $version->qos == 9 )
-                                                        <span class="badge badge-danger">{!! $version->qos !!}</span>
+                                                        <span class="badge badge-danger font-weight-normal">{!! $version->qos !!}</span>
                                                     @else
-                                                        <span class="badge badge-warning">{!! $version->qos !!}</span>
+                                                        <span class="badge badge-warning font-weight-normal">{!! $version->qos !!}</span>
                                                     @endif
                                                  </div></td>
 
@@ -161,15 +160,15 @@
                                                 <td>
                                                   <div class="center">
                                                     @if( $version->versionetat->libelle == "Prévue" )
-                                                      <span class="badge badge-secondary label-prevue">{!! $version->versionetat->libelle !!}</span>
+                                                      <span class="badge badge-secondary label-prevue font-weight-normal">{!! $version->versionetat->libelle !!}</span>
                                                     @elseif( $version->versionetat->libelle == "En cours" )
-                                                      <span class="badge badge-secondary label-encours">{!! $version->versionetat->libelle !!}</span>
+                                                      <span class="badge badge-secondary label-encours font-weight-normal">{!! $version->versionetat->libelle !!}</span>
                                                     @elseif( $version->versionetat->libelle == "QI terminée" )
-                                                        <span class="badge badge-secondary label-qiterminee">{!! $version->versionetat->libelle !!}</span>
+                                                        <span class="badge badge-secondary label-qiterminee font-weight-normal">{!! $version->versionetat->libelle !!}</span>
                                                     @elseif( $version->versionetat->libelle == "Clos" )
-                                                        <span class="badge badge-secondary label-clos">{!! $version->versionetat->libelle !!}</span>
+                                                        <span class="badge badge-secondary label-clos font-weight-normal">{!! $version->versionetat->libelle !!}</span>
                                                     @else
-                                                      <span class="badge badge-secondary">{!! $version->versionetat->libelle !!}</span>
+                                                      <span class="badge badge-secondary font-weight-normal">{!! $version->versionetat->libelle !!}</span>
                                                     @endif
                                                   </div>
                                                 </td>
