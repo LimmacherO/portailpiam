@@ -14,6 +14,9 @@ use App\Version;
 class ExportController extends Controller
 {
 
+    public $cellbackgroungcolor;
+
+
     /*
      * Fonction index()
      * Retour la vue de paramétrage des exports
@@ -157,7 +160,7 @@ class ExportController extends Controller
 
                     $version->commentaire,
 
-                    //$version->application->domaine->export_color //Champ provisoire
+                    $version->application->domaine->export_color, //Champ provisoire, sera à supprimer
                 );
     		}
 
@@ -427,8 +430,6 @@ class ExportController extends Controller
                     });
                   }
 
-
-
                   //Grisement de la ligne si chantier clos ou annulé
                   if($versionsArray[$cellcount][17] == "Clos" OR $versionsArray[$cellcount][17] == "Annulée"){
                     $cellcount++;
@@ -439,13 +440,14 @@ class ExportController extends Controller
                     });
                   }
                   else{
-                    //$cellbackgroungcolor = $versionsArray[$cellcount][34];
+                    $cellbackgroungcolor = $versionsArray[$cellcount][33];
                     $cellcount++; //Si pas trouvé alors incrémentation du compteur uniquement
-                    //$cellcible = 'A' . $cellcount . ':AG' . $cellcount;
-                    //$sheet->cells($cellcible, function($cells) {
-                    //    $cells->setBackground($cellbackgroungcolor);
-                    //    $cells->setFontColor('#000000');
-                    //});
+                    $cellcible = 'A' . $cellcount . ':AG' . $cellcount;
+
+                    $sheet->cells($cellcible, function($cells) use($cellbackgroungcolor){
+                        $cells->setBackground($cellbackgroungcolor);
+                        $cells->setFontColor('#000000');
+                    });
                   }
 
                 }
