@@ -85,6 +85,7 @@
                     <thead>
                         <tr class="portail-table-header">
                             <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                             <th>Catégorie</th>
                             <th>Tâche</th>
                             <th>Début</th>
@@ -98,6 +99,13 @@
                     <tbody>
                         @foreach ($taches as $tache)
                             <tr>
+
+                                <td>
+                                  <!-- Button pour Supprimer la version -->
+                                  <button type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                  </button>
+                                </td>
 
                                 <!-- Type de la tâche -->
                                 <td>

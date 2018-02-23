@@ -6,6 +6,14 @@ Roadmap V1
 - Renommage des colonnes et des variables dans les models --> application de normes
 https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
 
+- Gestion des tâches:
+	--> Suppression des boutons pour ajouter les tâches ou jalons
+	--> Remplacer l'ajout via un bouton "+" fond vert outline dans le tableau pour ajouter en dessous
+	--> Creation des tâches via un modal
+	--> Edition des tâches via un modal
+	--> Lors enregistrement de la tâche/jalon, recalcul du tableau --> ordre d'affichage géré via un champs en base de données
+	--> Voir pour un lien pour ordonancement: ouverture model pour choix tâche précédente puis enregistrement en base lors validation
+	
 
 RoadMap/Features
 ----------------
