@@ -160,7 +160,8 @@ class ExportController extends Controller
 
                     $version->commentaire,
 
-                    $version->application->domaine->export_color, //Champ provisoire, sera à supprimer
+                    $version->application->domaine->export_background_color, //Champ à cacher par la suite
+                    $version->application->domaine->export_font_color, //Champ à cacher par la suite
                 );
     		}
 
@@ -441,16 +442,29 @@ class ExportController extends Controller
                   }
                   else{
                     $cellbackgroungcolor = $versionsArray[$cellcount][33];
+                    $cellfontcolor = $versionsArray[$cellcount][34];
                     $cellcount++; //Si pas trouvé alors incrémentation du compteur uniquement
                     $cellcible = 'A' . $cellcount . ':AG' . $cellcount;
 
-                    $sheet->cells($cellcible, function($cells) use($cellbackgroungcolor){
+                    $sheet->cells($cellcible, function($cells) use($cellbackgroungcolor, $cellfontcolor){
                         $cells->setBackground($cellbackgroungcolor);
-                        $cells->setFontColor('#000000');
+                        $cells->setFontColor($cellfontcolor);
                     });
                   }
 
+                  //Suppression du contenu de la colonne 'AH' - données provisoire pour couleur de fond
+                  $sheet->cell('AH'. $cellcount, function($cell) {
+                      $cell->setValue('');
+                  });
+
+                  //Suppression du contenu de la colonne 'AI' - données provisoire pour couleur de fond
+                  $sheet->cell('AI'. $cellcount, function($cell) {
+                      $cell->setValue('');
+                  });
+
                 }
+
+                $sheet->setAutoFilter('A2:AG' . $cellcount);
         	});
 
 

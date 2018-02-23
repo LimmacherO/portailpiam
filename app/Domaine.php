@@ -20,7 +20,8 @@ class Domaine extends Model
     //Liste des champs utilisables pour les opérations CRUD
     protected $fillable = [
         'libelle',
-        'export_color',
+        'export_background_color',
+        'export_font_color'
     ];
 
     //Lien avec une application

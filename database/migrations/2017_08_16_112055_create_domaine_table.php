@@ -16,7 +16,8 @@ class CreateDomaineTable extends Migration
         Schema::create('domaine', function(Blueprint $table) {
             $table->increments('id');
             $table->string('libelle')->unique();
-            $table->string('export_color')->default('#FFFFFF');
+            $table->string('export_background_color')->default('#FFFFFF'); //Couleur de fond lors export de ce domaine
+            $table->string('export_font_color')->default('#000000'); //Couleur du texte lors export de ce domaine
         });
     }
 

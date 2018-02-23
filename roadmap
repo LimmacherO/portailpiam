@@ -6,10 +6,6 @@ Roadmap V1
 - Renommage des colonnes et des variables dans les models --> application de normes
 https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
 
-- Mise en forme du tableau Excel généré
-	-- reste les couleurs par domaine (voir avec Frédéric): ajout couleur font et cacher dernière colonne
-	--> ajout retour à la ligne
-
 
 RoadMap/Features
 ----------------
