@@ -10,7 +10,7 @@
             <div class="col-lg-12">
 
                 <!-- Titre de la page Web -->
-        				<h1 class="text-left">Roadmap DSI</h1>
+        				<h1 class="text-left">Roadmap opérationnelle DSI</h1>
 
         				<!-- Button pour ajouter/créer une nouvelle version -->
         				<button id="ajouter" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('version/create/1'); !!}';">
@@ -100,6 +100,7 @@
                                             <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
                                             <th class="align-middle">Avanc. QI</th>
                                             <th class="align-middle"><div class="center">@sortablelink('qos','QoS')</div></th>
+                                            <th class="align-middle"><div class="center">Date prév. démarrage QI</div></th>
                                             <th class="align-middle"><div class="center">Date prév. MES</div></th>
                                             <th class="align-middle"><div class="center">Etat</div></th>
                                             <th>&nbsp;</th> <!-- Espace pour bouton "Consulter" -->
@@ -148,6 +149,10 @@
                                                         <span class="badge badge-warning">{!! $version->qos !!}</span>
                                                     @endif
                                                  </div></td>
+
+                                                 <!-- Affichage de la date de mise en service prévisionnelle -->
+                                                 <td><div class="center">{{ App\Version::getDateJalonByString($version, '2', 'Date de démarrage QI prévisionnelle') }}</div></td>
+
 
                                                 <!-- Affichage de la date de mise en service prévisionnelle -->
                                                 <td><div class="center">{{ App\Version::getDateJalonByString($version, '7', 'Date prévisionnelle de MES') }}</div></td>

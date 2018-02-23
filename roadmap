@@ -12,6 +12,7 @@ RoadMap/Features
 - Commentaire et analyse du code HTML notamment
 
 - Tri sur toutes les colonnes ? (product Dimensions, avancement QI, date prévisionnelle MES)
+- Page d'index: ajouter la possibilité de filtrer des dates, etc. en cliquant directement sur le nom des colonnes
 
 - Est-il possible que le "Nombre livraison TMA/DID" soit calculé automatiquement via une requête sur la base Dimensions ?
 

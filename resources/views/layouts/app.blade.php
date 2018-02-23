@@ -49,7 +49,7 @@
 
             <!-- Lien vers la roadmap -->
             <li  class="nav-item active"> <!-- Par défaut actif en attendant les autres menus -->
-              <a class="nav-link" href="{!! url('version'); !!}">Roadmap DSI</span></a>
+              <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
             </li>
 
         </ul>
