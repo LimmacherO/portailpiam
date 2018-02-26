@@ -31,8 +31,6 @@ class TacheController extends Controller
                 ->where('version_id', $version->id)
                 ->get();
 
-		  //Par défaut, le tri se fait sur les dates --> voir pour avoir un ordre chronologique et par type
-
     	return view('tache.index', compact('version', 'taches'));
     }
 

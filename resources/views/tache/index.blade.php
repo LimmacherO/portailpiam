@@ -86,6 +86,7 @@
                         <tr class="portail-table-header">
                             <th>&nbsp;</th>
                             <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                             <th>Catégorie</th>
                             <th>Tâche</th>
                             <th>Début</th>
@@ -101,9 +102,16 @@
                             <tr>
 
                                 <td>
-                                  <!-- Button pour Supprimer la version -->
-                                  <button type="button" type="submit" class="btn btn-outline-success float-right btn-sm">
+                                  <!-- Button pour créer un nouvelle tâche ou jalon via modal -->
+                                  <button type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('tache/create', $version->id); !!}';">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
+                                  </button>
+                                </td>
+
+                                <td>
+                                  <!-- Button pour déplacer un nouvelle tâche ou jalon via modal -->
+                                  <button type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right move-tache">
+                                    <i class="fa fa-exchange" aria-hidden="true"></i>
                                   </button>
                                 </td>
 
@@ -139,11 +147,11 @@
                                    @endif
                                 <td>
                                   @if($tache->jalon == '1')
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
+                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
                                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
                                     </button>
                                   @else
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
+                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
                                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
                                     </button>
                                   @endif
@@ -177,26 +185,29 @@
    </div>
  </div> <!-- Fin affichage du contenu de la page Web -->
 
- <!-- Modal - pour confirmation suppression d'une tâche -->
- <div id="myModal" class="modal hide" tabindex="-1" role="dialog">
-   <div class="modal-dialog" role="document">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title">Confirmation de suppression</h5>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-         </button>
-       </div>
-       <div class="modal-body">
-         <p>Souhaitez-vous supprimer cette tâche/jalon ?</p>
-       </div>
-       <div class="modal-footer">
-         <button id="btnYes" type="button" class="btn btn-outline-danger">Oui</button>
-         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+   <!-- Fenêtre modal pour déplacement d'une tâche ou d'un jalon -->
+   @include('tache/modal-move')
+
+   <!-- Modal - pour confirmation suppression d'une tâche -->
+   <div id="myModal" class="modal hide" tabindex="-1" role="dialog">
+     <div class="modal-dialog" role="document">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title">Confirmation de suppression</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           <p>Souhaitez-vous supprimer cette tâche/jalon ?</p>
+         </div>
+         <div class="modal-footer">
+           <button id="btnYes" type="button" class="btn btn-outline-danger">Oui</button>
+           <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Non</button>
+         </div>
        </div>
      </div>
    </div>
- </div>
 
 @endsection
 
@@ -211,7 +222,19 @@
         return true;
     });
 
-    //Code pour gestion de la fenêtre modal
+    //Code pour gestion de la fenêtre modal de déplacement d'une tâche
+    $(document).ready(function(){
+
+      $('.move-tache').on('click', function(e) {
+          e.preventDefault();
+
+          var id = $(this).data('id');
+          $('#modalmovetache').data('id', id).modal('show');
+      });
+
+    });
+
+    //Code pour gestion de la fenêtre modal de confirmation de suppression
     $(document).ready(function(){
       $('#myModal').on('show', function() {
           var id = $(this).data('id'),
