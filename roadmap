@@ -1,10 +1,11 @@
-Roadmap V1
-----------
-- Reprise des données en automatique:
-	--> Contrôle exhaustivité de l'import
+RoadMap/Features
+----------------
+- Commentaire et analyse du code HTML notamment
 
-- Renommage des colonnes et des variables dans les models --> application de normes
-https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-conventions
+- Page de présentation des indicateurs:
+	--> Nombre de livraison par domaine;
+	--> Palmares nombre de livraisons TMA;
+	--> etc.
 
 - Gestion des tâches:
 	--> Suppression des boutons pour ajouter les tâches ou jalons
@@ -13,47 +14,35 @@ https://github.com/alexeymezenin/laravel-best-practices#follow-laravel-naming-co
 	--> Edition des tâches via un modal
 	--> Lors enregistrement de la tâche/jalon, recalcul du tableau --> ordre d'affichage géré via un champs en base de données
 	--> Voir pour un lien pour ordonancement: ouverture model pour choix tâche précédente puis enregistrement en base lors validation
-	
 
-RoadMap/Features
-----------------
-- Commentaire et analyse du code HTML notamment
+- Index chantiers
+	--> Tri sur toutes les colonnes ? (product Dimensions, avancement QI, date prévisionnelle MES)
+	--> Ajouter la possibilité de filtrer des dates, etc. en cliquant directement sur le nom des colonnes
+	--> Condenser un peu la vue pour tenter le plus possible de ne pas avoir à scroller
 
-- Tri sur toutes les colonnes ? (product Dimensions, avancement QI, date prévisionnelle MES)
-- Page d'index: ajouter la possibilité de filtrer des dates, etc. en cliquant directement sur le nom des colonnes
+- Cacul du "Nombre livraison TMA/DID" automatiquement via une requête sur la base Dimensions
 
-- Est-il possible que le "Nombre livraison TMA/DID" soit calculé automatiquement via une requête sur la base Dimensions ?
-
-- Ajout d'un onglet de gestion des demandes et incidents associés à la version
-	Permettra de regrouper au sein d'un même tableau la liste des INC et DS AGIS:
+- Suivi des demandes et incidents associés au chantier (Permettra de regrouper au sein d'un même tableau la liste des INC et DS AGIS):
 	-- ID
 	-- Type (INC/DS)
 	-- Numero --> à terme avec un lien vers AGIS
 	-- Objet
 	-- Description
 
-- Idée: afficher les indicateurs (avancement, état en haut de la page)
-
-- Indicateurs en première page
-	Exemple: Nombre de versions référencées et ouvertes, Nombre de version ouvertes par domaine
-
 - Export de la version sous PDF en une seule page
 
-- Planning global --> V2?
+- Présentation du planning sous forme de Gantt
 
-- Mise en place de l'authentification. Présélectionner le référent via son login Windows?
+- Mise en place de l'authentification:
+	--> Connexion en dur ou via appel LDAP (connecteur existants sous Laravel)
+	--> Présélectionner le référent via son login Windows?
 
-- L’utilisation du mot « chantier » ne porte-t-il pas à confusion ? Un chantier à mon sens peut être multi-(applis-versions).
-Evolution : gestion des chantiers multi-(applications-versions) ?
-
-- Certains champs pourraient être modifiables sans cliquer sur « Modifier » ? Ex :
+- Modification directe de Certains champs sans cliquer sur « Modifier » ? Par exemple:
 	--> Nb de livraisons
 	--> % d’avancement
 	--> bref, les champs que l’on modifiera régulièrement
 
-- Condenser un peu la vue pour tenter le plus possible de ne pas avoir à scroller
-
-
 Questions
 ---------
-- RAS
+- SHE: L’utilisation du mot « chantier » ne porte-t-il pas à confusion ? Un chantier à mon sens peut être multi-(applis-versions).
+Evolution : gestion des chantiers multi-(applications-versions) ?

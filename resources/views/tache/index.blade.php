@@ -23,19 +23,23 @@
                     <a href="{!! url('taches', $version->id); !!}" class="nav-link active"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;&nbsp;Planning</a>
                   </li>
 
-                  <!-- Bouton de droite -->
+                  <!-- Boutons de droite -->
                   <li class="ml-auto">
-                    <!-- Button pour éditer -->
-                    <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('tache/create', $version->id); !!}';">
-                      <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer une tâche
+                    <!-- Button pour retour à l'accueil/liste des chantiers -->
+                    <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('version'); !!}';">
+                      <i class="fa fa-reorder" aria-hidden="true"></i>&nbsp;Liste chantiers
                     </button>
+                    <!-- Button pour éditer -->
+                  <!--  <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('tache/create', $version->id); !!}';">
+                      <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer une tâche
+                    </button>-->
                   </li>
-                  <li>
+                  <!--<li>-->
                     <!-- Button pour Supprimer la version -->
-                    <button id="supprimer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('jalon/create', $version->id); !!}';">
+                    <!--<button id="supprimer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm" onclick="location.href = '{!! url('jalon/create', $version->id); !!}';">
                       <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Créer un jalon
                     </button>
-                  </li>
+                  </li>-->
 
                 </ul>
 
@@ -84,15 +88,17 @@
                     <!-- En-tête du tableau -->
                     <thead>
                         <tr class="portail-table-header">
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
+                            <!--<th>&nbsp;</th>
+                            <th>&nbsp;</th>-->
                             <th>&nbsp;</th>
                             <th>Catégorie</th>
                             <th>Tâche</th>
                             <th>Début</th>
                             <th>Fin</th>
                             <th>&nbsp;</th>
+                            <!--
                             <th>&nbsp;</th>
+                            -->
                         </tr>
                     </thead>
 
@@ -101,19 +107,19 @@
                         @foreach ($taches as $tache)
                             <tr>
 
+                                <!--
                                 <td>
-                                  <!-- Button pour créer un nouvelle tâche ou jalon via modal -->
                                   <button type="button" type="submit" class="btn btn-outline-success float-right btn-sm" onclick="location.href = '{!! url('tache/create', $version->id); !!}';">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                   </button>
                                 </td>
 
                                 <td>
-                                  <!-- Button pour déplacer un nouvelle tâche ou jalon via modal -->
                                   <button type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right move-tache">
                                     <i class="fa fa-exchange" aria-hidden="true"></i>
                                   </button>
                                 </td>
+                              -->
 
                                 <!-- Type de la tâche -->
                                 <td>
@@ -147,17 +153,18 @@
                                    @endif
                                 <td>
                                   @if($tache->jalon == '1')
-                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
                                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
                                     </button>
                                   @else
-                                    <button type="button" class="btn btn-outline-primary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
                                       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
                                     </button>
                                   @endif
 
                                 </td>
 
+                                <!--
                                 <td>
                                   @if( $tache->deletable === true )
                                     <button type="button" class="btn btn-outline-danger btn-sm confirm-delete" data-id="{{ $tache->id }}">
@@ -168,6 +175,7 @@
                                   @endif
 
                                 </td>
+                              -->
 
                             </tr>
                         @endforeach

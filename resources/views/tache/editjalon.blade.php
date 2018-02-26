@@ -71,7 +71,7 @@
                   </div>
 
                   <!-- Champs libellé -->
-                  <div class="col-lg-3 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
+                  <div class="col-lg-6 form-group {!! $errors->has('libelle') ? 'has-error' : '' !!}">
     									<label>Libellé :</label>
     									@if( $tache->deletable === true )
 		                		{!! Form::text('libelle', null, ['class' => 'form-control']) !!}

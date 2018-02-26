@@ -97,11 +97,11 @@
                                             <th class="align-middle">@sortablelink('version', 'Version')</th>
                                             <th class="align-middle">@sortablelink('libelle','Libellé')</th>
                                             <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
-                                            <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nb liv. TMA')</div></th>
-                                            <th class="align-middle">Avanc. QI</th>
+                                            <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nombre livraisons TMA')</div></th>
+                                            <th class="align-middle"><div class="center">Avancement QI</div></th>
                                             <th class="align-middle"><div class="center">@sortablelink('qos','QoS')</div></th>
-                                            <th class="align-middle"><div class="center">Date prév. démarrage QI</div></th>
-                                            <th class="align-middle"><div class="center">Date prév. MES</div></th>
+                                            <th class="align-middle"><div class="center">Date prévisionnelle démarrage QI</div></th>
+                                            <th class="align-middle"><div class="center">Date prévisionnelle MES</div></th>
                                             <th class="align-middle"><div class="center">Etat</div></th>
                                             <th>&nbsp;</th> <!-- Espace pour bouton "Consulter" -->
                                         </tr>
