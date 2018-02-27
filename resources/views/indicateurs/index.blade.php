@@ -20,7 +20,7 @@
       <div class="row">
 
         @foreach ($domaines as $domaine)
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="card">
 
               <!-- Titre du panel -->
