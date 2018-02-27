@@ -52,6 +52,11 @@
               <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
             </li>
 
+            <!-- Lien vers les indicateurs -->
+            <li  class="nav-item">
+              <a class="nav-link" href="{!! url('indicateurs'); !!}">Indicateurs</span></a>
+            </li>
+
         </ul>
 
       </div>

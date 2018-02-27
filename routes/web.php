@@ -42,3 +42,6 @@ Route::get('jalon/edit/{tache}', 'TacheController@editJalon')->name('jalon.edit'
 Route::post('tache/store', 'TacheController@store')->name('tache.store');
 Route::put('tache/update/{tache}', 'TacheController@update')->name('tache.update');
 Route::get('tache/destroy/{tache}', 'TacheController@delete')->name('tache.delete'); //Suppression d'une tâche
+
+//Routes associées aux indicateurs
+Route::get('indicateurs', 'IndicateursController@index')->name('indicateurs.index');
