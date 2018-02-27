@@ -38,6 +38,9 @@ class CreateTacheTable extends Migration
             //Si la tâche est un jalon alors true, sinon false
             $table->boolean('jalon')->default(true);
 
+            //Ordre de la tâche
+            $table->integer('num_order');
+
         });
     }
 

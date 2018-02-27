@@ -22,7 +22,7 @@ class Tache extends Model
 	//Liste des champs utilisés pour les opérations CRUD
     protected $fillable = [
         'id', 'libelle', 'debut', 'fin', 'tachetype_id', 'version_id',
-        'jalon',
+        'jalon', 'num_order',
     ];
 
     public function getDebutAttribute($value)

@@ -127,6 +127,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 2;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 1;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -136,6 +137,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 2;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 2;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -145,6 +147,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 5;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 3;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -154,6 +157,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 5;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 4;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -164,6 +168,7 @@ class VersionController extends Controller
         $tache->version_id = $version->id;
         $tache->deletable = false;
         $tache->jalon = false; //c'est une tâche, pas un jalon
+        $tache->num_order = 5;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -173,6 +178,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 7;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 6;
         //Sauvegarde de la tâche
         $tache->save();
 
@@ -182,6 +188,7 @@ class VersionController extends Controller
         $tache->tachetype_id = 7;
         $tache->version_id = $version->id;
         $tache->deletable = false;
+        $tache->num_order = 7;
         //Sauvegarde de la tâche
         $tache->save();
 

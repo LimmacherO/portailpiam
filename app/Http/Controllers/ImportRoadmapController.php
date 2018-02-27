@@ -211,6 +211,7 @@ class ImportRoadmapController extends Controller
                     }
                     $tache->deletable = false;
                     //Sauvegarde de la tâche
+                    $tache->num_order = 1;
                     $tache->save();
 
                     //Lors de la création d'une version, on ajoute la date de démarrage QI réelle
@@ -222,6 +223,7 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['datereelledemqi'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    $tache->num_order = 2;
                     //Sauvegarde de la tâche
                     $tache->save();
 
@@ -234,6 +236,7 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpdateprev'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    $tache->num_order = 3;
                     //Sauvegarde de la tâche
                     $tache->save();
 
@@ -246,6 +249,7 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prpdatereelle'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    $tache->num_order = 4;
                     //Sauvegarde de la tâche
                     $tache->save();
 
@@ -262,6 +266,7 @@ class ImportRoadmapController extends Controller
                     }
                     $tache->deletable = false;
                     $tache->jalon = false; //c'est une tâche, pas un jalon
+                    $tache->num_order = 5;
                     //Sauvegarde de la tâche
                     $tache->save();
 
@@ -274,6 +279,7 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prddateprev'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    $tache->num_order = 6;
                     //Sauvegarde de la tâche
                     $tache->save();
 
@@ -286,6 +292,7 @@ class ImportRoadmapController extends Controller
                       $tache->debut = Carbon::createFromFormat('Y-m-d h:i:s', $insert[$i]['prddatereelle'])->format('d/m/Y');
                     }
                     $tache->deletable = false;
+                    $tache->num_order = 7;
                     //Sauvegarde de la tâche
                     $tache->save();
 
