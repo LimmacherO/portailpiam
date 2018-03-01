@@ -10,6 +10,7 @@ use App\Tache;
 use App\TacheType;
 use App\Version;
 
+use Carbon\Carbon;
 
 class TacheController extends Controller
 {
@@ -80,6 +81,9 @@ class TacheController extends Controller
 
         $this->tacheRepository->update($tache, $request->all());
         $version = $tache->version_id;
+				$version_to_update = Version::find($tache->version_id);
+				$version_to_update->updated_at = Carbon::now();
+				$version_to_update->save();
         return redirect()->route('tache.index', compact('version'))->withOk("La tâche a été modifiée avec succès");
     }
 

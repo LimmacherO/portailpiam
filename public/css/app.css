@@ -51,6 +51,16 @@ p {
   font-weight: bold;
 }
 
+/* Titre de la page dans l'en-tête */
+.section-header h5 {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  color: rgb(106,115,125);
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  font-style: italic;
+}
+
 .section-header-nopadding-bottom{
   padding-bottom: 0px;
 }

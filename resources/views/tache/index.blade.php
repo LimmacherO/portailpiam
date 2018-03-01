@@ -13,6 +13,7 @@
 
                 <!-- Titre de la page Web -->
                 <h1 class="text-left">Planning chantier "{{ $version->libelle }}"</h1>
+                <h5><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;Dernière modification effectuée le {{ date('d/m/Y', strtotime($version->updated_at)) }}</h5>
 
                 <!-- Onglets -->
                 <ul class="nav nav-tabs">
