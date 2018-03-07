@@ -24,11 +24,13 @@ table thead tr.even { background-color: rgb(270,270,270) }
 /* Mise en forme de l'en-tête des tableaux */
 table thead tr th {
  	color: rgb(106,115,125);
+  font-size: 14px;
 }
 
 /* Mis en forme du contenu des tableaux */
 table tbody td {
   color: rgb(106,115,125);
+  font-size: 14px;
 }
 
 table tbody tr:hover{

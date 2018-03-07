@@ -93,10 +93,11 @@
                                      <thead>
                                         <tr>
                                             <th class="align-middle">Domaine</th>
-                                            <th class="align-middle">Application</th>
+                                            <th class="align-middle"><div class="center">Application</div></th>
+                                            <th class="align-middle"><div class="center">Product Dimensions</div></th>
                                             <th class="align-middle">@sortablelink('version', 'Version')</th>
                                             <th class="align-middle">@sortablelink('libelle','Libellé')</th>
-                                            <th class="align-middle">@sortablelink('referentqi.nom','Référent QI')</th>
+                                            <th class="align-middle"><div class="center">@sortablelink('referentqi.nom','Référent QI')</div></th>
                                             <th class="align-middle"><div class="center">@sortablelink('inc_nblivtma','Nombre livraisons TMA')</div></th>
                                             <th class="align-middle"><div class="center">Avancement QI</div></th>
                                             <th class="align-middle"><div class="center">@sortablelink('qos','QoS')</div></th>
@@ -116,7 +117,10 @@
                                                 <td><span class="align-middle">{!! $version->application->domaine->libelle !!}</span></td>
 
                                                 <!-- Affichage du Domaine -->
-                                                <td><span class="align-middle">{!! $version->application->libelle !!}</span></td>
+                                                <td><div class="center">{!! $version->application->libelle !!}</div></td>
+
+                                                <!-- Affichage du Product Dimensions -->
+                                                <td><div class="center">{!! $version->product_dimensions !!}</div></td>
 
                                                 <!-- Affichage du champ version -->
                                                 <td>{!! $version->version !!}</td>
@@ -125,7 +129,7 @@
                                                 <td>{!! $version->libelle !!}</td>
 
                                                 <!-- Affichage du nom et prénom du référent QI -->
-                                                <td>{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</td>
+                                                <td><div class="center">{!! $version->referentqi->nom !!}&nbsp;{!! $version->referentqi->prenom !!}</div></td>
 
                                                 <!-- Affichage du nombre de livraisons TMA -->
                                                 <td><div class="center"><span class="badge badge-secondary">{!! $version->inc_nblivtma !!}</span></div></td>
