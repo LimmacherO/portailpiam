@@ -96,7 +96,9 @@
                             <th>Tâche</th>
                             <th>Début</th>
                             <th>Fin</th>
-                            <th>&nbsp;</th>
+                            @if (!Auth::guest())
+                              <th>&nbsp;</th>
+                            @endif
                             <!--
                             <th>&nbsp;</th>
                             -->
@@ -150,20 +152,23 @@
                                    @elseif($tache->fin == '')
                                      Non renseignée
                                    @else
-                                     {{ $tache->fin }}</td>
+                                     {{ $tache->fin }}
                                    @endif
-                                <td>
-                                  @if($tache->jalon == '1')
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
-                                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
-                                    </button>
-                                  @else
-                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
-                                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
-                                    </button>
-                                  @endif
-
                                 </td>
+                                @if (!Auth::guest())
+                                  <td>
+                                    @if($tache->jalon == '1')
+                                      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('jalon/edit', $tache->id); !!}';">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
+                                      </button>
+                                    @else
+                                      <button type="button" class="btn btn-outline-secondary btn-sm" onclick="location.href = '{!! url('tache/edit', $tache->id); !!}';">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Editer
+                                      </button>
+                                    @endif
+
+                                  </td>
+                                @endif
 
                                 <!--
                                 <td>

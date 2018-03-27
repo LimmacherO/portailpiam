@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
 
       User::create(array(
           'name' => 'PIAM',
+          'username' => 'PIAM',
           'email' => 'piam@rsi.fr',
           'password' => 'PIAM'
       ));

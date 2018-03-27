@@ -28,18 +28,21 @@
                         <i class="fa fa-reorder" aria-hidden="true"></i>&nbsp;Liste chantiers
                       </button>
                     </li>
-                    <li>
-                      <!-- Button pour éditer -->
-                      <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier
-                      </button>
-                    </li>
-                    <li>
-                      <!-- Button pour Supprimer la version -->
-                      <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" data-id="{{ $version->id }}">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
-                      </button>
-                    </li>
+
+                    @if (!Auth::guest())
+                      <li>
+                        <!-- Button pour éditer -->
+                        <button id="editer" type="button" type="submit" class="btn btn-outline-primary float-right btn-sm btn-margin-right" onclick="location.href = '{!! url('version/edit', $version->id); !!}';">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Modifier
+                        </button>
+                      </li>
+                      <li>
+                        <!-- Button pour Supprimer la version -->
+                        <button id="supprimer" type="button" type="submit" class="btn btn-outline-danger float-right btn-sm" data-id="{{ $version->id }}">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp;Supprimer
+                        </button>
+                      </li>
+                    @endif
 
                   </ul>
 

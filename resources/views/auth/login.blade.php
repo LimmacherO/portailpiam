@@ -35,12 +35,12 @@
                               <form action="{{ route('login') }}" method="POST" class="form" role="form" autocomplete="off" id="formLogin">
                                   {{ csrf_field() }}
 
-                                  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                      <label for="email">Identifiant</label>
-                                      <input type="email" class="form-control form-control-lg rounded-0" id="email" name="email" value="{{ old('email') }}" required autofocus>
-                                      @if ($errors->has('email'))
+                                  <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                      <label for="username">Identifiant</label>
+                                      <input class="form-control form-control-lg rounded-0" id="username" name="username" required autofocus>
+                                      @if ($errors->has('username'))
                                           <span class="help-block">
-                                              <strong>{{ $errors->first('email') }}</strong>
+                                              <strong>{{ $errors->first('username') }}</strong>
                                           </span>
                                       @endif
                                   </div>
