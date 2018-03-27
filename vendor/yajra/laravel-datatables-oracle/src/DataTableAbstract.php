@@ -2,20 +2,20 @@
 
 namespace Yajra\DataTables;
 
-use Illuminate\Contracts\Logging\Log;
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use Psr\Log\LoggerInterface;
+use Illuminate\Http\JsonResponse;
+use Yajra\DataTables\Utilities\Helper;
 use Illuminate\Support\Traits\Macroable;
 use Yajra\DataTables\Contracts\DataTable;
+use Illuminate\Contracts\Support\Jsonable;
 use Yajra\DataTables\Exceptions\Exception;
+use Illuminate\Contracts\Support\Arrayable;
 use Yajra\DataTables\Processors\DataProcessor;
-use Yajra\DataTables\Utilities\Helper;
 
 /**
- * @method setTransformer($transformer)
- * @method setSerializer($transformer)
+ * @method DataTableAbstract setTransformer($transformer)
+ * @method DataTableAbstract setSerializer($transformer)
  * @property mixed transformer
  * @property mixed serializer
  * @see     https://github.com/yajra/laravel-datatables-fractal for transformer related methods.
@@ -32,7 +32,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
     public $request;
 
     /**
-     * @var \Illuminate\Contracts\Logging\Log
+     * @var \Psr\Log\LoggerInterface
      */
     protected $logger;
 
@@ -106,7 +106,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
     /**
      * [internal] Track if any filter was applied for at least one column.
      *
-     * @var boolean
+     * @var bool
      */
     protected $isFilterApplied = false;
 
@@ -135,6 +135,33 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
      * @var \Yajra\DataTables\Utilities\Config
      */
     protected $config;
+
+    /**
+     * @var mixed
+     */
+    protected $serializer;
+
+    /**
+     * Can the DataTable engine be created with these parameters.
+     *
+     * @param mixed $source
+     * @return bool
+     */
+    public static function canCreate($source)
+    {
+        return false;
+    }
+
+    /**
+     * Factory method, create and return an instance for the DataTable engine.
+     *
+     * @param mixed $source
+     * @return DataTableAbstract
+     */
+    public static function create($source)
+    {
+        return new static($source);
+    }
 
     /**
      * Add column in collection.
@@ -406,7 +433,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
      */
     public function pushToBlacklist($column)
     {
-        if (!$this->isBlacklisted($column)) {
+        if (! $this->isBlacklisted($column)) {
             $this->columnDef['blacklist'][] = $column;
         }
 
@@ -581,7 +608,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
      */
     protected function paginate()
     {
-        if ($this->request->isPaginationable() && !$this->skipPaging) {
+        if ($this->request->isPaginationable() && ! $this->skipPaging) {
             $this->paging();
         }
     }
@@ -660,7 +687,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
      */
     protected function showDebugger(array $output)
     {
-        $output["input"] = $this->request->all();
+        $output['input'] = $this->request->all();
 
         return $output;
     }
@@ -683,7 +710,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
 
         return new JsonResponse([
             'draw'            => (int) $this->request->input('draw'),
-            'recordsTotal'    => (int) $this->totalRecords,
+            'recordsTotal'    => $this->totalRecords,
             'recordsFiltered' => 0,
             'data'            => [],
             'error'           => $error ? __($error) : "Exception Message:\n\n" . $exception->getMessage(),
@@ -693,11 +720,11 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
     /**
      * Get monolog/logger instance.
      *
-     * @return \Illuminate\Contracts\Logging\Log
+     * @return \Psr\Log\LoggerInterface
      */
     public function getLogger()
     {
-        $this->logger = $this->logger ?: app(Log::class);
+        $this->logger = $this->logger ?: app(LoggerInterface::class);
 
         return $this->logger;
     }
@@ -705,10 +732,10 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
     /**
      * Set monolog/logger instance.
      *
-     * @param \Illuminate\Contracts\Logging\Log $logger
+     * @param \Psr\Log\LoggerInterface $logger
      * @return $this
      */
-    public function setLogger(Log $logger)
+    public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
 
@@ -740,7 +767,7 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
     /**
      * Get column name to be use for filtering and sorting.
      *
-     * @param integer $index
+     * @param int $index
      * @param bool    $wantsAlias
      * @return string
      */
@@ -768,7 +795,8 @@ abstract class DataTableAbstract implements DataTable, Arrayable, Jsonable
      */
     protected function getColumnNameByIndex($index)
     {
-        $name = (isset($this->columns[$index]) && $this->columns[$index] != '*') ? $this->columns[$index] : $this->getPrimaryKeyName();
+        $name = (isset($this->columns[$index]) && $this->columns[$index] != '*')
+            ? $this->columns[$index] : $this->getPrimaryKeyName();
 
         return in_array($name, $this->extraColumns, true) ? $this->getPrimaryKeyName() : $name;
     }

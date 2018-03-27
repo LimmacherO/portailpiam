@@ -2,26 +2,52 @@
 
 namespace Yajra\DataTables;
 
-use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
+use Illuminate\Contracts\Support\Arrayable;
 
 class CollectionDataTable extends DataTableAbstract
 {
     /**
-     * Collection object
+     * Collection object.
      *
      * @var \Illuminate\Support\Collection
      */
     public $collection;
 
     /**
-     * Collection object
+     * Collection object.
      *
      * @var \Illuminate\Support\Collection
      */
     public $original;
+
+    /**
+     * Can the DataTable engine be created with these parameters.
+     *
+     * @param mixed $source
+     * @return bool
+     */
+    public static function canCreate($source)
+    {
+        return is_array($source) || $source instanceof Collection;
+    }
+
+    /**
+     * Factory method, create and return an instance for the DataTable engine.
+     *
+     * @param array|\Illuminate\Support\Collection $source
+     * @return CollectionDataTable|DataTableAbstract
+     */
+    public static function create($source)
+    {
+        if (is_array($source)) {
+            $source = new Collection($source);
+        }
+
+        return parent::create($source);
+    }
 
     /**
      * CollectionEngine constructor.
@@ -38,7 +64,7 @@ class CollectionDataTable extends DataTableAbstract
     }
 
     /**
-     * Serialize collection
+     * Serialize collection.
      *
      * @param  mixed $collection
      * @return mixed|null
@@ -51,7 +77,7 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Count results.
      *
-     * @return integer
+     * @return int
      */
     public function count()
     {
@@ -65,7 +91,7 @@ class CollectionDataTable extends DataTableAbstract
      */
     public function columnSearch()
     {
-        $columns = $this->request->get('columns');
+        $columns = $this->request->get('columns', []);
         for ($i = 0, $c = count($columns); $i < $c; $i++) {
             if ($this->request->isColumnSearchable($i)) {
                 $this->isFilterApplied = true;
@@ -83,16 +109,16 @@ class CollectionDataTable extends DataTableAbstract
                         if ($this->config->isCaseInsensitive()) {
                             if ($regex) {
                                 return preg_match('/' . $keyword . '/i', $value) == 1;
-                            } else {
-                                return strpos(Str::lower($value), Str::lower($keyword)) !== false;
                             }
-                        } else {
-                            if ($regex) {
-                                return preg_match('/' . $keyword . '/', $value) == 1;
-                            } else {
-                                return strpos($value, $keyword) !== false;
-                            }
+
+                            return strpos(Str::lower($value), Str::lower($keyword)) !== false;
                         }
+
+                        if ($regex) {
+                            return preg_match('/' . $keyword . '/', $value) == 1;
+                        }
+
+                        return strpos($value, $keyword) !== false;
                     }
                 );
             }
@@ -145,7 +171,7 @@ class CollectionDataTable extends DataTableAbstract
     /**
      * Count total items.
      *
-     * @return integer
+     * @return int
      */
     public function totalCount()
     {
@@ -187,18 +213,21 @@ class CollectionDataTable extends DataTableAbstract
      */
     protected function globalSearch($keyword)
     {
-        $columns = $this->request->columns();
         $keyword = $this->config->isCaseInsensitive() ? Str::lower($keyword) : $keyword;
 
-        $this->collection = $this->collection->filter(function ($row) use ($columns, $keyword) {
+        $this->collection = $this->collection->filter(function ($row) use ($keyword) {
             $this->isFilterApplied = true;
 
             $data = $this->serialize($row);
             foreach ($this->request->searchableColumnIndex() as $index) {
                 $column = $this->getColumnName($index);
-                $value  = Arr::get($data, $column);
-                if (!$value || is_array($value)) {
-                    continue;
+                $value = Arr::get($data, $column);
+                if (! $value || is_array($value)) {
+                    if (! is_numeric($value)) {
+                        continue;
+                    }
+
+                    $value = (string) $value;
                 }
 
                 $value = $this->config->isCaseInsensitive() ? Str::lower($value) : $value;
@@ -217,7 +246,7 @@ class CollectionDataTable extends DataTableAbstract
     protected function defaultOrdering()
     {
         $criteria = $this->request->orderableColumns();
-        if (!empty($criteria)) {
+        if (! empty($criteria)) {
             $sorter = $this->getSorter($criteria);
 
             $this->collection = $this->collection

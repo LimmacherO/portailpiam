@@ -21,6 +21,7 @@ trait Sortable
      * @param array|null                         $defaultSortParameters
      *
      * @return \Illuminate\Database\Query\Builder
+     * @throws \Kyslik\ColumnSortable\Exceptions\ColumnSortableException
      */
     public function scopeSortable($query, $defaultSortParameters = null)
     {
@@ -134,7 +135,7 @@ trait Sortable
     private function columnExists($model, $column)
     {
         return (isset($model->sortable)) ? in_array($column, $model->sortable) :
-            Schema::hasColumn($model->getTable(), $column);
+            Schema::connection($model->getConnectionName())->hasColumn($model->getTable(), $column);
     }
     /**
      * @param array|string $sort
@@ -150,11 +151,10 @@ trait Sortable
         if (is_string($sort)) {
             return ['sort' => $sort, 'order' => $configDefaultOrder];
         }
-        reset($sort);
-        $each = each($sort);
-        return ($each[0] === 0) ? ['sort' => $each[1], 'order' => $configDefaultOrder] : [
-            'sort'  => $each[0],
-            'order' => $each[1],
+
+        return (key($sort) === 0) ? ['sort' => $sort[0], 'order' => $configDefaultOrder] : [
+            'sort'  => key($sort),
+            'order' => reset($sort),
         ];
     }
     /**
@@ -170,6 +170,7 @@ trait Sortable
     {
         $joinType = Config::get('columnsortable.join_type', 'join');
 
-        return $query->select($parentTable.'.*')->{$joinType}($relatedTable, $parentPrimaryKey, '=', $relatedPrimaryKey);
+        return $query->select($parentTable.'.*')
+                     ->{$joinType}($relatedTable, $parentPrimaryKey, '=', $relatedPrimaryKey);
     }
 }
