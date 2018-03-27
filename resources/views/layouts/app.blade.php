@@ -52,6 +52,22 @@
               <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
             </li>
 
+            @if (Auth::guest())
+
+              <!-- Lien vers la page d'indentification -->
+              <li class="nav-item @if(Request::is('login')) active @endif">
+                <a class="nav-link" href="{{ route('login') }}">S'identifier</a>
+              </li>
+
+            @else
+
+              <!-- Lien vers la page de déconnexion -->
+              <li  class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">Se déconnecter</span></a>
+              </li>
+
+            @endif
+
         </ul>
 
       </div>

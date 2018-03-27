@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TacheTypeTableSeeder::class);
         $this->call(TacheTableSeeder::class);
         $this->call(VersionEtatSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }

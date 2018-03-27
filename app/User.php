@@ -27,4 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // Encodage/Hash du mot de passe lors de la création ou modification d'un utilisateur/membre
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = \Hash::make($password);
+    }
+
 }

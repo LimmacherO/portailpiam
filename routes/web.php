@@ -5,6 +5,12 @@
  * @Author: Romain JEDYNAK
  */
 
+/* Gestion de l'authentification */
+Auth::routes();
+
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+
+
 // Routes vers la page d'accueil
 Route::get('/', function () {
     return redirect('version');
