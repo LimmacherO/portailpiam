@@ -17,8 +17,6 @@
 
       <!-- Import - Bootstrap -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
       <!-- Import - Font Awesome -->
       <link href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
 
@@ -26,6 +24,7 @@
       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
       <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
       <link href="{{ asset('css/portail-table.css') }}" rel="stylesheet">
+
 
       <!-- Bootstrap Date-Picker Plugin -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"/>
@@ -47,16 +46,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
-            <!-- Lien vers la roadmap -->
-            <li  class="nav-item active"> <!-- Par défaut actif en attendant les autres menus -->
-              <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
-            </li>
-
             @if (Auth::guest())
 
               <!-- Lien vers la page d'indentification -->
               <li class="nav-item @if(Request::is('login')) active @endif">
-                <a class="nav-link" href="{{ route('login') }}">S'identifier</a>
+                <a class="nav-link" href="{{ route('login') }}">Se connecter</a>
               </li>
 
             @else
@@ -71,10 +65,29 @@
         </ul>
 
       </div>
-    </nav>
+    </nav> <!-- Fin de la barre de navigation top -->
 
-    <!-- Affichage du contenu -->
-    @yield('content')
+    <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
+                    </li>
+                </ul>
+
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+              @yield('content')
+
+            </div>
+        </div>
+
+
 
     <!-- Import des librairies JS associées à Bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

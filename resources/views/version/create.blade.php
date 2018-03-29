@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12">
 
-              <div class="container">
+              <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-12">
 
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Afichage du contenu de la page -->
-    <div class="container">
+    <div class="container-fluid">
        <div class="row">
 
          <!-- Panel "Identification de la version" -->
