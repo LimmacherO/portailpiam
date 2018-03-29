@@ -261,22 +261,21 @@ label{
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #7386D5;
+    min-width: 200px;
+    max-width: 200px;
+    background: #FFFFFF;
     color: #fff;
     transition: all 0.3s;
     margin-top: 55px;
+    border-right: 1px solid rgb(111, 126, 147);
+
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -200px;
+    background: rgb(48,57,74);
 }
 
-#sidebar .sidebar-header {
-    padding: 20px;
-    background: #6d7fcc;
-}
 
 #sidebar ul.components {
     padding: 20px 0;
@@ -289,7 +288,7 @@ label{
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 14px;
     display: block;
 }
 #sidebar ul li a:hover {
@@ -299,7 +298,7 @@ label{
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
-    background: #6d7fcc;
+    background-color: rgb(68,125,168);
 }
 
 
@@ -326,50 +325,10 @@ ul ul a {
     background: #6d7fcc;
 }
 
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article, a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
 
 
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
 #content {
     padding: 0px;
     min-height: 100vh;
     transition: all 0.3s;
-}
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-@media (max-width: 768px) {
-    #sidebar {
-        margin-left: -250px;
-    }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
-        display: none;
-    }
 }

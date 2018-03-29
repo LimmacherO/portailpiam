@@ -50,14 +50,14 @@
 
               <!-- Lien vers la page d'indentification -->
               <li class="nav-item @if(Request::is('login')) active @endif">
-                <a class="nav-link" href="{{ route('login') }}">Se connecter</a>
+                <a class="nav-link" href="{{ route('login') }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Se connecter</a>
               </li>
 
             @else
 
               <!-- Lien vers la page de déconnexion -->
               <li  class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}">Se déconnecter</span></a>
+                <a class="nav-link" href="{{ route('logout') }}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Se déconnecter</span></a>
               </li>
 
             @endif
@@ -73,7 +73,7 @@
 
                 <ul class="list-unstyled components">
                     <li class="active">
-                        <a class="nav-link" href="{!! url('version'); !!}">Roadmap opérationnelle DSI</span></a>
+                        <a class="nav-link" href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;Roadmap opérationnelle</span></a>
                     </li>
                 </ul>
 
