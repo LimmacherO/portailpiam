@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-12">
 
-          <div class="container-fluid">
+          <div class="container">
             <div class="row">
               <div class="col-lg-12">
 
@@ -54,7 +54,7 @@
 </div>
 
 <!-- Affichage du message d'information (SUCCESS, etc.) -->
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-lg-12">
         @if(session()->has('ok'))
@@ -67,7 +67,7 @@
 </div>
 
   <!-- Afichage du contenu de la page -->
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
 
       <div class="col-lg-12">

@@ -46,6 +46,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
+            <!-- Lien vers la Roadmap QI -->
+            <li class="nav-item active">
+              <a class="nav-link" href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;Roadmap opérationnelle</span></a>
+            </li>
+
             @if (Auth::guest())
 
               <!-- Lien vers la page d'indentification -->
@@ -67,27 +72,7 @@
       </div>
     </nav> <!-- Fin de la barre de navigation top -->
 
-    <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-
-                <ul class="list-unstyled components">
-                    <li class="active">
-                        <a class="nav-link" href="{!! url('version'); !!}"><i class="fa fa-map-o" aria-hidden="true"></i>&nbsp;Roadmap opérationnelle</span></a>
-                    </li>
-                </ul>
-
-            </nav>
-
-            <!-- Page Content Holder -->
-            <div id="content">
-
-              @yield('content')
-
-            </div>
-        </div>
-
-
+    @yield('content')
 
     <!-- Import des librairies JS associées à Bootstrap  -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
